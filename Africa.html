@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Слід у пісках — Сахель і Африканський корпус</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>:root{--sand:#E7DCC2;--sand-deep:#DCCEA9;--card:#F6EFDD;--ink:#2A2318;--ink-soft:#5A503E;--indigo:#1F2A44;--indigo-deep:#141B2C;--indigo-line:#3A4A6B;--rust:#A8432B;--rust-soft:#C9714F;--gold:#B98A2E;--line:rgba(42,35,24,.14);--shadow: 0 1px 0 rgba(0,0,0,.05)}*{box-sizing:border-box}html,body{margin:0;padding:0}body{background:var(--sand);color:var(--ink);font-family:Manrope,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}h1,h2,h3,h4{font-family:Bitter,serif;margin:0;color:var(--ink);letter-spacing:-.01em}p{margin:0 0 1em}a{color:inherit}::selection{background:var(--rust);color:#fff}.app{display:flex;min-height:100vh}.sidebar{width:264px;flex-shrink:0;background:var(--indigo-deep);color:#e9e4d6;padding:34px 22px;position:sticky;top:0;height:100vh;overflow-y:auto}.brand{font-family:Bitter,serif;font-weight:800;font-size:1.5rem;line-height:1.15;color:#f3eedd;margin-bottom:6px}.brand-sub{font-size:.8rem;color:#8e97ac;margin-bottom:30px;line-height:1.5}.nav-group-label{font-size:.72rem;color:#6e778e;margin:22px 0 8px 4px}.nav-item{display:flex;align-items:center;gap:10px;width:100%;background:none;border:none;text-align:left;color:#c7ccda;font-family:Manrope,sans-serif;font-size:.94rem;font-weight:600;padding:10px;border-radius:7px;cursor:pointer;margin-bottom:2px;transition:background .15s ease,color .15s ease}.nav-item:hover{background:#ffffff0f;color:#fff}.nav-item.active{background:#ffffff1c;color:#fff}.flag-chip{width:14px;height:14px;border-radius:3px;flex-shrink:0;background-size:cover}.nav-item .cname{flex:1}.nav-soon{font-size:.82rem;color:#5c6479;padding:10px 10px 4px;line-height:1.6;border-top:1px solid rgba(255,255,255,.08);margin-top:16px}.mobile-topbar,.sidebar-backdrop{display:none}body.sidebar-locked{overflow:hidden}.main{flex:1;min-width:0}.page{display:none}.page.active{display:block}.hero{background:var(--indigo-deep);color:#efeada;padding:64px 56px 52px;position:relative;overflow:hidden}.hero .flagbar{position:absolute;left:0;top:0;bottom:0;width:8px}.hero-eyebrow{color:#8e97ac;font-size:.9rem;margin-bottom:14px}.hero h1{font-size:3.1rem;font-weight:800;color:#fbf7ea;max-width:820px}.hero-lede{max-width:640px;color:#b9c0d0;font-size:1.08rem;margin-top:16px}.factstrip{display:flex;flex-wrap:wrap;gap:0;margin-top:34px;border-top:1px solid rgba(255,255,255,.14);padding-top:22px}.fact{padding:0 30px 0 0;margin-right:30px;border-right:1px solid rgba(255,255,255,.14)}.fact:last-child{border-right:none}.fact-label{font-size:.78rem;color:#8e97ac;margin-bottom:4px}.fact-value{font-family:Bitter,serif;font-weight:700;font-size:1.15rem;color:#f3eedd}.section{padding:52px 56px;max-width:920px}.section-title{font-size:1.7rem;font-weight:700;margin-bottom:20px;color:var(--indigo)}.section p{color:var(--ink)}.section p+p{margin-top:0}.deckwrap{background:var(--sand);padding:0 56px 56px}.deck-label{font-size:.95rem;color:var(--ink-soft);margin-bottom:14px;max-width:920px}.deck{max-width:820px;background:var(--indigo);border-radius:10px;color:#f3eedd;padding:0;position:relative;box-shadow:0 10px 30px #141b2c40}.deck-inner{padding:46px 52px 40px;min-height:230px;display:flex;flex-direction:column;justify-content:center}.deck-count{font-family:Bitter,serif;font-size:.85rem;color:var(--rust-soft);font-weight:700;margin-bottom:14px;letter-spacing:.02em}.deck-title{font-size:1.5rem;font-weight:700;color:#fbf7ea;margin-bottom:12px}.deck-text{color:#c7ccda;font-size:1rem;max-width:640px}.deck-stat{display:inline-block;margin-top:16px;background:#ffffff14;border:1px solid rgba(255,255,255,.16);padding:8px 14px;border-radius:6px;font-family:Bitter,serif;font-weight:700;color:var(--rust-soft);font-size:.95rem}.deck-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-top:1px solid rgba(255,255,255,.12)}.deck-btn{background:none;border:1px solid rgba(255,255,255,.25);color:#e9e4d6;font-family:Manrope,sans-serif;font-weight:600;font-size:.88rem;padding:8px 16px;border-radius:6px;cursor:pointer;transition:background .15s ease}.deck-btn:hover{background:#ffffff1a}.deck-btn:disabled{opacity:.3;cursor:default}.deck-dots{display:flex;gap:6px}.deck-dot{width:6px;height:6px;border-radius:50%;background:#ffffff40}.deck-dot.on{background:var(--rust-soft)}.timeline{max-width:920px;padding:0 56px 60px}.tl-item{display:flex;gap:26px;padding-bottom:26px;position:relative}.tl-item:not(:last-child):before{content:"";position:absolute;left:57px;top:26px;bottom:-4px;width:1px;background:var(--line)}.tl-year{width:78px;flex-shrink:0;font-family:Bitter,serif;font-weight:700;color:var(--rust);font-size:.98rem;padding-top:2px;text-align:right}.tl-dot{width:11px;height:11px;border-radius:50%;background:var(--rust);margin-top:6px;flex-shrink:0;box-shadow:0 0 0 4px var(--sand)}.tl-body h4{font-size:1.05rem;font-weight:700;margin-bottom:5px;color:var(--indigo)}.tl-body p{color:var(--ink-soft);font-size:.96rem;max-width:660px}.footnote{padding:24px 56px 60px;max-width:920px;color:var(--ink-soft);font-size:.85rem;border-top:1px solid var(--line);margin:0 56px 40px}.mapwrap{padding:0 56px 20px;max-width:920px}.map-frame{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 20px 8px}.map-svg{width:100%;height:auto;display:block}.map-country{stroke:var(--indigo);stroke-width:1.5;cursor:pointer;transition:opacity .15s ease}.map-country:hover{opacity:.85}.map-country-label{font-family:Bitter,serif;font-weight:700;fill:var(--indigo-deep);font-size:17px;pointer-events:none}.map-neighbor-label{font-family:Manrope,sans-serif;fill:#9c927a;font-size:11px;pointer-events:none}.map-capital-dot{fill:var(--indigo-deep);stroke:#fff;stroke-width:1.5}.map-capital-label{font-family:Manrope,sans-serif;font-weight:700;fill:var(--ink);font-size:12px;pointer-events:none}.map-event-dot{fill:var(--rust);stroke:#fff;stroke-width:1.3}.map-event-label{font-family:Manrope,sans-serif;fill:var(--rust);font-size:10.5px;font-weight:600;pointer-events:none}.map-base-marker{fill:none;stroke:var(--ink-soft);stroke-width:1.4;stroke-dasharray:2.5 2.5}.map-base-label{font-family:Manrope,sans-serif;fill:var(--ink-soft);font-size:10.5px;pointer-events:none}.map-zone{fill:var(--rust);opacity:.16}.maplegend{display:flex;flex-wrap:wrap;gap:18px;padding:14px 4px 16px;font-size:.82rem;color:var(--ink-soft)}.maplegend .li{display:flex;align-items:center;gap:7px}.maplegend .swatch{width:12px;height:12px;flex-shrink:0;border-radius:50%}.maplegend .swatch.sq{border-radius:2px}.maplegend .swatch.dash{background:none;border:1.4px dashed var(--ink-soft);box-sizing:border-box}.maplegend .swatch.zone{background:var(--rust);opacity:.35;border-radius:2px}.map-caption{font-size:.85rem;color:var(--ink-soft);margin:6px 0 0}.sources-list{display:flex;flex-direction:column;gap:10px;padding:0 56px 60px;max-width:920px}.source-row{display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 20px;flex-wrap:wrap}.source-name{font-family:Bitter,serif;font-weight:700;color:var(--indigo);font-size:1rem}.source-tags{display:flex;flex-wrap:wrap;gap:6px}.sources-note{padding:0 56px 8px;max-width:920px;color:var(--ink-soft);font-size:.95rem}.glossary-list{display:flex;flex-direction:column;padding:0 56px 60px;max-width:920px}.gloss-item{padding:18px 0;border-bottom:1px solid var(--line)}.gloss-item:last-child{border-bottom:none}.gloss-term{font-family:Bitter,serif;font-weight:800;color:var(--indigo);font-size:1.08rem;margin-bottom:6px}.gloss-def{color:var(--ink);font-size:.95rem;max-width:720px;margin:0}.timeline-filters{display:flex;flex-wrap:wrap;gap:8px;padding:0 56px 26px;max-width:920px;align-items:center}.tf-btn{font-family:Manrope,sans-serif;font-weight:700;font-size:.82rem;padding:7px 14px;border-radius:20px;border:1px solid var(--line);background:var(--card);color:var(--ink-soft);cursor:pointer;transition:opacity .15s ease,border-color .15s ease}.tf-btn.off{opacity:.4}.tf-reset{font-size:.82rem;color:var(--ink-soft);text-decoration:underline;cursor:pointer;background:none;border:none;padding:7px 4px;font-family:Manrope,sans-serif}.tl-badge{display:inline-block;font-size:.7rem;font-weight:700;color:#fff;padding:3px 10px;border-radius:20px;letter-spacing:.01em;margin-bottom:8px}.country-cards{display:flex;gap:18px;flex-wrap:wrap;padding:0 56px 60px;max-width:920px}.ccard{flex:1 1 240px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px 22px 24px;cursor:pointer;transition:border-color .15s ease,transform .15s ease}.ccard:hover{border-color:var(--rust);transform:translateY(-2px)}.ccard .flagbar-h{height:5px;border-radius:3px;margin-bottom:16px;width:44px}.ccard h3{font-size:1.2rem;margin-bottom:8px}.ccard p{font-size:.9rem;color:var(--ink-soft);margin:0}.theme-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;box-shadow:0 3px 8px #2a23182e}.theme-icon svg{width:23px;height:23px;color:#f9f5e8}.comparewrap{padding:0 56px 44px;max-width:920px}.compare-scroll{overflow-x:auto;border-radius:10px;border:1px solid var(--line)}.compare-table{width:100%;min-width:640px;border-collapse:collapse;background:var(--card)}.compare-table th,.compare-table td{padding:14px 18px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}.compare-table thead th{background:var(--indigo-deep);color:#f3eedd;font-family:Bitter,serif;font-weight:700;font-size:1rem;white-space:nowrap}.compare-table thead th:first-child{background:var(--indigo-deep)}.compare-table thead th .flag-chip{margin-right:8px;vertical-align:-2px}.compare-table td.compare-label{font-family:Bitter,serif;font-weight:700;color:var(--indigo);font-size:.9rem;white-space:nowrap;background:#2a231809}.compare-table td{color:var(--ink-soft);font-size:.9rem;line-height:1.55;max-width:280px}.compare-table tbody tr:last-child td{border-bottom:none}.compare-note{font-size:.85rem;color:var(--ink-soft);margin:12px 0 0}.dossier-grid{display:flex;flex-wrap:wrap;gap:18px;padding:0 56px 60px;max-width:920px}.pcard{flex:1 1 400px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px 26px 22px;transition:border-color .15s ease}.pcard:hover{border-color:var(--rust)}.pcard-top{display:flex;align-items:flex-start;gap:16px}.pcard-avatar{width:54px;height:54px;flex-shrink:0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Bitter,serif;font-weight:800;font-size:1.1rem;color:#f3eedd}.pcard-name{font-size:1.15rem;font-weight:700;color:var(--indigo);margin-bottom:2px}.pcard-role{font-size:.86rem;color:var(--ink-soft)}.pcard-dates{font-family:Bitter,serif;font-size:.78rem;color:var(--rust);font-weight:700;margin-top:4px}.pcard-tags{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 12px}.pcard-tag{font-size:.74rem;font-weight:700;color:var(--indigo);background:#1f2a4414;border-radius:5px;padding:4px 9px}.pcard-bio p{font-size:.9rem;color:var(--ink);margin:0 0 10px}.pcard-bio p:last-child{margin-bottom:0}.pcard-more{display:none}.pcard-more.open{display:block}.pcard-toggle{background:none;border:none;color:var(--rust);font-family:Manrope,sans-serif;font-weight:700;font-size:.85rem;padding:6px 0 0;cursor:pointer}.pcard-toggle:hover{text-decoration:underline}.pcard-link{display:inline-block;margin-top:12px;font-size:.84rem;font-weight:700;color:var(--indigo);background:none;border:1px solid var(--line);border-radius:6px;padding:7px 12px;cursor:pointer}.pcard-link:hover{border-color:var(--rust);color:var(--rust)}.notebox{background:#b98a2e1f;border:1px solid rgba(185,138,46,.4);border-radius:8px;padding:18px 22px;margin-top:8px}.notebox h4{font-size:.95rem;color:var(--gold);margin-bottom:6px}.notebox p{font-size:.9rem;color:var(--ink-soft);margin:0}@media(max-width:860px){.app{flex-direction:column}.mobile-topbar{display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:35;background:var(--indigo-deep);color:#f3eedd;padding:14px 20px;box-shadow:0 1px #0003}.hamburger-btn{background:none;border:none;color:#f3eedd;padding:2px;margin:0;cursor:pointer;display:flex;flex-shrink:0}.hamburger-btn svg{width:24px;height:24px}.mobile-topbar-title{font-family:Bitter,serif;font-weight:700;font-size:1.05rem}.sidebar{position:fixed;top:0;left:0;width:82%;max-width:300px;height:100vh;padding:26px 20px;transform:translate(-100%);transition:transform .25s ease;z-index:50;box-shadow:6px 0 28px #00000059}.sidebar.open{transform:translate(0)}.sidebar-backdrop{display:block;position:fixed;inset:0;background:#140f0880;z-index:40;opacity:0;pointer-events:none;transition:opacity .2s ease}.sidebar-backdrop.open{opacity:1;pointer-events:auto}.hero{padding:40px 24px 34px}.hero h1{font-size:2.2rem}.section{padding:36px 24px}.deckwrap,.timeline{padding:0 24px 40px}.footnote{margin:0 24px 30px;padding-top:20px}.country-cards{padding:0 24px 40px}.deck-inner{padding:32px 26px 30px}.comparewrap,.dossier-grid{padding:0 24px 40px}}</style>
+</head>
+<body>
+<div class="app">
+<div class="mobile-topbar">
+<button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Відкрити меню">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+</button>
+<span class="mobile-topbar-title">Слід у пісках</span>
+</div>
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeSidebar()"></div>
+<nav class="sidebar" id="sidebar">
+<div class="brand">Слід у пісках</div>
+<div class="brand-sub">Сахель, влада і присутність росії</div>
+<div class="nav-group-label">Розділи</div>
+<div id="navList"></div>
+<div class="nav-group-label">Наскрізні теми</div>
+<div id="themeNavList"></div>
+<div class="nav-soon">Далі: Судан, Лівія, ЦАР — додамо пізніше.</div>
+</nav>
+<main class="main" id="main"></main>
+</div>
+<script>const FLAGS={overview:"linear-gradient(90deg,#A8432B,#B98A2E)",mali:"linear-gradient(90deg,#14B53A 0 33%, #FCD116 33% 66%, #CE1126 66% 100%)",burkina:"linear-gradient(180deg,#EF2B2D 0 50%, #009E49 50% 100%)",niger:"linear-gradient(180deg,#E05206 0 33%, #ffffff 33% 66%, #0DB02B 66% 100%)",compare:"linear-gradient(135deg,#3A4A6B,#8E97AC)",jihad:"linear-gradient(135deg,#5A1F1A,#A8432B)",coast:"linear-gradient(135deg,#1F2A44,#2E8B7D)",dossier:"linear-gradient(135deg,#A8432B,#5A1F1A)",infowar:"linear-gradient(135deg,#3A4A6B,#A8432B)",resources:"linear-gradient(135deg,#B98A2E,#5A503E)",sources:"linear-gradient(135deg,#5A503E,#8E97AC)",glossary:"linear-gradient(135deg,#1F2A44,#B98A2E)",timeline:"linear-gradient(90deg,#A8432B,#1F2A44,#B98A2E)",ukraine:"linear-gradient(180deg,#0057B7 50%, #FFD700 50%)"},ICONS={compare:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M12 3v18"/><path d="M5 6h14"/>
+<path d="M5 6l-3 7a3.5 3.5 0 0 0 7 0L5 6Z"/>
+<path d="M19 6l-3 7a3.5 3.5 0 0 0 7 0L19 6Z"/>
+<path d="M8 21h8"/>
+</svg>`,jihad:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="6" cy="7" r="2.3"/><circle cx="18" cy="7" r="2.3"/>
+<circle cx="6" cy="17" r="2.3"/><circle cx="18" cy="17" r="2.3"/>
+<path d="M8 8.3l3 2M16 8.3l-3 2M8 15.7l3-2M16 15.7l-3-2" stroke-dasharray="2 2.4"/>
+</svg>`,ukraine:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M12 3l7 3.2v5.6c0 4.6-3 7.7-7 9-4-1.3-7-4.4-7-9V6.2L12 3Z"/>
+</svg>`,coast:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M2 17c1.5 1.3 3 1.3 4.5 0s3-1.3 4.5 0 3 1.3 4.5 0 3-1.3 4.5 0"/>
+<path d="M2 12c1.5 1.3 3 1.3 4.5 0s3-1.3 4.5 0 3 1.3 4.5 0 3-1.3 4.5 0"/>
+<path d="M12 3v6M9 6l3-3 3 3"/>
+</svg>`,infowar:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M3 10v4h3l5 4V6l-5 4H3Z"/>
+<path d="M16.2 9a4 4 0 0 1 0 6"/>
+<path d="M19.3 6.3a8 8 0 0 1 0 11.4"/>
+</svg>`,resources:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<ellipse cx="12" cy="6" rx="7" ry="3"/>
+<path d="M5 6v5c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/>
+<path d="M5 11v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/>
+</svg>`,dossier:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<rect x="3" y="5" width="18" height="14" rx="2"/>
+<circle cx="9" cy="11" r="2"/>
+<path d="M6 16.2c0-1.8 1.3-3.2 3-3.2s3 1.4 3 3.2"/>
+<path d="M14 9.2h4M14 13h4"/>
+</svg>`},PEOPLE=[{id:"prigozhin",name:"Євген Пригожин",role:"Засновник і фінансист «Вагнера»",dates:"1961–2023",avatarBg:"linear-gradient(135deg,#5A1F1A,#A8432B)",initials:"ЄП",tags:["«Вагнер»","москва"],linkId:"overview",linkLabel:"Хронологія «Вагнера» →",bio:["Петербурзький підприємець із кримінальним минулим, який у 2000-х став постачальником кремлівських структур і отримав прізвисько «кухар путіна». З 2014 року фінансував і публічно очолював приватну військову компанію «Вагнер», хоча роками офіційно заперечував будь-який зв’язок із нею.","Саме через мережу Пригожина «Вагнер» заходив у Африку — від ЦАР і Судану до Лівії й Малі — в обмін на доступ до родовищ золота й алмазів. У червні 2023 року він підняв заколот і повів колону на москву, за кілька тижнів домовившись про виїзд до Білорусі. Через два місяці, у серпні 2023-го, загинув у авіакатастрофі під Тверю разом з Уткіним і ще кількома соратниками — подія, яку більшість спостерігачів пов’язують з помстою Кремля за заколот."]},{id:"utkin",name:"Дмитро Уткін",role:"Командир «Вагнера», позивний «Вагнер»",dates:"1970–2023",avatarBg:"linear-gradient(135deg,#2A2318,#5A503E)",initials:"ДУ",tags:["«Вагнер»","ГРУ"],linkId:"overview",linkLabel:"Хронологія «Вагнера» →",bio:["Колишній офіцер спецназу ГРУ, учасник обох чеченських кампаній. Після служби опинився серед бійців «Слов’янського корпусу» в Сирії 2013 року, а рік по тому очолив нову структуру, яка отримала бойовий позивний свого командира — «Вагнер».","На відміну від Пригожина, Уткін залишався переважно тіньовою фігурою — військовим ядром компанії, тоді як фінансування й публічну частину брав на себе Пригожин. Загинув разом із ним в авіакатастрофі в серпні 2023 року, за два місяці після заколоту."]},{id:"goita",name:"Ассімі Гойта",role:"Президент перехідного періоду Малі",dates:"нар. 1983",avatarBg:"linear-gradient(90deg,#14B53A,#B98A2E)",initials:"АГ",tags:["Малі","Два перевороти"],linkId:"mali",linkLabel:"Розділ про Малі →",bio:["Полковник спецпризначенців, який очолив обидва малійські перевороти — серпень 2020-го проти президента Ібрагіма Бубакара Кейта і травень 2021-го, коли усунув уже власних цивільних союзників по перехідному уряду й одноосібно очолив країну.","Саме за Гойти Малі розірвала союз із Францією й запросила «Вагнер», а згодом стала одним із засновників Альянсу, а потім Конфедерації держав Сахелю. Вибори неодноразово переносили; перехідна хартія 2024 року фактично дала йому право керувати без визначеної дати їх проведення."]},{id:"traore",name:"Ібрагім Траоре",role:"Президент Буркіна-Фасо",dates:"нар. 1988",avatarBg:"linear-gradient(180deg,#EF2B2D,#009E49)",initials:"ІТ",tags:["Буркіна-Фасо","Наймолодший лідер"],linkId:"burkina",linkLabel:"Розділ про Буркіна-Фасо →",bio:["Капітан, який у вересні 2022 року, у 34 роки, скинув іншого путчиста — Поль-Анрі Сандаого Дамібу, — звинувативши того в бездіяльності проти джихадистів і надмірній прив’язаності до Франції. Став наймолодшим на той момент главою держави в Африці.","Свідомо будує публічний образ на паралелях із Тома Санкарою — панафриканським лідером Буркіна-Фасо 1980-х. Правління указами й відкладені вибори (перехідний період продовжено орієнтовно до 2029 року) поєднуються з риторикою про «повернутий суверенітет», яку активно підхоплює й підсилює російська пропаганда."]},{id:"tiani",name:"Абдурахман Чіані",role:"Президент Нігеру",dates:"нар. бл. 1960",avatarBg:"linear-gradient(180deg,#E05206,#0DB02B)",initials:"АЧ",tags:["Нігер","Гвардія"],linkId:"niger",linkLabel:"Розділ про Нігер →",bio:["З 2015 року командував президентською гвардією Нігеру — постом, який AFP свого часу описувало як роль «найтаємничішого» силовика країни. У 2021-му саме його підрозділ зірвав спробу перевороту напередодні інавгурації Мохамеда Базума.","26 липня 2023 року очолив уже власний заколот: гвардія заблокувала й затримала Базума, який відтоді залишається під вартою. Чіані очолив перехідну Національну раду порятунку батьківщини, а в березні 2025 року формально став президентом Нігеру."]}],PROLOGUE_TIMELINE=[{year:"2013",title:"«Слов’янський корпус» у Сирії",text:"Приватна структура, пов’язана з Moran Security Group, відправляє російських бійців охороняти нафтові об’єкти режиму Асада. Загін потрапляє в оточення, зазнає втрат, бійців вивозять з країни зі скандалом — Слідчий комітет росії відкриває справу за найманство."},{year:"2014",title:"Народження «Вагнера»",text:"Частина людей і практик «Слов’янського корпусу» лягає в основу нової структури під командуванням Дмитра Уткіна (позивний «Вагнер»), яку невдовзі починає фінансувати Євген Пригожин."},{year:"2017–2018",title:"Перший захід у Африку",text:"«Вагнер» з’являється в Центральноафриканській Республіці як охорона президента й радники, отримуючи доступ до родовищ золота та алмазів в обмін на військову підтримку. Слідом — Судан і Лівія."},{year:"2021",title:"Малі",text:"Після двох переворотів малійська хунта запрошує «Вагнер» замість французьких військ."},{year:"2023, червень",title:"Заколот Пригожина",text:"Марш «Вагнера» на москву, домовленість про виїзд до Білорусі. За два місяці Пригожин і Уткін гинуть в авіакатастрофі."},{year:"2023–2024",title:"«Африканський корпус»",text:"Міністерство оборони росії формує нову структуру, яка поглинає й перейменовує африканські підрозділи «Вагнера» — тепер це державна, а не приватна сила."}],COUNTRIES=[{id:"mali",name:"Малі",flagKey:"mali",capital:"Бамако",population:"≈ 23 млн (2025)",area:"1 240 000 км²",independence:"1960, від Франції",language:"французька (офіційна), бамбара",compare:{coups:"2 — серпень 2020 і травень 2021 (обидва рази в центрі подій Ассімі Гойта)",corps:"2025 — офіційний перехід від «Вагнера»; підрозділи «Африканського корпусу» фіксують у країні вже з 2023–2024",resources:"Золото — один з провідних виробників у Африці; контроль над видобувною галуззю — головний предмет торгу хунти з партнерами",security:"З вересня 2025-го JNIM тримає паливну блокаду навколо Бамако (спалено 300+ автоцистерн, США й Британія закликали громадян виїхати); у квітні 2026-го джихадисти й туарезькі повстанці взяли Кідаль і одночасно атакували кілька міст",delays:"Вибори лютого 2024-го — обіцяні на 24-місячний перехід — перенесено у вересні 2023-го «з технічних причин»; конкретної дати відтоді не називали, а в липні 2025-го парламент дав Гойті поновлюваний 5-річний мандат узагалі без виборів",parties:"У квітні 2024-го діяльність партій призупиняли на три місяці; 30 квітня 2025-го Рада міністрів ухвалила повну заборону, а 7 травня підписано указ про безстрокове призупинення",opposition:"У травні 2025-го поліція не пустила опозицію на власний з’їзд у Палаці культури Бамако; за даними Human Rights Watch, активістів і критиків викрадають, змушують до вигнання чи затримують"},intro:["Малі — країна, з якої почалася нинішня хвиля військових режимів у Сахелі. Ще з 2012 року північ країни контролювали туарезькі сепаратисти й джихадистські угруповання, а французька армія роками намагалася стримати їх операціями «Сервал» і «Бархан».","Невдоволення армії ходом війни та звинувачення президента Ібрагіма Бубакара Кейта в корупції й фальсифікаціях призвели до перевороту в серпні 2020 року. Дев’ять місяців потому, у травні 2021-го, той самий військовий гурток здійснив другий, внутрішній переворот: полковник Ассімі Гойта, віцепрезидент перехідного уряду, усунув цивільного президента й прем’єра перехідного періоду та очолив країну сам."],order:["Гойта з 2021 року офіційно є «президентом перехідного періоду» — посада, яка мала бути тимчасовою, але вибори неодноразово переносили. У 2024 році ухвалили нову перехідну хартію, яка де-факто дає йому право керувати без чіткої дати виборів.","Діяльність партій уперше призупинили указом у квітні 2024 року на три місяці; остаточну й безстрокову заборону Рада міністрів ухвалила 30 квітня 2025-го, а тиждень по тому парламент дав Гойті поновлюваний 5-річний президентський мандат без потреби в будь-яких виборах. Публічна діяльність опозиції заборонена, незалежні медіа працюють під тиском. Влада тримається на армії, особистій присутності Гойти в інформаційному просторі та наративі про «повернутий суверенітет» — риторику, яку активно підсилює й російська пропаганда."],timeline:[{year:"2020, серпень",title:"Перший переворот",text:"Президента Ібрагіма Бубакара Кейта усувають на тлі протестів проти корупції та невдач у війні з джихадистами."},{year:"2021, травень",title:"Другий, внутрішній переворот",text:"Ассімі Гойта усуває цивільних керівників перехідного періоду й очолює країну одноосібно."},{year:"2021, грудень",title:"Прибуття «Вагнера»",text:"Хунта запрошує російських найманців замість французьких військ, що остаточно псує стосунки з Парижем."},{year:"2022, березень",title:"Різанина в Мурі",text:"Малійська армія за участю бійців «Вагнера» проводить операцію в селі Мура, звинувачення в масовому вбивстві мирних мешканців розслідує ООН."},{year:"2022",title:"Вихід Франції",text:"Французькі війська завершують виведення операції «Бархан» з Малі; згодом країну залишає і місія ООН MINUSMA."},{year:"2023, листопад",title:"Взяття Кідаля",text:"Малійська армія й «Вагнер» відбивають у туарезьких повстанців місто Кідаль — символічна перемога хунти."},{year:"2024, липень",title:"Засідка під Тінзауатеном",text:"Колону «Вагнера» атакують туарезькі бойовики Фронту звільнення Азаваду разом із джихадистами JNIM біля кордону з Алжиром — одна з найважчих одноразових втрат «Вагнера» в Африці."},{year:"2025",title:"«Вагнер» іде, «Африканський корпус» лишається",text:"Після трьох з половиною років бойових дій «Вагнер» офіційно завершує місію в Малі; підконтрольний Міноборони росії «Африканський корпус» — на 70–80% укомплектований колишніми вагнерівцями — залишається в країні."},{year:"2025, квітень–травень",title:"Партії заборонені, протести розігнані",text:"Рада міністрів ухвалює безстрокову заборону всіх політичних партій; поліція не пускає опозицію на власний з’їзд у Палаці культури Бамако."},{year:"2025, липень",title:"Гойта отримує 5-річний мандат без виборів",text:"Тимчасовий парламент ухвалює закон про поновлюваний 5-річний президентський термін Гойти, що не передбачає проведення виборів узагалі."},{year:"2026, квітень",title:"Скоординовані атаки джихадистів",text:"JNIM і туарезькі повстанці атакують військові об’єкти в Бамако, Гао, Кідалі й Севаре; на боці хунти в боях бере участь «Африканський корпус»."}],slides:[{title:"Два перевороти за дев’ять місяців",text:"Серпень 2020-го й травень 2021-го — армія двічі змінює владу, і обидва рази в центрі подій опиняється Ассімі Гойта.",stat:"2020 → 2021"},{title:"Прощання з «Барханом»",text:"У грудні 2021-го в країні з’являється «Вагнер». Через кілька місяців Франція оголошує про виведення багаторічної військової операції.",stat:"Грудень 2021"},{title:"Мура: розслідування триває",text:"Березнева операція 2022 року в центральному Малі стала однією з найгучніших звинувачень проти «Вагнера» на континенті."},{title:"Тінзауатен",text:"Липень 2024-го: засідка на кордоні з Алжиром коштувала «Вагнеру» десятків загиблих бійців — і показала межі його можливостей у пустелі.",stat:"Липень 2024"},{title:"Золото замість франка",text:"Малі — один з провідних виробників золота в Африці; контроль над видобувною галуззю — важлива частина торгу хунти з новими й старими партнерами."},{title:"Державна структура замість приватної армії",text:"У 2025 році «Вагнер» офіційно передає естафету «Африканському корпусу» — вже не приватній компанії, а формуванню під прямим контролем Міноборони росії."}]},{id:"burkina",name:"Буркіна-Фасо",flagKey:"burkina",capital:"Уагадугу",population:"≈ 23,8 млн (2025)",area:"274 200 км²",independence:"1960, від Франції",language:"французька (офіційна), мооре — найпоширеніша розмовна",compare:{coups:"2 — січень і вересень 2022 (Даміба, потім Траоре)",corps:"Січень 2024",resources:"Золото — третій за обсягом виробник в Африці (94 тонни у 2025-му, рекордний рік); головне джерело бюджетних надходжень, частину копалень націоналізовано",security:"JNIM та ІД «Сахель», за різними оцінками, контролюють від третини до двох третин території; за Глобальним індексом тероризму країна — епіцентр тероризму у світі; десятки міст в облозі, мільйони цивільних постраждали",delays:"Вибори липня 2024-го — обіцяні на 21-місячний перехід — національний діалог у травні 2024-го одразу переніс до 2029 року; виборчу комісію розпущено в липні 2025-го",parties:"Партії заборонили брати участь у публічній діяльності одразу після перевороту 2022-го, а 29 січня 2026-го указом розпустили остаточно — з передачею активів державі",opposition:"У квітні 2025-го Траоре заявив, що країна «більше не в демократії»; за оцінкою CIVICUS, критиків, журналістів і навіть військових примусово мобілізують на фронт проти джихадистів"},intro:["Буркіна-Фасо пережила два перевороти впродовж одного 2022 року. У січні підполковник Поль-Анрі Сандаого Даміба усунув президента Роша Каборе, звинувативши уряд у нездатності зупинити джихадистський наступ — на той момент держава фактично не контролювала значну частину території країни.","Але вже у вересні того ж року капітан Ібрагім Траоре, якому було лише 34 роки, скинув самого Дамібу, заявивши, що той не впорався із завданням і надто тісно пов’язаний із Францією. Траоре став наймолодшим на той момент главою держави в Африці."],order:["Траоре править указами, вибори відкладені: у травні 2024 року перехідний період продовжили ще на п’ять років, орієнтовно до 2029-го, а виборчу комісію розпустили в липні 2025-го. 29 січня 2026 року указом розпущено й самі політичні партії, їхні активи передано державі. Опозиційні голоси, журналістів і навіть критично налаштованих військових, за даними правозахисних організацій, під приводом мобілізації відправляють на передову проти джихадистів.","Публічний образ Траоре свідомо будують на паралелях із Тома Санкарою — соціалістичним лідером Буркіна-Фасо 1980-х, символом панафриканізму та антиколоніалізму. Ця риторика — про «повернутий суверенітет» і розрив із колишньою метрополією — добре узгоджується з наративами, які просуває російська пропаганда в регіоні."],timeline:[{year:"2022, січень",title:"Перший переворот",text:"Даміба усуває президента Каборе на тлі провалів у боротьбі з джихадистським підпіллям."},{year:"2022, вересень",title:"Другий переворот",text:"34-річний капітан Ібрагім Траоре скидає Дамібу, звинувачуючи його в бездіяльності й проєвропейськості."},{year:"2023, початок",title:"Вихід французьких військ",text:"Уагадугу вимагає виведення французького контингенту; посол Франції висланий з країни."},{year:"2023, вересень",title:"Спроба перевороту проти Траоре",text:"Влада заявляє про викритий заколот; після цього повідомляється про появу російської особистої охорони президента."},{year:"2023, вересень",title:"Вступ до Альянсу держав Сахелю",text:"Буркіна-Фасо приєднується до щойно створеного військового союзу з Малі й Нігером."},{year:"2024, січень",title:"Розгортання «Африканського корпусу»",text:"Російські інструктори й техніка починають прибувати для навчання армії та боротьби з джихадистами."},{year:"2024, липень",title:"Конфедерація АГС",text:"Три країни підписують хартію про перетворення альянсу на Конфедерацію держав Сахелю."},{year:"2024, травень",title:"Транзит продовжено до 2029",text:"Національний діалог, який бойкотували більшість партій, ухвалює хартію, що продовжує повноваження Траоре ще на п’ять років і дозволяє йому балотуватися."},{year:"2026, січень",title:"Розпуск усіх партій",text:"Указом розпущено всі політичні партії країни, їхні активи передано державі — формальний кінець багатопартійності."}],slides:[{title:"Два перевороти за один рік",text:"Січень і вересень 2022-го: армія двічі змінює владу, і фінішує на наймолодшому президентові континенту.",stat:"34 роки"},{title:"Розрив із Парижем",text:"Французькі війська йдуть, посол висланий — і майже одразу починається зближення з москвою."},{title:"Особиста охорона",text:"Після повідомлень про спробу перевороту 2023 року бійці з Росії, за низкою повідомлень, з’являються серед охорони Траоре."},{title:"«Африканський корпус» на службі",text:"Із січня 2024-го російські інструктори навчають армію поводитися з технікою та проводити операції проти джихадистів.",stat:"Січень 2024"},{title:"Спадщина Санкари",text:"Образ Траоре свідомо будують на паралелях із панафриканським лідером 1980-х — і ця риторика зручно накладається на антизахідні наративи."},{title:"Небезпека, яка нікуди не зникла",text:"Попри російську підтримку, значна частина території країни лишається поза контролем уряду — джихадистські групи JNIM та ISGS активні як ніколи."}]},{id:"niger",name:"Нігер",flagKey:"niger",capital:"Ніамей",population:"≈ 27 млн (2025)",area:"1 267 000 км² — найбільша з трьох країн",independence:"1960, від Франції",language:"французька (офіційна), хауса та джерма — найпоширеніші розмовні",compare:{coups:"1 — 26 липня 2023 (президентська гвардія проти Базума)",corps:"Квітень 2024",resources:"Уран — багаторічний контракт із французькою Orano (колишня Areva); після перевороту частину видобувних ліцензій відкликано",security:"ISSP і JNIM посилюють атаки навколо Ніамея, зокрема на авіабазу й аеропорт; майже мільйон переселенців, кількість інцидентів зросла на 18% у 2025 році",delays:"Спершу обіцяний трирічний перехід ЕКОВАС визнав недостатнім; національна конференція в лютому 2025-го продовжила його до п’яти років — фактично до 2030-го",parties:"Усі партії розпущено указом 26 березня 2025-го — того самого дня, коли Чіані привели до присяги як «президента республіки» за новою Хартією відродження",opposition:"Повалений президент Мохамед Базум від липня 2023-го лишається під вартою без суду; партії не брали участі в розробці нової хартії"},intro:["До липня 2023 року Нігер вважався останнім надійним партнером Заходу в Сахелі: там базувалися французькі та американські війська, зокрема велика база безпілотників поблизу Агадеса, побудована США за понад 100 мільйонів доларів.","26 липня 2023 року командувач президентської гвардії генерал Абдурахман Чіані заблокував і затримав президента Мохамеда Базума, обраного демократичним шляхом. Базум відтоді залишається під вартою. ЕКОВАС погрожував військовим втручанням і ввів санкції, але зрештою на інтервенцію не наважився."],order:["Чіані очолив «Національну раду порятунку батьківщини» (CNSP) і спочатку обіцяв трирічний перехідний період без чіткого графіку виборів — ЕКОВАС визнав його недостатнім. У січні 2024 року Нігер разом з Малі та Буркіна-Фасо оголосив про вихід з ЕКОВАС, а згодом — про вступ до Альянсу держав Сахелю. Крапку в питанні строку поставила Національна конференція з відродження в лютому 2025-го: 26 березня того ж року Чіані привели до присяги вже як «президента республіки» за новою Хартією відродження, розрахованою на п’ять років — і того самого дня указом розпустили всі політичні партії.","Уран — головний козир Нігеру: країна десятиліттями постачала сировину для французької атомної енергетики через компанію Orano (колишня Areva). Після перевороту хунта почала переглядати й відкликати видобувні ліцензії французької компанії — ще один символічний розрив із колишньою метрополією."],timeline:[{year:"2023, 26 липня",title:"Переворот проти Базума",text:"Президентська гвардія на чолі з генералом Чіані бере владу, президент Мохамед Базум залишається під вартою."},{year:"2023, серпень",title:"Ультиматум ЕКОВАС",text:"Регіональний блок погрожує військовим втручанням для відновлення конституційного порядку; погроза так і не була реалізована."},{year:"2023, вересень",title:"Вихід французьких військ",text:"Париж оголошує про виведення свого контингенту з Нігеру, завершене до кінця року."},{year:"2024, січень",title:"Вихід з ЕКОВАС",text:"Нігер, Малі й Буркіна-Фасо синхронно оголошують про вихід з регіонального економічного співтовариства."},{year:"2024, квітень",title:"Прибуття «Африканського корпусу»",text:"Перші підрозділи, підконтрольні Міноборони росії, розгортаються в країні для навчання армії й охорони влади."},{year:"2024, вересень",title:"Закриття бази 201",text:"США завершують виведення військ і закривають дронову базу біля Агадеса — символічний кінець західної військової присутності."},{year:"2024–2025",title:"Перегляд ліцензій Orano",text:"Влада відкликає частину видобувних прав французької атомної компанії на уранові родовища."},{year:"2025, березень",title:"Нова хартія: п’ять років і розпуск партій",text:"Чіані привели до присяги як «президента республіки» за Хартією відродження, розрахованою на п’ять років; тим самим указом розпущено всі політичні партії."}],slides:[{title:"Останній союзник Заходу",text:"До 2023 року Нігер лишався ключовою опорою французької та американської військової присутності в Сахелі."},{title:"26 липня 2023",text:"Президентська гвардія бере владу, а президента Мохамеда Базума затримують у власній резиденції.",stat:"Переворот"},{title:"Погроза, яка не справдилась",text:"ЕКОВАС обіцяв військове втручання заради відновлення конституційного ладу — але зрештою відступив."},{title:"Прощавайте, дрони",text:"Вересень 2024-го: США закривають базу безпілотників біля Агадеса — інвестицію вартістю понад 100 млн доларів.",stat:"База 201"},{title:"«Африканський корпус» замість НАТО-партнерів",text:"Уже у квітні 2024-го, менш ніж за рік після перевороту, у країні з’являються перші російські інструктори."},{title:"Уран під новим прапором",text:"Родовища, які десятиліттями живили французьку атомну енергетику, стають предметом торгу нової влади."}]}];function flagChip(e){return`<span class="flag-chip" style="background:${FLAGS[e]}"></span>`}function renderNav(e){const t=[{id:"overview",name:"Огляд",flagKey:"overview"}].concat(COUNTRIES.map(s=>({id:s.id,name:s.name,flagKey:s.flagKey}))),a=[{id:"compare",name:"Порівняння країн",flagKey:"compare"},{id:"jihad",name:"Джихадистська загроза",flagKey:"jihad"},{id:"coast",name:"Вихід до Гвінейської затоки",flagKey:"coast"},{id:"ukraine",name:"Українська лінія",flagKey:"ukraine"},{id:"infowar",name:"Інформаційна війна",flagKey:"infowar"},{id:"resources",name:"Гроші й ресурси",flagKey:"resources"},{id:"dossier",name:"Досьє: ключові особи",flagKey:"dossier"},{id:"timeline",name:"Єдина хронологія",flagKey:"timeline"},{id:"glossary",name:"Глосарій термінів",flagKey:"glossary"},{id:"sources",name:"Список джерел",flagKey:"sources"}],i=s=>s.map(l=>`
+<button class="nav-item ${l.id===e?"active":""}" onclick="goTo('${l.id}')">
+${flagChip(l.flagKey)}<span class="cname">${l.name}</span>
+</button>
+`).join("");document.getElementById("navList").innerHTML=i(t),document.getElementById("themeNavList").innerHTML=i(a)}function renderTimeline(e){return'<div class="timeline">'+e.map(t=>`
+<div class="tl-item">
+<div class="tl-year">${t.year}</div>
+<div class="tl-dot"></div>
+<div class="tl-body">
+<h4>${t.title}</h4>
+<p>${t.text}</p>
+</div>
+</div>
+`).join("")+"</div>"}function renderCompareTable(){const e=[{label:"Перевороти",key:"coups"},{label:"Прихід «Африканського корпусу»",key:"corps"},{label:"Ключові ресурси",key:"resources"},{label:"Стан безпекової ситуації",key:"security"},{label:"Перенесення виборів",key:"delays"},{label:"Заборона партій",key:"parties"},{label:"Тиск на опозицію",key:"opposition"}];return`
+<div class="comparewrap">
+<h2 class="section-title">Порівняння трьох країн</h2>
+<div class="compare-scroll">
+<table class="compare-table">
+<thead>
+<tr>
+<th></th>
+${COUNTRIES.map(t=>`<th>${flagChip(t.flagKey)}${t.name}</th>`).join("")}
+</tr>
+</thead>
+<tbody>
+${e.map(t=>`
+<tr>
+<td class="compare-label">${t.label}</td>
+${COUNTRIES.map(a=>`<td>${a.compare[t.key]}</td>`).join("")}
+</tr>
+`).join("")}
+</tbody>
+</table>
+</div>
+<p class="compare-note">Оцінки територіального контролю джихадистів і масштабу насильства взяті з відкритих аналітичних джерел (ACLED, Africa Center for Strategic Studies, Critical Threats Project, Wikipedia) станом на середину 2026 року й різняться між джерелами. Дані про перенесення виборів, заборону партій і тиск на опозицію — за Human Rights Watch, Freedom House, BTI, CIVICUS Monitor, Reuters, AFP і France 24.</p>
+</div>
+`}function renderComparePage(){return`
+<div class="hero">
+<div class="flagbar" style="background:${FLAGS.compare}"></div>
+<div class="hero-eyebrow">Наскрізна тема · три країни поруч</div>
+<h1>Порівняння країн</h1>
+<p class="hero-lede">Три хунти, три перевороти, один і той самий зовнішній партнер. Замість гортати три окремі розділи — ключові паралелі одним поглядом.</p>
+</div>
+${renderCompareTable()}
+`}function renderPersonCard(e){return`
+<div class="pcard">
+<div class="pcard-top">
+<div class="pcard-avatar" style="background:${e.avatarBg}">${e.initials}</div>
+<div>
+<div class="pcard-name">${e.name}</div>
+<div class="pcard-role">${e.role}</div>
+<div class="pcard-dates">${e.dates}</div>
+</div>
+</div>
+<div class="pcard-tags">${e.tags.map(t=>`<span class="pcard-tag">${t}</span>`).join("")}</div>
+<div class="pcard-bio">
+<p>${e.bio[0]}</p>
+<div class="pcard-more" id="more-${e.id}">
+${e.bio.slice(1).map(t=>`<p>${t}</p>`).join("")}
+</div>
+<button class="pcard-toggle" id="toggle-${e.id}" onclick="togglePerson('${e.id}')">Читати далі ↓</button>
+</div>
+<div><button class="pcard-link" onclick="goTo('${e.linkId}')">${e.linkLabel}</button></div>
+</div>
+`}function togglePerson(e){const t=document.getElementById("more-"+e),a=document.getElementById("toggle-"+e),i=t.classList.toggle("open");a.textContent=i?"Згорнути ↑":"Читати далі ↓"}function renderDossierPage(){return`
+<div class="hero">
+<div class="flagbar" style="background:${FLAGS.dossier}"></div>
+<div class="hero-eyebrow">Наскрізна тема · п’ять людей, які тримають цю історію</div>
+<h1>Досьє: ключові особи</h1>
+<p class="hero-lede">У розділах про країни й «Вагнер» ці постаті зринають мимохідь — тут коротко про кожну: хто вони, як прийшли до влади чи до командування, і яку роль зіграли в подіях, описаних вище.</p>
+</div>
+<div class="section" style="padding-bottom:0;">
+<h2 class="section-title">москва: засновники «Вагнера»</h2>
+</div>
+<div class="dossier-grid" style="padding-top:0;">
+${PEOPLE.filter(e=>e.tags.includes("«Вагнер»")).map(renderPersonCard).join("")}
+</div>
+<div class="section" style="padding-bottom:0;">
+<h2 class="section-title">Сахель: лідери трьох хунт</h2>
+</div>
+<div class="dossier-grid" style="padding-top:0;">
+${PEOPLE.filter(e=>!e.tags.includes("«Вагнер»")).map(renderPersonCard).join("")}
+</div>
+<div class="footnote">Дати народження окремих військових лідерів Сахелю офіційно не підтверджені й наводяться за оцінками відкритих джерел (Вікіпедія, AFP, Reuters, BlackPast). Джерела: Вікіпедія, AFP, Reuters, Jeune Afrique, BBC.</div>
+`}const INFOWAR_TIMELINE=[{year:"2023, лютий",title:"«Russosphere»",text:"Дослідники компанії Logically фіксують франкомовну мережу акаунтів у Facebook, YouTube й Telegram, пов’язану з бельгійським активістом Люком Мішелем, яка просуває прокремлівські меседжі в Африці."},{year:"2023–2024",title:"Заснування «African Initiative»",text:"Номінально незалежне інформагентство для Африки, яке очолює колишній співробітник «Вагнера» Віктор Луковенко, починає працювати через сайт afrinz.ru, акаунти в соцмережах і телеграм-канали на кшталт «Smile and Wave»."},{year:"2024, з березня",title:"Хвиля кампаній",text:"За оцінкою аналітичного центру FPRI, з березня 2024-го росія провела щонайменше 19 окремих дезінформаційних кампаній у Буркіна-Фасо, Малі й Нігері."},{year:"2025, квітень",title:"Слухання в Сенаті США",text:"Очільник AFRICOM генерал Майкл Ленглі критикує управління Траоре золотими резервами. У відповідь мережа зі щонайменше 165 фейкових Facebook-акаунтів поширює неправдиву тезу, що путін відправив спецназ захищати Траоре від «змови США» (аналіз Code for Africa, наведений BBC)."},{year:"2025, травень",title:"Візит Траоре до москви",text:"Президент Буркіна-Фасо бере участь у святкуванні 9 травня й дає інтерв’ю Russia Today, кажучи, що шкодує про роки, проведені за прослуховуванням RFI та France 24."},{year:"2025, травень",title:"Фейк про «французьку шпигунку»",text:"У соцмережах вірусно поширюється створене ШІ відео про нібито затримання французької шпигунки в Буркіна-Фасо — типовий приклад кампанії, яку відстежують дослідники дезінформації."}],INFOWAR_ACTORS=[{name:"«African Initiative»",tag:"Інформагентство",text:"Номінально незалежне агентство для африканської аудиторії, яке водночас веде публічні та приховані операції впливу. За даними AFP, його очолює колишній вагнерівець Віктор Луковенко. Контент поширюється через сайт afrinz.ru, соцмережі й телеграм-канали."},{name:"Russia Today / Sputnik Africa",tag:"Держмедіа",text:"Державні російські медіа надають Траоре й іншим лідерам хунт пряму трибуну — від інтерв’ю до участі в офіційних заходах — і активно просувають образ «панафриканського лідера», який протистоїть колишнім метрополіям."},{name:"Мережі-посередники",tag:"Соцмережі",text:"За словами нігерійського журналіста Філіпа Обаджі (AFP), контент готують «російські пропагандистські підрозділи», а тоді через посередників передають місцевим інфлюенсерам у Нігерії, Гані та інших країнах для публікації як «органічного». Частина відео — дешеві ролики, згенеровані штучним інтелектом."}];function renderInfowarPage(){return`
+<div class="hero">
+<div class="flagbar" style="background:${FLAGS.infowar}"></div>
+<div class="hero-eyebrow">Наскрізна тема · три країни</div>
+<h1>Інформаційна війна: «повернутий суверенітет»</h1>
+<p class="hero-lede">Паралельно з інструкторами й технікою росія просуває в Сахелі й далеко за його межами наратив про «повернутий суверенітет» і звільнення від колишніх метрополій. Найпомітніший інструмент цієї кампанії — культ особистості довкола Ібрагіма Траоре.</p>
+<div class="factstrip">
+<div class="fact"><div class="fact-label">Кампаній з березня 2024</div><div class="fact-value">19+ (за оцінкою FPRI)</div></div>
+<div class="fact"><div class="fact-label">Фейкова мережа, квітень 2025</div><div class="fact-value">165 акаунтів Facebook</div></div>
+<div class="fact"><div class="fact-label">Ключова особа кампанії</div><div class="fact-value">Ібрагім Траоре</div></div>
+</div>
+</div>
+<div class="section">
+<h2 class="section-title">Хто це робить</h2>
+<p>За оцінками дослідників, пряму лінію тут провести складно: державні медіа, номінально незалежні агентства й мережі місцевих інфлюенсерів працюють паралельно, підсилюючи одне одного.</p>
+</div>
+<div class="country-cards" style="padding-top:0;">
+${INFOWAR_ACTORS.map(e=>`
+<div class="ccard" style="cursor:default;">
+<div class="flagbar-h" style="background:${FLAGS.infowar}"></div>
+<h3>${e.name}</h3>
+<p><strong>${e.tag}.</strong> ${e.text}</p>
+</div>
+`).join("")}
+</div>
+<div class="section" style="padding-bottom:0;">
+<h2 class="section-title">Хронологія кампанії</h2>
+</div>
+${renderTimeline(INFOWAR_TIMELINE)}
+<div class="section">
+<h2 class="section-title">Як влаштований наратив</h2>
+<p>Формула повторюється в усіх трьох країнах: колишня метрополія (передусім Франція) зображується джерелом усіх бід, а розрив із нею й союз із москвою — актом «повернутого суверенітету». Ця рамка ефективна саме тому, що спирається на реальне невдоволення десятиліттями військової присутності Франції, яка не змогла зупинити джихадистів, — вигадувати доводиться не сам сюжет, а докази «успіху» нової влади.</p>
+<p>Звідси — потік контенту, що приписує Траоре неіснуючі досягнення: від фейкових «данини поваги» від західних знаменитостей до вигаданих заяв, що росія відправила спецназ його захищати. Дослідники Code for Africa й BBC відзначають, що сплеск такого контенту не виглядає органічним і зазвичай прив’язаний до конкретних інформаційних приводів — критики з боку США чи чергового звинувачення в порушеннях прав людини.</p>
+<div class="notebox">
+<h4>Не лише росія</h4>
+<p>Дослідники також фіксують зустрічні мережі — ймовірно, пов’язані з Францією, — які в тому самому стилі відповідають на пропутінський контент. Дехто з експертів попереджає, що інформаційний простір регіону перетворюється на поле битви кількох зовнішніх гравців одразу, а не лише росії.</p>
+</div>
+</div>
+<div class="footnote">Джерела: Africa Defense Forum, FPRI (через The Week), AFP, BBC / Code for Africa, DISA, The Hill, Euronews. Дані станом на середину 2026 року.</div>
+`}const JIHAD_TIMELINE=[{year:"2015, травень",title:"Заснування ISGS",text:"Аднан Абу Валід ас-Сахрауї, вихідець із Західної Сахари й колишній боєць Фронту ПОЛІСАРІО, відколюється від «Аль-Мурабітун» і присягає на вірність «Ісламській державі»; визнання приходить лише у 2016-му."},{year:"2017, березень",title:"Заснування JNIM",text:"Туарег Ійяд Аг Ґалі об’єднує кілька філій «Аль-Каїди» в Малі — «Ансар ад-Дін», «Аль-Мурабітун», Фронт звільнення Масіни — під одним прапором і присягає Айману аз-Завахірі."},{year:"2019–2022",title:"Війна JNIM проти ISGS",text:"Замість спільного «джихадистського фронту» — запекла боротьба за трикордоння Малі–Нігер–Буркіна-Фасо: контрабандні маршрути, оподаткування населення, вербувальна база."},{year:"2021, серпень",title:"Загибель Сахрауї",text:"Засновника ISGS вбито в результаті французької операції; групу очолює його наступник, боротьба з JNIM триває."},{year:"2022, березень",title:"Різанина в Мурі",text:"Малійська армія й «Вагнер» убивають щонайменше 500 цивільних у центральному Малі — епізод, який правозахисники називають не винятком, а моделлю поведінки."},{year:"2024, липень",title:"Засідка під Тінзауатеном",text:"JNIM і туарезькі повстанці розбивають колону «Вагнера» й малійської армії — одна з найважчих одноразових втрат структури в Африці."},{year:"2025, вересень",title:"Паливна блокада Бамако",text:"JNIM перекриває автотрасу постачання пального в малійську столицю; за пів року спалено понад 300 автоцистерн, попри супровід конвоїв «Африканським корпусом»."},{year:"2026, січень",title:"Атака на аеропорт Ніамея",text:"ISSP атакує авіабазу поблизу нігерської столиці — ознака того, що загроза підповзає й до останньої відносно спокійної із трьох столиць."},{year:"2026, квітень",title:"Скоординовані атаки й Кідаль",text:"JNIM разом із туарезькими повстанцями бере Кідаль і водночас атакує військові об’єкти в Бамако, Гао й Севаре."}],JIHAD_SLIDES=[{title:"Дві мережі, старші за хунти",text:"JNIM діє з 2017-го, ISGS — із 2015-го. Обидві з’явилися задовго до того, як у регіоні з’явився хоч один російський інструктор.",stat:"2015 / 2017"},{title:"Конкуренти, а не союзники",text:"З 2019–2020-х JNIM і ISGS воюють одне з одним за трикордоння не менш жорстко, ніж з урядовими арміями."},{title:"Мура: модель, а не виняток",text:"Березень 2022-го: щонайменше 500 убитих цивільних за участю «Вагнера». Правозахисники фіксують десятки подібних епізодів.",stat:"Мура, 2022"},{title:"Тінзауатен: межі можливого",text:"Липень 2024-го: засідка коштувала «Вагнеру» найважчих одноразових втрат в Африці й підірвала образ «непереможної» сили."},{title:"Буркіна-Фасо — епіцентр",text:"За Глобальним індексом тероризму країна утримує це сумне лідерство у світі попри російську присутність із 2024 року."},{title:"Змішана картина",text:"Локальні успіхи — Кідаль-2023, часткове повернення території в Буркіна-Фасо — не змінюють загального тренду: територія під контролем джихадистів у регіоні в цілому зростає."}];function renderJihadPage(){return`
+<div class="hero">
+<div class="flagbar" style="background:${FLAGS.jihad}"></div>
+<div class="hero-eyebrow">Наскрізна тема · всі три країни</div>
+<h1>JNIM та ISGS: загроза, яка старша за хунти</h1>
+<p class="hero-lede">У розділах про Малі, Буркіна-Фасо й Нігер джихадистські угруповання зринають лише як фон для перевороту чи прибуття росіян. Насправді JNIM і ISGS діють у регіоні з середини 2010-х — довше за будь-яку з трьох хунт — і, найімовірніше, переживуть їхніх теперішніх зовнішніх партнерів.</p>
+<div class="factstrip">
+<div class="fact"><div class="fact-label">Заснування JNIM</div><div class="fact-value">2 березня 2017</div></div>
+<div class="fact"><div class="fact-label">Заснування ISGS</div><div class="fact-value">13 травня 2015</div></div>
+<div class="fact"><div class="fact-label">Лідер JNIM</div><div class="fact-value">Ійяд Аг Ґалі</div></div>
+<div class="fact"><div class="fact-label">Індекс тероризму 2025</div><div class="fact-value">Буркіна-Фасо — №1 у світі</div></div>
+</div>
+</div>
+<div class="section">
+<h2 class="section-title">Хто вони</h2>
+</div>
+<div class="country-cards" style="padding-top:0;">
+<div class="ccard" style="cursor:default;">
+<div class="flagbar-h" style="background:linear-gradient(90deg,#1F2A44,#3A4A6B)"></div>
+<h3>JNIM</h3>
+<p>«Джамаат Нусрат аль-Іслам валь-Муслімін» — філія «Аль-Каїди», об’єднання «Ансар ад-Дін», малійського відгалуження АКІМ, «Аль-Мурабітун» і Фронту звільнення Масіни. Очолює туарег Ійяд Аг Ґалі, колишній музикант гурту Tinariwen і командир туарезьких повстань 1990-х. Діє насамперед у Малі й Буркіна-Фасо, дедалі активніше — в Нігері, а з 2025 року намацує ґрунт у прибережних країнах Гвінейської затоки.</p>
+</div>
+<div class="ccard" style="cursor:default;">
+<div class="flagbar-h" style="background:linear-gradient(90deg,#2A2318,#5A503E)"></div>
+<h3>ISGS / ISSP</h3>
+<p>«Ісламська держава в провінції Сахель» — відгалуження «Аль-Мурабітун», засноване Аднаном Абу Валідом ас-Сахрауї, вихідцем із Західної Сахари й колишнім бійцем Фронту ПОЛІСАРІО. З 2019 по 2022 рік формально входила до «Ісламської держави — Західна Африка», відтоді — окрема «провінція». Діє в трикутнику Малі–Нігер–Буркіна-Фасо, вирізняється особливо високою часткою жертв серед цивільних.</p>
+</div>
+</div>
+<div class="section" style="padding-bottom:0;">
+<div class="notebox">
+<h4>Загроза не втримана в межах трьох країн</h4>
+<p>З 2020–2021 років JNIM системно виносить атаки за межі Сахелю — у прикордонні райони Беніну, Того й Кот-д’Івуару. Це вже не побічний епізод, а окрема наскрізна тема сайту.</p>
+</div>
+<div style="margin-top:14px;"><button class="pcard-link" onclick="goTo('coast')">Вихід до Гвінейської затоки →</button></div>
+</div>
+<div class="section">
+<h2 class="section-title">Конкуренти, не союзники</h2>
+<p>На відміну від поширеного уявлення про єдиний «джихадистський фронт», з 2019–2020 років JNIM та ISGS воюють одне з одним не менш запекло, ніж з урядовими арміями, — за контроль над контрабандними маршрутами, оподаткування місцевого населення й вербувальну базу в трикордонні Малі, Нігеру та Буркіна-Фасо. Окремі епізоди тактичної координації траплялися ще у 2017–2019 роках, але сьогодні їхнє суперництво дослідники описують радше як боротьбу за домінування, ніж як ідеологічний конфлікт.</p>
+</div>
+<div class="section" style="padding-bottom:0;">
+<h2 class="section-title">Хронологія: дві мережі проти трьох урядів</h2>
+</div>
+${renderTimeline(JIHAD_TIMELINE)}
+<div class="deckwrap">
+<div class="deck-label">Коротко: ключові моменти</div>
+<div class="deck" id="deck-jihad"></div>
+</div>
+<div class="section">
+<h2 class="section-title">Чому «Африканський корпус» не зупинив просування</h2>
+<p>Формально «Африканський корпус» мав замінити французьких і американських партнерів у боротьбі з джихадистами. На практиці, за оцінками низки аналітичних центрів (Центр по боротьбі з тероризмом Вест-Пойнта, The Sentry, Джорджтаунський університет), зміна вивіски з приватного «Вагнера» на державну структуру Міноборони росії майже не змінила ні методів, ні результату: до 80% особового складу «Африканського корпусу» — ті самі бійці, що воювали під прапором «Вагнера», з тим самим підходом до контрповстанства.</p>
+<p>Головна причина — ставка виключно на силові операції без жодної політики щодо цивільного населення. Різанина в Мурі 2022 року стала не винятком, а моделлю: правозахисні організації фіксують десятки подібних епізодів у Малі й Буркіна-Фасо за участю росіян і місцевих армій. За висновками дослідників, кожен такий епізод радше підживлює вербування джихадистів, ніж стримує його, — люди, які втратили родичів від рук «визволителів», йдуть до JNIM чи ISGS не з ідеологічних міркувань, а з помсти або браку інших варіантів.</p>
+<p>До цього додається брак досвіду в класичному контрповстанстві: «Африканський корпус» — це передусім охорона режиму, супровід конвоїв і виробництво пропаганди, а не піхота, навчена утримувати сільську територію проти партизанів. Липнева засідка 2024 року під Тінзауатеном, де загін «Вагнера» й малійської армії потрапив у пастку туарезьких повстанців і JNIM, коштувала щонайменше 46 найманців і 24 малійських військових — і оголила межі можливостей структури в пустелі. Війна в Україні та звужені ресурси Кремля після втрати сирійського плацдарму додатково обмежують спроможність нарощувати присутність у регіоні.</p>
+<p>Це не означає, що ситуація однозначно погіршилася всюди й одразу. Малійська армія за підтримки «Вагнера» відбила Кідаль у туарезьких повстанців ще 2023 року, а буркінабе влада звітує про повернення контролю приблизно над десятою частиною раніше втраченої території. Але ці локальні успіхи не змінюють загальної картини: Буркіна-Фасо — країна номер один у світі за Глобальним індексом тероризму, а в Малі з вересня 2025-го JNIM утримує паливну блокаду столиці попри присутність росіян. У кількох задокументованих випадках («Ops Con Intelligence», Critical Threats Project) присутність «Африканського корпусу» не просто не зупинила просування джихадистів, а створила додаткові точки напруги — від міжусобиць у лавах місцевих армій до падіння довіри цивільного населення до держави як такої.</p>
+</div>
+<div class="footnote">Джерела: ACLED, Africa Center for Strategic Studies, Critical Threats Project, CSIS, Georgetown Journal of International Affairs, The Sentry, Africa Defense Forum, Human Rights Watch, Wikipedia. Дані станом на середину-кінець 2026 року й різняться між джерелами, особливо щодо територіального контролю.</div>
+`}const COAST_TIMELINE=[{year:"2019",title:"Перші розвідувальні рейди",text:"Поодинокі інциденти в прикордонних із Буркіна-Фасо районах Кот-д’Івуару та Беніну — перші ознаки того, що джихадистські мережі придивляються до території південніше Сахелю."},{year:"2020, червень",title:"Атака на Кафоло",text:"Бойовики, яких відносять до JNIM, атакують армійсько-жандармський пост у прикордонному селі Кафоло на північному сході Кот-д’Івуару, вбивши 14 військових, — перший теракт у країні з 2016 року."},{year:"2021, березень",title:"Друга хвиля в Кафоло",text:"Нові напади на Кафоло й сусіднє Колобугу забирають життя щонайменше трьох людей; невдовзі Абіджан і Уагадугу проводять спільну операцію «Комое», і на кілька років уздовж кордону настає відносне затишшя."},{year:"2021",title:"Перші рейди в Беніні",text:"JNIM починає атаки в прикордонних із Буркіна-Фасо районах півночі Беніну — за рік фіксують 22 напади (ACLED); країна, що раніше вважалася осторонь сахельського конфлікту, стає новою ціллю."},{year:"2021, листопад",title:"Перша смертельна атака в Того",text:"Напад на аванпост у селі Санлоага в префектурі Кпендьяль стає першою смертельною атакою джихадистів в історії Того."},{year:"2022, червень",title:"Надзвичайний стан у Того",text:"Після серії нападів на півночі Того запроваджує режим безпекової надзвичайної ситуації в регіоні Саван — і відтоді продовжує його щопівроку чи щороку, попри критику правозахисників за зловживання під час затримань."},{year:"2023",title:"Рекордний рік для Беніну",text:"171 напад джихадистів за рік — проти 71 у 2022-му й лічених випадків у 2019-му; Бенін стає головною ціллю експансії JNIM на узбережжя."},{year:"2024, липень",title:"Атака біля річки Макру",text:"Джихадисти вбивають 12 рейнджерів національного парку W у Беніні — одна з найкривавіших атак на охорону природи в регіоні; кількість нападів у північному Беніні тим часом зростає з 22 у 2021-му до 176 у 2024-му, а число загиблих подвоюється лише за 2022–2024 роки (ACLED)."},{year:"2024, жовтень",title:"Атака під Фанеоргу",text:"Напад поблизу села Фанеоргу на півночі Того залишає щонайменше шістьох загиблих солдатів."},{year:"2025, квітень–липень",title:"JNIM виходить до кордону з Нігерією",text:"12 червня джихадисти атакують військовий пост у беніннському Бассо, менш ніж за 5 км від нігерійського кордону; місяцем пізніше угруповання поширює відеозвернення з нігерійського боку кордону із заявою про намір створити там «катибу»."},{year:"2026, березень",title:"Найкривавіша атака в Беніні",text:"Напад на військову базу на півночі країни залишає щонайменше 15 загиблих солдатів; за повідомленнями очевидців, базу розграбували й спалили."},{year:"2026",title:"«Повзуча» експансія триває",text:"За травневим аналізом Stimson Center «Southward Creep», коридор Доссо–Алібори між Нігером і Беніном та прикордонна зона Буркіна-Фасо–Того лишаються головними осередками нової фази наступу джихадистів на узбережжя Гвінейської затоки."}],COAST_COUNTRIES=[{name:"Бенін",flag:"linear-gradient(90deg,#008751 0 33%, #FCD116 33% 66%, #E8112D 66% 100%)",first:"2021 — перші прикордонні рейди JNIM на півночі країни",trend:"з 22 нападів у 2021-му до 176 у 2024-му; 2023-й став рекордним роком зі 171 нападом (ACLED)",response:"з 2023-го — військова допомога Руанди; посилене патрулювання нацпарку W; 2026-й — найважчий рік досі"},{name:"Того",flag:"linear-gradient(90deg,#006A4E 0 33%, #FFCE00 33% 66%, #D21034 66% 100%)",first:"Листопад 2021 — перша смертельна атака в Санлоазі",trend:"щонайменше кілька нападів щороку від 2021-го; жовтень 2024-го — атака під Фанеоргу, шестеро загиблих військових",response:"з червня 2022-го — режим безпекової надзвичайної ситуації в регіоні Саван, який продовжують щопівроку"},{name:"Кот-д’Івуар",flag:"linear-gradient(90deg,#FF8200 0 33%, #ffffff 33% 66%, #009E60 66% 100%)",first:"Червень 2020 — атака на Кафоло, перший теракт у країні з 2016 року",trend:"ще одна хвиля нападів на Кафоло й Колобугу в березні 2021-го; після операції «Комое» — відносне затишшя",response:"спільна з Буркіна-Фасо операція «Комое» (2020); у квітні 2026-го шістьох причетних до нападу 2020 року засудили до довічного ув’язнення"}];function renderCoastPage(){return`
+<div class="hero">
+<div class="flagbar" style="background:${FLAGS.coast}"></div>
+<div class="hero-eyebrow">Наскрізна тема · Бенін, Того, Кот-д’Івуар</div>
+<h1>Вихід до узбережжя Гвінейської затоки</h1>
+<p class="hero-lede">У розділі про JNIM ця тема згадана одним рядком — але вона окрема й дедалі гарячіша серед аналітиків. З 2020–2021 років джихадисти системно виходять за межі трьох країн Альянсу держав Сахелю й переносять атаки в прикордонні райони Беніну, Того й Кот-д’Івуару — держав, які ще кілька років тому вважали себе осторонь сахельського конфлікту.</p>
+<div class="factstrip">
+<div class="fact"><div class="fact-label">Перший теракт у регіоні</div><div class="fact-value">Кафоло, червень 2020</div></div>
+<div class="fact"><div class="fact-label">Напади в Беніні, 2021 → 2024</div><div class="fact-value">22 → 176</div></div>
+<div class="fact"><div class="fact-label">Надзвичайний стан у Того</div><div class="fact-value">з червня 2022</div></div>
+<div class="fact"><div class="fact-label">Найбільш вразлива країна</div><div class="fact-value">Бенін</div></div>
+</div>
+</div>
+<div class="section">
+<h2 class="section-title">Чому саме зараз</h2>
+<p>JNIM офіційно уникає різкого ривка на південь: за оцінками International Crisis Group, керівництво угруповання побоюється внутрішньої фрагментації й тримає пріоритет на утриманні вже захоплених територій у Малі, Буркіна-Фасо й Нігері. Але «повзуча» тактика — контрабандні маршрути, вербування серед місцевого населення, точкові рейди без спроб утримати територію — виявилася ефективною: за оцінкою ACLED, з 2021-го до 2024 року кількість нападів у північному Беніні зросла у вісім разів, а кількість жертв подвоїлася лише за 2022–2024 роки.</p>
+<p>Прикордонний національний парк W, який ділять між собою Бенін, Нігер і Того, перетворився на притулок для джихадистів — його важкопрохідна місцевість і слабка присутність держави роблять контроль над територією майже неможливим.</p>
+</div>
+<div class="section" style="padding-bottom:0;">
+<h2 class="section-title">Хронологія виходу на узбережжя</h2>
+</div>
+${renderTimeline(COAST_TIMELINE)}
+<div class="comparewrap" style="padding-top:0;">
+<h2 class="section-title">Три прибережні країни поруч</h2>
+<div class="compare-scroll">
+<table class="compare-table">
+<thead>
+<tr>
+<th></th>
+${COAST_COUNTRIES.map(e=>`<th><span class="flag-chip" style="background:${e.flag}"></span>${e.name}</th>`).join("")}
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="compare-label">Перший напад</td>
+${COAST_COUNTRIES.map(e=>`<td>${e.first}</td>`).join("")}
+</tr>
+<tr>
+<td class="compare-label">Динаміка</td>
+${COAST_COUNTRIES.map(e=>`<td>${e.trend}</td>`).join("")}
+</tr>
+<tr>
+<td class="compare-label">Відповідь влади</td>
+${COAST_COUNTRIES.map(e=>`<td>${e.response}</td>`).join("")}
+</tr>
+</tbody>
+</table>
+</div>
+<p class="compare-note">Гана й Нігерія теж фіксують поодинокі інциденти в прикордонних районах, але поки що без системних атак на кшталт трьох країн у таблиці.</p>
+</div>
+<div class="footnote">Джерела: ACLED, International Crisis Group, Stimson Center («Southward Creep», травень 2026), Africa Defense Forum, ISS Africa, FDD’s Long War Journal, Africanews, Togo First, HSToday, Human Rights Watch. Дані про кількість нападів різняться між джерелами залежно від методології підрахунку; станом на середину 2026 року.</div>
+`}const UKRAINE_TIMELINE=[{year:"2024, 22–27 липня",title:"Бій під Тінзауатеном",text:"Малійська армія й «Вагнер» намагаються витіснити туарезьких сепаратистів CSP-DPA з прикордонного з Алжиром містечка; на боці повстанців діють і бійці JNIM. За оцінками сепаратистів — щонайменше 84 вбитих вагнерівці й 47 малійських військових; за іншими оцінками (Africa Defense Forum) — 46 і 24 відповідно. Це одна з найважчих одноразових утрат «Вагнера» в Африці."},{year:"2024, 29 липня",title:"Заява речника ГУР",text:"Андрій Юсов в етері суспільного мовника натякає, що повстанці отримали від Києва «необхідну інформацію», яка дала змогу провести операцію проти «російських воєнних злочинців». Деталей не розкриває. ГУР також передає Kyiv Post фото туарезьких бійців з українським прапором — згодом з’ясується, що фото зняте за місяць до бою."},{year:"2024, 4 серпня",title:"Малі розриває відносини",text:"Бамако оголошує негайний розрив дипломатичних відносин з Україною, називаючи підтримку Києва «підтримкою міжнародного тероризму» й актом агресії проти Малі."},{year:"2024, 6–7 серпня",title:"Нігер приєднується",text:"Уряд Нігеру «в повній солідарності» з Малі також розриває відносини з Києвом і закликає розглянути питання в Раді Безпеки ООН як «українську агресію»."},{year:"2024, серпень",title:"Буркіна-Фасо й Сенегал реагують",text:"Уагадугу засуджує «акт підтримки тероризму»; офіційних дипвідносин із Києвом Буркіна-Фасо на той момент фактично не мала. Сенегал викликає українського посла для пояснень."},{year:"2024, серпень",title:"Спростування Києва",text:"МЗС України категорично заперечує звинувачення в постачанні дронів повстанцям; водночас представник CSP-DPA каже французьким медіа про давню співпрацю з Україною, включно з обміном розвідінформацією."},{year:"2024, листопад",title:"Утворення ФАЛ",text:"Чотири туарезькі збройні групи оголошують про об’єднання у Фронт визволення Азаваду (FLA); за даними Reuters та The Arab Weekly, повстанці дедалі активніше застосовують запозичені в українців тактики — «камікадзе»-дрони, надувні макети техніки."},{year:"2024, вересень",title:"Речник FLA заперечує допомогу",text:"Речник FLA Мохамед Ельмаулуд Рамадан каже Reuters, що бій під Тінзауатеном обійшовся без жодної зовнішньої допомоги, зокрема й від Києва, — це прямо суперечить заявам ГУР і словам представника CSP-DPA."},{year:"2025, квітень",title:"Спільна декларація з росією",text:"росія, Малі, Нігер і Буркіна-Фасо ухвалюють спільну заяву, яка засуджує «злочинну змову» України з терористичними угрупованнями в Сахелі."}];function renderUkrainePage(){return`
+<div class="hero">
+<div class="flagbar" style="background:${FLAGS.ukraine}"></div>
+<div class="hero-eyebrow">Наскрізна тема · Малі, Нігер</div>
+<h1>Українська лінія: ГУР і Тінзауатен</h1>
+<p class="hero-lede">Влітку 2024-го війна росії проти України несподівано «дотяглася» до Сахелю. Одна заява речника української розвідки коштувала Києву дипвідносин одразу з двома країнами регіону — і залишила по собі більше запитань, ніж підтверджених фактів.</p>
+<div class="factstrip">
+<div class="fact"><div class="fact-label">Бій під Тінзауатеном</div><div class="fact-value">22–27 липня 2024</div></div>
+<div class="fact"><div class="fact-label">Малі розриває відносини</div><div class="fact-value">4 серпня 2024</div></div>
+<div class="fact"><div class="fact-label">Нігер розриває відносини</div><div class="fact-value">6–7 серпня 2024</div></div>
+<div class="fact"><div class="fact-label">Джерело заяви</div><div class="fact-value">речник ГУР Андрій Юсов</div></div>
+</div>
+</div>
+<div class="section">
+<h2 class="section-title">Що сталося під Тінзауатеном</h2>
+<p>Наприкінці липня 2024 року малійська армія за підтримки «Вагнера» намагалася витіснити туарезьких сепаратистів зі Стратегічної рамки захисту народу Азаваду (CSP-DPA) з містечка Тінзауатен на кордоні з Алжиром — одного з останніх опорних пунктів повстанців. У боях на боці CSP-DPA діяли й бійці JNIM. Результат став несподіванкою для всіх: за підрахунками самих сепаратистів, загинуло щонайменше 84 вагнерівці й 47 малійських військових; західні аналітичні центри називають дещо нижчі, але все одно рекордні для «Вагнера» в Африці цифри. Ця подія вже позначена на карті регіону в розділі «Огляд» і згадується в хронології джихадистської загрози — тут її розглянуто детальніше, з фокусом саме на українському сюжеті.</p>
+</div>
+<div class="section" style="padding-bottom:0;">
+<h2 class="section-title">Хронологія</h2>
+</div>
+${renderTimeline(UKRAINE_TIMELINE)}
+<div class="section">
+<h2 class="section-title">Заява, яка коштувала дипвідносин</h2>
+<p>29 липня 2024 року речник Головного управління розвідки Андрій Юсов в етері загальнонаціонального марафону сказав, що бійці отримали від Києва «необхідну інформацію», яка дала змогу провести операцію проти «російських воєнних злочинців», але деталей розкривати не став. Того самого періоду ГУР передало виданню Kyiv Post ексклюзивне фото туарезьких бійців з українським прапором; згодом з’ясувалося, що знімок зробили за місяць до бою, тобто прямим доказом причетності до конкретної операції він не був.</p>
+<p>Слова Юсова прозвучали як натяк, а не як офіційне визнання операції, але для урядів Малі й Нігеру цього виявилося достатньо.</p>
+</div>
+<div class="section">
+<h2 class="section-title">Дипломатичний обвал</h2>
+<p>4 серпня 2024 року Малі оголосило про негайний розрив дипломатичних відносин з Україною, назвавши підтримку Києва «підтримкою міжнародного тероризму» й проявом ширшої закономірності, коли «певні актори» використовують проти Малі терористичні угруповання. Через два дні, 6 серпня, у «повній солідарності» з Бамако розірвав відносини й Нігер, закликавши розглянути дії Києва в Раді Безпеки ООН як «українську агресію». Буркіна-Фасо офіційних дипвідносин з Україною на той момент практично не мала, тому просто приєдналася до засудження в межах Альянсу держав Сахелю. У серпні того ж року всі три країни направили до Ради Безпеки ООН спільний лист зі звинуваченням України у «відкритій і визнаній підтримці міжнародного тероризму» в Сахелі, а у квітні 2025-го підписали разом із росією спільну декларацію, яка засуджує «злочинну змову» Києва з джихадистами.</p>
+<p>МЗС України заявило, що категорично відкидає звинувачення в постачанні безпілотників повстанцям, і розкритикувало рішення Малі. Прямого офіційного визнання військової операції Київ так і не дав — лише той самий двозначний коментар Юсова.</p>
+</div>
+<div class="section">
+<h2 class="section-title">Зброя, тактика — і суперечливі свідчення</h2>
+<p>У листопаді 2024 року чотири туарезькі збройні групи оголосили про об’єднання у Фронт визволення Азаваду (FLA). За матеріалами Reuters, The Arab Weekly та Kyiv Post, повстанці FLA дедалі активніше застосовують тактики, які асоціюють з українським досвідом війни проти росії, — вибухові дрони-камікадзе та надувні макети техніки для введення противника в оману. Речник FLA Мохамед Ельмаулуд Рамадан пояснював тяжіння до Києва спільною долею: і туареги, і українці, за його словами, потерпають від «російського варварства й імперіалізму».</p>
+<p>Але тут-таки й з’являється суперечність. Заступник секретаря CSP-DPA із зовнішніх зв’язків Аттає Аг Мохамед у розмові з французькими медіа підтвердив «давні й різносторонні стосунки» з Києвом, включно з обміном розвідінформацією. А вже у вересні 2024-го речник FLA (структури, що виникла з тих-таки туарезьких груп) сказав Reuters, що бій під Тінзауатеном обійшовся зовсім без зовнішньої допомоги — ні фінансової, ні якоїсь іншої, і не від Києва зокрема. Хто з речників ближче до істини — встановити ззовні неможливо: обидва представляють одну й ту саму мережу туарезьких рухів, але дають протилежні відповіді на те саме запитання.</p>
+<div class="notebox">
+<h4>Що лишається непідтвердженим</h4>
+<p>Окремі проросійські джерела та офіційний акаунт Альянсу держав Сахелю у соцмережах поширювали ще й твердження про нібито причетність Польщі до підготовки туарезьких бійців на своїй території. Незалежного підтвердження цього немає — джерело цих тверджень одне й те саме коло акторів, зацікавлених у максимальному роздмухуванні «українського сліду».</p>
+</div>
+</div>
+<div class="section">
+<h2 class="section-title">Чому це важливо для сюжету сайту</h2>
+<p>Хай би що насправді стояло за словами Юсова, епізод показує: війна росії проти України вже давно не обмежена європейським театром і б’є рикошетом навіть у пісках північного Малі. Розгром під Тінзауатеном — репутаційний удар по «Вагнеру» напередодні його офіційної трансформації в «Африканський корпус» — і, за оцінками аналітиків, один з чинників, які згодом підживили внутрішню недовіру між малійськими військовими та росіянами, що зрештою відлунює й у паливній кризі 2025–2026 років, описаній у розділі про джихадистську загрозу.</p>
+</div>
+<div class="footnote">Джерела: Kyiv Post, The Arab Weekly, Reuters (через Kyiv Post і The Arab Weekly), RFE/RL, Agenzia Fides, TASS, Babel, Wikipedia («Battle of Tinzaouaten», «Mali–Ukraine relations»). Заяви, що не підтверджені незалежно (зокрема про роль Польщі), позначені окремо. Дані станом на середину 2026 року.</div>
+`}const RESOURCE_ROWS=[{country:"mali",resource:"Золото — Loulo-Gounkoto",was:"Barrick (80%) / держава (20%, через SOMILO)",move:"Січень 2025 — держава блокує експорт і вилучає тонни золота; червень 2025 — суд передає копальню під тимчасове державне управління",now:"Листопад 2025 — угода про повернення контролю Barrick і виплату $430 млн; лютий 2026 — 10-річна ліцензія продовжена"},{country:"burkina",resource:"Золото — Boungou і Wahgnion",was:"Iноземні гірничі компанії",move:"Червень 2025 — обидві копальні націоналізовано на користь держкомпанії SOPAMIB",now:"За даними уряду, шість промислових копалень контролюються місцевим капіталом більшою мірою, три — безпосередньо державою через SOPAMIB"},{country:"niger",resource:"Уран — Somaïr (родовище Арліт)",was:"Orano, колишня Areva (63,4%) / SOPAMIN (36,6%)",move:"Грудень 2024 — Orano втрачає операційний контроль; червень 2025 — держава оголошує націоналізацію Somaïr",now:"Травень 2026 — концесію Arlit анульовано, створено нову держкомпанію TSUMCO; уряд заявляє про намір продавати уран на світовому ринку напряму"}];function renderResourceTable(){return`
+<div class="comparewrap">
+<div class="compare-scroll">
+<table class="compare-table">
+<thead>
+<tr>
+<th></th>
+<th>Ресурс</th>
+<th>Було</th>
+<th>Що сталося</th>
+<th>Стан зараз</th>
+</tr>
+</thead>
+<tbody>
+${RESOURCE_ROWS.map(e=>`
+<tr>
+<td class="compare-label">${flagChip(COUNTRIES.find(t=>t.id===e.country).flagKey)}${COUNTRIES.find(t=>t.id===e.country).name}</td>
+<td>${e.resource}</td>
+<td>${e.was}</td>
+<td>${e.move}</td>
+<td>${e.now}</td>
+</tr>
+`).join("")}
+</tbody>
+</table>
+</div>
+<p class="compare-note">Оцінки й дати — за повідомленнями Reuters, AP, Bloomberg, World Nuclear News, Ecofin Agency, ISS Africa станом на середину 2026 року; деталі угод (частки, суми, терміни) різняться між джерелами.</p>
+</div>
+`}function renderResourcesPage(){return`
+<div class="hero">
+<div class="flagbar" style="background:${FLAGS.resources}"></div>
+<div class="hero-eyebrow">Наскрізна тема · три країни</div>
+<h1>Гроші й ресурси: золото і уран</h1>
+<p class="hero-lede">«Повернутий суверенітет» — це не лише риторика. У всіх трьох країнах хунти націоналізують або відвойовують контроль над ключовими ресурсами — золотом у Малі й Буркіна-Фасо, ураном у Нігері. Хто зараз реально контролює видобуток і куди йдуть гроші — нижче.</p>
+<div class="factstrip">
+<div class="fact"><div class="fact-label">Золото в експорті Малі</div><div class="fact-value">≈ 80–85%</div></div>
+<div class="fact"><div class="fact-label">Золото в ВВП Буркіна-Фасо</div><div class="fact-value">≈ 16–17%</div></div>
+<div class="fact"><div class="fact-label">Частка Нігеру в постачанні урану ЄС (2022)</div><div class="fact-value">понад 25%</div></div>
+</div>
+</div>
+<div class="section" style="padding-bottom:0;">
+<h2 class="section-title">Хто контролює зараз</h2>
+</div>
+${renderResourceTable()}
+<div class="section">
+<h2 class="section-title">Малі: рік перетягування каната з Barrick</h2>
+<p>Найбільший золотий актив Малі — комплекс Лулу-Гункото канадської Barrick — став головним полем бою нової гірничої політики. У січні 2025 року держава заблокувала експорт і вилучила кілька тонн золота, звинувативши компанію в несплаті податків за старими, «невигідними» угодами. У червні суд передав рудник під тимчасове державне управління на чолі з колишнім міністром охорони здоров’я Зуманою Макаджі.</p>
+<p>Після дев’яти місяців фактичного простою сторони домовилися: у листопаді 2025-го Barrick погодилася на виплату близько $430 млн, а в лютому 2026-го отримала оновлену на 10 років ліцензію — держава зберігає 20% через SOMILO. Паралельно у вересні 2025-го уряд затвердив нові угоди за оновленим гірничим кодексом з Allied Gold, B2Gold, Resolute Mining та литієвим проєктом Ganfeng — усюди з більшою державною часткою й пріоритетним доступом до дивідендів.</p>
+</div>
+<div class="section">
+<h2 class="section-title">Буркіна-Фасо: від сировини до власного афінажу</h2>
+<p>У червні 2025 року держава націоналізувала копальні Бунгу й Вагньйон, передавши їх новоствореній держкомпанії SOPAMIB. За офіційними даними уряду, з 2022 року золотовидобуток приніс країні близько $18 млрд доходу — цифра, яку влада подає як доказ успіху економічної політики, хоч незалежні аналітики застерігають, що без прозорого нагляду такі надходження ризикують бути погано розподіленими.</p>
+<p>Паралельно будується перший національний афінажний завод «Raffinor» потужністю близько 150 тонн золота на рік — щоб країна перестала експортувати необроблену сировину. Станом на середину 2026 року завод ще добудовується, запуск очікують до кінця року. У 2025-му Буркіна-Фасо зафіксувала рекордний видобуток у 94 тонни.</p>
+</div>
+<div class="section">
+<h2 class="section-title">Нігер: розлучення з Orano</h2>
+<p>Уран десятиліттями був головним активом Нігеру у відносинах із Францією: через компанію Orano (колишня Areva) країна забезпечувала понад чверть постачання урану до ЄС. Після перевороту 2023 року стосунки посипались: у червні 2024-го відкликано ліцензію на родовище Імурарен, а наприкінці року Orano втратила операційний контроль над своїм головним активом — рудником Somaïr.</p>
+<p>У червні 2025 року влада оголосила про повну націоналізацію Somaïr; Orano назвала це незаконною експропріацією і подала позов до міжнародного арбітражу (ICSID), який навіть заборонив продаж видобутого урану без згоди компанії. Утім, у листопаді 2025-го Нігер здійснив відвантаження партії урану всупереч цій забороні, а президент Чіані заявив, що продаватиме уран напряму на світовому ринку. У травні 2026-го уряд анулював саму концесію на родовище Арліт і створив нову державну структуру TSUMCO. У вересні 2025-го міністр гірничої справи Нігеру публічно запропонував росії долучитися до розробки родовищ — поки що це радше сигнал намірів, ніж укладена угода.</p>
+</div>
+<div class="notebox">
+<h4>Нюанс, який часто випускають</h4>
+<p>Поширене припущення, що «Вагнер» скрізь виторговує собі копальні в обмін на військову підтримку, підтверджується не всюди однаково. У Центральноафриканській Республіці це справді так: пов’язана з Пригожиним компанія Midas отримала пільговий доступ до золотого родовища Ндассіма вартістю понад мільярд доларів. А от у Малі, за розслідуванням The Sentry, «Вагнер» так і не домігся власних гірничих концесій — натомість його щомісячний гонорар (за оцінками, близько $10,8 млн) фінансувався з держбюджету, куди значною мірою надходили податки тих-таки західних гірничих компаній — Barrick, B2Gold, Resolute й Allied Gold. Тобто частину рахунків за присутність росіян у Малі, за цією версією, оплачували самі західні інвестори.</p>
+</div>
+<div class="footnote">Джерела: Reuters, AP, Bloomberg, The Sentry, World Nuclear Association, World Nuclear News, Ecofin Agency, Investing News, ISS Africa, TRT Afrika, Africa Briefing, US Treasury. Суми, частки й терміни різняться між джерелами і швидко змінюються.</div>
+`}const SOURCES=[{name:"ACLED (Armed Conflict Location & Event Data)",sections:["Джихадистська загроза","Вихід до Гвінейської затоки"]},{name:"AFP",sections:["Досьє: ключові особи","Інформаційна війна"]},{name:"Africa Briefing",sections:["Гроші й ресурси"]},{name:"Africa Center for Strategic Studies",sections:["Джихадистська загроза"]},{name:"Africa Defense Forum",sections:["Інформаційна війна","Джихадистська загроза","Вихід до Гвінейської затоки"]},{name:"Africanews",sections:["Вихід до Гвінейської затоки"]},{name:"Agenzia Fides",sections:["Українська лінія"]},{name:"AllAfrica",sections:["Малі / Буркіна-Фасо / Нігер"]},{name:"AP (Associated Press)",sections:["Гроші й ресурси"]},{name:"Babel",sections:["Українська лінія"]},{name:"BBC",sections:["Малі / Буркіна-Фасо / Нігер","Досьє: ключові особи","Інформаційна війна"]},{name:"BlackPast",sections:["Досьє: ключові особи"]},{name:"Bloomberg",sections:["Гроші й ресурси"]},{name:"BTI (Bertelsmann Stiftung)",sections:["Малі / Буркіна-Фасо / Нігер"]},{name:"CIVICUS Monitor",sections:["Малі / Буркіна-Фасо / Нігер"]},{name:"Code for Africa",sections:["Інформаційна війна"]},{name:"Critical Threats Project",sections:["Джихадистська загроза"]},{name:"CSIS",sections:["Джихадистська загроза"]},{name:"DISA",sections:["Інформаційна війна"]},{name:"Ecofin Agency",sections:["Гроші й ресурси"]},{name:"Euronews",sections:["Інформаційна війна"]},{name:"FPRI (через The Week)",sections:["Інформаційна війна"]},{name:"FDD’s Long War Journal",sections:["Вихід до Гвінейської затоки"]},{name:"France 24",sections:["Малі / Буркіна-Фасо / Нігер"]},{name:"Freedom House",sections:["Малі / Буркіна-Фасо / Нігер"]},{name:"Georgetown Journal of International Affairs",sections:["Джихадистська загроза"]},{name:"HSToday",sections:["Вихід до Гвінейської затоки"]},{name:"Human Rights Watch",sections:["Джихадистська загроза","Малі / Буркіна-Фасо / Нігер","Вихід до Гвінейської затоки"]},{name:"International Crisis Group",sections:["Вихід до Гвінейської затоки"]},{name:"Investing News",sections:["Гроші й ресурси"]},{name:"ISS Africa",sections:["Гроші й ресурси","Вихід до Гвінейської затоки"]},{name:"Jeune Afrique",sections:["Досьє: ключові особи"]},{name:"Kyiv Post",sections:["Українська лінія"]},{name:"Новая газета Європа",sections:["Малі / Буркіна-Фасо / Нігер"]},{name:"РСМД",sections:["Огляд","Малі / Буркіна-Фасо / Нігер"]},{name:"Reuters",sections:["Огляд","Малі / Буркіна-Фасо / Нігер","Досьє: ключові особи","Гроші й ресурси","Українська лінія"]},{name:"RFE/RL (Радіо Свобода)",sections:["Українська лінія"]},{name:"Stimson Center",sections:["Вихід до Гвінейської затоки"]},{name:"TASS",sections:["Українська лінія"]},{name:"The Arab Weekly",sections:["Українська лінія"]},{name:"The Conversation",sections:["Малі / Буркіна-Фасо / Нігер"]},{name:"The Hill",sections:["Інформаційна війна"]},{name:"The Sentry",sections:["Джихадистська загроза","Гроші й ресурси"]},{name:"Togo First",sections:["Вихід до Гвінейської затоки"]},{name:"TRT Afrika",sections:["Гроші й ресурси"]},{name:"US Treasury",sections:["Гроші й ресурси"]},{name:"Вікіпедія / Wikipedia",sections:["Огляд","Досьє: ключові особи","Джихадистська загроза","Українська лінія"]},{name:"World Nuclear Association",sections:["Гроші й ресурси"]},{name:"World Nuclear News",sections:["Гроші й ресурси"]}].sort((e,t)=>e.name.localeCompare(t.name,"uk")),CATEGORY_META={prologue:{label:"Передісторія",flagKey:"overview"},mali:{label:"Малі",flagKey:"mali"},burkina:{label:"Буркіна-Фасо",flagKey:"burkina"},niger:{label:"Нігер",flagKey:"niger"},jihad:{label:"Джихадисти",flagKey:"jihad"},coast:{label:"Гвінейська затока",flagKey:"coast"},ukraine:{label:"Україна",flagKey:"ukraine"},infowar:{label:"Інформвійна",flagKey:"infowar"}};function parseYear(e){const t=e.match(/\d{4}/);return t?parseInt(t[0],10):9999}function buildMasterTimeline(){const e=[];return PROLOGUE_TIMELINE.forEach(t=>e.push(Object.assign({},t,{cat:"prologue"}))),COUNTRIES.forEach(t=>t.timeline.forEach(a=>e.push(Object.assign({},a,{cat:t.id})))),JIHAD_TIMELINE.forEach(t=>e.push(Object.assign({},t,{cat:"jihad"}))),COAST_TIMELINE.forEach(t=>e.push(Object.assign({},t,{cat:"coast"}))),UKRAINE_TIMELINE.forEach(t=>e.push(Object.assign({},t,{cat:"ukraine"}))),INFOWAR_TIMELINE.forEach(t=>e.push(Object.assign({},t,{cat:"infowar"}))),e.sort((t,a)=>parseYear(t.year)-parseYear(a.year)),e}let timelineFilter=null;function renderMasterTimelineItems(e){return e.length===0?'<div class="timeline"><p style="color:var(--ink-soft);padding:10px 0;">Нічого не показано — увімкни хоча б одну категорію вище.</p></div>':'<div class="timeline">'+e.map(t=>{const a=CATEGORY_META[t.cat];return`
+<div class="tl-item">
+<div class="tl-year">${t.year}</div>
+<div class="tl-dot"></div>
+<div class="tl-body">
+<div class="tl-badge" style="background:${FLAGS[a.flagKey]}">${a.label}</div>
+<h4>${t.title}</h4>
+<p>${t.text}</p>
+</div>
+</div>`}).join("")+"</div>"}function toggleTimelineFilter(e){timelineFilter.has(e)?timelineFilter.delete(e):timelineFilter.add(e),updateMasterTimelineUI()}function resetTimelineFilter(){timelineFilter=new Set(Object.keys(CATEGORY_META)),updateMasterTimelineUI()}function updateMasterTimelineUI(){const e=buildMasterTimeline();document.getElementById("tf-buttons").innerHTML=Object.keys(CATEGORY_META).map(t=>{const a=CATEGORY_META[t],i=timelineFilter.has(t);return`<button class="tf-btn ${i?"":"off"}" style="${i?`background:${FLAGS[a.flagKey]};color:#fff;border-color:transparent;`:""}" onclick="toggleTimelineFilter('${t}')">${a.label}</button>`}).join("")+'<button class="tf-reset" onclick="resetTimelineFilter()">Скинути фільтр</button>',document.getElementById("masterTimelineList").innerHTML=renderMasterTimelineItems(e.filter(t=>timelineFilter.has(t.cat)))}function renderTimelinePage(){timelineFilter=new Set(Object.keys(CATEGORY_META));const e=buildMasterTimeline().length;return`
+<div class="hero">
+<div class="flagbar" style="background:${FLAGS.timeline}"></div>
+<div class="hero-eyebrow">Наскрізна тема · всі розділи разом</div>
+<h1>Єдина хронологія</h1>
+<p class="hero-lede">Усі події з передісторії, трьох країн, джихадистської загрози й інформаційної війни — в одній стрічці, за роками. Разом: ${e} подій. Вимикай категорії нижче, щоб побачити лише те, що цікавить.</p>
+</div>
+<div class="timeline-filters" id="tf-buttons"></div>
+<div id="masterTimelineList"></div>
+<div class="footnote">Роки для подій із діапазоном (наприклад, «2019–2022») відсортовані за першим роком діапазону. Джерела — ті самі, що в кожному відповідному розділі; повний перелік — на сторінці «Список джерел».</div>
+`}const GLOSSARY=[{term:"AES",def:"«Альянс держав Сахелю» — з липня 2024 року Конфедерація держав Сахелю. Військово-політичний союз Малі, Буркіна-Фасо й Нігеру, утворений 17 вересня 2023 року у відповідь на загрозу інтервенції ЕКОВАС. Усі три члени вийшли з ЕКОВАС і будують спільну оборонну й економічну політику."},{term:"АКІМ",def:"«Аль-Каїда в країнах ісламського Магрибу» (AQIM) — одна з джихадистських мереж, малійське відгалуження якої в 2017 році увійшло до складу JNIM."},{term:"Barkhane / «Бархан»",def:"Багаторічна французька військова операція проти джихадистів у Сахелі. Згорнута в Малі 2022 року, а згодом — і в решті регіону, після серії військових переворотів."},{term:"CNSP",def:"«Національна рада порятунку батьківщини» — орган, яким генерал Абдурахман Чіані очолив Нігер після перевороту 26 липня 2023 року проти президента Мохамеда Базума."},{term:"CSP-DPA",def:"«Стратегічна рамка захисту народу Азаваду» — коаліція туарезьких сепаратистів на півночі Малі, попередниця FLA. Саме бійці CSP-DPA завдали «Вагнеру» тяжкої поразки під Тінзауатеном 2024 року, після чого й виникла суперечка довкола ролі України."},{term:"ЕКОВАС",def:"Економічне співтовариство західноафриканських держав (ECOWAS) — регіональний блок, з якого Малі, Буркіна-Фасо й Нігер синхронно вийшли в січні 2024 року."},{term:"FLA",def:"Фронт звільнення Азаваду — коаліція туарезьких повстанських рухів на півночі Малі, утворена в листопаді 2024 року з чотирьох груп, зокрема CSP-DPA; супротивник малійської армії й «Вагнера»/«Африканського корпусу»."},{term:"ГУР",def:"Головне управління розвідки Міністерства оборони України. Заява речника ГУР Андрія Юсова про причетність до атаки на «Вагнера» під Тінзауатеном 2024 року коштувала Києву дипвідносин із Малі й Нігером."},{term:"ISGS / ISSP",def:"«Ісламська держава в провінції Сахель» — джихадистське угруповання, засноване 2015 року Аднаном Абу Валідом ас-Сахрауї. Діє в трикордонні Малі–Нігер–Буркіна-Фасо, конкурує з JNIM більше, ніж співпрацює."},{term:"JNIM",def:"«Джамаат Нусрат аль-Іслам валь-Муслімін» — філія «Аль-Каїди», заснована 2017 року туарегом Ійядом Аг Ґалі. Найбільша й найстаріша джихадистська мережа в Сахелі, активна в усіх трьох країнах."},{term:"MINUSMA",def:"Місія ООН з підтримання миру в Малі. Залишила країну впродовж 2023 року на вимогу малійської військової хунти."},{term:"Orano",def:"Французька державна компанія (колишня Areva), що десятиліттями видобувала уран у Нігері для французької атомної енергетики. Після перевороту 2023 року нігерська влада почала переглядати й відкликати частину її ліцензій."},{term:"«Африканський корпус» / Africa Corps",def:"Структура під прямим контролем Міноборони росії, яка з 2023–2024 років поглинула африканські підрозділи «Вагнера». На відміну від попередника — державна, а не приватна сила, укомплектована здебільшого колишніми вагнерівцями."},{term:"«Вагнер»",def:"Приватна військова компанія, що постала близько 2014 року з ядра «Слов’янського корпусу»; очолювана Дмитром Уткіним і фінансована Євгеном Пригожиним. До 2025 року — головний військовий інструмент росії в Сахелі, потім поступово замінена «Африканським корпусом»."},{term:"ПВК",def:"Приватна військова компанія — юридично невизначений у російському законодавстві статус, який, утім, не заважав «Вагнеру» діяти як фактичний інструмент державної зовнішньої політики."},{term:"«Слов’янський корпус»",def:"Перша відома спроба росії створити приватну військову силу за кордоном — Сирія, 2013 рік. Провал операції (оточення, втрати, скандальне повернення бійців) заклав кадрову й організаційну основу майбутнього «Вагнера»."}].sort((e,t)=>{const a=l=>(/^[«"']?[A-Za-z]/.test(l)?"0":"1")+l.replace(/^[«"']+/,"").toUpperCase(),i=a(e.term),s=a(t.term);return i<s?-1:i>s?1:0});function renderGlossaryPage(){return`
+<div class="hero">
+<div class="flagbar" style="background:${FLAGS.glossary}"></div>
+<div class="hero-eyebrow">Наскрізна тема · довідково</div>
+<h1>Глосарій термінів</h1>
+<p class="hero-lede">Скорочення й назви, які по всьому проєкту розшифровуються лише при першій згадці, зібрані в одному місці.</p>
+</div>
+<div class="glossary-list">
+${GLOSSARY.map(e=>`
+<div class="gloss-item">
+<div class="gloss-term">${e.term}</div>
+<p class="gloss-def">${e.def}</p>
+</div>
+`).join("")}
+</div>
+`}function renderSourcesPage(){return`
+<div class="hero">
+<div class="flagbar" style="background:${FLAGS.sources}"></div>
+<div class="hero-eyebrow">Наскрізна тема · бібліографія</div>
+<h1>Список джерел</h1>
+<p class="hero-lede">Усі організації та медіа, на які спираються розділи цього проєкту, зібрані в одному місці — щоб не губити їх серед приміток унизу кожної сторінки.</p>
+</div>
+<p class="sources-note">Список складено за примітками з усіх сторінок. Мітки показують, у якому розділі кожне джерело цитувалося. Пряме посилання на конкретну статтю можу знайти й додати за запитом.</p>
+<div class="sources-list">
+${SOURCES.map(e=>`
+<div class="source-row">
+<div class="source-name">${e.name}</div>
+<div class="source-tags">${e.sections.map(t=>`<span class="pcard-tag">${t}</span>`).join("")}</div>
+</div>
+`).join("")}
+</div>
+<div class="footnote">Оцінки, суми й дати в різних джерелах можуть різнитися — там, де це важливо, це окремо зазначено в примітках відповідного розділу.</div>
+`}function renderOverview(){return`
+<div class="hero">
+<div class="flagbar" style="background:${FLAGS.overview}"></div>
+<div class="hero-eyebrow">Особистий проєкт · робота в процесі</div>
+<h1>Слід у пісках</h1>
+<p class="hero-lede">Сахель — регіон, де за п’ять років майже повністю змінилася розстановка сил: французькі й американські війська пішли, до влади прийшли військові хунти, а на їхньому боці тепер воює структура, яка веде родовід від сирійського фіаско 2013 року.</p>
+</div>
+<div class="section">
+<h2 class="section-title">Що таке Сахель</h2>
+<p>Сахель — смуга напівпустелі між Сахарою та саванами Західної й Центральної Африки, від Атлантики до Червоного моря. У широкому значенні до нього відносять Мавританію, Сенегал, Малі, Буркіна-Фасо, Нігер, північ Нігерії, Чад, Судан та Еритрею.</p>
+<p>Але коли зараз говорять про «кризу Сахелю», йдеться передусім про три країни — <strong>Малі, Буркіна-Фасо й Нігер</strong>. Усі три за 2020–2023 роки пережили військові перевороти, розірвали союз із колишньою метрополією Францією і в тій чи іншій формі запросили російську військову підтримку.</p>
+<p>17 вересня 2023 року ці три країни утворили Альянс держав Сахелю — військовий союз на випадок зовнішньої агресії, а 6 липня 2024-го перетворили його на повноцінну Конфедерацію зі спільними політичними й економічними амбіціями, аж до єдиної валюти. Усі три вийшли з регіонального блоку ЕКОВАС.</p>
+</div>
+<div class="mapwrap">
+<h2 class="section-title">Карта регіону</h2>
+<div class="map-frame">
+<svg class="map-svg" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+<!-- neighboring countries, for orientation only -->
+<text class="map-neighbor-label" x="18" y="140">Мавританія</text>
+<text class="map-neighbor-label" x="30" y="300">Сенегал / Гвінея</text>
+<text class="map-neighbor-label" x="345" y="20">Алжир</text>
+<text class="map-neighbor-label" x="600" y="20">Лівія</text>
+<text class="map-neighbor-label" x="695" y="150">Чад</text>
+<text class="map-neighbor-label" x="600" y="400">Нігерія</text>
+<text class="map-neighbor-label" x="400" y="450">Бенін / Того / Гана</text>
+<text class="map-neighbor-label" x="190" y="450">Кот-д’Івуар</text>
+<!-- conflict zones (behind countries' borders, drawn after so they read as overlays) -->
+<!-- countries -->
+<polygon class="map-country" style="fill:#D9E3CC" points="60,75 230,42 328,52 368,138 348,226 300,296 215,320 130,296 74,236 44,146" onclick="goTo('mali')"/>
+<polygon class="map-country" style="fill:#F1D9D2" points="208,296 300,292 388,298 452,326 428,394 340,430 250,416 188,368 178,328" onclick="goTo('burkina')"/>
+<polygon class="map-country" style="fill:#F2E6CC" points="386,66 556,38 646,86 676,196 646,314 558,376 470,346 408,256 372,166" onclick="goTo('niger')"/>
+<!-- zone shading -->
+<ellipse class="map-zone" cx="285" cy="98" rx="88" ry="66"/>
+<ellipse class="map-zone" cx="335" cy="300" rx="72" ry="56"/>
+<!-- country name labels -->
+<text class="map-country-label" x="150" y="180">Малі</text>
+<text class="map-country-label" x="480" y="220">Нігер</text>
+<text class="map-country-label" x="228" y="336">Буркіна-Фасо</text>
+<!-- capitals -->
+<circle class="map-capital-dot" cx="150" cy="262" r="5"/>
+<text class="map-capital-label" x="160" y="266">Бамако</text>
+<circle class="map-capital-dot" cx="320" cy="392" r="5"/>
+<text class="map-capital-label" x="330" y="396">Уагадугу</text>
+<circle class="map-capital-dot" cx="445" cy="300" r="5"/>
+<text class="map-capital-label" x="455" y="304">Ніамей</text>
+<!-- notable events -->
+<circle class="map-event-dot" cx="300" cy="72" r="4.5"/>
+<text class="map-event-label" x="309" y="70">Тінзауатен, 2024</text>
+<circle class="map-event-dot" cx="255" cy="108" r="4.5"/>
+<text class="map-event-label" x="150" y="128">Кідаль, 2023</text>
+<circle class="map-event-dot" cx="220" cy="210" r="4.5"/>
+<text class="map-event-label" x="105" y="215">Мура, 2022</text>
+<!-- former western base -->
+<circle class="map-base-marker" cx="530" cy="185" r="7"/>
+<text class="map-base-label" x="542" y="189">Агадес — база 201 (закрита, 2024)</text>
+</svg>
+<div class="maplegend">
+<div class="li"><span class="swatch" style="background:var(--indigo-deep)"></span>Столиця</div>
+<div class="li"><span class="swatch" style="background:var(--rust)"></span>Подія з хронології</div>
+<div class="li"><span class="swatch dash"></span>Колишня західна база</div>
+<div class="li"><span class="swatch zone"></span>Зона активності джихадистів (JNIM / ISGS)</div>
+</div>
+</div>
+<p class="map-caption">Схематична карта, не географічна проєкція. Клікни на країну, щоб перейти до її розділу. Підрозділи «Африканського корпусу» зараз присутні у всіх трьох столицях.</p>
+</div>
+<div class="deckwrap">
+<div class="deck-label">Передісторія: як «Вагнер» дійшов до Сахелю</div>
+<div class="deck" id="deck-overview"></div>
+</div>
+<div class="section" style="padding-top:0;">
+<h2 class="section-title">Три країни, з яких почнемо</h2>
+</div>
+<div class="country-cards">
+${COUNTRIES.map(e=>`
+<div class="ccard" onclick="goTo('${e.id}')">
+<div class="flagbar-h" style="background:${FLAGS[e.flagKey]}"></div>
+<h3>${e.name}</h3>
+<p>${e.capital} · ${e.population}</p>
+</div>
+`).join("")}
+</div>
+<div class="section" style="padding-top:0;">
+<h2 class="section-title">Дивитися наскрізь</h2>
+<p>Дві теми, які проходять через усі три країни й не вміщаються в одну хроніку, — окремо, у бічній панелі.</p>
+</div>
+<div class="country-cards" style="padding-top:0;">
+<div class="ccard" onclick="goTo('compare')">
+<div class="theme-icon" style="background:${FLAGS.compare}">${ICONS.compare}</div>
+<h3>Порівняння країн</h3>
+<p>Перевороти, «Африканський корпус», ресурси й безпекова ситуація — поруч, одним поглядом.</p>
+</div>
+<div class="ccard" onclick="goTo('jihad')">
+<div class="theme-icon" style="background:${FLAGS.jihad}">${ICONS.jihad}</div>
+<h3>Джихадистська загроза</h3>
+<p>Хто такі JNIM та ISGS і чому «Африканський корпус» не зупинив, а подекуди й прискорив їхнє просування.</p>
+</div>
+<div class="ccard" onclick="goTo('coast')">
+<div class="theme-icon" style="background:${FLAGS.coast}">${ICONS.coast}</div>
+<h3>Вихід до Гвінейської затоки</h3>
+<p>Атаки JNIM у прикордонних районах Беніну, Того й Кот-д’Івуару — загроза, яка вже не втримана в межах трьох країн.</p>
+</div>
+<div class="ccard" onclick="goTo('ukraine')">
+<div class="theme-icon" style="background:${FLAGS.ukraine}">${ICONS.ukraine}</div>
+<h3>Українська лінія</h3>
+<p>Заява ГУР про Тінзауатен, розрив дипвідносин Малі й Нігеру з Києвом — і що з цього підтверджено, а що ні.</p>
+</div>
+<div class="ccard" onclick="goTo('infowar')">
+<div class="theme-icon" style="background:${FLAGS.infowar}">${ICONS.infowar}</div>
+<h3>Інформаційна війна</h3>
+<p>Як росія просуває образ Траоре й наратив «повернутого суверенітету» в соцмережах — задокументована кампанія.</p>
+</div>
+<div class="ccard" onclick="goTo('resources')">
+<div class="theme-icon" style="background:${FLAGS.resources}">${ICONS.resources}</div>
+<h3>Гроші й ресурси</h3>
+<p>Золото Малі й Буркіна-Фасо, уран Нігеру — хто контролює видобуток зараз і куди йдуть потоки.</p>
+</div>
+<div class="ccard" onclick="goTo('dossier')">
+<div class="theme-icon" style="background:${FLAGS.dossier}">${ICONS.dossier}</div>
+<h3>Досьє: ключові особи</h3>
+<p>Пригожин, Уткін, Гойта, Траоре, Чіані — короткі картки з біографією й роллю в подіях.</p>
+</div>
+</div>
+<div class="footnote">Дані про перевороти, чисельність населення та хронологію подій зібрані з відкритих джерел (Вікіпедія, Reuters, РСМД, регіональні медіа) станом на вересень 2026 року й будуть уточнюватися.</div>
+`}function renderCountry(e){return`
+<div class="hero">
+<div class="flagbar" style="background:${FLAGS[e.flagKey]}"></div>
+<div class="hero-eyebrow">Альянс держав Сахелю</div>
+<h1>${e.name}</h1>
+<p class="hero-lede">${e.intro[0]}</p>
+<div class="factstrip">
+<div class="fact"><div class="fact-label">Столиця</div><div class="fact-value">${e.capital}</div></div>
+<div class="fact"><div class="fact-label">Населення</div><div class="fact-value">${e.population}</div></div>
+<div class="fact"><div class="fact-label">Площа</div><div class="fact-value">${e.area}</div></div>
+<div class="fact"><div class="fact-label">Незалежність</div><div class="fact-value">${e.independence}</div></div>
+<div class="fact"><div class="fact-label">Мова</div><div class="fact-value">${e.language}</div></div>
+</div>
+</div>
+<div class="section">
+<h2 class="section-title">Устрій і як до нього прийшли</h2>
+${e.intro.slice(1).map(t=>`<p>${t}</p>`).join("")}
+${e.order.map(t=>`<p>${t}</p>`).join("")}
+</div>
+<div class="deckwrap">
+<div class="deck-label">Коротко: ключові моменти</div>
+<div class="deck" id="deck-${e.id}"></div>
+</div>
+<div class="section" style="padding-bottom:0;">
+<h2 class="section-title">Присутність росії — хронологія</h2>
+</div>
+${renderTimeline(e.timeline)}
+<div class="footnote">Останнє оновлення розділу — вересень 2026 року. Джерела: Reuters, BBC, Новая газета Європа, РСМД, відкриті звіти дослідницьких центрів.</div>
+`}const deckState={};function initDeck(e,t){deckState[e]=0,drawDeck(e,t)}function drawDeck(e,t){const a=deckState[e],i=t[a],s=document.getElementById("deck-"+e);s&&(s.innerHTML=`
+<div class="deck-inner">
+<div class="deck-count">${a+1} / ${t.length}</div>
+<div class="deck-title">${i.title}</div>
+<div class="deck-text">${i.text}</div>
+${i.stat?`<div class="deck-stat">${i.stat}</div>`:""}
+</div>
+<div class="deck-nav">
+<button class="deck-btn" onclick="deckMove('${e}', -1)" ${a===0?"disabled":""}>← Назад</button>
+<div class="deck-dots">${t.map((l,c)=>`<span class="deck-dot ${c===a?"on":""}"></span>`).join("")}</div>
+<button class="deck-btn" onclick="deckMove('${e}', 1)" ${a===t.length-1?"disabled":""}>Далі →</button>
+</div>
+`)}function deckMove(e,t){let a;e==="overview"?a=OVERVIEW_SLIDES:e==="jihad"?a=JIHAD_SLIDES:a=COUNTRIES.find(i=>i.id===e).slides,deckState[e]=Math.max(0,Math.min(a.length-1,deckState[e]+t)),drawDeck(e,a)}const OVERVIEW_SLIDES=PROLOGUE_TIMELINE.map(e=>({title:`${e.year} — ${e.title}`,text:e.text}));function goTo(e){renderNav(e);const t=document.getElementById("main");if(e==="overview")t.innerHTML=`<div class="page active">${renderOverview()}</div>`,initDeck("overview",OVERVIEW_SLIDES);else if(e==="compare")t.innerHTML=`<div class="page active">${renderComparePage()}</div>`;else if(e==="jihad")t.innerHTML=`<div class="page active">${renderJihadPage()}</div>`,initDeck("jihad",JIHAD_SLIDES);else if(e==="coast")t.innerHTML=`<div class="page active">${renderCoastPage()}</div>`;else if(e==="ukraine")t.innerHTML=`<div class="page active">${renderUkrainePage()}</div>`;else if(e==="dossier")t.innerHTML=`<div class="page active">${renderDossierPage()}</div>`;else if(e==="infowar")t.innerHTML=`<div class="page active">${renderInfowarPage()}</div>`;else if(e==="resources")t.innerHTML=`<div class="page active">${renderResourcesPage()}</div>`;else if(e==="sources")t.innerHTML=`<div class="page active">${renderSourcesPage()}</div>`;else if(e==="timeline")t.innerHTML=`<div class="page active">${renderTimelinePage()}</div>`,updateMasterTimelineUI();else if(e==="glossary")t.innerHTML=`<div class="page active">${renderGlossaryPage()}</div>`;else{const a=COUNTRIES.find(i=>i.id===e);t.innerHTML=`<div class="page active">${renderCountry(a)}</div>`,initDeck(a.id,a.slides)}window.scrollTo(0,0),closeSidebar()}function openSidebar(){document.getElementById("sidebar").classList.add("open"),document.getElementById("sidebarBackdrop").classList.add("open"),document.body.classList.add("sidebar-locked")}function closeSidebar(){document.getElementById("sidebar").classList.remove("open"),document.getElementById("sidebarBackdrop").classList.remove("open"),document.body.classList.remove("sidebar-locked")}function toggleSidebar(){document.getElementById("sidebar").classList.contains("open")?closeSidebar():openSidebar()}goTo("overview");</script>
+</body>
+</html>
