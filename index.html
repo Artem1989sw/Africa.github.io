@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Слід у пісках — Сахель і Африканський корпус</title>
+<meta name="description" content="Інтерактивне досьє про присутність РФ і «Африканського корпусу» в Сахелі: хронологія, ключові особи, гроші й ресурси, джихадистська загроза та вихід до Гвінейської затоки.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%231F2A44'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Georgia,serif' fill='%23E7DCC2' text-anchor='middle'%3EС%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Слід у пісках — Сахель і Африканський корпус">
+<meta property="og:description" content="Інтерактивне досьє про присутність РФ і «Африканського корпусу» в Сахелі: хронологія, ключові особи, гроші й ресурси, джихадистська загроза та вихід до Гвінейської затоки.">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -21,7 +26,9 @@
   --rust-soft: #C9714F;
   --gold: #B98A2E;
   --line: rgba(42, 35, 24, .14);
-  --shadow: 0 1px 0 rgba(0, 0, 0, .05)
+  --shadow: 0 2px 10px rgba(42, 35, 24, .07);
+  --font-serif: 'Bitter', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -99,10 +106,120 @@ a {
   line-height: 1.5
 }
 
+.nav-search-wrap {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.nav-search-input {
+  width: 100%;
+  background: #ffffff0d;
+  border: 1px solid #ffffff1c;
+  border-radius: 8px;
+  padding: 9px 32px 9px 12px;
+  color: #f3eedd;
+  font-family: Manrope, sans-serif;
+  font-size: .85rem;
+  outline: none;
+  transition: border-color .15s ease;
+}
+
+.nav-search-input::placeholder {
+  color: #6e778e;
+}
+
+.nav-search-input:focus {
+  border-color: #ffffff40;
+}
+
+.nav-search-clear {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #8e97ac;
+  cursor: pointer;
+  font-size: .8rem;
+  padding: 6px;
+  display: none;
+}
+
+.nav-search-clear:hover {
+  color: #fff;
+}
+
+.nav-search-empty {
+  font-size: .82rem;
+  color: #6e778e;
+  padding: 10px 4px 16px;
+  line-height: 1.5;
+}
+
+.nav-search-tag {
+  font-size: .6rem;
+  color: #6e778e;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  flex-shrink: 0;
+  margin-left: auto;
+  padding-left: 8px;
+}
+
 .nav-group-label {
   font-size: .72rem;
   color: #6e778e;
   margin: 22px 0 8px 4px
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 4px;
+  background: #ffffff0d;
+  border-radius: 9px;
+  padding: 3px;
+  margin-bottom: 18px
+}
+
+.nav-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  color: #8e97ac;
+  font-family: Manrope, sans-serif;
+  font-size: .78rem;
+  font-weight: 700;
+  padding: 8px 4px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+  white-space: nowrap
+}
+
+.nav-tab:hover {
+  color: #fff
+}
+
+.nav-tab.active {
+  background: #ffffff1c;
+  color: #f3eedd
+}
+
+.nav-tab-panel {
+  display: none
+}
+
+.nav-tab-panel.active {
+  display: block
+}
+
+.nav-subgroup-label {
+  font-size: .68rem;
+  color: #6e778e;
+  margin: 16px 0 6px 4px;
+  text-transform: uppercase;
+  letter-spacing: .04em
 }
 
 .nav-item {
@@ -155,6 +272,80 @@ a {
   margin-top: 16px
 }
 
+.theme-accordion-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  color: #8e97ac;
+  font-family: Manrope, sans-serif;
+  font-size: .82rem;
+  font-weight: 700;
+  padding: 9px 10px;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: background .15s ease, color .15s ease
+}
+
+.theme-accordion-btn:hover {
+  background: #ffffff0f;
+  color: #fff
+}
+
+.theme-accordion-btn .chev {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  transition: transform .18s ease
+}
+
+.theme-accordion-btn.open .chev {
+  transform: rotate(180deg)
+}
+
+.theme-more {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .22s ease
+}
+
+.theme-more.open {
+  max-height: 700px
+}
+
+.anchor-nav {
+  display: flex;
+  gap: 4px;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  padding: 10px 56px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  overflow-x: auto
+}
+
+.anchor-nav button {
+  background: none;
+  border: none;
+  font-family: Manrope, sans-serif;
+  font-weight: 700;
+  font-size: .86rem;
+  color: var(--ink-soft);
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s ease, color .15s ease
+}
+
+.anchor-nav button:hover {
+  background: var(--sand);
+  color: var(--ink)
+}
+
 .mobile-topbar,
 .sidebar-backdrop {
   display: none
@@ -191,6 +382,18 @@ body.sidebar-locked {
   top: 0;
   bottom: 0;
   width: 8px
+}
+
+.hero.hero-country .flagbar {
+  width: 14px
+}
+
+.hero-flagbar-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px
 }
 
 .hero-eyebrow {
@@ -603,6 +806,17 @@ body.sidebar-locked {
   font-size: 1rem
 }
 
+.source-name a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed var(--indigo-line);
+}
+
+.source-name a:hover {
+  color: var(--rust);
+  border-bottom-color: var(--rust);
+}
+
 .source-tags {
   display: flex;
   flex-wrap: wrap;
@@ -821,6 +1035,40 @@ body.sidebar-locked {
   font-size: .85rem;
   color: var(--ink-soft);
   margin: 12px 0 0
+}
+
+.cmp-short {
+  font-weight: 600;
+  color: var(--ink)
+}
+
+.cmp-full {
+  display: none;
+  font-size: .87rem;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  line-height: 1.5
+}
+
+.cmp-full.open {
+  display: block
+}
+
+.cmp-toggle {
+  display: block;
+  background: none;
+  border: none;
+  color: var(--rust);
+  font-family: Manrope, sans-serif;
+  font-weight: 700;
+  font-size: .78rem;
+  padding: 6px 0 0;
+  margin: 0;
+  cursor: pointer
+}
+
+.cmp-toggle:hover {
+  text-decoration: underline
 }
 
 .dossier-grid {
@@ -1079,6 +1327,1150 @@ body.sidebar-locked {
   .dossier-grid {
     padding: 0 24px 40px
   }
+
+  .anchor-nav {
+    position: static;
+    padding: 10px 24px
+  }
+}
+
+/* ==========================================================================
+   ГЕОПОЛІТИЧНИЙ ДАШБОРД (GEOPOLITICAL DASHBOARD)
+   ========================================================================== */
+.dash-container {
+  padding: 24px 32px 48px;
+  background: var(--sand);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dash-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.dash-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  background: rgba(42, 35, 24, 0.05);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+}
+
+.dash-status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #239E46;
+  box-shadow: 0 0 0 3px rgba(35, 158, 70, 0.25);
+  animation: dash-dot-pulse 2s infinite ease-in-out;
+}
+
+@keyframes dash-dot-pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(35, 158, 70, 0.5); }
+  70% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(35, 158, 70, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(35, 158, 70, 0); }
+}
+
+.dash-title-wrap {
+  text-align: center;
+}
+
+.dash-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--indigo-deep);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.dash-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-top: 2px;
+  font-weight: 600;
+}
+
+.dash-user-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.dash-user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--indigo), var(--rust));
+  color: #f3eedd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 0.86rem;
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Map Card */
+.dash-map-card {
+  background: #FCFAF6;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(31, 42, 68, 0.08);
+  margin-bottom: 22px;
+}
+
+.dash-map-viewport {
+  position: relative;
+  width: 100%;
+  height: 560px;
+  background: #F7F3E9;
+  overflow: hidden;
+}
+
+.dash-map-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: transform 0.28s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: grab;
+}
+
+.dash-map-svg:active {
+  cursor: grabbing;
+}
+
+/* Map Controls */
+.dash-map-controls {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 15;
+}
+
+.dash-ctrl-btn {
+  width: 34px;
+  height: 34px;
+  background: #ffffffeb;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--indigo);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.dash-ctrl-btn:hover {
+  background: #fff;
+  border-color: var(--rust);
+  color: var(--rust);
+  transform: translateY(-1px);
+}
+
+/* Map Header Tools */
+.dash-map-header-tools {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  z-index: 15;
+}
+
+.dash-layer-select-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffffeb;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--indigo);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: all 0.15s;
+}
+
+.dash-layer-select-btn:hover {
+  background: #fff;
+  border-color: var(--indigo);
+}
+
+.dash-layer-dropdown {
+  position: absolute;
+  top: 42px;
+  right: 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 0;
+  box-shadow: 0 8px 24px rgba(20, 27, 44, 0.16);
+  min-width: 220px;
+  display: none;
+  z-index: 25;
+}
+
+.dash-layer-dropdown.open {
+  display: block;
+}
+
+.dash-layer-opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.dash-layer-opt:hover {
+  background: var(--card);
+}
+
+.dash-layer-opt.active {
+  color: var(--rust);
+  font-weight: 800;
+  background: rgba(168, 67, 43, 0.08);
+}
+
+.dash-map-legend-card {
+  background: #ffffffeb;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.dash-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+.dash-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ================= AFRICA CONTINENT & SAHEL MAP STYLING ================= */
+.dash-quick-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.dash-qfilter-chip {
+  background: #ffffffeb;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.dash-qfilter-chip:hover {
+  border-color: var(--indigo);
+  color: var(--indigo);
+}
+
+.dash-qfilter-chip.active {
+  background: var(--indigo);
+  border-color: var(--indigo);
+  color: #fff;
+}
+
+.dash-qfilter-chip.active.f-base { background: #1F2A44; }
+.dash-qfilter-chip.active.f-jihad { background: #A8432B; }
+.dash-qfilter-chip.active.f-res { background: #B98A2E; }
+.dash-qfilter-chip.active.f-coast { background: #2E8B7D; }
+.dash-qfilter-chip.active.f-routes { background: #5A1F1A; }
+
+/* Africa Map Paths */
+.africa-country {
+  fill: #D9D0C1;
+  stroke: #B5A895;
+  stroke-width: 0.8;
+  cursor: pointer;
+  transition: fill 0.2s ease, opacity 0.2s ease, stroke 0.2s ease, stroke-width 0.2s ease;
+}
+
+.africa-country:hover {
+  fill: #CFC4B2;
+  opacity: 0.95;
+  stroke: var(--indigo);
+  stroke-width: 1.5;
+}
+
+.africa-country[tabindex]:focus-visible,
+.geo-country[tabindex]:focus-visible {
+  outline: 3px solid var(--rust);
+  outline-offset: 1px;
+}
+
+/* Zone 1: AES / Sahel (Mali, Burkina Faso, Niger) -> Terracotta / Rust #A8432B */
+.africa-country.zone-1, .geo-country.zone-1 {
+  fill: #A8432B !important;
+  stroke: #7B2A17 !important;
+  stroke-width: 1.5 !important;
+}
+
+.africa-country.zone-1:hover, .geo-country.zone-1:hover {
+  fill: #BF4D32 !important;
+  stroke: #4F190D !important;
+}
+
+/* Zone 2: Transit & Influence (Libya, Chad, Sudan, CAR) -> Deep Indigo #1F2A44 */
+.africa-country.zone-2, .geo-country.zone-2 {
+  fill: #1F2A44 !important;
+  stroke: #101726 !important;
+  stroke-width: 1.5 !important;
+}
+
+.africa-country.zone-2:hover, .geo-country.zone-2:hover {
+  fill: #2C3C61 !important;
+  stroke: #0A0F1A !important;
+}
+
+/* Coastal Threat Countries (Benin, Togo, Cote d'Ivoire) */
+.africa-country.zone-coast {
+  fill: #D2DDD6 !important;
+  stroke: #2E8B7D !important;
+  stroke-width: 1.2 !important;
+}
+
+/* Labels on Continent Map */
+.africa-label-zone1 {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: 13px;
+  fill: #FAF4E8;
+  pointer-events: none;
+  filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.5));
+}
+
+.africa-label-zone2 {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: 13px;
+  fill: #FAF4E8;
+  pointer-events: none;
+  filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.5));
+}
+
+.africa-label-neutral {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 10px;
+  fill: #7D7360;
+  pointer-events: none;
+}
+
+/* Year Badge on Map */
+.dash-map-year-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: var(--indigo-deep);
+  color: #FAF4E8;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 800;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.dash-year-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rust-soft);
+  box-shadow: 0 0 6px var(--rust);
+}
+
+/* Logistics Corridors Styling */
+.route-sea {
+  stroke: #0077B6;
+  stroke-width: 2.4;
+  stroke-dasharray: 6 4;
+  fill: none;
+  animation: dash-flow 12s linear infinite;
+}
+
+.route-land {
+  stroke: #E05206;
+  stroke-width: 2.2;
+  stroke-dasharray: 5 4;
+  fill: none;
+  animation: dash-flow 14s linear infinite;
+}
+
+.route-air {
+  stroke: #9D4EDD;
+  stroke-width: 1.8;
+  stroke-dasharray: 3 4;
+  fill: none;
+  animation: dash-flow 10s linear infinite;
+}
+
+.route-weapons {
+  stroke: #A8432B;
+  stroke-width: 2.2;
+  stroke-dasharray: 4 3;
+  fill: none;
+  animation: dash-flow 11s linear infinite;
+}
+
+/* Map Country Styling */
+.geo-water {
+  fill: #E2ECEF;
+}
+
+.geo-grid-line {
+  stroke: #DDD4C0;
+  stroke-dasharray: 4 5;
+  stroke-width: 0.8;
+}
+
+.geo-grid-text {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  fill: #A89C86;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.geo-country {
+  stroke: #7D6B53;
+  stroke-width: 1.3;
+  transition: fill 0.2s ease, opacity 0.2s ease, stroke 0.2s ease;
+  cursor: pointer;
+}
+
+.geo-country:hover {
+  opacity: 0.9;
+  stroke: var(--indigo-deep);
+  stroke-width: 2.2;
+}
+
+.geo-neighbor {
+  fill: #EAE5D9;
+  stroke: #BFB6A4;
+  stroke-width: 1;
+  cursor: default;
+}
+
+.geo-neighbor:hover {
+  opacity: 1;
+}
+
+.geo-country.aes-mali { fill: #EBD6BD; }
+.geo-country.aes-burkina { fill: #E5CAB8; }
+.geo-country.aes-niger { fill: #EFE0C7; }
+.geo-country.geo-libya { fill: #EBE5DB; }
+.geo-country.geo-chad { fill: #DFE8DB; }
+.geo-country.geo-sudan { fill: #EBD7D2; }
+.geo-country.geo-car { fill: #E4DCEB; }
+
+.geo-country-label {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  fill: var(--indigo-deep);
+  pointer-events: none;
+}
+
+.geo-neighbor-label {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 11px;
+  fill: #918671;
+  pointer-events: none;
+}
+
+.geo-capital-dot {
+  fill: #ffffff;
+  stroke: var(--indigo-deep);
+  stroke-width: 1.4;
+  pointer-events: none;
+}
+
+.geo-capital-label {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 9px;
+  letter-spacing: 0.01em;
+  fill: #ffffff;
+  paint-order: stroke;
+  stroke: rgba(20, 27, 44, 0.55);
+  stroke-width: 2.5px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+/* Hotspot Halos */
+.geo-halo {
+  opacity: 0.42;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  animation: halo-pulse 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes halo-pulse {
+  0% { transform: scale(0.95); opacity: 0.32; }
+  100% { transform: scale(1.05); opacity: 0.52; }
+}
+
+/* Map Interactive Pins - Stable No-Jitter Hover */
+.dash-pin {
+  cursor: pointer;
+}
+
+.dash-pin-hit {
+  fill: transparent;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.dash-pin-pulse {
+  pointer-events: none;
+  animation: pin-pulse-ring 2.2s infinite ease-out;
+  transform-origin: center;
+}
+
+.dash-pin-core {
+  transition: r 0.18s cubic-bezier(0.2, 0.8, 0.4, 1), stroke-width 0.18s ease, filter 0.18s ease;
+  pointer-events: none;
+}
+
+.dash-pin:hover .dash-pin-core {
+  r: 8.5;
+  stroke-width: 2.4;
+  filter: drop-shadow(0px 3px 8px rgba(0,0,0,0.5));
+}
+
+@keyframes pin-pulse-ring {
+  0% { r: 5; opacity: 0.8; stroke-width: 1.5; }
+  75% { r: 16; opacity: 0; stroke-width: 0.5; }
+  100% { r: 16; opacity: 0; stroke-width: 0; }
+}
+
+/* Transit routes */
+.dash-route-line {
+  stroke-dasharray: 6 5;
+  animation: dash-flow 15s linear infinite;
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -100; }
+}
+
+/* Tooltip on Map */
+.dash-map-tooltip {
+  position: absolute;
+  z-index: 40;
+  background: var(--indigo-deep);
+  color: #F8F4EB;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 16px 18px;
+  max-width: 340px;
+  box-shadow: 0 12px 34px rgba(20, 27, 44, 0.5);
+  display: none;
+  animation: tooltipIn 0.18s ease-out;
+}
+
+@keyframes tooltipIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dash-tt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.dash-tt-tag {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.dash-tt-close {
+  background: none;
+  border: none;
+  color: #9BA4B7;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.12s;
+}
+
+.dash-tt-close:hover {
+  color: #fff;
+}
+
+.dash-tt-title {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: 1.08rem;
+  color: #FAF5E8;
+  margin-bottom: 4px;
+}
+
+.dash-tt-meta {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  color: var(--rust-soft);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.dash-tt-desc {
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  color: #C3CAD8;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.dash-tt-btn {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  color: #FAF5E8;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.dash-tt-btn:hover {
+  background: var(--rust);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* Horizontal Timeline Scrubber */
+.dash-scrubber-bar {
+  background: #F4EEDF;
+  border-top: 1px solid var(--line);
+  padding: 14px 20px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  user-select: none;
+}
+
+.dash-scrub-nav {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--indigo);
+  flex-shrink: 0;
+  transition: all 0.15s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.dash-scrub-nav:hover {
+  background: var(--indigo);
+  color: #fff;
+  border-color: var(--indigo);
+}
+
+.dash-scrub-track-wrap {
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  position: relative;
+  padding: 12px 0 6px;
+}
+
+.dash-scrub-track {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-width: 900px;
+  height: 54px;
+}
+
+.dash-scrub-line {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 20px;
+  height: 3px;
+  background: #D3C7B2;
+  z-index: 1;
+}
+
+.dash-scrub-node {
+  position: absolute;
+  top: 10px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.15s;
+}
+
+.dash-scrub-node:hover {
+  transform: translateX(-50%) scale(1.18);
+}
+
+.dash-scrub-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FAF6EE;
+  border: 3px solid var(--indigo);
+  transition: all 0.15s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+}
+
+.dash-scrub-node.active .dash-scrub-dot {
+  background: var(--rust);
+  border-color: #fff;
+  box-shadow: 0 0 0 4px var(--rust);
+}
+
+.dash-scrub-year {
+  font-family: var(--font-serif);
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin-top: 6px;
+  white-space: nowrap;
+}
+
+.dash-scrub-label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  position: absolute;
+  top: -18px;
+  white-space: nowrap;
+}
+
+/* 5 Bottom Widgets Grid */
+.dash-widgets-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 38px;
+}
+
+@media(max-width: 1280px) {
+  .dash-widgets-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media(max-width: 860px) {
+  .dash-widgets-grid {
+    grid-template-columns: 1fr;
+  }
+  .dash-map-viewport {
+    height: 440px;
+  }
+}
+
+.dash-widget-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.dash-widget-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(42, 35, 24, 0.3);
+}
+
+.dash-widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.dash-widget-title {
+  font-family: var(--font-serif);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--indigo);
+  line-height: 1.25;
+}
+
+.dash-widget-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: -6px 0 10px;
+  line-height: 1.3;
+}
+
+.dash-widget-more {
+  flex-shrink: 0;
+  font-family: var(--font-sans);
+  color: var(--rust);
+  font-size: 0.78rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.dash-widget-more:hover {
+  text-decoration: underline;
+}
+
+/* Widget 1: Bar chart */
+.dash-barchart {
+  display: flex;
+  align-items: flex-end;
+  height: 125px;
+  gap: 10px;
+  padding: 10px 4px 6px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 10px;
+}
+
+.dash-bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.dash-bar-val {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+}
+
+.dash-bar-fill {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.3s ease, filter 0.15s;
+}
+
+.dash-bar-col:hover .dash-bar-fill {
+  filter: brightness(1.15);
+}
+
+.dash-bar-lbl {
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-top: 5px;
+  text-align: center;
+}
+
+.dash-bar-legend-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+/* Widget 2: Key Players */
+.dash-players-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.dash-player-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 9px;
+  background: #ffffff55;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.15s;
+}
+
+.dash-player-row:hover {
+  background: #fff;
+  border-color: var(--rust);
+  transform: translateX(2px);
+}
+
+.dash-pavatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: 0.74rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.dash-pinfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.dash-pname {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--indigo);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dash-prole {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dash-pchev {
+  font-size: 0.85rem;
+  color: #A8B1C4;
+}
+
+/* Widget 3: Presence Tracker */
+.dash-tracker-body {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.dash-tracker-route {
+  padding: 7px 9px;
+  background: #ffffff66;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--indigo);
+  line-height: 1.35;
+}
+
+.dash-tracker-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 4px;
+}
+
+.dash-stat-label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
+
+.dash-stat-num {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--rust);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.dash-trend-svg {
+  width: 100%;
+  height: 48px;
+  margin-top: 4px;
+}
+
+/* Widget 4: Resource Sites */
+.dash-resource-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(42, 35, 24, 0.08);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+}
+
+.dash-resource-item:last-child {
+  border-bottom: none;
+}
+
+.dash-res-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: var(--indigo);
+}
+
+.dash-res-meta {
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  text-align: right;
+}
+
+/* Widget 5: Recent Updates */
+.dash-updates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.dash-up-item {
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(42, 35, 24, 0.08);
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+.dash-up-item:last-child {
+  border-bottom: none;
+}
+
+.dash-up-item:hover .dash-up-country {
+  color: var(--indigo);
+}
+
+.dash-up-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.dash-up-country {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+
+.dash-up-time {
+  font-size: 0.65rem;
+  color: #8E8470;
+}
+
+.dash-up-txt {
+  font-size: 0.76rem;
+  color: var(--ink);
+  line-height: 1.35;
 }
 </style>
 </head>
@@ -1094,11 +2486,35 @@ body.sidebar-locked {
 <nav class="sidebar" id="sidebar">
 <div class="brand">Слід у пісках</div>
 <div class="brand-sub">Сахель, влада і присутність росії</div>
-<div class="nav-group-label">Розділи</div>
+<div class="nav-search-wrap">
+<input type="text" id="navSearchInput" class="nav-search-input" placeholder="Пошук по сайту…" oninput="handleNavSearch(this.value)" aria-label="Пошук по сайту">
+<button class="nav-search-clear" id="navSearchClear" onclick="clearNavSearch()" aria-label="Очистити пошук">✕</button>
+</div>
+<div id="navSearchResults"></div>
+<div id="navBrowseView">
+<div class="nav-tabs" id="navTabs">
+<button class="nav-tab" data-tab="regions" onclick="switchNavTab('regions')">Регіони</button>
+<button class="nav-tab" data-tab="themes" onclick="switchNavTab('themes')">Наскрізні теми</button>
+<button class="nav-tab" data-tab="reference" onclick="switchNavTab('reference')">Довідники</button>
+</div>
+<div class="nav-tab-panel" id="navPanelRegions">
 <div id="navList"></div>
-<div class="nav-group-label">Наскрізні теми</div>
-<div id="themeNavList"></div>
-<div class="nav-soon">Далі: Судан, Лівія, ЦАР — додамо пізніше.</div>
+<div class="nav-subgroup-label">Інші країни</div>
+<div id="otherNavList"></div>
+</div>
+<div class="nav-tab-panel" id="navPanelThemes">
+<div id="mainThemeNavList"></div>
+<button class="theme-accordion-btn" id="themeAccordionBtn" onclick="toggleThemeAccordion()">
+<span>Ще теми</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="theme-more" id="moreThemeNavList"></div>
+</div>
+<div class="nav-tab-panel" id="navPanelReference">
+<div id="referenceNavList"></div>
+</div>
+</div>
+<div class="nav-soon">Сім країн готово. Далі — не географія, а глибина вже написаного.</div>
 </nav>
 <main class="main" id="main"></main>
 </div>
@@ -1119,7 +2535,11 @@ const FLAGS = {
     timeline: "linear-gradient(90deg,#A8432B,#1F2A44,#B98A2E)",
     ukraine: "linear-gradient(180deg,#0057B7 50%, #FFD700 50%)",
     china: "linear-gradient(135deg,#A8432B,#8E1B1B)",
-    changelog: "linear-gradient(135deg,#3A4A6B,#B98A2E)"
+    changelog: "linear-gradient(135deg,#3A4A6B,#B98A2E)",
+    car: "linear-gradient(180deg,#003082 0 25%, #FFFFFF 25% 50%, #289728 50% 75%, #FFCE00 75% 100%)",
+    libya: "linear-gradient(180deg,#CE1126 0 33%, #000000 33% 66%, #239E46 66% 100%)",
+    sudan: "linear-gradient(180deg,#D21034 0 33%, #FFFFFF 33% 66%, #000000 66% 100%)",
+    chad: "linear-gradient(90deg,#002664 0 33%, #FECB00 33% 66%, #C60C30 66% 100%)"
   },
   ICONS = {
     compare: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -1218,6 +2638,61 @@ const FLAGS = {
     linkId: "niger",
     linkLabel: "Розділ про Нігер →",
     bio: ["З 2015 року командував президентською гвардією Нігеру — постом, який AFP свого часу описувало як роль «найтаємничішого» силовика країни. У 2021-му саме його підрозділ зірвав спробу перевороту напередодні інавгурації Мохамеда Базума.", "26 липня 2023 року очолив уже власний заколот: гвардія заблокувала й затримала Базума, який відтоді залишається під вартою. Чіані очолив перехідну Національну раду порятунку батьківщини, а в березні 2025 року формально став президентом Нігеру."]
+  }, {
+    id: "haftar",
+    name: "Халіфа Хафтар",
+    role: "Командувач Лівійської національної армії (ЛНА)",
+    dates: "нар. 1943",
+    avatarBg: "linear-gradient(135deg,#CE1126,#239E46)",
+    initials: "ХХ",
+    tags: ["Лівія", "ЛНА"],
+    linkId: "libya",
+    linkLabel: "Розділ про Лівію →",
+    bio: ["Польовий командир, учасник повалення короля Ідріса I у 1969 році разом з Каддафі, а згодом його союзник — до невдалого чадського походу 1987 року, після якого емігрував до США й понад двадцять років прожив у Вірджинії неподалік штаб-квартири ЦРУ. Повернувся до Лівії після падіння Каддафі в 2011 році й очолив Лівійську національну армію (ЛНА), яка контролює схід і південь країни, протистоячи визнаному ООН Уряду національної єдності в Триполі.", "З 2018–2019 років спирається на підтримку «Вагнера» — снайперів, мінерів, засобів ППО — під час невдалого наступу на Триполі 2019 року. Останніми роками присутність вагнерівців на його території трансформувалась у державний «Африканський корпус», а сини Хафтара, Саддам і Халед, дедалі відкритіше борються за контроль над цими зв'язками з Кремлем — у травні 2025 року сам Хафтар особисто їздив до москви."]
+  }, {
+    id: "burhan",
+    name: "Абдель Фаттах аль-Бурхан",
+    role: "Голова Перехідної суверенної ради, командувач SAF",
+    dates: "нар. 1960",
+    avatarBg: "linear-gradient(135deg,#D21034,#000000)",
+    initials: "АБ",
+    tags: ["Судан", "SAF"],
+    linkId: "sudan",
+    linkLabel: "Розділ про Судан →",
+    bio: ["Кар'єрний військовий, що зробив собі ім'я під час придушення повстання в Дарфурі в 2000-х. Очолив Перехідну військову раду після повалення Омара аль-Башира в 2019 році, а відтак — Перехідну суверенну раду, ставши де-факто головою держави. Формально ділив владу з цивільним урядом, але у жовтні 2021-го здійснив військовий переворот, остаточно відсунувши цивільних політиків.", "15 квітня 2023 року боротьба за контроль над армією між Бурханом і його колишнім заступником Хемедті переросла у відкриту громадянську війну. Після початкового зближення «Вагнера» з супротивником RSF, москва поступово розвернулась у бік Бурхана в обмін на постачання зброї й обіцянку військово-морської бази на Червоному морі. У травні 2025 року армія Бурхана відвоювала область Хартум, а в січні 2026-го уряд остаточно повернувся до столиці з тимчасового Порт-Судану."]
+  }, {
+    id: "hemedti",
+    name: "Мохамед Хамдан Дагало «Хемедті»",
+    role: "Лідер Сил швидкого реагування (RSF)",
+    dates: "нар. 1975",
+    avatarBg: "linear-gradient(135deg,#5A503E,#D21034)",
+    initials: "МХ",
+    tags: ["Судан", "RSF"],
+    linkId: "sudan",
+    linkLabel: "Розділ про Судан →",
+    bio: ["Вихідець із арабського кочового племені у Дарфурі, розбагатів на контрабанді верблюдів і золота, перш ніж очолити ополчення «джанджавід», яке уряд Башира використовував для придушення повстання в Дарфурі в 2000-х — операції, які правозахисники й донині кваліфікують як геноцид. У 2013 році ополчення офіційно легалізували як Сили швидкого реагування (RSF), підпорядковані напряму президенту.", "Саме через доступ RSF до золотих копалень Дарфуру «Вагнер» тренував бійців Хемедті ще з 2017–2018 років і спершу підтримав RSF, коли 15 квітня 2023 року війна за владу з Бурханом стала відкритою. Попри це, RSF головним чином спирається на постачання зброї, дронів і бронетехніки з ОАЕ. Після дворічної облоги RSF захопила Ель-Фашер, столицю Північного Дарфуру, у жовтні 2025 року, консолідувавши контроль над більшою частиною регіону, — але армія тим часом відвоювала центр країни, і війна станом на середину 2026-го зайшла у глухий кут."]
+  }, {
+    id: "deby",
+    name: "Махамат Ідрісс Дебі Ітно",
+    role: "Президент Чаду",
+    dates: "нар. 1984",
+    avatarBg: "linear-gradient(135deg,#002664,#FECB00)",
+    initials: "МД",
+    tags: ["Чад", "Без «Вагнера»"],
+    linkId: "chad",
+    linkLabel: "Розділ про Чад →",
+    bio: ["Син багаторічного президента Ідріса Дебі, генерал, який очолив президентську гвардію. Прийшов до влади без виборів у квітні 2021 року — одразу після того, як його батько загинув у бою з лівійськими повстанцями, через день після переобрання на шостий термін. Формалізував владу через конституційний референдум у грудні 2023-го, а в травні 2024-го виграв вибори з результатом близько 61% на тлі бойкоту опозиції; за кілька місяців до голосування силовики вбили його головного суперника й двоюрідного брата Ясена Ділло.", "На відміну від інших лідерів цього переліку, у Чаду немає підтвердженої присутності «Вагнера» чи «Африканського корпусу» на землі — Дебі свідомо балансує між усіма гравцями одразу: у січні 2024-го здійснив перший за понад півстоліття візит чадського президента до москви, але вже за рік тихо розірвав багаторічне військове партнерство із Заходом, прийнявши передачу останньої французької бази в січні 2025-го."]
+  }, {
+    id: "touadera",
+    name: "Фостен-Аршанж Туадера",
+    role: "Президент ЦАР",
+    dates: "нар. 1957",
+    avatarBg: "linear-gradient(135deg,#003082,#289728)",
+    initials: "ФТ",
+    tags: ["ЦАР", "3-й термін"],
+    linkId: "car",
+    linkLabel: "Розділ про ЦАР →",
+    bio: ["Математик і колишній прем'єр-міністр, обраний президентом ЦАР у 2016 році на тлі громадянської війни між коаліціями Селека та анти-балака. Невдовзі після обрання почав спиратися на бійців «Вагнера», які з 2017–2018 років тренували армію, охороняли президента й отримали доступ до найбільшого золотого родовища країни — Ндассіми.", "У грудні 2020-го, напередодні виборів, колишні повстанці намагалися силою зірвати голосування — «Вагнер» і руандійські війська відбили наступ, і Туадера переобрався. Референдум 30 липня 2023 року скасував дворічний ліміт президентських термінів, а в грудні 2025-го Туадера, спираючись на нову конституцію, утретє переміг на виборах — ставши, за оцінкою правозахисників, одним з найзалежніших від росії лідерів континенту."]
   }],
   PROLOGUE_TIMELINE = [{
     year: "2013",
@@ -1254,13 +2729,34 @@ const FLAGS = {
     independence: "1960, від Франції",
     language: "французька (офіційна), бамбара",
     compare: {
-      coups: "2 — серпень 2020 і травень 2021 (обидва рази в центрі подій Ассімі Гойта)",
-      corps: "2025 — офіційний перехід від «Вагнера»; підрозділи «Африканського корпусу» фіксують у країні вже з 2023–2024",
-      resources: "Золото — один з провідних виробників у Африці; контроль над видобувною галуззю — головний предмет торгу хунти з партнерами",
-      security: "З вересня 2025-го JNIM тримає паливну блокаду навколо Бамако (спалено 300+ автоцистерн, США й Британія закликали громадян виїхати); у квітні 2026-го джихадисти й туарезькі повстанці взяли Кідаль і одночасно атакували кілька міст",
-      delays: "Вибори лютого 2024-го — обіцяні на 24-місячний перехід — перенесено у вересні 2023-го «з технічних причин»; конкретної дати відтоді не називали, а в липні 2025-го парламент дав Гойті поновлюваний 5-річний мандат узагалі без виборів",
-      parties: "У квітні 2024-го діяльність партій призупиняли на три місяці; 30 квітня 2025-го Рада міністрів ухвалила повну заборону, а 7 травня підписано указ про безстрокове призупинення",
-      opposition: "У травні 2025-го поліція не пустила опозицію на власний з’їзд у Палаці культури Бамако; за даними Human Rights Watch, активістів і критиків викрадають, змушують до вигнання чи затримують"
+      coups: {
+        short: "2 — серпень 2020 і травень 2021",
+        full: "Обидва рази перевороти очолював Ассімі Гойта: спершу проти президента Ібрагіма Бубакара Кейта, потім — проти власних цивільних партнерів по перехідному уряду."
+      },
+      corps: {
+        short: "З 2025-го — офіційно «Африканський корпус»",
+        full: "Формальний перехід від «Вагнера» відбувся у 2025 році, але підрозділи «Африканського корпусу» фіксували в країні вже з 2023–2024 років."
+      },
+      resources: {
+        short: "Золото — один з провідних виробників у Африці",
+        full: "Контроль над видобувною галуззю — головний предмет торгу хунти з новими й старими партнерами."
+      },
+      security: {
+        short: "Паливна блокада Бамако з вересня 2025-го",
+        full: "JNIM тримає блокаду навколо столиці (спалено 300+ автоцистерн, США й Британія закликали громадян виїхати); у квітні 2026-го джихадисти й туарезькі повстанці взяли Кідаль і одночасно атакували кілька міст."
+      },
+      delays: {
+        short: "Вибори перенесено, нової дати немає",
+        full: "Обіцяний на лютий 2024-го 24-місячний перехід перенесли ще у вересні 2023-го «з технічних причин»; у липні 2025-го парламент і зовсім дав Гойті поновлюваний 5-річний мандат без виборів."
+      },
+      parties: {
+        short: "Повна заборона з квітня–травня 2025-го",
+        full: "Діяльність партій спершу призупинили на три місяці в квітні 2024-го, а 30 квітня 2025-го Рада міністрів ухвалила безстрокову заборону, закріплену указом 7 травня."
+      },
+      opposition: {
+        short: "Активістів переслідують, з’їзди розганяють",
+        full: "У травні 2025-го поліція не пустила опозицію на власний з’їзд у Палаці культури Бамако; за даними Human Rights Watch, критиків викрадають, змушують до вигнання чи затримують."
+      }
     },
     intro: ["Малі — країна, з якої почалася нинішня хвиля військових режимів у Сахелі. Ще з 2012 року північ країни контролювали туарезькі сепаратисти й джихадистські угруповання, а французька армія роками намагалася стримати їх операціями «Сервал» і «Бархан».", "Невдоволення армії ходом війни та звинувачення президента Ібрагіма Бубакара Кейта в корупції й фальсифікаціях призвели до перевороту в серпні 2020 року. Дев’ять місяців потому, у травні 2021-го, той самий військовий гурток здійснив другий, внутрішній переворот: полковник Ассімі Гойта, віцепрезидент перехідного уряду, усунув цивільного президента й прем’єра перехідного періоду та очолив країну сам."],
     order: ["Гойта з 2021 року офіційно є «президентом перехідного періоду» — посада, яка мала бути тимчасовою, але вибори неодноразово переносили. У 2024 році ухвалили нову перехідну хартію, яка де-факто дає йому право керувати без чіткої дати виборів.", "Діяльність партій уперше призупинили указом у квітні 2024 року на три місяці; остаточну й безстрокову заборону Рада міністрів ухвалила 30 квітня 2025-го, а тиждень по тому парламент дав Гойті поновлюваний 5-річний президентський мандат без потреби в будь-яких виборах. Публічна діяльність опозиції заборонена, незалежні медіа працюють під тиском. Влада тримається на армії, особистій присутності Гойти в інформаційному просторі та наративі про «повернутий суверенітет» — риторику, яку активно підсилює й російська пропаганда."],
@@ -1341,13 +2837,34 @@ const FLAGS = {
     independence: "1960, від Франції",
     language: "французька (офіційна), мооре — найпоширеніша розмовна",
     compare: {
-      coups: "2 — січень і вересень 2022 (Даміба, потім Траоре)",
-      corps: "Січень 2024",
-      resources: "Золото — третій за обсягом виробник в Африці (94 тонни у 2025-му, рекордний рік); головне джерело бюджетних надходжень, частину копалень націоналізовано",
-      security: "JNIM та ІД «Сахель», за різними оцінками, контролюють від третини до двох третин території; за Глобальним індексом тероризму країна — епіцентр тероризму у світі; десятки міст в облозі, мільйони цивільних постраждали",
-      delays: "Вибори липня 2024-го — обіцяні на 21-місячний перехід — національний діалог у травні 2024-го одразу переніс до 2029 року; виборчу комісію розпущено в липні 2025-го",
-      parties: "Партії заборонили брати участь у публічній діяльності одразу після перевороту 2022-го, а 29 січня 2026-го указом розпустили остаточно — з передачею активів державі",
-      opposition: "У квітні 2025-го Траоре заявив, що країна «більше не в демократії»; за оцінкою CIVICUS, критиків, журналістів і навіть військових примусово мобілізують на фронт проти джихадистів"
+      coups: {
+        short: "2 — січень і вересень 2022",
+        full: "Січень: підполковник Даміба усунув президента Каборе. Вересень: капітан Ібрагім Траоре, якому було 34 роки, скинув самого Дамібу."
+      },
+      corps: {
+        short: "Січень 2024",
+        full: "Розгортання «Африканського корпусу» почалося вже за півтора року після другого перевороту."
+      },
+      resources: {
+        short: "Золото — 3-й виробник в Африці",
+        full: "94 тонни у 2025-му, рекордний рік; головне джерело бюджету, частину копалень націоналізовано."
+      },
+      security: {
+        short: "Епіцентр тероризму у світі",
+        full: "JNIM та ІД «Сахель» контролюють, за різними оцінками, від третини до двох третин території; десятки міст в облозі, мільйони цивільних постраждали."
+      },
+      delays: {
+        short: "Перехід продовжено до 2029-го",
+        full: "Обіцяні на липень 2024-го вибори національний діалог одразу переніс на п’ять років уперед; виборчу комісію розпустили в липні 2025-го."
+      },
+      parties: {
+        short: "Остаточний розпуск у січні 2026-го",
+        full: "Партії обмежили в публічній діяльності одразу після перевороту 2022-го, а 29 січня 2026-го указом розпустили остаточно, передавши активи державі."
+      },
+      opposition: {
+        short: "«Більше не в демократії» — сам Траоре",
+        full: "У квітні 2025-го Траоре сам це визнав; за оцінкою CIVICUS, критиків і навіть військових примусово мобілізують на фронт проти джихадистів."
+      }
     },
     intro: ["Буркіна-Фасо пережила два перевороти впродовж одного 2022 року. У січні підполковник Поль-Анрі Сандаого Даміба усунув президента Роша Каборе, звинувативши уряд у нездатності зупинити джихадистський наступ — на той момент держава фактично не контролювала значну частину території країни.", "Але вже у вересні того ж року капітан Ібрагім Траоре, якому було лише 34 роки, скинув самого Дамібу, заявивши, що той не впорався із завданням і надто тісно пов’язаний із Францією. Траоре став наймолодшим на той момент главою держави в Африці."],
     order: ["Траоре править указами, вибори відкладені: у травні 2024 року перехідний період продовжили ще на п’ять років, орієнтовно до 2029-го, а виборчу комісію розпустили в липні 2025-го. 29 січня 2026 року указом розпущено й самі політичні партії, їхні активи передано державі. Опозиційні голоси, журналістів і навіть критично налаштованих військових, за даними правозахисних організацій, під приводом мобілізації відправляють на передову проти джихадистів.", "Публічний образ Траоре свідомо будують на паралелях із Тома Санкарою — соціалістичним лідером Буркіна-Фасо 1980-х, символом панафриканізму та антиколоніалізму. Ця риторика — про «повернутий суверенітет» і розрив із колишньою метрополією — добре узгоджується з наративами, які просуває російська пропаганда в регіоні."],
@@ -1419,13 +2936,34 @@ const FLAGS = {
     independence: "1960, від Франції",
     language: "французька (офіційна), хауса та джерма — найпоширеніші розмовні",
     compare: {
-      coups: "1 — 26 липня 2023 (президентська гвардія проти Базума)",
-      corps: "Квітень 2024",
-      resources: "Уран — багаторічний контракт із французькою Orano (колишня Areva); після перевороту частину видобувних ліцензій відкликано",
-      security: "ISSP і JNIM посилюють атаки навколо Ніамея, зокрема на авіабазу й аеропорт; майже мільйон переселенців, кількість інцидентів зросла на 18% у 2025 році",
-      delays: "Спершу обіцяний трирічний перехід ЕКОВАС визнав недостатнім; національна конференція в лютому 2025-го продовжила його до п’яти років — фактично до 2030-го",
-      parties: "Усі партії розпущено указом 26 березня 2025-го — того самого дня, коли Чіані привели до присяги як «президента республіки» за новою Хартією відродження",
-      opposition: "Повалений президент Мохамед Базум від липня 2023-го лишається під вартою без суду; партії не брали участі в розробці нової хартії"
+      coups: {
+        short: "1 — 26 липня 2023-го",
+        full: "Президентська гвардія на чолі з генералом Чіані заблокувала й затримала президента Мохамеда Базума."
+      },
+      corps: {
+        short: "Квітень 2024",
+        full: "Перші підрозділи «Африканського корпусу» з’явилися менш ніж за рік після перевороту."
+      },
+      resources: {
+        short: "Уран — контракт із французькою Orano",
+        full: "Багаторічна угода з колишньою Areva; після перевороту частину видобувних ліцензій відкликано."
+      },
+      security: {
+        short: "Атаки навколо Ніамея посилюються",
+        full: "ISSP і JNIM б’ють по авіабазі й аеропорту столиці; майже мільйон переселенців, кількість інцидентів зросла на 18% у 2025-му."
+      },
+      delays: {
+        short: "Перехід продовжено до 2030-го",
+        full: "Обіцяний трирічний термін ЕКОВАС визнав недостатнім; національна конференція в лютому 2025-го продовжила його до п’яти років."
+      },
+      parties: {
+        short: "Усі партії розпущено 26 березня 2025-го",
+        full: "Указ підписали того самого дня, коли Чіані привели до присяги як «президента республіки» за новою Хартією відродження."
+      },
+      opposition: {
+        short: "Базум під вартою без суду",
+        full: "Повалений президент лишається затриманим від липня 2023-го; партії не брали участі в розробці нової хартії."
+      }
     },
     intro: ["До липня 2023 року Нігер вважався останнім надійним партнером Заходу в Сахелі: там базувалися французькі та американські війська, зокрема велика база безпілотників поблизу Агадеса, побудована США за понад 100 мільйонів доларів.", "26 липня 2023 року командувач президентської гвардії генерал Абдурахман Чіані заблокував і затримав президента Мохамеда Базума, обраного демократичним шляхом. Базум відтоді залишається під вартою. ЕКОВАС погрожував військовим втручанням і ввів санкції, але зрештою на інтервенцію не наважився."],
     order: ["Чіані очолив «Національну раду порятунку батьківщини» (CNSP) і спочатку обіцяв трирічний перехідний період без чіткого графіку виборів — ЕКОВАС визнав його недостатнім. У січні 2024 року Нігер разом з Малі та Буркіна-Фасо оголосив про вихід з ЕКОВАС, а згодом — про вступ до Альянсу держав Сахелю. Крапку в питанні строку поставила Національна конференція з відродження в лютому 2025-го: 26 березня того ж року Чіані привели до присяги вже як «президента республіки» за новою Хартією відродження, розрахованою на п’ять років — і того самого дня указом розпустили всі політичні партії.", "Уран — головний козир Нігеру: країна десятиліттями постачала сировину для французької атомної енергетики через компанію Orano (колишня Areva). Після перевороту хунта почала переглядати й відкликати видобувні ліцензії французької компанії — ще один символічний розрив із колишньою метрополією."],
@@ -1485,8 +3023,368 @@ const FLAGS = {
     }]
   }];
 
+const OTHER_COUNTRIES = [{
+  id: "car",
+  name: "ЦАР",
+  flagKey: "car",
+  eyebrow: "Перша країна «Вагнера» в Африці · поза Сахелем",
+  capital: "Бангі",
+  population: "≈ 5,4 млн (2025)",
+  area: "622 980 км²",
+  independence: "13 серпня 1960, від Франції",
+  language: "французька (офіційна), санго (національна, найпоширеніша розмовна)",
+  intro: [
+    "Центральноафриканська Республіка — країна, з якої «Вагнер» почав свою африканську історію ще у 2017–2018 роках, за три роки до появи в Малі. Тут російська приватна армія випробувала модель, яку згодом повторить у всьому Сахелі: захист режиму в обмін на доступ до родовищ.",
+    "Ще з 2013 року країна тонула в міжусобній війні: коаліція Селека, переважно мусульманська, повалила президента Франсуа Бозізе, що спровокувало відповідь християнських ополчень анти-балака. Франція ввела війська (операція «Сангаріс», 2013–2016), а ООН розгорнула миротворчу місію MINUSCA, яка працює й досі. У 2016 році президентом обрали Фостена-Аршанжа Туадеру — і майже одразу Франція почала скорочувати присутність."
+  ],
+  order: [
+    "У грудні 2020 року, напередодні президентських виборів, колишні повстанці об’єдналися в Коаліцію патріотів за зміни (CPC) — до неї приєднався і повалений експрезидент Бозізе — і спробували зірвати голосування наступом на Бангі. Уряд запросив бійців «Вагнера», які на той час уже кілька років тренували армію й охороняли Туадеру; разом з руандійськими військами вони відбили наступ, і Туадера переобрався на другий термін.",
+    "30 липня 2023 року в країні провели конституційний референдум: за офіційними даними, понад 95% голосів (на тлі бойкоту опозиції й низької явки) підтримали скасування дворічного ліміту президентських термінів і подовження мандата з п’яти до семи років. У грудні 2025-го Туадера, спираючись на нову конституцію, утретє переміг на виборах — ставши, за оцінкою правозахисників і Заходу, одним із найбільш залежних від росії лідерів на континенті."
+  ],
+  timeline: [{
+    year: "2017–2018",
+    title: "Перші радники й зброя",
+    text: "росія підписує з Бангі угоду про військову допомогу; перші інструктори «Вагнера» з’являються як охорона президента й тренери армії — за кілька років до Малі."
+  }, {
+    year: "2018",
+    title: "Угода про Ндассіму",
+    text: "Компанія Midas Resources, пов’язана з «Вагнером» і зареєстрована на Мадагаскарі, отримує ексклюзивні права на найбільше золоте родовище країни — Ндассіму, за 450 км від Бангі."
+  }, {
+    year: "2020, грудень",
+    title: "Вибори під наступом",
+    text: "Коаліція CPC (колишні повстанці й екс-президент Бозізе) атакує напередодні виборів; «Вагнер» і руандійські війська відбивають наступ, Туадера переобирається на другий термін."
+  }, {
+    year: "2022",
+    title: "Мільярд з надр",
+    text: "За розслідуванням Politico, видобуток на Ндассімі розширюється до восьми виробничих зон і може приносити «Вагнеру» до мільярда доларів на рік; об’єкт укріплюють зенітними установками на вантажівках."
+  }, {
+    year: "2022, кінець",
+    title: "Останній француз іде",
+    text: "Франція завершує символічну логістичну місію, що лишалася після виведення «Сангаріс» — військова присутність Парижа в країні закінчується остаточно."
+  }, {
+    year: "2023, 30 липня",
+    title: "Референдум про обнулення термінів",
+    text: "Понад 95% голосів підтримують нову конституцію: ліміт у два терміни скасовано, мандат подовжено з п’яти до семи років."
+  }, {
+    year: "2023, серпень",
+    title: "Смерть Пригожина й перехід під державу",
+    text: "Після загибелі засновника «Вагнера» контроль над африканськими активами поступово переходить під Міноборони росії — але в ЦАР, на відміну від Малі, цей перехід виявляється неповним."
+  }, {
+    year: "2025",
+    title: "Наркоімперія на Убангі",
+    text: "За розслідуванням The Wall Street Journal, близько 500 колишніх вагнерівців лишаються у верхів’ях річки Убангі поза прямим контролем Кремля — і будують бізнес на контрабанді трамадолу, постачаючи його президентській гвардії та молодіжному ополченню Sharks."
+  }, {
+    year: "2025, листопад",
+    title: "«Ротація», а не вихід",
+    text: "З’являються повідомлення про виїзд кількох сотень найманців; влада ЦАР наполягає, що це планова ротація, а не згортання російської присутності."
+  }, {
+    year: "2025, грудень",
+    title: "Третій термін Туадери",
+    text: "Спираючись на конституцію 2023 року, Туадера втретє перемагає на президентських виборах."
+  }],
+  slides: [{
+    title: "Перша, а не третя",
+    text: "«Вагнер» зайшов у ЦАР ще в 2017–2018 роках — за три роки до Малі. Модель «безпека в обмін на надра» тут відпрацювали першою.",
+    stat: "2017–2018"
+  }, {
+    title: "Ндассіма: копальня за лояльність",
+    text: "З 2018 року найбільше золоте родовище країни контролює пов’язана з «Вагнером» компанія, зареєстрована на Мадагаскарі."
+  }, {
+    title: "Вибори під наступом",
+    text: "У грудні 2020-го колишні повстанці намагалися зірвати голосування силою — «Вагнер» і Руанда відбили наступ, Туадера втримав владу."
+  }, {
+    title: "Обнулення термінів",
+    text: "Референдум 2023 року прибрав ліміт у два терміни й подовжив мандат президента до семи років — за зразком, добре знайомим із росії.",
+    stat: "95%+ «за»"
+  }, {
+    title: "Найзалежніший лідер континенту",
+    text: "У грудні 2025-го Туадера виборов третій термін — спираючись на найдовшу й найглибшу залежність від росії серед усіх глав держав Африки."
+  }, {
+    title: "Коли Кремль втрачає контроль",
+    text: "Частина колишніх вагнерівців у ЦАР, за даними WSJ, діє вже поза прямим підпорядкуванням москви — заробляючи на контрабанді наркотиків, а не на державних контрактах."
+  }],
+  sourceNote: "Джерела: Reuters, Politico, The Wall Street Journal, BBC, Deutsche Welle, Радіо Свобода, Human Rights Watch, Wikipedia. Дані про вибори, референдум і хронологію станом на кінець 2025 — початок 2026 року."
+}, {
+  id: "libya",
+  name: "Лівія",
+  flagKey: "libya",
+  eyebrow: "Точка входу «Вагнера» разом із Суданом · логістичний хаб «Африканського корпусу» для всього Сахелю",
+  capital: "Триполі (де-факто; країна розділена між Триполі й Тобруком)",
+  population: "≈ 7,4 млн (2025)",
+  area: "1 759 540 км²",
+  independence: "24 грудня 1951, від Італії (під егідою ООН)",
+  language: "арабська (офіційна)",
+  intro: [
+    "Лівія — одна з двох найперших африканських точок «Вагнера», поряд із Суданом: приватна армія почала підтримувати східного командувача Халіфу Хафтара ще у 2018–2019 роках, за кілька років до появи в Сахелі. Після падіння Каддафі в 2011 році країна фактично розкололася надвоє — Уряд національної єдності (GNU) у Триполі на заході, підтримуваний Туреччиною, і Хафтар з Лівійською національною армією (ЛНА) на сході й півдні, за яким стоять росія, ОАЕ й Єгипет.",
+    "У квітні 2019 року Хафтар почав наступ на Триполі; «Вагнер» надав снайперів, саперів і засоби ППО. Наступ провалився під тиском турецької військової підтримки уряду в Триполі, і в жовтні 2020 року сторони підписали угоду про припинення вогню, яка вимагала виведення всіх іноземних бійців і найманців протягом трьох місяців — вимогу, яку жодна зі сторін так і не виконала."
+  ],
+  order: [
+    "Спільна військова комісія «5+5» мала контролювати виведення іноземних сил, але за п'ять років домоглася лише символічного прогресу. Натомість після падіння режиму Асада в Сирії в грудні 2024 року Лівія — і насамперед підконтрольна Хафтару авіабаза Аль-Джуфра — перетворилася на головний вузол пересадки для росіян, що евакуювалися з Сирії, а порт Тобрука де-факто став російською логістичною базою.",
+    "Навесні 2024 року Міноборони росії почало замінювати вагнерівців у Лівії власним «Африканським корпусом», з квітня перекинувши туди 1–1,5 тисячі бійців і близько 6 тисяч тонн техніки через Тобрук. Без території під контролем Хафтара логістично неможливі й ротації «Африканського корпусу» в Малі, Нігері та Буркіна-Фасо — Лівія стала транзитним хабом для всього Сахелю. У травні 2025 року Хафтар їздив до москви, а серед аналітиків дедалі частіше обговорюють суперництво його синів Саддама й Халеда за контроль над зв'язками з Кремлем."
+  ],
+  timeline: [{
+    year: "2011",
+    title: "Падіння Каддафі і розкол країни",
+    text: "Повалення й вбивство Муаммара Каддафі під час громадянської війни залишає Лівію без єдиної влади; протистояння між заходом і сходом країни триває й дотепер."
+  }, {
+    year: "2014–2017",
+    title: "Друга громадянська війна",
+    text: "Схід і захід країни ведуть паралельні уряди й армії; генерал Халіфа Хафтар очолює Лівійську національну армію (ЛНА) на сході, спираючись на підтримку ОАЕ, Єгипту та згодом росії."
+  }, {
+    year: "2018–2019",
+    title: "Перші вагнерівці біля Хафтара",
+    text: "За повідомленнями, бійці «Вагнера» починають підтримувати ЛНА — постачання зброї, інструктори, згодом снайпери."
+  }, {
+    year: "2019, квітень",
+    title: "Наступ на Триполі",
+    text: "Хафтар починає масштабний наступ на столицю; «Вагнер» надає снайперів, мінно-вибухових фахівців і засоби протиповітряної оборони. Наступ захлинається під тиском турецької військової підтримки уряду в Триполі."
+  }, {
+    year: "2020, жовтень",
+    title: "Угода про припинення вогню",
+    text: "Сторони підписують угоду, яка вимагає виведення всіх іноземних бійців і найманців протягом трьох місяців. Вимогу не виконує жодна сторона; спільна комісія «5+5» роками фіксує лише символічний прогрес."
+  }, {
+    year: "2022",
+    title: "Присутність у Сирті",
+    text: "Спостерігачі фіксують російські підрозділи в аеропорту Сирт-Інтернешнл біля авіабази Аль-Кардабія — ще один опорний пункт у центральній Лівії."
+  }, {
+    year: "2023, липень",
+    title: "Постачання зброї в Судан через Лівію",
+    text: "Вагнерівці використовують авіабазу Таманхінт для військових операцій і переправлення зброї з арсеналів ЛНА силам RSF у Судані — Хафтар «перенаправляє» постачання союзнику по інший бік кордону."
+  }, {
+    year: "2024, квітень",
+    title: "«Африканський корпус» заходить у Лівію",
+    text: "Міноборони росії перекидає в південну Лівію 1000–1500 бійців, переважно колишніх вагнерівців, і близько 6 тисяч тонн техніки через порт Тобрука — офіційна заміна приватної армії державною структурою."
+  }, {
+    year: "2024, грудень",
+    title: "Падіння Асада перетворює Лівію на транзитний вузол",
+    text: "Після втрати авіабази Хмеймім і порту Тартус у Сирії росія евакуює частину персоналу й техніки через Лівію; Тобрук де-факто стає новою логістичною базою, а Аль-Джуфра — штабом «Африканського корпусу»."
+  }, {
+    year: "2025, травень",
+    title: "Хафтар у москві",
+    text: "Хафтар особисто відвідує москву — аналітики пов'язують візит із торгом навколо ролі його синів у майбутньому «Африканського корпусу» в регіоні."
+  }, {
+    year: "2025–2026",
+    title: "Логістичний хаб для всього Сахелю",
+    text: "Авіабаза Матан-ес-Сарра біля кордонів з Чадом і Суданом отримує нове покриття злітної смуги; супутникові знімки фіксують поетапне розширення інфраструктури — Лівія консолідується як транзитний коридор для ротацій «Африканського корпусу» в Малі, Нігері, Буркіна-Фасо й ЦАР."
+  }],
+  slides: [{
+    title: "Точка входу разом із Суданом",
+    text: "«Вагнер» прийшов до Хафтара ще у 2018–2019 роках — практично одночасно з Суданом, за кілька років до Сахелю.",
+    stat: "2018–2019"
+  }, {
+    title: "Наступ на Триполі",
+    text: "Квітень 2019-го: снайпери й ППО «Вагнера» підтримують провальний наступ Хафтара на столицю."
+  }, {
+    title: "Угода, яку ніхто не виконав",
+    text: "Жовтень 2020-го: угода про виведення іноземних бійців за три місяці — досі не виконана жодною стороною.",
+    stat: "Жовтень 2020"
+  }, {
+    title: "Транзитний вузол після Сирії",
+    text: "Після падіння Асада в грудні 2024-го Тобрук де-факто стає російською логістичною базою, а Аль-Джуфра — штабом «Африканського корпусу»."
+  }, {
+    title: "Хаб для всього Сахелю",
+    text: "Без території Хафтара ротації «Африканського корпусу» в Малі, Нігері й Буркіна-Фасо логістично неможливі — Лівія стала транзитним коридором для всього регіону."
+  }, {
+    title: "Постачання RSF в обхід кордону",
+    text: "Ще 2023 року вагнерівці переправляли зброю з арсеналів ЛНА силам RSF у Судані через авіабазу Таманхінт — лівійський і суданський сюжети переплетені напряму."
+  }],
+  sourceNote: "Джерела: Congressional Research Service, Bloomsbury Intelligence and Security Institute, Riddle Russia, Tearline/Vantor, Responsible Statecraft, Al Jazeera, Wikipedia. Дані про дислокацію й хронологію станом на середину 2026 року."
+}, {
+  id: "sudan",
+  name: "Судан",
+  flagKey: "sudan",
+  eyebrow: "Найстаріша й найприбутковіша африканська точка «Вагнера» · нині — епіцентр громадянської війни",
+  capital: "Хартум (конституційна; з серпня 2023 по січень 2026 уряд фактично працював з Порт-Судану)",
+  population: "≈ 51 млн (2025)",
+  area: "1 886 068 км²",
+  independence: "1 січня 1956, від Великої Британії та Єгипту",
+  language: "арабська, англійська (обидві офіційні)",
+  intro: [
+    "Судан — разом з Лівією одна з найперших африканських точок «Вагнера»: угоди про військову допомогу росія уклала з режимом Омара аль-Башира ще у 2017 році, а з 2018-го інструктори «Вагнера» під прикриттям компанії «M Invest» почали тренувати водночас і регулярну армію (SAF), і воєнізовані Сили швидкого реагування (RSF) — і отримали золоту копальню поблизу містечка Абідія на північному сході країни, в одному з найбагатших на золото регіонів.",
+    "15 квітня 2023 року боротьба за владу між командувачем SAF генералом Абделем Фаттахом аль-Бурханом і лідером RSF Мохамедом Хамданом Дагало («Хемедті») переросла у відкриту громадянську війну. «Вагнер» спершу підтримував саме RSF — угруповання, яке роками забезпечувало найманцям доступ до золотих копалень для контрабанди — але згодом переорієнтувався на SAF в обмін на постачання зброї й дозвіл розмістити військово-морську базу на узбережжі Червоного моря."
+  ],
+  order: [
+    "Війна швидко переросла в одну з найважчих гуманітарних катастроф світу: масові вбивства цивільних у Дарфурі, звинувачення в геноциді проти RSF, мільйони переселенців і голод у кількох регіонах. Уряд Бурхана з серпня 2023 року фактично працював з тимчасової столиці Порт-Судан, поки SAF поступово не відвоювала центр країни — Вад-Мадані в січні 2025-го, область Хартум у травні 2025-го — і в січні 2026 року офіційно не повернулася до Хартума.",
+    "RSF тим часом узяла реванш на заході: після дворічної облоги 26 жовтня 2025 року сили Хемедті захопили Ель-Фашер, столицю Північного Дарфуру, консолідувавши контроль над більшою частиною регіону. Головним постачальником RSF став не Кремль, а ОАЕ — зброя, дрони й бронетехніка йдуть через Чад, Ефіопію й Лівію; станом на середину 2026 року війна увійшла у четвертий рік і описується аналітиками як воєнний глухий кут: бої тривають навколо Ель-Обейда й у провінції Блакитний Ніл, а в лютому 2026-го RSF атакувала навіть прикордонні пости Чаду."
+  ],
+  timeline: [{
+    year: "2017",
+    title: "Перші угоди з Хартумом",
+    text: "Режим Омара аль-Башира підписує з москвою серію угод про військову співпрацю — точка відліку російської присутності в країні."
+  }, {
+    year: "2018",
+    title: "«M Invest» і копальня біля Абідії",
+    text: "Пов'язана з «Вагнером» компанія «M Invest» отримує доступ до золотої копальні поблизу Абідії на північному сході; інструктори одночасно тренують і регулярну армію, і Сили швидкого реагування (RSF)."
+  }, {
+    year: "2019",
+    title: "Падіння Башира",
+    text: "Масові протести призводять до повалення Башира; владу де-факто ділять військова рада на чолі з Бурханом і формування RSF на чолі з Хемедті."
+  }, {
+    year: "2023, квітень",
+    title: "Початок громадянської війни",
+    text: "15 квітня бої між SAF і RSF спалахують у Хартумі; обидві сторони звинувачують одна одну в першому пострілі. «Вагнер» спершу підтримує RSF, яка забезпечувала найманцям доступ до золотих копалень."
+  }, {
+    year: "2023, червень",
+    title: "Вбивство губернатора Західного Дарфуру",
+    text: "Хаміс Абакар, який звинувачував RSF у відновленні геноцидних нападів на немусульманські групи Дарфуру, гине від рук бойовиків RSF — один із перших сигналів масштабу насильства проти цивільних."
+  }, {
+    year: "2023, серпень",
+    title: "Уряд тікає в Порт-Судан",
+    text: "Через бойові дії в столиці уряд Бурхана переносить фактичну резиденцію до Порт-Судану на узбережжі Червоного моря — Хартум формально лишається конституційною столицею."
+  }, {
+    year: "2023–2024",
+    title: "москва переорієнтовується на SAF",
+    text: "росія поступово змінює сторону підтримки — від RSF до армії Бурхана, розраховуючи на постачання зброї в обмін на дозвіл побудувати військово-морську базу на Червоному морі."
+  }, {
+    year: "2025, січень",
+    title: "SAF повертає Вад-Мадані",
+    text: "Армія відвойовує столицю штату Гезіра — перший великий територіальний успіх з початку війни."
+  }, {
+    year: "2025, лютий",
+    title: "Прорив блокади Ель-Обейда",
+    text: "SAF частково знімає багатомісячну облогу RSF навколо стратегічного міста в Північному Кордофані, а невдовзі повертає й Кадугли з Діллінгом у Південному Кордофані."
+  }, {
+    year: "2025, травень",
+    title: "SAF повертає область Хартум",
+    text: "Понад через два роки боїв армія відвойовує столичну область — одна з найбільших перемог SAF за всю війну."
+  }, {
+    year: "2025, жовтень",
+    title: "Падіння Ель-Фашера",
+    text: "Після дворічної облоги RSF захоплює Ель-Фашер, столицю Північного Дарфуру, консолідуючи контроль майже над усім регіоном; за оцінками правозахисників, штурм супроводжувався масовими вбивствами цивільних."
+  }, {
+    year: "2026, січень",
+    title: "Уряд повертається до Хартума",
+    text: "Кабінет Бурхана офіційно відновлює роботу в Хартумі після майже двох з половиною років у Порт-Судані; того ж місяця RSF і союзний SPLM-N (аль-Гілу) відкривають новий фронт у провінції Блакитний Ніл."
+  }, {
+    year: "2026, лютий",
+    title: "Напад на Чад",
+    text: "RSF переслідує підрозділ союзних SAF сил на території Чаду й атакує чадський гарнізон, убивши сімох солдатів; Чад закриває кордон із Суданом."
+  }, {
+    year: "2026, до серпня",
+    title: "Війна входить у четвертий рік",
+    text: "Бої тривають навколо Ель-Обейда й у Кордофані; ОАЕ лишається головним постачальником RSF через Чад, Ефіопію й Лівію. У серпні RSF захоплює нові опорні пункти на південному сході країни, погрожуючи контрольованій SAF долині Нілу — аналітики описують ситуацію як воєнний глухий кут без ознак завершення."
+  }],
+  slides: [{
+    title: "Найстаріша точка «Вагнера»",
+    text: "Угоди з Хартумом підписали ще 2017 року — за рік до ЦАР і майже за чотири роки до Малі.",
+    stat: "2017"
+  }, {
+    title: "Золото за лояльність",
+    text: "З 2018 року компанія «M Invest», пов'язана з «Вагнером», контролює копальню біля Абідії — модель, яку пізніше повторять у ЦАР і Малі."
+  }, {
+    title: "Найманці на два фронти",
+    text: "До 2023 року «Вагнер» одночасно тренував і армію, і RSF — а коли між ними спалахнула війна, спершу став на бік RSF, потім переметнувся до армії."
+  }, {
+    title: "Найбільша гуманітарна криза світу",
+    text: "Війна з квітня 2023-го спричинила один із найважчих голодів і найбільших хвиль переселення в сучасній історії.",
+    stat: "з квітня 2023"
+  }, {
+    title: "Хартум туди й назад",
+    text: "SAF повернула столичну область у травні 2025-го; уряд остаточно переїхав з Порт-Судану назад у Хартум лише в січні 2026-го."
+  }, {
+    title: "Ель-Фашер і глухий кут",
+    text: "Жовтень 2025-го: RSF бере Ель-Фашер після дворічної облоги. Станом на середину 2026-го жодна зі сторін не має вирішальної переваги.",
+    stat: "Жовтень 2025"
+  }],
+  sourceNote: "Джерела: Al Jazeera, Council on Foreign Relations, Critical Threats Project (Africa File), Reuters, Sudan War Monitor, Sudan Tribune, Wikipedia. Дані про перебіг бойових дій — станом на серпень 2026 року."
+}, {
+  id: "chad",
+  name: "Чад",
+  flagKey: "chad",
+  eyebrow: "Країна, що балансує між усіма — а не обирає одну сторону",
+  capital: "Нджамена",
+  population: "≈ 21 млн (2025)",
+  area: "1 284 000 км²",
+  independence: "11 серпня 1960, від Франції",
+  language: "французька та арабська (обидві офіційні)",
+  intro: [
+    "Чад — єдина країна в цьому проєкті, де немає підтвердженої присутності «Вагнера» чи «Африканського корпусу» на землі. Замість цього — сусідство з усіма іншими сюжетами відразу: на півночі Лівія, звідки прийшли повстанці, що вбили чадського президента; на сході Судан, звідки в Чад утекли понад мільйон біженців; на заході — Сахель. Замість того, щоб обрати сторону, Нджамена намагається балансувати між москвою, Парижем, Вашингтоном і Пекіном одночасно.",
+    "Ідріс Дебі керував країною з 1990 року як надійний партнер Франції: приймав французькі війська, включно з операцією «Бархан», і вважався одним з найстабільніших союзників Заходу в регіоні. У квітні 2021-го, через день після перемоги на шостих президентських виборах поспіль, Дебі загинув на півночі країни в бою з повстанцями угруповання FACT, яке базувалося в сусідній Лівії. Владу без виборів узяв його син — генерал Махамат Ідрісс Дебі Ітно, очоливши військову перехідну раду."
+  ],
+  order: [
+    "28 лютого 2024 року, за кілька днів до очікуваного висунення кандидатури, силовики вбили Ясена Ділло — двоюрідного брата й головного суперника Махамата Дебі — під час штурму штаб-квартири його партії в Нджамені. 6 травня 2024 року відбулися вибори, які Дебі виграв із результатом близько 61%; опозиція бойкотувала їх, назвавши фарсом.",
+    "Тим часом Дебі проводив і власну зовнішньополітичну гру: 23–24 січня 2024 року він здійснив перший з 1968 року офіційний візит чадського президента до москви, де зустрівся з путіним. Але вже за рік Чад тихо, без перевороту й гучних заяв, розірвав і багаторічне військове партнерство із Заходом: у квітні 2024-го попросив піти американський спецпідрозділ, у листопаді розірвав угоду про оборонне співробітництво з Францією, а 30 січня 2025 року Париж передав Чаду останню військову базу — після 70 років безперервної французької військової присутності в країні."
+  ],
+  timeline: [{
+    year: "1990",
+    title: "Дебі-старший приходить до влади",
+    text: "Ідріс Дебі захоплює владу шляхом перевороту й керуватиме країною 31 рік, ставши одним з найнадійніших партнерів Франції в Африці."
+  }, {
+    year: "2013–2021",
+    title: "Опора французької «Бархан»",
+    text: "Чад приймає французькі війська й авіацію як ключовий вузол регіональної контртерористичної операції — на відміну від Малі, Нігеру й Буркіна-Фасо, тут це не викликає внутрішнього спротиву."
+  }, {
+    year: "2021, квітень",
+    title: "Загибель Дебі-старшого",
+    text: "Через день після переобрання на шостий термін Ідріс Дебі гине в бою на півночі країни з повстанцями FACT, які базувалися в Лівії. Владу без виборів очолює його син Махамат."
+  }, {
+    year: "2023, грудень",
+    title: "Конституційний референдум",
+    text: "У країні ухвалюють нову конституцію, яка відкриває Махамату Дебі шлях балотуватися на президентських виборах."
+  }, {
+    year: "2024, 23–24 січня",
+    title: "Перший візит до Кремля з 1968 року",
+    text: "Махамат Дебі офіційно відвідує москву й зустрічається з путіним — перший такий візит чадського лідера за понад півстоліття; обговорюють військово-технічну співпрацю, сільське господарство й видобуток."
+  }, {
+    year: "2024, 28 лютого",
+    title: "Вбивство Ясена Ділло",
+    text: "Силовики вбивають двоюрідного брата й головного суперника Дебі під час штурму штаб-квартири опозиційної партії — за кілька днів до очікуваного висунення його кандидатури на виборах."
+  }, {
+    year: "2024, квітень",
+    title: "США просять піти",
+    text: "Чад повідомляє американський спецпідрозділ (SOTF) про припинення діяльності на військовій базі в Нджамені — на тлі схожих рішень Нігеру."
+  }, {
+    year: "2024, 6 травня",
+    title: "Дебі виграє вибори",
+    text: "Махамат Дебі перемагає з результатом близько 61% голосів; опозиція бойкотує вибори й називає їх нелегітимними."
+  }, {
+    year: "2024, листопад",
+    title: "Розрив оборонної угоди з Францією",
+    text: "Чад несподівано для Парижа розриває угоду про оборонне співробітництво — без перевороту чи публічного конфлікту, суто дипломатичним рішенням."
+  }, {
+    year: "2025, 30 січня",
+    title: "Останній француз іде",
+    text: "Франція офіційно передає Чаду базу сержанта Аджі Коссеї в Нджамені — кінець 70-річної безперервної французької військової присутності в країні."
+  }, {
+    year: "2026, лютий",
+    title: "RSF атакує чадський гарнізон",
+    text: "Суданські RSF переслідують союзні урядові війська на території Чаду й атакують прикордонний гарнізон, убивши сімох солдатів; Чад закриває кордон із Суданом."
+  }, {
+    year: "2026, квітень",
+    title: "Кожен тринадцятий — біженець",
+    text: "За даними ООН, Чад приймає понад 1,3 мільйона суданських біженців — більше, ніж будь-яка інша країна; фінансування гуманітарної допомоги забезпечене лише частково."
+  }],
+  slides: [{
+    title: "Батько загинув від рук лівійських повстанців",
+    text: "У квітні 2021-го Ідріс Дебі гине в бою з повстанцями, які базувалися в сусідній Лівії, — сюжет цього проєкту вперше замикається сам на себе.",
+    stat: "Квітень 2021"
+  }, {
+    title: "Перший за 56 років",
+    text: "Січень 2024-го: Махамат Дебі їде до москви — перший офіційний візит чадського президента з 1968 року.",
+    stat: "1968 → 2024"
+  }, {
+    title: "Двоюрідний брат і суперник",
+    text: "Лютого 2024-го силовики вбивають Ясена Ділло, головного конкурента Дебі, за лічені дні до його очікуваної заявки на виборах."
+  }, {
+    title: "Тихий розрив із Парижем",
+    text: "Без перевороту й публічного скандалу Чад за рік розірвав угоду з Францією й прийняв останню передачу бази — після 70 років присутності."
+  }, {
+    title: "Мільйон триста тисяч",
+    text: "Чад приймає більше суданських біженців, ніж будь-яка інша країна світу — кожен тринадцятий житель східного Чаду тепер біженець.",
+    stat: "1,3 млн"
+  }, {
+    title: "Балансує, а не обирає",
+    text: "На відміну від Малі чи ЦАР, у Чаді немає підтвердженої присутності «Вагнера» чи «Африканського корпусу» — Нджамена грає одразу на кількох столах."
+  }],
+  sourceNote: "Джерела: AFP, Reuters, Bloomberg, The Moscow Times, UNHCR, Human Rights Watch, Jeune Afrique, Wikipedia. Дані про вибори, дипломатичні розриви й потік біженців — станом на квітень 2026 року."
+}];
+
 function flagChip(e) {
   return `<span class="flag-chip" style="background:${FLAGS[e]}"></span>`
+}
+
+function findCountry(id) {
+  return COUNTRIES.find(c => c.id === id) || OTHER_COUNTRIES.find(c => c.id === id)
 }
 
 function renderNav(e) {
@@ -1535,7 +3433,8 @@ function renderNav(e) {
       id: "timeline",
       name: "Єдина хронологія",
       flagKey: "timeline"
-    }, {
+    }],
+    ref = [{
       id: "glossary",
       name: "Глосарій термінів",
       flagKey: "glossary"
@@ -1548,12 +3447,51 @@ function renderNav(e) {
       name: "Що нового",
       flagKey: "changelog"
     }],
+    o = OTHER_COUNTRIES.map(s => ({
+      id: s.id,
+      name: s.name,
+      flagKey: s.flagKey
+    })),
+    mainIds = ["compare", "jihad", "ukraine", "resources"],
+    aMain = a.filter(s => mainIds.includes(s.id)),
+    aMore = a.filter(s => !mainIds.includes(s.id)),
     i = s => s.map(l => `
 <button class="nav-item ${l.id===e?"active":""}" onclick="goTo('${l.id}')">
 ${flagChip(l.flagKey)}<span class="cname">${l.name}</span>
 </button>
 `).join("");
-  document.getElementById("navList").innerHTML = i(t), document.getElementById("themeNavList").innerHTML = i(a)
+  document.getElementById("navList").innerHTML = i(t), document.getElementById("otherNavList").innerHTML = i(o), document.getElementById("mainThemeNavList").innerHTML = i(aMain), document.getElementById("moreThemeNavList").innerHTML = i(aMore), document.getElementById("referenceNavList").innerHTML = i(ref);
+  if (aMore.some(s => s.id === e)) themeAccordionOpen = true;
+  applyThemeAccordionState();
+  const regionIds = t.map(s => s.id).concat(o.map(s => s.id)),
+    themeIds = a.map(s => s.id),
+    refIds = ref.map(s => s.id);
+  let targetTab = "regions";
+  if (themeIds.includes(e)) targetTab = "themes";
+  else if (refIds.includes(e)) targetTab = "reference";
+  else if (regionIds.includes(e)) targetTab = "regions";
+  switchNavTab(targetTab)
+}
+
+let themeAccordionOpen = false,
+  currentNavTab = "regions";
+
+function toggleThemeAccordion() {
+  themeAccordionOpen = !themeAccordionOpen, applyThemeAccordionState()
+}
+
+function applyThemeAccordionState() {
+  const l = document.getElementById("moreThemeNavList"),
+    b = document.getElementById("themeAccordionBtn");
+  l && b && (l.classList.toggle("open", themeAccordionOpen), b.classList.toggle("open", themeAccordionOpen))
+}
+
+function switchNavTab(tab) {
+  currentNavTab = tab;
+  document.querySelectorAll(".nav-tab").forEach(el => el.classList.toggle("active", el.dataset.tab === tab));
+  document.getElementById("navPanelRegions").classList.toggle("active", tab === "regions");
+  document.getElementById("navPanelThemes").classList.toggle("active", tab === "themes");
+  document.getElementById("navPanelReference").classList.toggle("active", tab === "reference")
 }
 
 function renderTimeline(e) {
@@ -1594,7 +3532,8 @@ function renderCompareTable() {
   }];
   return `
 <div class="comparewrap">
-<h2 class="section-title">Порівняння трьох країн</h2>
+<h2 class="section-title">Три хунти Альянсу держав Сахелю (AES)</h2>
+<p class="compare-note" style="margin-top:0;">Малі, Буркіна-Фасо й Нігер порівнюються тут за однаковими критеріями невипадково: усі три — військові режими, що входять до одного союзу (AES) і пройшли через практично ідентичний сценарій — переворот, розрив із Францією, запрошення росіян, відкладені вибори. У ЦАР, Лівії, Судані й Чаді структура влади зовсім інша (виборний президент, розкол на два уряди, громадянська війна, спадкове наступництво), тому ці критерії до них напряму не застосовні — для них є окрема, легша таблиця нижче.</p>
 <div class="compare-scroll">
 <table class="compare-table">
 <thead>
@@ -1607,7 +3546,15 @@ ${COUNTRIES.map(t=>`<th>${flagChip(t.flagKey)}${t.name}</th>`).join("")}
 ${e.map(t=>`
 <tr>
 <td class="compare-label">${t.label}</td>
-${COUNTRIES.map(a=>`<td>${a.compare[t.key]}</td>`).join("")}
+${COUNTRIES.map(a=>{
+  const c = a.compare[t.key],
+    id = `${a.id}-${t.key}`;
+  return `<td>
+<div class="cmp-short">${c.short}</div>
+<div class="cmp-full" id="cmp-full-${id}">${c.full}</div>
+<button class="cmp-toggle" id="cmp-btn-${id}" onclick="toggleCompareCell('${id}')">Детальніше ↓</button>
+</td>`;
+}).join("")}
 </tr>
 `).join("")}
 </tbody>
@@ -1618,15 +3565,83 @@ ${COUNTRIES.map(a=>`<td>${a.compare[t.key]}</td>`).join("")}
 `
 }
 
+function renderOtherCompareTable() {
+  const rows = [{
+    label: "Тип режиму",
+    key: "regime"
+  }, {
+    label: "При владі з",
+    key: "since"
+  }, {
+    label: "Статус «Вагнера»/«Африканського корпусу»",
+    key: "wagner"
+  }, {
+    label: "Головний зовнішній союзник",
+    key: "ally"
+  }];
+  const data = {
+    car: {
+      regime: "Виборний президент, обнулені терміни",
+      since: "2016 (3-й термін — грудень 2025)",
+      wagner: "Присутній з 2017–2018; частковий перехід під «Африканський корпус», частина колишніх вагнерівців діє поза контролем москви",
+      ally: "росія"
+    },
+    libya: {
+      regime: "Країна розколота надвоє: уряд у Триполі + ЛНА Хафтара на сході й півдні",
+      since: "Хафтар контролює схід з 2014 року",
+      wagner: "Присутній з 2018–2019; формально замінений «Африканським корпусом» з 2024-го, логістичний хаб для всього регіону",
+      ally: "росія, ОАЕ, Єгипет (Хафтар) · Туреччина (уряд Триполі)"
+    },
+    sudan: {
+      regime: "Громадянська війна двох армій — SAF проти RSF",
+      since: "Війна з квітня 2023",
+      wagner: "Присутній з 2017–2018 в обох арміях; після 2023-го москва підтримує SAF в обмін на базу на Червоному морі",
+      ally: "росія (SAF) · ОАЕ (RSF)"
+    },
+    chad: {
+      regime: "Успадкована влада, легітимізована виборами",
+      since: "2021 (після загибелі батька)",
+      wagner: "Не зафіксований — єдина країна проєкту без підтвердженої присутності",
+      ally: "Балансує між росією, Заходом і Китаєм одночасно"
+    }
+  };
+  return `
+<div class="comparewrap">
+<h2 class="section-title">Інші чотири країни: легша таблиця</h2>
+<p class="compare-note" style="margin-top:0;">Ці чотири країни не входять до AES і не мають спільної структури влади — тому порівнюються лише за кількома найзагальнішими критеріями, а не за детальним сценарієм перевороту.</p>
+<div class="compare-scroll">
+<table class="compare-table">
+<thead>
+<tr>
+<th></th>
+${OTHER_COUNTRIES.map(t=>`<th>${flagChip(t.flagKey)}${t.name}</th>`).join("")}
+</tr>
+</thead>
+<tbody>
+${rows.map(r=>`
+<tr>
+<td class="compare-label">${r.label}</td>
+${OTHER_COUNTRIES.map(a=>`<td>${(data[a.id]||{})[r.key] || "—"}</td>`).join("")}
+</tr>
+`).join("")}
+</tbody>
+</table>
+</div>
+<p class="compare-note">Спрощений огляд — деталі й хронологія кожної країни в її власному розділі.</p>
+</div>
+`
+}
+
 function renderComparePage() {
   return `
 <div class="hero">
 <div class="flagbar" style="background:${FLAGS.compare}"></div>
-<div class="hero-eyebrow">Наскрізна тема · три країни поруч</div>
+<div class="hero-eyebrow">Наскрізна тема · сім країн, дві таблиці</div>
 <h1>Порівняння країн</h1>
-<p class="hero-lede">Три хунти, три перевороти, один і той самий зовнішній партнер. Замість гортати три окремі розділи — ключові паралелі одним поглядом.</p>
+<p class="hero-lede">Три хунти AES порівнюються за однаковими критеріями — це справді один сценарій, повторений тричі. Решта чотирьох країн (ЦАР, Лівія, Судан, Чад) мають зовсім іншу структуру влади, тож для них — окрема, легша таблиця нижче.</p>
 </div>
 ${renderCompareTable()}
+${renderOtherCompareTable()}
 `
 }
 
@@ -1661,11 +3676,21 @@ function togglePerson(e) {
   a.textContent = i ? "Згорнути ↑" : "Читати далі ↓"
 }
 
+function toggleCompareCell(e) {
+  const t = document.getElementById("cmp-full-" + e),
+    a = document.getElementById("cmp-btn-" + e),
+    i = t.classList.toggle("open");
+  a.textContent = i ? "Згорнути ↑" : "Детальніше ↓"
+}
+
 function renderDossierPage() {
+  const moscow = PEOPLE.filter(e=>["overview"].includes(e.linkId)),
+    sahel = PEOPLE.filter(e=>["mali","burkina","niger"].includes(e.linkId)),
+    others = PEOPLE.filter(e=>["car","libya","sudan","chad"].includes(e.linkId));
   return `
 <div class="hero">
 <div class="flagbar" style="background:${FLAGS.dossier}"></div>
-<div class="hero-eyebrow">Наскрізна тема · п’ять людей, які тримають цю історію</div>
+<div class="hero-eyebrow">Наскрізна тема · десять людей, які тримають цю історію</div>
 <h1>Досьє: ключові особи</h1>
 <p class="hero-lede">У розділах про країни й «Вагнер» ці постаті зринають мимохідь — тут коротко про кожну: хто вони, як прийшли до влади чи до командування, і яку роль зіграли в подіях, описаних вище.</p>
 </div>
@@ -1673,15 +3698,21 @@ function renderDossierPage() {
 <h2 class="section-title">москва: засновники «Вагнера»</h2>
 </div>
 <div class="dossier-grid" style="padding-top:0;">
-${PEOPLE.filter(e=>e.tags.includes("«Вагнер»")).map(renderPersonCard).join("")}
+${moscow.map(renderPersonCard).join("")}
 </div>
 <div class="section" style="padding-bottom:0;">
 <h2 class="section-title">Сахель: лідери трьох хунт</h2>
 </div>
 <div class="dossier-grid" style="padding-top:0;">
-${PEOPLE.filter(e=>!e.tags.includes("«Вагнер»")).map(renderPersonCard).join("")}
+${sahel.map(renderPersonCard).join("")}
 </div>
-<div class="footnote">Дати народження окремих військових лідерів Сахелю офіційно не підтверджені й наводяться за оцінками відкритих джерел (Вікіпедія, AFP, Reuters, BlackPast). Джерела: Вікіпедія, AFP, Reuters, Jeune Afrique, BBC.</div>
+<div class="section" style="padding-bottom:0;">
+<h2 class="section-title">Інші країни: лідери й командувачі</h2>
+</div>
+<div class="dossier-grid" style="padding-top:0;">
+${others.map(renderPersonCard).join("")}
+</div>
+<div class="footnote">Дати народження окремих військових лідерів офіційно не підтверджені й наводяться за оцінками відкритих джерел (Вікіпедія, AFP, Reuters, BlackPast). Джерела: Вікіпедія, AFP, Reuters, Jeune Afrique, BBC, Al Jazeera, Congressional Research Service.</div>
 `
 }
 const INFOWAR_TIMELINE = [{
@@ -2186,6 +4217,24 @@ const RESOURCE_ROWS = [{
   was: "Orano, колишня Areva (63,4%) / SOPAMIN (36,6%)",
   move: "Грудень 2024 — Orano втрачає операційний контроль; червень 2025 — держава оголошує націоналізацію Somaïr",
   now: "Травень 2026 — концесію Arlit анульовано, створено нову держкомпанію TSUMCO; уряд заявляє про намір продавати уран на світовому ринку напряму"
+}, {
+  country: "car",
+  resource: "Золото — Ндассіма",
+  was: "Не видобувалося промислово, стадія розвідки",
+  move: "2018 — пов'язана з «Вагнером» компанія Midas Resources (зареєстрована на Мадагаскарі) отримує ексклюзивні права на найбільше золоте родовище країни",
+  now: "2022 — видобуток розширено до восьми виробничих зон; за розслідуванням Politico, може приносити «Вагнеру» до $1 млрд на рік, об'єкт укріплений зенітними установками на вантажівках"
+}, {
+  country: "libya",
+  resource: "Нафта — родовища й термінали на сході країни",
+  was: "Видобуток і продаж під контролем Національної нафтової корпорації (NOC) у Триполі, підзвітної визнаному урядом",
+  move: "2019–2020 — бійці «Вагнера» разом із ЛНА Хафтара блокують родовища й термінали, змушуючи NOC оголошувати форс-мажор і зупиняти експорт як інструмент тиску на Триполі",
+  now: "За оцінками аналітиків, частина оплати за послуги «Вагнера»/«Африканського корпусу» йде лівійською нафтою й контрабандним пальним; є повідомлення про тертя з Хафтаром через неповну оплату контракту"
+}, {
+  country: "sudan",
+  resource: "Золото — копальня біля Абідії",
+  was: "Не мала промислового власника до появи росіян",
+  move: "2018 — пов'язана з «Вагнером» компанія «M Invest» (через дочірню «Meroe Gold») отримує доступ до родовища на північному сході; інструктори одночасно тренують і SAF, і RSF",
+  now: "Контроль над золотовидобувним поясом і каналами контрабанди — один із факторів розвороту москви від RSF до SAF після початку війни 2023 року"
 }];
 
 function renderResourceTable() {
@@ -2205,7 +4254,7 @@ function renderResourceTable() {
 <tbody>
 ${RESOURCE_ROWS.map(e=>`
 <tr>
-<td class="compare-label">${flagChip(COUNTRIES.find(t=>t.id===e.country).flagKey)}${COUNTRIES.find(t=>t.id===e.country).name}</td>
+<td class="compare-label">${flagChip(findCountry(e.country).flagKey)}${findCountry(e.country).name}</td>
 <td>${e.resource}</td>
 <td>${e.was}</td>
 <td>${e.move}</td>
@@ -2215,7 +4264,7 @@ ${RESOURCE_ROWS.map(e=>`
 </tbody>
 </table>
 </div>
-<p class="compare-note">Оцінки й дати — за повідомленнями Reuters, AP, Bloomberg, World Nuclear News, Ecofin Agency, ISS Africa станом на середину 2026 року; деталі угод (частки, суми, терміни) різняться між джерелами.</p>
+<p class="compare-note">Оцінки й дати — за повідомленнями Reuters, AP, Bloomberg, World Nuclear News, Ecofin Agency, ISS Africa, Politico, Al Jazeera, Congressional Research Service станом на середину 2026 року; деталі угод (частки, суми, терміни) різняться між джерелами. Чад до таблиці свідомо не входить: за наявними даними, підтвердженої присутності «Вагнера» чи «Африканського корпусу» — і подібного торгу ресурсами — там немає.</p>
 </div>
 `
 }
@@ -2224,13 +4273,14 @@ function renderResourcesPage() {
   return `
 <div class="hero">
 <div class="flagbar" style="background:${FLAGS.resources}"></div>
-<div class="hero-eyebrow">Наскрізна тема · три країни</div>
-<h1>Гроші й ресурси: золото і уран</h1>
-<p class="hero-lede">«Повернутий суверенітет» — це не лише риторика. У всіх трьох країнах хунти націоналізують або відвойовують контроль над ключовими ресурсами — золотом у Малі й Буркіна-Фасо, ураном у Нігері. Хто зараз реально контролює видобуток і куди йдуть гроші — нижче.</p>
+<div class="hero-eyebrow">Наскрізна тема · шість країн</div>
+<h1>Гроші й ресурси: золото, уран і нафта</h1>
+<p class="hero-lede">«Повернутий суверенітет» — це не лише риторика. У Малі, Буркіна-Фасо й Нігері хунти націоналізують або відвойовують контроль над ресурсами; у ЦАР, Судані й Лівії «Вагнер»/«Африканський корпус» отримали прямий доступ до копалень і нафтових родовищ ще на вході. Хто зараз реально контролює видобуток і куди йдуть гроші — нижче.</p>
 <div class="factstrip">
 <div class="fact"><div class="fact-label">Золото в експорті Малі</div><div class="fact-value">≈ 80–85%</div></div>
 <div class="fact"><div class="fact-label">Золото в ВВП Буркіна-Фасо</div><div class="fact-value">≈ 16–17%</div></div>
 <div class="fact"><div class="fact-label">Частка Нігеру в постачанні урану ЄС (2022)</div><div class="fact-value">понад 25%</div></div>
+<div class="fact"><div class="fact-label">Потенційний дохід «Вагнера» з Ндассіми (ЦАР)</div><div class="fact-value">до $1 млрд/рік</div></div>
 </div>
 </div>
 <div class="section" style="padding-bottom:0;">
@@ -2254,17 +4304,83 @@ ${renderResourceTable()}
 </div>
 <div class="notebox">
 <h4>Нюанс, який часто випускають</h4>
-<p>Поширене припущення, що «Вагнер» скрізь виторговує собі копальні в обмін на військову підтримку, підтверджується не всюди однаково. У Центральноафриканській Республіці це справді так: пов’язана з Пригожиним компанія Midas отримала пільговий доступ до золотого родовища Ндассіма вартістю понад мільярд доларів. А от у Малі, за розслідуванням The Sentry, «Вагнер» так і не домігся власних гірничих концесій — натомість його щомісячний гонорар (за оцінками, близько $10,8 млн) фінансувався з держбюджету, куди значною мірою надходили податки тих-таки західних гірничих компаній — Barrick, B2Gold, Resolute й Allied Gold. Тобто частину рахунків за присутність росіян у Малі, за цією версією, оплачували самі західні інвестори.</p>
+<p>Поширене припущення, що «Вагнер» скрізь виторговує собі копальні в обмін на військову підтримку, підтверджується не всюди однаково. У Центральноафриканській Республіці це справді так: пов’язана з Пригожиним компанія Midas отримала пільговий доступ до золотого родовища Ндассіма вартістю понад мільярд доларів (<button class="tf-reset" style="padding:0;font-size:inherit;" onclick="goTo('car')">детальніше — на сторінці ЦАР</button>). А от у Малі, за розслідуванням The Sentry, «Вагнер» так і не домігся власних гірничих концесій — натомість його щомісячний гонорар (за оцінками, близько $10,8 млн) фінансувався з держбюджету, куди значною мірою надходили податки тих-таки західних гірничих компаній — Barrick, B2Gold, Resolute й Allied Gold. Тобто частину рахунків за присутність росіян у Малі, за цією версією, оплачували самі західні інвестори.</p>
 </div>
 <div class="footnote">Джерела: Reuters, AP, Bloomberg, The Sentry, World Nuclear Association, World Nuclear News, Ecofin Agency, Investing News, ISS Africa, TRT Afrika, Africa Briefing, US Treasury. Суми, частки й терміни різняться між джерелами і швидко змінюються.</div>
 `
 }
+const SOURCE_URLS = {
+  "ACLED (Armed Conflict Location & Event Data)": "https://acleddata.com",
+  "AFP": "https://www.afp.com",
+  "Africa Briefing": "https://africabriefing.org",
+  "Africa Center for Strategic Studies": "https://africacenter.org",
+  "Africa Defense Forum": "https://adf-magazine.com",
+  "Africanews": "https://www.africanews.com",
+  "Agenzia Fides": "https://www.fides.org",
+  "AllAfrica": "https://allafrica.com",
+  "AP (Associated Press)": "https://apnews.com",
+  "Babel": "https://babel.ua",
+  "BBC": "https://www.bbc.com",
+  "Deutsche Welle": "https://www.dw.com",
+  "Politico": "https://www.politico.com",
+  "The Wall Street Journal": "https://www.wsj.com",
+  "BlackPast": "https://www.blackpast.org",
+  "Bloomberg": "https://www.bloomberg.com",
+  "BTI (Bertelsmann Stiftung)": "https://bti-project.org",
+  "CIVICUS Monitor": "https://monitor.civicus.org",
+  "Code for Africa": "https://codeforafrica.org",
+  "Critical Threats Project": "https://www.criticalthreats.org",
+  "CSIS": "https://www.csis.org",
+  "DISA": "https://disa.org",
+  "Ecofin Agency": "https://www.ecofinagency.com",
+  "Euronews": "https://www.euronews.com",
+  "FDD’s Long War Journal": "https://www.longwarjournal.org",
+  "France 24": "https://www.france24.com",
+  "Freedom House": "https://freedomhouse.org",
+  "Georgetown Journal of International Affairs": "https://gjia.georgetown.edu",
+  "HSToday": "https://www.hstoday.us",
+  "Human Rights Watch": "https://www.hrw.org",
+  "International Crisis Group": "https://www.crisisgroup.org",
+  "Investing News": "https://investingnews.com",
+  "ISS Africa": "https://issafrica.org",
+  "Jeune Afrique": "https://www.jeuneafrique.com",
+  "The Moscow Times": "https://www.themoscowtimes.com",
+  "UNHCR": "https://www.unhcr.org",
+  "Kyiv Post": "https://www.kyivpost.com",
+  "Новая газета Європа": "https://novayagazeta.eu",
+  "РСМД": "https://russiancouncil.ru",
+  "Reuters": "https://www.reuters.com",
+  "Congressional Research Service": "https://crsreports.congress.gov",
+  "Bloomsbury Intelligence and Security Institute": "https://bisi.org.uk",
+  "Riddle Russia": "https://ridl.io",
+  "Tearline / Vantor": "https://www.tearline.mil",
+  "Al Jazeera": "https://www.aljazeera.com",
+  "Council on Foreign Relations": "https://www.cfr.org",
+  "Sudan War Monitor": "https://sudanwarmonitor.com",
+  "Sudan Tribune": "https://sudantribune.com",
+  "China Daily": "https://www.chinadaily.com.cn",
+  "Global Voices": "https://globalvoices.org",
+  "Global Energy Monitor (GEM.wiki)": "https://www.gem.wiki",
+  "RFE/RL (Радіо Свобода)": "https://www.rferl.org",
+  "Stimson Center": "https://www.stimson.org",
+  "TASS": "https://tass.com",
+  "The Arab Weekly": "https://thearabweekly.com",
+  "The Conversation": "https://theconversation.com",
+  "The Hill": "https://thehill.com",
+  "The Sentry": "https://thesentry.org",
+  "Togo First": "https://www.togofirst.com",
+  "TRT Afrika": "https://www.trtafrika.com",
+  "US Treasury": "https://home.treasury.gov",
+  "Вікіпедія / Wikipedia": "https://www.wikipedia.org",
+  "World Nuclear Association": "https://world-nuclear.org",
+  "World Nuclear News": "https://www.world-nuclear-news.org"
+};
 const SOURCES = [{
     name: "ACLED (Armed Conflict Location & Event Data)",
     sections: ["Джихадистська загроза", "Вихід до Гвінейської затоки"]
   }, {
     name: "AFP",
-    sections: ["Досьє: ключові особи", "Інформаційна війна"]
+    sections: ["Досьє: ключові особи", "Інформаційна війна", "Чад"]
   }, {
     name: "Africa Briefing",
     sections: ["Гроші й ресурси"]
@@ -2291,13 +4407,22 @@ const SOURCES = [{
     sections: ["Українська лінія"]
   }, {
     name: "BBC",
-    sections: ["Малі / Буркіна-Фасо / Нігер", "Досьє: ключові особи", "Інформаційна війна"]
+    sections: ["Малі / Буркіна-Фасо / Нігер", "Досьє: ключові особи", "Інформаційна війна", "ЦАР", "Лівія", "Судан"]
+  }, {
+    name: "Deutsche Welle",
+    sections: ["ЦАР"]
+  }, {
+    name: "Politico",
+    sections: ["ЦАР"]
+  }, {
+    name: "The Wall Street Journal",
+    sections: ["ЦАР"]
   }, {
     name: "BlackPast",
     sections: ["Досьє: ключові особи"]
   }, {
     name: "Bloomberg",
-    sections: ["Гроші й ресурси"]
+    sections: ["Гроші й ресурси", "Чад"]
   }, {
     name: "BTI (Bertelsmann Stiftung)",
     sections: ["Малі / Буркіна-Фасо / Нігер"]
@@ -2309,7 +4434,7 @@ const SOURCES = [{
     sections: ["Інформаційна війна"]
   }, {
     name: "Critical Threats Project",
-    sections: ["Джихадистська загроза"]
+    sections: ["Джихадистська загроза", "Судан"]
   }, {
     name: "CSIS",
     sections: ["Джихадистська загроза"]
@@ -2342,7 +4467,7 @@ const SOURCES = [{
     sections: ["Вихід до Гвінейської затоки"]
   }, {
     name: "Human Rights Watch",
-    sections: ["Джихадистська загроза", "Малі / Буркіна-Фасо / Нігер", "Вихід до Гвінейської затоки"]
+    sections: ["Джихадистська загроза", "Малі / Буркіна-Фасо / Нігер", "Вихід до Гвінейської затоки", "ЦАР", "Чад"]
   }, {
     name: "International Crisis Group",
     sections: ["Вихід до Гвінейської затоки"]
@@ -2354,7 +4479,13 @@ const SOURCES = [{
     sections: ["Гроші й ресурси", "Вихід до Гвінейської затоки"]
   }, {
     name: "Jeune Afrique",
-    sections: ["Досьє: ключові особи"]
+    sections: ["Досьє: ключові особи", "Чад"]
+  }, {
+    name: "The Moscow Times",
+    sections: ["Чад"]
+  }, {
+    name: "UNHCR",
+    sections: ["Чад"]
   }, {
     name: "Kyiv Post",
     sections: ["Українська лінія"]
@@ -2366,7 +4497,34 @@ const SOURCES = [{
     sections: ["Огляд", "Малі / Буркіна-Фасо / Нігер"]
   }, {
     name: "Reuters",
-    sections: ["Огляд", "Малі / Буркіна-Фасо / Нігер", "Досьє: ключові особи", "Гроші й ресурси", "Українська лінія", "Китай: третій гравець"]
+    sections: ["Огляд", "Малі / Буркіна-Фасо / Нігер", "Досьє: ключові особи", "Гроші й ресурси", "Українська лінія", "Китай: третій гравець", "ЦАР", "Лівія", "Судан", "Чад"]
+  }, {
+    name: "Congressional Research Service",
+    sections: ["Лівія"]
+  }, {
+    name: "Bloomsbury Intelligence and Security Institute",
+    sections: ["Лівія"]
+  }, {
+    name: "Riddle Russia",
+    sections: ["Лівія"]
+  }, {
+    name: "Tearline / Vantor",
+    sections: ["Лівія"]
+  }, {
+    name: "Responsible Statecraft",
+    sections: ["Лівія"]
+  }, {
+    name: "Al Jazeera",
+    sections: ["Лівія", "Судан"]
+  }, {
+    name: "Council on Foreign Relations",
+    sections: ["Судан"]
+  }, {
+    name: "Sudan War Monitor",
+    sections: ["Судан"]
+  }, {
+    name: "Sudan Tribune",
+    sections: ["Судан"]
   }, {
     name: "China Daily",
     sections: ["Китай: третій гравець"]
@@ -2414,7 +4572,7 @@ const SOURCES = [{
     sections: ["Гроші й ресурси"]
   }, {
     name: "Вікіпедія / Wikipedia",
-    sections: ["Огляд", "Досьє: ключові особи", "Джихадистська загроза", "Українська лінія", "Китай: третій гравець"]
+    sections: ["Огляд", "Досьє: ключові особи", "Джихадистська загроза", "Українська лінія", "Китай: третій гравець", "ЦАР", "Лівія", "Судан", "Чад"]
   }, {
     name: "World Nuclear Association",
     sections: ["Гроші й ресурси"]
@@ -2458,6 +4616,22 @@ const SOURCES = [{
     china: {
       label: "Китай",
       flagKey: "china"
+    },
+    car: {
+      label: "ЦАР",
+      flagKey: "car"
+    },
+    libya: {
+      label: "Лівія",
+      flagKey: "libya"
+    },
+    sudan: {
+      label: "Судан",
+      flagKey: "sudan"
+    },
+    chad: {
+      label: "Чад",
+      flagKey: "chad"
     }
   };
 
@@ -2482,7 +4656,9 @@ function buildMasterTimeline() {
     cat: "infowar"
   }))), CHINA_TIMELINE.forEach(t => e.push(Object.assign({}, t, {
     cat: "china"
-  }))), e.sort((t, a) => parseYear(t.year) - parseYear(a.year)), e
+  }))), OTHER_COUNTRIES.forEach(t => t.timeline.forEach(a => e.push(Object.assign({}, a, {
+    cat: t.id
+  })))), e.sort((t, a) => parseYear(t.year) - parseYear(a.year)), e
 }
 let timelineFilter = null;
 
@@ -2568,6 +4744,39 @@ const GLOSSARY = [{
   term: "MINUSMA",
   def: "Місія ООН з підтримання миру в Малі. Залишила країну впродовж 2023 року на вимогу малійської військової хунти."
 }, {
+  term: "MINUSCA",
+  def: "Місія ООН зі стабілізації в Центральноафриканській Республіці. Розгорнута 2014 року, працює й досі — на відміну від MINUSMA в Малі, яку хунта змусила піти."
+}, {
+  term: "CPC",
+  def: "«Коаліція патріотів за зміни» — об’єднання колишніх повстанців і екс-президента Франсуа Бозізе в ЦАР, що спробувало зірвати вибори грудня 2020 року наступом на Бангі."
+}, {
+  term: "Midas Resources",
+  def: "Зареєстрована на Мадагаскарі компанія, пов’язана з «Вагнером», яка з 2018 року контролює найбільше золоте родовище ЦАР — Ндассіму."
+}, {
+  term: "M Invest",
+  def: "Компанія, пов’язана з «Вагнером», через яку росія з 2018 року отримала доступ до золотої копальні поблизу Абідії в Судані — за моделлю, згодом повтореною в ЦАР і Малі."
+}, {
+  term: "GNU",
+  def: "Уряд національної єдності — визнана ООН влада в Триполі, на заході Лівії, яку підтримує Туреччина. Протистоїть силам Халіфи Хафтара на сході й півдні країни."
+}, {
+  term: "ЛНА",
+  def: "Лівійська національна армія — збройні сили під командуванням генерала Халіфи Хафтара, що контролюють схід і південь Лівії за підтримки росії, ОАЕ й Єгипту."
+}, {
+  term: "«5+5»",
+  def: "Спільна військово-лівійська комісія з представників обох сторін конфлікту (по п’ять від кожної), яка мала контролювати виведення іноземних бійців і найманців за угодою 2020 року — але за п’ять років домоглася лише символічного прогресу."
+}, {
+  term: "SAF",
+  def: "Суданські збройні сили — регулярна армія під командуванням генерала Абделя Фаттаха аль-Бурхана, одна з двох сторін громадянської війни в Судані з квітня 2023 року."
+}, {
+  term: "RSF",
+  def: "Сили швидкого реагування — воєнізоване угруповання під командуванням Мохамеда Хамдана Дагало («Хемедті»), що виросло з дарфурських ополчень «Джанджавід». Друга сторона громадянської війни в Судані, звинувачена в геноциді в Дарфурі."
+}, {
+  term: "FACT",
+  def: "Фронт за зміну й злагоду в Чаді — озброєне угруповання чадських повстанців, яке базувалося в Лівії. Саме бійці FACT вбили президента Ідріса Дебі в бою на півночі Чаду в квітні 2021 року."
+}, {
+  term: "SOTF",
+  def: "Special Operations Task Force — американський спецпідрозділ, що діяв на військовій базі в Нджамені (Чад). У квітні 2024 року чадська влада попросила його припинити діяльність у країні."
+}, {
   term: "CNPC",
   def: "China National Petroleum Corporation — китайська державна нафтогазова корпорація. Побудувала й експлуатує нафтопровід з родовища Агадем у Нігері до порту Семе в Беніні, а також завод з переробки нафти в Зіндері."
 }, {
@@ -2614,7 +4823,77 @@ ${GLOSSARY.map(e=>`
 `
 }
 
+const SEARCH_INDEX = [{
+    id: "overview",
+    name: "Огляд",
+    flagKey: "overview",
+    tag: "Регіон"
+  }]
+  .concat(COUNTRIES.map(s => ({ id: s.id, name: s.name, flagKey: s.flagKey, tag: "Регіон" })))
+  .concat(OTHER_COUNTRIES.map(s => ({ id: s.id, name: s.name, flagKey: s.flagKey, tag: "Регіон" })))
+  .concat([
+    { id: "compare", name: "Порівняння країн", flagKey: "compare", tag: "Тема" },
+    { id: "jihad", name: "Джихадистська загроза", flagKey: "jihad", tag: "Тема" },
+    { id: "coast", name: "Вихід до Гвінейської затоки", flagKey: "coast", tag: "Тема" },
+    { id: "ukraine", name: "Українська лінія", flagKey: "ukraine", tag: "Тема" },
+    { id: "china", name: "Китай: третій гравець", flagKey: "china", tag: "Тема" },
+    { id: "infowar", name: "Інформаційна війна", flagKey: "infowar", tag: "Тема" },
+    { id: "resources", name: "Гроші й ресурси", flagKey: "resources", tag: "Тема" },
+    { id: "dossier", name: "Досьє: ключові особи", flagKey: "dossier", tag: "Тема" },
+    { id: "timeline", name: "Єдина хронологія", flagKey: "timeline", tag: "Тема" },
+    { id: "glossary", name: "Глосарій термінів", flagKey: "glossary", tag: "Довідник" },
+    { id: "sources", name: "Список джерел", flagKey: "sources", tag: "Довідник" },
+    { id: "changelog", name: "Що нового", flagKey: "changelog", tag: "Довідник" }
+  ])
+  .concat(GLOSSARY.map(g => ({ id: "glossary", name: g.term, flagKey: "glossary", tag: "Термін" })));
+
+function handleNavSearch(query) {
+  const clearBtn = document.getElementById("navSearchClear"),
+    resultsEl = document.getElementById("navSearchResults"),
+    browseEl = document.getElementById("navBrowseView");
+  query = query.trim();
+  clearBtn.style.display = query ? "block" : "none";
+  if (!query) { resultsEl.innerHTML = ""; browseEl.style.display = ""; return; }
+  browseEl.style.display = "none";
+  const q = query.toLowerCase(),
+    seen = new Set(),
+    matches = SEARCH_INDEX.filter(s => {
+      if (!s.name.toLowerCase().includes(q)) return false;
+      const key = s.id + "|" + s.name;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  resultsEl.innerHTML = matches.length ? matches.slice(0, 30).map(m => `
+<button class="nav-item" onclick="goTo('${m.id}'); clearNavSearch();">
+${flagChip(m.flagKey)}<span class="cname">${m.name}</span><span class="nav-search-tag">${m.tag}</span>
+</button>
+`).join("") : `<div class="nav-search-empty">Нічого не знайдено за запитом «${query}»</div>`;
+}
+
+function clearNavSearch() {
+  const input = document.getElementById("navSearchInput");
+  input.value = "";
+  handleNavSearch("");
+}
+
 const CHANGELOG = [{
+  date: "9 вересня 2026",
+  title: "Досьє, ресурси й порівняння наздоганяють сім країн",
+  text: "Досьє: ключові особи поповнилося п'ятьма картками — Хафтар (Лівія), аль-Бурхан і Хемедті (Судан, по обидва боки фронту), Дебі (Чад), Туадера (ЦАР); тепер 10 осіб у трьох групах замість п'яти. «Гроші й ресурси» отримали рядки по золоту Ндассіми (ЦАР), нафті Лівії й золоту Абідії (Судан) — раніше таблиця охоплювала лише Малі/Буркіна-Фасо/Нігер. «Порівняння країн» тепер чіткіше пояснює, що детальна таблиця — це порівняння саме трьох хунт AES за однаковим сценарієм, і отримало другу, легшу таблицю для ЦАР/Лівії/Судану/Чаду."
+}, {
+  date: "9 вересня 2026",
+  title: "Чад і друга карта регіону",
+  text: "Додано шосту країну проєкту — Чад, єдину без підтвердженої присутності «Вагнера»/«Африканського корпусу»: загибель Дебі-старшого від рук лівійських повстанців (2021), перший з 1968 року візит до Кремля (січень 2024), і тихий розрив із Францією після 70 років присутності (2024–2025). Додано другу схематичну карту «Лівія — Чад — Судан — ЦАР» на «Огляді» — зі стрілками переправлення зброї й потоку біженців."
+}, {
+  date: "9 вересня 2026",
+  title: "Лівія й Судан",
+  text: "Додано дві країни, з яких «Вагнер» насправді почав африканську історію ще раніше за ЦАР: Судан (угоди з 2017-го, золото Абідії, роздвоєна лояльність між SAF і RSF) і Лівія (Хафтар, провалений наступ на Триполі 2019-го, і роль транзитного хабу для «Африканського корпусу» після падіння Асада). Заодно підтягнув «Список джерел» і «Глосарій» під нові розділи."
+}, {
+  date: "8 вересня 2026",
+  title: "ЦАР — перша країна поза Сахелем",
+  text: "Додано повний розділ по Центральноафриканській Республіці: перша країна «Вагнера» в Африці (ще до Малі), угода про золото Ндассіма, вибори під наступом 2020 року, обнулення президентських термінів і третій термін Туадери. Новий блок «Інші країни» в бічній панелі."
+}, {
   date: "8 вересня 2026",
   title: "Китай: третій гравець",
   text: "Новий наскрізний розділ: літій Ganfeng у Малі, нафтопровід CNPC в Нігері, китайська зброя в Буркіна-Фасо й Малі — і чому це не двополярна історія «росія проти Заходу»."
@@ -2669,11 +4948,11 @@ function renderSourcesPage() {
 <h1>Список джерел</h1>
 <p class="hero-lede">Усі організації та медіа, на які спираються розділи цього проєкту, зібрані в одному місці — щоб не губити їх серед приміток унизу кожної сторінки.</p>
 </div>
-<p class="sources-note">Список складено за примітками з усіх сторінок. Мітки показують, у якому розділі кожне джерело цитувалося. Пряме посилання на конкретну статтю можу знайти й додати за запитом.</p>
+<p class="sources-note">Список складено за примітками з усіх сторінок. Мітки показують, у якому розділі кожне джерело цитувалося. Назви деяких джерел — посилання на їхні сайти, де можна перевірити конкретні матеріали самостійно.</p>
 <div class="sources-list">
 ${SOURCES.map(e=>`
 <div class="source-row">
-<div class="source-name">${e.name}</div>
+<div class="source-name">${SOURCE_URLS[e.name] ? `<a href="${SOURCE_URLS[e.name]}" target="_blank" rel="noopener noreferrer">${e.name}</a>` : e.name}</div>
 <div class="source-tags">${e.sections.map(t=>`<span class="pcard-tag">${t}</span>`).join("")}</div>
 </div>
 `).join("")}
@@ -2682,77 +4961,1223 @@ ${SOURCES.map(e=>`
 `
 }
 
+const AFRICA_TIMELINE_YEARS = [
+  {
+    year: "2018",
+    title: "2018: Західна присутність & Перший захід «Вагнера»",
+    summary: "Французька операція «Бархан» діє по всьому Сахелю, США будують базу дронів 201 в Агадесі ($100 млн+). «Вагнер» заходить у ЦАР (золото Ндассіми) та Судан (Башир), починає контакти з Хафтаром у Лівії.",
+    bases: ["bangui", "abidiya", "agadez"],
+    clashes: [],
+    resources: ["ndassima", "abidiya"],
+    routes: ["sea-tobruk", "land-sahel"],
+    zone1Active: false,
+    zone2Active: true
+  },
+  {
+    year: "2021",
+    title: "2021: Перші перевороти в Малі та Чаді",
+    summary: "Гойта бере одноосібну владу в Малі після 2-го перевороту й запрошує «Вагнер». У Чаді в бою гине президент Дебі-старший. Наступ Хафтара на Тріполі захлинається. Перші теракти JNIM на півночі Кот-д'Івуару та Беніну.",
+    bases: ["bamako", "bangui", "abidiya", "jufra", "agadez"],
+    clashes: ["moura", "tripoli"],
+    resources: ["ndassima", "abidiya", "loulo"],
+    routes: ["sea-tobruk", "land-sahel", "air-sahel"],
+    zone1Active: true,
+    zone2Active: true
+  },
+  {
+    year: "2024",
+    title: "2024: Вихід Франції та США, створення Альянсу AES",
+    summary: "Повний вивід військ Франції та закриття бази США в Агадесі. Малі, Буркіна-Фасо та Нігер утворюють Конфедерацію AES. «Африканський корпус» МО РФ бере контроль. Розгром колони найманців під Тінзауатеном. Запуск нафтопроводу CNPC Агадем-Семе.",
+    bases: ["bamako", "ouaga", "niamey", "tobruk", "jufra", "bangui", "portsudan"],
+    clashes: ["tinzaouaten", "kidal", "djibo", "khartoum", "parkw"],
+    resources: ["loulo", "goulamina", "arlit", "agadem", "ndassima", "abidiya"],
+    routes: ["sea-tobruk", "land-sahel", "air-sahel", "weapons-sudan", "pipeline-seme"],
+    zone1Active: true,
+    zone2Active: true
+  },
+  {
+    year: "2026",
+    title: "2026: Сучасний геополітичний вузол",
+    summary: "Паливна блокада Бамако від JNIM, розпуск політичних партій у Сахелі. Націоналізація урану в Нігері (TSUMCO) та літію Ganfeng у Малі. Падіння Ель-Фашера та війна SAF/RSF у Судані. Експансія джихадистів до Гвінейської затоки.",
+    bases: ["bamako", "gao", "ouaga", "niamey", "tripoli", "tobruk", "jufra", "ndjamena", "portsudan", "bangui"],
+    clashes: ["tinzaouaten", "kidal", "moura", "djibo", "khartoum", "elfasher", "parkw"],
+    resources: ["loulo", "goulamina", "arlit", "agadem", "ndassima", "abidiya"],
+    routes: ["sea-tobruk", "land-sahel", "air-sahel", "weapons-sudan", "refugees-chad", "pipeline-seme"],
+    zone1Active: true,
+    zone2Active: true
+  }
+];
+
+const DASH_PINS = [
+  {
+    id: "bamako",
+    type: "base",
+    name: "Бамако",
+    country: "Малі",
+    badge: "Військова база РФ & Столиця",
+    badgeBg: "#1F2A44",
+    cx: 230, cy: 290,
+    r: 6,
+    date: "Грудень 2021 — дотепер",
+    desc: "Штаб «Африканського корпусу» в Малі після виведення французького «Бархану». З вересня 2025 року місто перебуває під паливною блокадою угруповання JNIM.",
+    linkId: "mali",
+    linkLabel: "Розділ про Малі →"
+  },
+  {
+    id: "tinzaouaten",
+    type: "clash",
+    name: "Тінзауатен",
+    country: "Малі",
+    badge: "Бій 2024 · Важкі втрати",
+    badgeBg: "#A8432B",
+    cx: 350, cy: 135,
+    r: 5.5,
+    date: "22–27 липня 2024",
+    desc: "Колона «Вагнера» та армії Малі потрапила в засідку туарезьких повстанців FLA та бійців JNIM на алжирському кордоні. Рекордні втрати (від 46 до 84 найманців).",
+    linkId: "ukraine",
+    linkLabel: "Українська лінія та Тінзауатен →"
+  },
+  {
+    id: "kidal",
+    type: "clash",
+    name: "Кідаль",
+    country: "Малі",
+    badge: "Взяття 2023 · Атаки 2026",
+    badgeBg: "#A8432B",
+    cx: 365, cy: 175,
+    r: 5.5,
+    date: "Листопад 2023 / Квітень 2026",
+    desc: "Символічна перемога хунти Гойти в 2023 році за участю «Вагнера». У квітні 2026-го повстанці та JNIM розпочали нові скоординовані атаки на місто.",
+    linkId: "mali",
+    linkLabel: "Розділ про Малі →"
+  },
+  {
+    id: "moura",
+    type: "clash",
+    name: "Мура",
+    country: "Малі",
+    badge: "Масові жертви",
+    badgeBg: "#5A1F1A",
+    cx: 275, cy: 270,
+    r: 5,
+    date: "Березень 2022",
+    desc: "Операція малійської армії за участю «Вагнера» в центральному Малі; за даними ООН і правозахисників, загинуло щонайменше 500 мирних мешканців.",
+    linkId: "jihad",
+    linkLabel: "Джихадистська загроза →"
+  },
+  {
+    id: "gao",
+    type: "base",
+    name: "Гао",
+    country: "Малі",
+    badge: "Військовий опорний пункт",
+    badgeBg: "#1F2A44",
+    cx: 355, cy: 235,
+    r: 5,
+    date: "2022 — дотепер",
+    desc: "Ключовий вузол дислокації армії Малі та «Африканського корпусу» на сході країни; регулярні напруження та атаки безпілотників.",
+    linkId: "mali",
+    linkLabel: "Розділ про Малі →"
+  },
+  {
+    id: "ouaga",
+    type: "base",
+    name: "Уагадугу",
+    country: "Буркіна-Фасо",
+    badge: "Особиста охорона & База",
+    badgeBg: "#1F2A44",
+    cx: 330, cy: 325,
+    r: 6,
+    date: "Січень 2024 — дотепер",
+    desc: "Розгортання «Африканського корпусу» для захисту режиму капітана Ібрагіма Траоре та підготовки місцевого спецназу.",
+    linkId: "burkina",
+    linkLabel: "Розділ про Буркіна-Фасо →"
+  },
+  {
+    id: "djibo",
+    type: "clash",
+    name: "Джібо",
+    country: "Буркіна-Фасо",
+    badge: "Облога JNIM",
+    badgeBg: "#A8432B",
+    cx: 320, cy: 295,
+    r: 5,
+    date: "2022 — дотепер",
+    desc: "Місто на півночі Буркіна-Фасо, яке роками перебуває у фактичній облозі джихадистів; Буркіна залишається країною №1 у світі за Індексом тероризму.",
+    linkId: "jihad",
+    linkLabel: "Джихадистська загроза →"
+  },
+  {
+    id: "niamey",
+    type: "base",
+    name: "Ніамей",
+    country: "Нігер",
+    badge: "База РФ & Столиця",
+    badgeBg: "#1F2A44",
+    cx: 385, cy: 285,
+    r: 6,
+    date: "Квітень 2024 — дотепер",
+    desc: "Прибуття контингенту «Африканського корпусу» після перевороту генерала Чіані. У січні 2026-го ISSP здійснила атаку біля столичного аеропорту.",
+    linkId: "niger",
+    linkLabel: "Розділ про Нігер →"
+  },
+  {
+    id: "agadez",
+    type: "base",
+    name: "Агадес (База 201)",
+    country: "Нігер",
+    badge: "Екс-база дронів США",
+    badgeBg: "#5A503E",
+    cx: 480, cy: 215,
+    r: 5.5,
+    date: "Вересень 2024 — закрита",
+    desc: "Американська дронова авіабаза вартістю понад $100 млн. Хунта Нігеру розірвала співпрацю, і контингент США був повністю виведений.",
+    linkId: "niger",
+    linkLabel: "Розділ про Нігер →"
+  },
+  {
+    id: "tripoli",
+    type: "base",
+    name: "Тріполі",
+    country: "Лівія",
+    badge: "Столиця GNU",
+    badgeBg: "#1F2A44",
+    cx: 560, cy: 65,
+    r: 5.5,
+    date: "2019 наступ Хафтара",
+    desc: "Резиденція міжнародно визнаного уряду (GNU), підтримуваного Туреччиною. У 2019–2020 наступ Хафтара за участі «Вагнера» зазнав тут поразки.",
+    linkId: "libya",
+    linkLabel: "Розділ про Лівію →"
+  },
+  {
+    id: "tobruk",
+    type: "base",
+    name: "Тобрук",
+    country: "Лівія",
+    badge: "Морський логістичний хаб",
+    badgeBg: "#1F2A44",
+    cx: 690, cy: 70,
+    r: 5.5,
+    date: "Квітень 2024 — дотепер",
+    desc: "Головний морський порт перекидання техніки та живої сили «Африканського корпусу» (понад 6 000 т вантажів) після евакуації з Сирії.",
+    linkId: "libya",
+    linkLabel: "Розділ про Лівію →"
+  },
+  {
+    id: "jufra",
+    type: "base",
+    name: "Аль-Джуфра",
+    country: "Лівія",
+    badge: "Штаб «Африканського корпусу»",
+    badgeBg: "#1F2A44",
+    cx: 585, cy: 130,
+    r: 5.5,
+    date: "2019 — дотепер",
+    desc: "Центральна авіабаза під контролем ЛНА Хафтара та росіян. Головний транзитний вузол для ротацій військ у Малі, Нігер та ЦАР.",
+    linkId: "libya",
+    linkLabel: "Розділ про Лівію →"
+  },
+  {
+    id: "ndjamena",
+    type: "base",
+    name: "Нджамена",
+    country: "Чад",
+    badge: "Балансування без РФ",
+    badgeBg: "#002664",
+    cx: 590, cy: 330,
+    r: 6,
+    date: "2024–2025 розрив із Францією",
+    desc: "Чад — єдина країна проєкту без присутності «Вагнера». Президент Дебі балансує між Москвою, Парижем та Пекіном.",
+    linkId: "chad",
+    linkLabel: "Розділ про Чад →"
+  },
+  {
+    id: "khartoum",
+    type: "clash",
+    name: "Хартум",
+    country: "Судан",
+    badge: "Епіцентр війни SAF / RSF",
+    badgeBg: "#D21034",
+    cx: 810, cy: 260,
+    r: 6,
+    date: "2023–2026 громадянська війна",
+    desc: "Регулярна армія Бурхана відвоювала столичну область у травні 2025-го, а в січні 2026-го уряд остаточно повернувся сюди з Порт-Судану.",
+    linkId: "sudan",
+    linkLabel: "Розділ про Судан →"
+  },
+  {
+    id: "elfasher",
+    type: "clash",
+    name: "Ель-Фашер",
+    country: "Судан (Дарфур)",
+    badge: "Падіння міста 2025",
+    badgeBg: "#A8432B",
+    cx: 730, cy: 280,
+    r: 5.5,
+    date: "Жовтень 2025",
+    desc: "Після дворічної облоги Сили швидкого реагування (RSF) Хемедті захопили столицю Північного Дарфуру; понад мільйон біженців втекли до Чаду.",
+    linkId: "sudan",
+    linkLabel: "Розділ про Судан →"
+  },
+  {
+    id: "portsudan",
+    type: "base",
+    name: "Порт-Судан",
+    country: "Судан",
+    badge: "ВМС угода на Червоному морі",
+    badgeBg: "#1F2A44",
+    cx: 885, cy: 205,
+    r: 5.5,
+    date: "2023 — дотепер",
+    desc: "Тимчасова столиця уряду Бурхана. Москва розвернулася на підтримку SAF в обмін на дозвіл створити військово-морську базу РФ.",
+    linkId: "sudan",
+    linkLabel: "Розділ про Судан →"
+  },
+  {
+    id: "bangui",
+    type: "base",
+    name: "Бангі",
+    country: "ЦАР",
+    badge: "Перша опора РФ в Африці",
+    badgeBg: "#003082",
+    cx: 625, cy: 460,
+    r: 6,
+    date: "2017–2018 — дотепер",
+    desc: "Столиця ЦАР, де «Вагнер» уперше відпрацював модель «безпека режиму в обмін на золоті та алмазні копальні». Президент Туадера переобраний на 3-й термін.",
+    linkId: "car",
+    linkLabel: "Розділ про ЦАР →"
+  },
+  {
+    id: "parkw",
+    type: "clash",
+    name: "Парк W / Бассо",
+    country: "Бенін",
+    badge: "Спіловер до затоки",
+    badgeBg: "#A8432B",
+    cx: 375, cy: 335,
+    r: 5,
+    date: "2024–2026",
+    desc: "Прикордонний нацпарк W між Беніном, Нігером і Того став притулком для JNIM. Кількість нападів у Беніні зросла у 8 разів з 2021-го.",
+    linkId: "coast",
+    linkLabel: "Вихід до Гвінейської затоки →"
+  },
+  {
+    id: "loulo",
+    type: "resource",
+    name: "Лулу-Гункото",
+    country: "Малі",
+    badge: "Золото · Barrick Gold",
+    badgeBg: "#B98A2E",
+    cx: 215, cy: 275,
+    r: 5.5,
+    date: "Угода на $430 млн",
+    desc: "Найбільший золотий актив Малі. Після блокування експорту хунтою компанія Barrick погодилася на виплату $430 млн за новою ліцензією.",
+    linkId: "resources",
+    linkLabel: "Гроші й ресурси →"
+  },
+  {
+    id: "goulamina",
+    type: "resource",
+    name: "Гуламіна",
+    country: "Малі",
+    badge: "Літій · Ganfeng Lithium",
+    badgeBg: "#8E1B1B",
+    cx: 245, cy: 315,
+    r: 5,
+    date: "Запуск 1-ї черги, кінець 2024",
+    desc: "Одне з найбільших родовищ літію в світі. Китайська Ganfeng видобуває 506 тис. тонн/рік без ідеологічних умов.",
+    linkId: "china",
+    linkLabel: "Китай: третій гравець →"
+  },
+  {
+    id: "arlit",
+    type: "resource",
+    name: "Арліт / Somaïr",
+    country: "Нігер",
+    badge: "Уран · TSUMCO",
+    badgeBg: "#B98A2E",
+    cx: 470, cy: 175,
+    r: 5.5,
+    date: "Націоналізація 2025–2026",
+    desc: "Французьку Orano витіснили з видобутку. Створено нігерську держкомпанію TSUMCO; ресурси запропоновані інвесторам з РФ та Китаю.",
+    linkId: "resources",
+    linkLabel: "Гроші й ресурси →"
+  },
+  {
+    id: "agadem",
+    type: "resource",
+    name: "Агадем ➔ Семе",
+    country: "Нігер / Бенін",
+    badge: "Нафта · CNPC ($4.5–7 млрд)",
+    badgeBg: "#5A503E",
+    cx: 560, cy: 260,
+    r: 5,
+    date: "Запуск травень 2024",
+    desc: "Транскордонний нафтопровід китайської CNPC (90 тис. бар./добу) до океанського порту Семе в Беніні.",
+    linkId: "china",
+    linkLabel: "Китай: третій гравець →"
+  },
+  {
+    id: "ndassima",
+    type: "resource",
+    name: "Ндассіма",
+    country: "ЦАР",
+    badge: "Золото «Вагнера» (до $1 млрд)",
+    badgeBg: "#B98A2E",
+    cx: 675, cy: 435,
+    r: 5.5,
+    date: "Ексклюзив Midas Resources",
+    desc: "Найбільше золоте родовище ЦАР. За даними розслідувань Politico, приносить мережі «Вагнера» до $1 млрд на рік і охороняється зенітними установками.",
+    linkId: "resources",
+    linkLabel: "Гроші й ресурси →"
+  },
+  {
+    id: "abidiya",
+    type: "resource",
+    name: "Абідія",
+    country: "Судан",
+    badge: "Золото · M Invest",
+    badgeBg: "#B98A2E",
+    cx: 835, cy: 195,
+    r: 5,
+    date: "З 2018 року",
+    desc: "Копальня, отримана компанією «M Invest» у режиму Башира; одне з джерел фінансування африканської мережі найманців.",
+    linkId: "resources",
+    linkLabel: "Гроші й ресурси →"
+  }
+];
+
+let dashMapMode = "sahel"; // single, cleaned-up map mode
+let dashMapZoom = 1;
+let dashActiveLayer = "all";
+let dashActiveYearIdx = AFRICA_TIMELINE_YEARS.length - 1;
+
+// Quick Toggle States
+let dashToggles = {
+  bases: true,
+  jihad: true,
+  resources: true,
+  coast: true,
+  routes: true
+};
+
+function switchMapMode(mode) {
+  dashMapMode = mode;
+
+  const gContinent = document.getElementById("gContinentAfrica");
+  const gSahel = document.getElementById("gSahelFocus");
+  const svg = document.getElementById("dashMapSvg");
+
+  svg.setAttribute("viewBox", "0 0 1020 580");
+  if (gContinent) gContinent.style.display = "none";
+  if (gSahel) gSahel.style.display = "inline";
+
+  updatePinPositions();
+  updateMapPinsVisibility();
+  closeMapTooltip();
+}
+
+function toggleQuickFilter(filterKey) {
+  dashToggles[filterKey] = !dashToggles[filterKey];
+  const btn = document.getElementById(`qf-${filterKey}`);
+  if (btn) btn.classList.toggle("active", dashToggles[filterKey]);
+  updateMapPinsVisibility();
+}
+
+function setMapLayer(layer, label) {
+  dashActiveLayer = layer;
+  const lbl = document.getElementById("dashLayerLabel");
+  if (lbl) lbl.textContent = label;
+  document.querySelectorAll(".dash-layer-opt").forEach(el => el.classList.toggle("active", el.dataset.layer === layer));
+  const d = document.getElementById("dashLayerDropdown");
+  if (d) d.classList.remove("open");
+  updateMapPinsVisibility();
+}
+
+function toggleLayerDropdown(e) {
+  if (e) e.stopPropagation();
+  const d = document.getElementById("dashLayerDropdown");
+  if (d) d.classList.toggle("open");
+}
+
+document.addEventListener("click", () => {
+  const d = document.getElementById("dashLayerDropdown");
+  if (d) d.classList.remove("open");
+});
+
+function updatePinPositions() {
+  document.querySelectorAll(".dash-pin").forEach(el => {
+    const pinId = el.id.replace("pin-", "");
+    const p = DASH_PINS.find(item => item.id === pinId);
+    if (p) {
+      el.setAttribute("transform", `translate(${p.cx}, ${p.cy})`);
+    }
+  });
+}
+
+function updateMapPinsVisibility() {
+  const currentYearData = AFRICA_TIMELINE_YEARS[dashActiveYearIdx];
+  const allowedBases = currentYearData.bases || [];
+  const allowedClashes = currentYearData.clashes || [];
+  const allowedResources = currentYearData.resources || [];
+  const activeRoutes = currentYearData.routes || [];
+
+  // 1. Pins visibility
+  document.querySelectorAll(".dash-pin").forEach(el => {
+    const pinId = el.id.replace("pin-", "");
+    const type = el.dataset.type;
+    
+    let isYearActive = false;
+    if (type === "base" && allowedBases.includes(pinId)) isYearActive = true;
+    else if (type === "clash" && allowedClashes.includes(pinId)) isYearActive = true;
+    else if (type === "resource" && allowedResources.includes(pinId)) isYearActive = true;
+
+    let isFilterActive = false;
+    if (type === "base" && dashToggles.bases) isFilterActive = true;
+    else if (type === "clash" && dashToggles.jihad) isFilterActive = true;
+    else if (type === "resource" && dashToggles.resources) isFilterActive = true;
+
+    let isLayerMatch = false;
+    if (dashActiveLayer === "all") isLayerMatch = true;
+    else if (dashActiveLayer === "military" && type === "base") isLayerMatch = true;
+    else if (dashActiveLayer === "conflicts" && type === "clash") isLayerMatch = true;
+    else if (dashActiveLayer === "resources" && type === "resource") isLayerMatch = true;
+
+    el.style.display = (isYearActive && isFilterActive && isLayerMatch) ? "block" : "none";
+  });
+
+  // 2. Logistics routes visibility
+  document.querySelectorAll(".dash-route-corridor").forEach(el => {
+    const routeId = el.dataset.route;
+    const isYearActive = activeRoutes.includes(routeId);
+    el.style.display = (isYearActive && dashToggles.routes) ? "inline" : "none";
+  });
+
+  // 3. Coastal highlight
+  document.querySelectorAll(".africa-country.zone-coast").forEach(el => {
+    el.style.opacity = dashToggles.coast ? "1" : "0.5";
+  });
+}
+
+function zoomMap(delta) {
+  dashMapZoom = Math.max(1, Math.min(2.5, dashMapZoom + delta));
+  applyMapTransform();
+}
+
+function resetMapZoom() {
+  dashMapZoom = 1;
+  applyMapTransform();
+  closeMapTooltip();
+}
+
+function applyMapTransform() {
+  const svg = document.getElementById("dashMapSvg");
+  if (svg) {
+    svg.style.transform = `scale(${dashMapZoom})`;
+    svg.style.transformOrigin = "50% 50%";
+  }
+}
+
+function showPinTooltip(pinId, event) {
+  if (event) event.stopPropagation();
+  const pin = DASH_PINS.find(p => p.id === pinId);
+  if (!pin) return;
+
+  const tt = document.getElementById("dashMapTooltip");
+  if (!tt) return;
+
+  document.getElementById("dashTtTag").textContent = pin.badge;
+  document.getElementById("dashTtTag").style.background = pin.badgeBg || "#1F2A44";
+  document.getElementById("dashTtTitle").textContent = `${pin.name} (${pin.country})`;
+  document.getElementById("dashTtMeta").textContent = pin.date;
+  document.getElementById("dashTtDesc").textContent = pin.desc;
+  
+  const linkBtn = document.getElementById("dashTtBtn");
+  linkBtn.textContent = pin.linkLabel;
+  linkBtn.onclick = () => { goTo(pin.linkId); };
+
+  const vp = document.getElementById("dashMapViewport");
+  const rect = vp.getBoundingClientRect();
+  
+  const targetX = pin.cx;
+  const targetY = pin.cy;
+
+  const vb = { x: 0, y: 0, w: 1020, h: 580 };
+  
+  const posX = ((targetX - vb.x) / vb.w) * rect.width;
+  const posY = ((targetY - vb.y) / vb.h) * rect.height;
+
+  let left = posX - 160;
+  let top = posY - 190;
+  if (left < 15) left = 15;
+  if (left + 330 > rect.width) left = rect.width - 345;
+  if (top < 15) top = posY + 20;
+
+  tt.style.left = `${left}px`;
+  tt.style.top = `${top}px`;
+  tt.style.display = "block";
+}
+
+function closeMapTooltip() {
+  const tt = document.getElementById("dashMapTooltip");
+  if (tt) tt.style.display = "none";
+}
+
+function scrubYear(idx) {
+  dashActiveYearIdx = idx;
+  document.querySelectorAll(".dash-scrub-node").forEach((node, i) => {
+    node.classList.toggle("active", i === idx);
+  });
+  
+  const yr = AFRICA_TIMELINE_YEARS[idx];
+  const badge = document.getElementById("dashYearBadgeNum");
+  if (badge) badge.textContent = yr.year;
+  
+  const yearDesc = document.getElementById("dashYearDesc");
+  if (yearDesc) yearDesc.textContent = yr.summary;
+  
+  updateMapPinsVisibility();
+}
+
+function scrollScrubber(dir) {
+  const nextIdx = Math.max(0, Math.min(AFRICA_TIMELINE_YEARS.length - 1, dashActiveYearIdx + dir));
+  scrubYear(nextIdx);
+}
+
+function initDashboard() {
+  switchMapMode(dashMapMode);
+  scrubYear(dashActiveYearIdx);
+}
+
 function renderOverview() {
   return `
-<div class="hero">
+<div class="hero" style="padding-bottom:34px;">
 <div class="flagbar" style="background:${FLAGS.overview}"></div>
-<div class="hero-eyebrow">Особистий проєкт · робота в процесі</div>
-<h1>Слід у пісках</h1>
-<p class="hero-lede">Сахель — регіон, де за п’ять років майже повністю змінилася розстановка сил: французькі й американські війська пішли, до влади прийшли військові хунти, а на їхньому боці тепер воює структура, яка веде родовід від сирійського фіаско 2013 року.</p>
+<div class="hero-eyebrow">Ситуаційний центр · аналітика оновлена ${CHANGELOG[0].date}</div>
+<h1>Слід у пісках: Ситуаційний моніторинг</h1>
+<p class="hero-lede">Інтерактивна геополітична карта Сахелю та сусідніх країн: Зона 1 (AES), Зона 2 (транзит і вплив РФ), логістичні морські й сухопутні коридори, часовий слайдер та фільтри загроз.</p>
 </div>
-<div class="section">
+
+<!-- ================= GEOPOLITICAL DASHBOARD ================= -->
+<div class="dash-container">
+  <div class="dash-topbar">
+    <div class="dash-status-badge">
+      <span class="dash-status-dot"></span>
+      <span>Знімок станом на ${CHANGELOG[0].date} · Сахель і сусідні країни</span>
+    </div>
+    <div class="dash-title-wrap">
+      <div class="dash-title">Геополітика Сахелю та Африки</div>
+      <div class="dash-subtitle">Транзитна логістика, військові бази РФ, зони джихадистів та ресурси</div>
+    </div>
+    <div class="dash-user-badge">
+      <span>Ситуаційний моніторинг</span>
+      <div class="dash-user-avatar">АС</div>
+    </div>
+  </div>
+
+  <!-- Interactive Map Card -->
+  <div class="dash-map-card">
+    <div class="dash-map-viewport" id="dashMapViewport" onclick="closeMapTooltip()">
+      
+      <!-- Top Left View Controls -->
+      <div class="dash-map-controls">
+        <div style="display:flex; gap:4px;">
+          <button class="dash-ctrl-btn" onclick="zoomMap(0.35); event.stopPropagation();" title="Наблизити">+</button>
+          <button class="dash-ctrl-btn" onclick="zoomMap(-0.35); event.stopPropagation();" title="Віддалити">−</button>
+          <button class="dash-ctrl-btn" onclick="resetMapZoom(); event.stopPropagation();" title="Скинути масштаб" style="font-size:0.85rem;">⛶</button>
+        </div>
+      </div>
+
+      <!-- Top Right Layer Filter, Quick Toggles & Legend -->
+      <div class="dash-map-header-tools" onclick="event.stopPropagation()">
+        <div style="position:relative;">
+          <button class="dash-layer-select-btn" onclick="toggleLayerDropdown(event)">
+            <span>🗺️</span>
+            <span id="dashLayerLabel">Всі шари та об'єкти</span>
+            <span style="font-size:0.7rem;">▼</span>
+          </button>
+          <div class="dash-layer-dropdown" id="dashLayerDropdown">
+            <div class="dash-layer-opt active" data-layer="all" onclick="setMapLayer('all', 'Всі шари та об\'єкти')">🌐 Всі шари та об'єкти</div>
+            <div class="dash-layer-opt" data-layer="military" onclick="setMapLayer('military', 'Військові бази та контингент РФ')">🔵 Військові бази та контингент РФ</div>
+            <div class="dash-layer-opt" data-layer="conflicts" onclick="setMapLayer('conflicts', 'Гарячі точки та сутички')">🔴 Гарячі точки та конфлікти</div>
+            <div class="dash-layer-opt" data-layer="resources" onclick="setMapLayer('resources', 'Стратегічні ресурси')">🟡 Видобувні ресурси</div>
+          </div>
+        </div>
+
+        <!-- Quick Toggle Filter Chips -->
+        <div class="dash-quick-filters">
+          <button class="dash-qfilter-chip active f-base" id="qf-bases" onclick="toggleQuickFilter('bases')">🛑 Бази РФ</button>
+          <button class="dash-qfilter-chip active f-jihad" id="qf-jihad" onclick="toggleQuickFilter('jihad')">⚔️ JNIM / ISGS</button>
+          <button class="dash-qfilter-chip active f-res" id="qf-resources" onclick="toggleQuickFilter('resources')">💰 Ресурси</button>
+          <button class="dash-qfilter-chip active f-coast" id="qf-coast" onclick="toggleQuickFilter('coast')">🛳️ Затока під загрозою</button>
+          <button class="dash-qfilter-chip active f-routes" id="qf-routes" onclick="toggleQuickFilter('routes')">🛣️ Логістика</button>
+        </div>
+
+        <div class="dash-map-legend-card" style="margin-top:4px;">
+          <div class="dash-legend-item"><span class="dash-legend-dot" style="background:#A8432B;"></span> <strong>Зона 1:</strong> Альянс AES (Малі, Буркіна, Нігер)</div>
+          <div class="dash-legend-item"><span class="dash-legend-dot" style="background:#1F2A44;"></span> <strong>Зона 2:</strong> Вплив & транзит (Лівія, Чад, Судан, ЦАР)</div>
+          <div class="dash-legend-item"><span class="dash-legend-dot" style="background:#2E8B7D;"></span> <strong>Узбережжя:</strong> Бенін, Того, Кот-д’Івуар</div>
+          <div class="dash-legend-item"><span class="dash-legend-dot" style="background:#0077B6; border:1px dashed #fff;"></span> Морські & сухопутні коридори РФ</div>
+        </div>
+      </div>
+
+      <!-- Current Year Badge on Map -->
+      <div class="dash-map-year-badge">
+        <span class="dash-year-dot"></span>
+        <span id="dashYearBadgeNum">2026</span>
+      </div>
+
+      <!-- Interactive SVG Map Canvas -->
+      <svg class="dash-map-svg" id="dashMapSvg" viewBox="0 0 1020 580" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Gradients & Halos -->
+          <radialGradient id="halo-red" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#A8432B" stop-opacity="0.85"/>
+            <stop offset="60%" stop-color="#A8432B" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#A8432B" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="halo-blue" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1F2A44" stop-opacity="0.8"/>
+            <stop offset="60%" stop-color="#1F2A44" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#1F2A44" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="halo-gold" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#B98A2E" stop-opacity="0.8"/>
+            <stop offset="60%" stop-color="#B98A2E" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#B98A2E" stop-opacity="0"/>
+          </radialGradient>
+          <!-- Markers -->
+          <marker id="arrow-sea" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M0,1 L8,5 L0,9 z" fill="#0077B6"/>
+          </marker>
+          <marker id="arrow-land" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M0,1 L8,5 L0,9 z" fill="#E05206"/>
+          </marker>
+          <marker id="arrow-air" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M0,1 L8,5 L0,9 z" fill="#9D4EDD"/>
+          </marker>
+          <marker id="arrow-weapons" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M0,1 L8,5 L0,9 z" fill="#A8432B"/>
+          </marker>
+        </defs>
+
+        <!-- Ocean & Water Base -->
+        <rect x="0" y="0" width="1200" height="950" fill="#E2ECEF"/>
+
+        <!-- ================= MODE 1: FULL AFRICA CONTINENT ================= -->
+        <g id="gContinentAfrica" style="display:none;">
+          
+          <!-- Continent Grid Lines -->
+          <line class="geo-grid-line" x1="180" y1="260" x2="940" y2="260"/>
+          <text class="geo-grid-text" x="190" y="255">23.5° N (Тропік Рака)</text>
+          <line class="geo-grid-line" x1="180" y1="520" x2="940" y2="520"/>
+          <text class="geo-grid-text" x="190" y="515">0° (Екватор)</text>
+          <line class="geo-grid-line" x1="180" y1="720" x2="940" y2="720"/>
+          <text class="geo-grid-text" x="190" y="715">23.5° S (Тропік Козерога)</text>
+
+          <!-- 1. NORTH AFRICA -->
+          <path class="africa-country" d="M 285,185 L 340,180 L 360,225 L 305,265 L 265,245 Z" title="Марокко & Західна Сахара"/>
+          <text class="africa-label-neutral" x="290" y="225">Марокко</text>
+
+          <path class="africa-country" d="M 340,180 L 445,185 L 450,220 L 485,275 L 420,335 L 360,295 L 360,225 Z" title="Алжир"/>
+          <text class="africa-label-neutral" x="390" y="255">АЛЖИР</text>
+
+          <path class="africa-country" d="M 445,185 L 475,185 L 475,235 L 450,220 Z" title="Туніс"/>
+
+          <path class="africa-country" d="M 625,210 L 715,215 L 725,305 L 635,305 Z" title="Єгипет"/>
+          <text class="africa-label-neutral" x="655" y="260">ЄГИПЕТ</text>
+
+          <!-- 2. WEST AFRICA (NON-ZONE) -->
+          <path class="africa-country" d="M 265,245 L 305,265 L 330,345 L 285,385 L 250,330 Z" title="Мавританія"/>
+          <text class="africa-label-neutral" x="268" y="325">Мавританія</text>
+
+          <path class="africa-country" d="M 250,380 L 285,385 L 285,410 L 250,405 Z" title="Сенегал & Гамбія"/>
+          <path class="africa-country" d="M 265,410 L 310,410 L 310,450 L 275,445 Z" title="Гвінея"/>
+          <path class="africa-country" d="M 275,445 L 305,450 L 305,480 L 285,475 Z" title="Сьєрра-Леоне & Ліберія"/>
+          <path class="africa-country" d="M 375,465 L 405,465 L 405,510 L 375,510 Z" title="Гана"/>
+          <path class="africa-country" d="M 445,415 L 515,410 L 530,475 L 470,515 L 445,490 Z" title="Нігерія"/>
+          <text class="africa-label-neutral" x="465" y="465">НІГЕРІЯ</text>
+
+          <!-- COASTAL THREAT GROUP (Benin, Togo, Cote d'Ivoire) -->
+          <path class="africa-country zone-coast" d="M 310,425 L 350,425 L 350,495 L 310,490 Z" onclick="goTo('coast')" tabindex="0" role="button" aria-label="Кот-д’Івуар — Загроза JNIM" onkeydown="svgKeyNav(event,'coast')" title="Кот-д’Івуар — Загроза JNIM" />
+          <text class="africa-label-neutral" x="312" y="465" style="fill:#1F4E46; font-size:9px;">Кот-д'Івуар</text>
+
+          <path class="africa-country zone-coast" d="M 405,455 L 420,455 L 420,505 L 405,505 Z" onclick="goTo('coast')" tabindex="0" role="button" aria-label="Того — Загроза JNIM" onkeydown="svgKeyNav(event,'coast')" title="Того — Загроза JNIM" />
+          <path class="africa-country zone-coast" d="M 420,440 L 445,435 L 445,505 L 420,505 Z" onclick="goTo('coast')" tabindex="0" role="button" aria-label="Бенін — Парк W & Нафтопровід" onkeydown="svgKeyNav(event,'coast')" title="Бенін — Парк W & Нафтопровід" />
+          <text class="africa-label-neutral" x="424" y="475" style="fill:#1F4E46; font-size:9px;">Бенін</text>
+
+          <!-- 3. CENTRAL & EAST AFRICA -->
+          <path class="africa-country" d="M 505,475 L 535,475 L 535,550 L 485,550 L 485,515 Z" title="Камерун"/>
+          <path class="africa-country" d="M 485,550 L 535,550 L 530,620 L 485,605 Z" title="Габон & Конго"/>
+          <path class="africa-country" d="M 535,520 L 650,520 L 655,675 L 545,675 L 535,595 Z" title="Демократична Республіка Конго (ДРК)"/>
+          <text class="africa-label-neutral" x="575" y="605">ДРК</text>
+
+          <path class="africa-country" d="M 685,340 L 730,375 L 705,405 L 685,365 Z" title="Еритрея & Джибуті"/>
+          <path class="africa-country" d="M 690,395 L 785,425 L 755,505 L 675,475 Z" title="Ефіопія & Сомалі"/>
+          <text class="africa-label-neutral" x="710" y="450">Ефіопія</text>
+
+          <path class="africa-country" d="M 645,435 L 705,435 L 705,505 L 635,505 Z" title="Південний Судан"/>
+          <text class="africa-label-neutral" x="645" y="470" style="font-size:9.5px;">Півд. Судан</text>
+
+          <path class="africa-country" d="M 650,505 L 725,505 L 725,585 L 645,585 Z" title="Кенія, Уганда, Танзанія"/>
+          <text class="africa-label-neutral" x="665" y="550">Кенія/Танзанія</text>
+
+          <!-- 4. SOUTHERN AFRICA & MADAGASCAR -->
+          <path class="africa-country" d="M 535,665 L 625,665 L 615,755 L 530,735 Z" title="Ангола"/>
+          <text class="africa-label-neutral" x="555" y="705">Ангола</text>
+
+          <path class="africa-country" d="M 620,665 L 725,665 L 735,775 L 635,765 Z" title="Замбія, Зімбабве, Мозамбік"/>
+          <text class="africa-label-neutral" x="655" y="715">Мозамбік</text>
+
+          <path class="africa-country" d="M 530,735 L 615,755 L 605,845 L 535,825 Z" title="Намібія & Ботсвана"/>
+          <text class="africa-label-neutral" x="550" y="785">Намібія</text>
+
+          <path class="africa-country" d="M 545,825 L 685,825 L 665,915 L 565,915 Z" title="Південно-Африканська Республіка (ПАР)"/>
+          <text class="africa-label-neutral" x="590" y="870">ПАР</text>
+
+          <path class="africa-country" d="M 770,685 L 815,715 L 785,845 L 755,795 Z" title="Мадагаскар"/>
+          <text class="africa-label-neutral" x="765" y="770" style="font-size:9px;">Мадагаскар</text>
+
+
+          <!-- ================= CORE FOCUS ZONE 1: AES / SAHEL (#A8432B) ================= -->
+          <!-- MALI -->
+          <path class="africa-country zone-1" d="M 305,265 L 360,295 L 420,335 L 405,395 L 360,430 L 325,415 L 330,345 Z" onclick="goTo('mali')" tabindex="0" role="button" aria-label="Малі (Зона 1: AES) — перейти" onkeydown="svgKeyNav(event,'mali')" title="Малі (Зона 1: AES) — перейти" />
+          <text class="africa-label-zone1" x="335" y="365">МАЛІ</text>
+
+          <!-- BURKINA FASO -->
+          <path class="africa-country zone-1" d="M 350,425 L 395,415 L 415,445 L 385,465 L 350,450 Z" onclick="goTo('burkina')" tabindex="0" role="button" aria-label="Буркіна-Фасо (Зона 1: AES) — перейти" onkeydown="svgKeyNav(event,'burkina')" title="Буркіна-Фасо (Зона 1: AES) — перейти" />
+          <text class="africa-label-zone1" x="360" y="445" style="font-size:10.5px;">БУРКІНА</text>
+
+          <!-- NIGER -->
+          <path class="africa-country zone-1" d="M 420,335 L 485,275 L 545,315 L 535,410 L 445,415 L 405,395 Z" onclick="goTo('niger')" tabindex="0" role="button" aria-label="Нігер (Зона 1: AES) — перейти" onkeydown="svgKeyNav(event,'niger')" title="Нігер (Зона 1: AES) — перейти" />
+          <text class="africa-label-zone1" x="455" y="365">НІГЕР</text>
+
+
+          <!-- ================= CORE FOCUS ZONE 2: TRANSIT & INFLUENCE (#1F2A44) ================= -->
+          <!-- LIBYA -->
+          <path class="africa-country zone-2" d="M 450,220 L 625,210 L 635,305 L 595,355 L 515,340 L 485,275 Z" onclick="goTo('libya')" tabindex="0" role="button" aria-label="Лівія (Зона 2: Хаб РФ) — перейти" onkeydown="svgKeyNav(event,'libya')" title="Лівія (Зона 2: Хаб РФ) — перейти" />
+          <text class="africa-label-zone2" x="525" y="270">ЛІВІЯ</text>
+
+          <!-- CHAD -->
+          <path class="africa-country zone-2" d="M 515,340 L 595,355 L 610,420 L 595,495 L 515,475 L 535,410 L 545,315 Z" onclick="goTo('chad')" tabindex="0" role="button" aria-label="Чад (Зона 2: Балансування) — перейти" onkeydown="svgKeyNav(event,'chad')" title="Чад (Зона 2: Балансування) — перейти" />
+          <text class="africa-label-zone2" x="545" y="420">ЧАД</text>
+
+          <!-- SUDAN -->
+          <path class="africa-country zone-2" d="M 595,355 L 635,305 L 725,305 L 725,370 L 685,465 L 610,420 Z" onclick="goTo('sudan')" tabindex="0" role="button" aria-label="Судан (Зона 2: Війна SAF/RSF) — перейти" onkeydown="svgKeyNav(event,'sudan')" title="Судан (Зона 2: Війна SAF/RSF) — перейти" />
+          <text class="africa-label-zone2" x="640" y="375">СУДАН</text>
+
+          <!-- CENTRAL AFRICAN REPUBLIC (CAR) -->
+          <path class="africa-country zone-2" d="M 515,475 L 595,495 L 635,505 L 615,555 L 535,550 L 535,475 Z" onclick="goTo('car')" tabindex="0" role="button" aria-label="ЦАР (Зона 2: Золото Ндассіми) — перейти" onkeydown="svgKeyNav(event,'car')" title="ЦАР (Зона 2: Золото Ндассіми) — перейти" />
+          <text class="africa-label-zone2" x="555" y="525" style="font-size:11.5px;">ЦАР</text>
+
+
+          <!-- ================= LOGISTICS & TRANSIT CORRIDORS ================= -->
+          <!-- 1. Sea Route: Black Sea / Med -> Tobruk (Libya) -->
+          <g class="dash-route-corridor" data-route="sea-tobruk">
+            <path d="M 680,150 C 650,185 625,215 595,245" class="route-sea" marker-end="url(#arrow-sea)"/>
+            <text x="640" y="195" font-family="var(--font-sans)" font-size="9px" font-weight="800" fill="#0077B6">Морський канал РФ</text>
+          </g>
+
+          <!-- 2. Land Corridor: Tobruk -> Al-Jufra -> Agadez -> Niamey -> Bamako -->
+          <g class="dash-route-corridor" data-route="land-sahel">
+            <path d="M 595,245 L 525,290 L 465,355 L 410,405 L 335,410" class="route-land" marker-end="url(#arrow-land)"/>
+            <text x="440" y="390" font-family="var(--font-sans)" font-size="9px" font-weight="800" fill="#E05206">Транссахарський коридор</text>
+          </g>
+
+          <!-- 3. Air Bridge: Al-Jufra -> Bangui (CAR) & Sahel Bases -->
+          <g class="dash-route-corridor" data-route="air-sahel">
+            <path d="M 525,290 C 535,390 545,460 550,530" class="route-air" marker-end="url(#arrow-air)"/>
+            <text x="548" y="475" font-family="var(--font-sans)" font-size="9px" font-weight="800" fill="#9D4EDD">Авіаміст</text>
+          </g>
+
+          <!-- 4. Weapons Transfer: Haftar / Wagner to RSF (Sudan) -->
+          <g class="dash-route-corridor" data-route="weapons-sudan">
+            <path d="M 525,290 C 570,335 600,370 615,400" class="route-weapons" marker-end="url(#arrow-weapons)"/>
+            <text x="565" y="340" font-family="var(--font-sans)" font-size="8.5px" font-weight="800" fill="#A8432B">Зброя для RSF</text>
+          </g>
+
+          <!-- 5. CNPC Pipeline: Agadem -> Seme (Benin) -->
+          <g class="dash-route-corridor" data-route="pipeline-seme">
+            <path d="M 505,390 C 475,415 445,445 435,495" fill="none" stroke="#2A2318" stroke-width="2.5" stroke-dasharray="4 2"/>
+            <text x="465" y="440" font-family="var(--font-sans)" font-size="8.5px" font-weight="800" fill="#2A2318">Нафтопровід CNPC</text>
+          </g>
+
+        </g>
+
+        <!-- ================= MODE 2: DETAILED SAHEL FOCUS ================= -->
+        <g id="gSahelFocus">
+          <!-- Mainland Base Fill -->
+          <path fill="#ECE7DC" d="M 80,40 L 980,40 L 980,540 L 500,540 L 460,430 L 380,410 L 220,400 L 140,360 L 115,240 L 80,120 Z"/>
+
+          <!-- Grid Lines -->
+          <line class="geo-grid-line" x1="80" y1="120" x2="960" y2="120"/>
+          <line class="geo-grid-line" x1="80" y1="280" x2="960" y2="280"/>
+          <line class="geo-grid-line" x1="80" y1="440" x2="960" y2="440"/>
+          <line class="geo-grid-line" x1="280" y1="50" x2="280" y2="520"/>
+          <line class="geo-grid-line" x1="520" y1="50" x2="520" y2="520"/>
+          <line class="geo-grid-line" x1="760" y1="50" x2="760" y2="520"/>
+
+          <!-- Neighbors -->
+          <path class="geo-neighbor" d="M 230,60 L 490,45 L 530,95 L 495,190 L 390,170 L 345,130 L 230,120 Z" title="Алжир"/>
+          <text class="geo-neighbor-label" x="340" y="95">АЛЖИР</text>
+          <path class="geo-neighbor" d="M 125,120 L 230,120 L 260,160 L 230,220 L 245,250 L 175,265 L 140,240 Z" title="Мавританія"/>
+          <text class="geo-neighbor-label" x="155" y="190">МАВРИТАНІЯ</text>
+          <path class="geo-neighbor" d="M 115,240 L 140,240 L 175,265 L 165,295 L 115,295 Z" title="Сенегал"/>
+          <path class="geo-neighbor" d="M 120,295 L 165,295 L 205,305 L 245,320 L 220,360 L 155,360 Z" title="Гвінея"/>
+          <path class="geo-neighbor" d="M 220,360 L 245,320 L 285,320 L 295,400 L 230,400 Z" title="Кот-д’Івуар"/>
+          <text class="geo-neighbor-label" x="235" y="380">Кот-д’Івуар</text>
+          <path class="geo-neighbor" d="M 295,345 L 335,345 L 335,405 L 295,405 Z" title="Гана"/>
+          <path class="geo-neighbor" d="M 335,345 L 355,345 L 355,405 L 335,405 Z" title="Того"/>
+          <path class="geo-neighbor" d="M 355,340 L 385,320 L 395,405 L 355,405 Z" title="Бенін"/>
+          <path class="geo-neighbor" d="M 395,290 L 450,285 L 535,280 L 555,345 L 500,410 L 395,405 Z" title="Нігерія"/>
+          <text class="geo-neighbor-label" x="435" y="350">НІГЕРІЯ</text>
+          <path class="geo-neighbor" d="M 535,345 L 575,345 L 565,445 L 520,440 L 500,410 Z" title="Камерун"/>
+          <path class="geo-neighbor" d="M 735,50 L 890,50 L 910,130 L 890,170 L 735,170 Z" title="Єгипет"/>
+          <path class="geo-neighbor" d="M 725,370 L 830,370 L 880,380 L 840,480 L 730,460 Z" title="Південний Судан"/>
+          <!-- Red Sea -->
+          <path fill="#E2ECEF" d="M 890,170 L 915,215 L 950,260 L 980,240 L 920,130 Z"/>
+
+          <!-- Core Countries Detailed -->
+          <path class="geo-country aes-mali zone-1" d="M 230,220 L 260,160 L 345,130 L 375,170 L 390,170 L 380,245 L 340,270 L 285,285 L 245,320 L 205,305 L 200,265 L 245,250 Z" onclick="goTo('mali')" tabindex="0" role="button" aria-label="Малі — перейти до розділу" onkeydown="svgKeyNav(event,'mali')" />
+          <path class="geo-country aes-burkina zone-1" d="M 285,285 L 340,270 L 385,285 L 375,340 L 325,355 L 290,345 L 280,315 Z" onclick="goTo('burkina')" tabindex="0" role="button" aria-label="Буркіна-Фасо — перейти до розділу" onkeydown="svgKeyNav(event,'burkina')" />
+          <path class="geo-country aes-niger zone-1" d="M 375,170 L 495,190 L 590,205 L 615,260 L 555,275 L 535,280 L 450,285 L 385,285 L 380,245 Z" onclick="goTo('niger')" tabindex="0" role="button" aria-label="Нігер — перейти до розділу" onkeydown="svgKeyNav(event,'niger')" />
+          <path class="geo-country geo-libya zone-2" d="M 490,45 L 720,50 L 735,170 L 685,210 L 590,205 L 530,95 Z" onclick="goTo('libya')" tabindex="0" role="button" aria-label="Лівія — перейти до розділу" onkeydown="svgKeyNav(event,'libya')" />
+          <path class="geo-country geo-chad zone-2" d="M 590,205 L 685,210 L 715,260 L 710,380 L 610,390 L 575,345 L 615,260 Z" onclick="goTo('chad')" tabindex="0" role="button" aria-label="Чад — перейти до розділу" onkeydown="svgKeyNav(event,'chad')" />
+          <path class="geo-country geo-sudan zone-2" d="M 685,210 L 735,170 L 890,170 L 915,215 L 880,330 L 830,370 L 725,370 L 715,260 Z" onclick="goTo('sudan')" tabindex="0" role="button" aria-label="Судан — перейти до розділу" onkeydown="svgKeyNav(event,'sudan')" />
+          <path class="geo-country geo-car zone-2" d="M 575,390 L 610,390 L 710,380 L 725,370 L 730,420 L 675,470 L 605,470 L 565,445 Z" onclick="goTo('car')" tabindex="0" role="button" aria-label="ЦАР — перейти до розділу" onkeydown="svgKeyNav(event,'car')" />
+
+          <text class="geo-country-label" x="275" y="235" fill="#fff">МАЛІ</text>
+          <text class="geo-country-label" x="305" y="325" fill="#fff" style="font-size:11.5px;">БУРКІНА</text>
+          <text class="geo-country-label" x="465" y="240" fill="#fff">НІГЕР</text>
+          <text class="geo-country-label" x="610" y="125" fill="#fff">ЛІВІЯ</text>
+          <text class="geo-country-label" x="640" y="295" fill="#fff">ЧАД</text>
+          <text class="geo-country-label" x="770" y="265" fill="#fff">СУДАН</text>
+          <text class="geo-country-label" x="635" y="430" fill="#fff" style="font-size:12px;">ЦАР</text>
+
+          <!-- Halos -->
+          <circle cx="365" cy="175" r="38" fill="url(#halo-red)" class="geo-halo"/>
+          <circle cx="340" cy="285" r="46" fill="url(#halo-red)" class="geo-halo"/>
+          <circle cx="215" cy="290" r="32" fill="url(#halo-red)" class="geo-halo"/>
+          <circle cx="730" cy="280" r="42" fill="url(#halo-red)" class="geo-halo"/>
+          <circle cx="810" cy="260" r="36" fill="url(#halo-red)" class="geo-halo"/>
+          <circle cx="585" cy="130" r="38" fill="url(#halo-blue)" class="geo-halo"/>
+
+          <!-- ================= CAPITAL CITIES (always visible) ================= -->
+          <g class="geo-capitals">
+            <circle class="geo-capital-dot" cx="230" cy="290" r="3.2"/>
+            <text class="geo-capital-label" x="236" y="303" fill="#fff">Бамако</text>
+
+            <circle class="geo-capital-dot" cx="330" cy="325" r="3.2"/>
+            <text class="geo-capital-label" x="336" y="313" fill="#fff">Уагадугу</text>
+
+            <circle class="geo-capital-dot" cx="385" cy="285" r="3.2"/>
+            <text class="geo-capital-label" x="391" y="298" fill="#fff">Ніамей</text>
+
+            <circle class="geo-capital-dot" cx="560" cy="65" r="3.2"/>
+            <text class="geo-capital-label" x="566" y="78" fill="#fff">Тріполі</text>
+
+            <circle class="geo-capital-dot" cx="590" cy="330" r="3.2"/>
+            <text class="geo-capital-label" x="596" y="343" fill="#fff">Нджамена</text>
+
+            <circle class="geo-capital-dot" cx="810" cy="260" r="3.2"/>
+            <text class="geo-capital-label" x="816" y="273" fill="#fff">Хартум</text>
+
+            <circle class="geo-capital-dot" cx="625" cy="460" r="3.2"/>
+            <text class="geo-capital-label" x="631" y="473" fill="#fff">Бангі</text>
+          </g>
+
+          <!-- ================= LOGISTICS & TRANSIT CORRIDORS ================= -->
+          <g class="dash-route-corridor" data-route="sea-tobruk">
+            <path d="M 650,20 C 630,60 615,105 610,150" class="route-sea" marker-end="url(#arrow-sea)"/>
+            <text x="600" y="85" font-family="var(--font-sans)" font-size="9px" font-weight="800" fill="#0077B6">Морський канал РФ</text>
+          </g>
+          <g class="dash-route-corridor" data-route="land-sahel">
+            <path d="M 610,150 L 480,220 L 260,300" class="route-land" fill="none" marker-end="url(#arrow-land)"/>
+            <text x="395" y="220" font-family="var(--font-sans)" font-size="9px" font-weight="800" fill="#E05206">Транссахарський коридор</text>
+          </g>
+          <g class="dash-route-corridor" data-route="air-sahel">
+            <path d="M 610,150 C 618,250 628,350 640,440" class="route-air" fill="none" marker-end="url(#arrow-air)"/>
+            <text x="630" y="300" font-family="var(--font-sans)" font-size="9px" font-weight="800" fill="#9D4EDD">Авіаміст</text>
+          </g>
+          <g class="dash-route-corridor" data-route="weapons-sudan">
+            <path d="M 610,150 C 685,180 755,215 800,250" class="route-weapons" fill="none" marker-end="url(#arrow-weapons)"/>
+            <text x="690" y="175" font-family="var(--font-sans)" font-size="8.5px" font-weight="800" fill="#A8432B">Зброя для RSF</text>
+          </g>
+          <g class="dash-route-corridor" data-route="pipeline-seme">
+            <path d="M 480,220 C 448,270 408,330 375,375" fill="none" stroke="#2A2318" stroke-width="2.5" stroke-dasharray="4 2"/>
+            <text x="410" y="300" font-family="var(--font-sans)" font-size="8.5px" font-weight="800" fill="#2A2318">Нафтопровід CNPC</text>
+          </g>
+        </g>
+
+        <!-- ================= INTERACTIVE PINS (SHARED) ================= -->
+        ${DASH_PINS.map(p => {
+          let pinColor = "#1F2A44";
+          let symbol = "";
+          if (p.type === "clash") {
+            pinColor = "#A8432B";
+            symbol = `<path d="M -3,-3 L 3,3 M -3,3 L 3,-3" stroke="#fff" stroke-width="1.4" pointer-events="none"/>`;
+          } else if (p.type === "resource") {
+            pinColor = "#B98A2E";
+            symbol = `<polygon points="0,-4 3,0 0,4 -3,0" fill="#fff" pointer-events="none"/>`;
+          } else if (p.type === "base") {
+            pinColor = "#1F2A44";
+            symbol = `<circle cx="0" cy="0" r="2.2" fill="#fff" pointer-events="none"/>`;
+          }
+
+          return `
+          <g class="dash-pin" id="pin-${p.id}" data-type="${p.type}" transform="translate(${p.cx}, ${p.cy})" onclick="showPinTooltip('${p.id}', event)">
+            <circle class="dash-pin-hit" cx="0" cy="0" r="16"/>
+            <circle class="dash-pin-pulse" cx="0" cy="0" r="7" fill="none" stroke="${pinColor}"/>
+            <circle class="dash-pin-core" cx="0" cy="0" r="${p.r || 5.5}" fill="${pinColor}" stroke="#fff" stroke-width="1.5" filter="drop-shadow(0px 2px 3px rgba(0,0,0,0.3))"/>
+            ${symbol}
+          </g>
+          `;
+        }).join("")}
+
+      </svg>
+
+      <!-- Floating Map Tooltip / Intelligence Card -->
+      <div class="dash-map-tooltip" id="dashMapTooltip" onclick="event.stopPropagation()">
+        <div class="dash-tt-header">
+          <span class="dash-tt-tag" id="dashTtTag">ОБ'ЄКТ</span>
+          <button class="dash-tt-close" onclick="closeMapTooltip()">&times;</button>
+        </div>
+        <div class="dash-tt-title" id="dashTtTitle">Назва об'єкта</div>
+        <div class="dash-tt-meta" id="dashTtMeta">Статус і хронологія</div>
+        <div class="dash-tt-desc" id="dashTtDesc">Коротка довідка та опис події.</div>
+        <button class="dash-tt-btn" id="dashTtBtn">Детальніше →</button>
+      </div>
+
+    </div>
+
+    <!-- Timeline Slider Bar -->
+    <div class="dash-scrubber-bar">
+      <button class="dash-scrub-nav" onclick="scrollScrubber(-1)" title="Попередній період">‹</button>
+      <div class="dash-scrub-track-wrap" id="dashScrubTrackWrap">
+        <div class="dash-scrub-track" style="min-width:700px;">
+          <div class="dash-scrub-line"></div>
+          ${AFRICA_TIMELINE_YEARS.map((n, i) => {
+            const stepPct = (i / (AFRICA_TIMELINE_YEARS.length - 1)) * 100;
+            return `
+            <div class="dash-scrub-node ${i === AFRICA_TIMELINE_YEARS.length - 1 ? "active" : ""}" style="left: calc(30px + ${stepPct * 0.90}%);" onclick="scrubYear(${i})">
+              <span class="dash-scrub-label">${n.title.split(':')[1] || n.year}</span>
+              <span class="dash-scrub-dot"></span>
+              <span class="dash-scrub-year" style="font-size:0.85rem; font-weight:800;">${n.year}</span>
+            </div>
+            `;
+          }).join("")}
+        </div>
+      </div>
+      <button class="dash-scrub-nav" onclick="scrollScrubber(1)" title="Наступний період">›</button>
+    </div>
+    
+    <!-- Timeline Event Description Banner -->
+    <div style="padding:10px 20px 14px; background:#ECE4D3; border-top:1px solid var(--line); font-family:var(--font-sans); font-size:0.82rem; color:var(--ink-soft); display:flex; align-items:center; gap:10px;">
+      <span style="font-weight:800; color:var(--indigo); text-transform:uppercase; font-size:0.75rem;">Контекст епохи:</span>
+      <span id="dashYearDesc">${AFRICA_TIMELINE_YEARS[AFRICA_TIMELINE_YEARS.length - 1].summary}</span>
+    </div>
+
+  </div>
+
+  <!-- 5 Bottom Widgets Grid -->
+  <div class="dash-widgets-grid">
+
+    <!-- Widget 1: Active Conflicts -->
+    <div class="dash-widget-card">
+      <div class="dash-widget-header">
+        <span class="dash-widget-title">АКТИВНІ КОНФЛІКТИ</span>
+        <a class="dash-widget-more" onclick="goTo('jihad')">Всі →</a>
+      </div>
+      <div class="dash-widget-subtitle">Умовна шкала напруженості (редакційна оцінка, не офіційний індекс)</div>
+      <div class="dash-barchart">
+        <div class="dash-bar-col" onclick="goTo('burkina')" title="Буркіна-Фасо: Індекс тероризму #1 у світі">
+          <span class="dash-bar-val">9.8</span>
+          <div class="dash-bar-fill" style="height:92%; background:#A8432B;"></div>
+          <span class="dash-bar-lbl">Бурк.</span>
+        </div>
+        <div class="dash-bar-col" onclick="goTo('mali')" title="Малі: Паливна блокада Бамако та Кідаль">
+          <span class="dash-bar-val">8.6</span>
+          <div class="dash-bar-fill" style="height:81%; background:#C9714F;"></div>
+          <span class="dash-bar-lbl">Малі</span>
+        </div>
+        <div class="dash-bar-col" onclick="goTo('sudan')" title="Судан: Громадянська війна SAF vs RSF">
+          <span class="dash-bar-val">9.2</span>
+          <div class="dash-bar-fill" style="height:86%; background:#8E1B1B;"></div>
+          <span class="dash-bar-lbl">Судан</span>
+        </div>
+        <div class="dash-bar-col" onclick="goTo('niger')" title="Нігер: Атаки навколо Ніамея (+18%)">
+          <span class="dash-bar-val">7.4</span>
+          <div class="dash-bar-fill" style="height:69%; background:#E05206;"></div>
+          <span class="dash-bar-lbl">Нігер</span>
+        </div>
+        <div class="dash-bar-col" onclick="goTo('coast')" title="Бенін/Того: Спіловер до Гвінейської затоки">
+          <span class="dash-bar-val">5.8</span>
+          <div class="dash-bar-fill" style="height:54%; background:#3A4A6B;"></div>
+          <span class="dash-bar-lbl">Затока</span>
+        </div>
+      </div>
+      <div class="dash-bar-legend-row">
+        <span>Документовано: Буркіна-Фасо — №1 у Глобальному індексі тероризму 2025</span>
+      </div>
+    </div>
+
+    <!-- Widget 2: Key Players & Alliances -->
+    <div class="dash-widget-card">
+      <div class="dash-widget-header">
+        <span class="dash-widget-title">КЛЮЧОВІ ГРАВЦІ</span>
+        <a class="dash-widget-more" onclick="goTo('dossier')">Досьє →</a>
+      </div>
+      <div class="dash-players-list">
+        <div class="dash-player-row" onclick="goTo('mali')">
+          <div class="dash-pavatar" style="background:linear-gradient(90deg,#14B53A,#B98A2E)">АГ</div>
+          <div class="dash-pinfo">
+            <div class="dash-pname">Ассімі Гойта</div>
+            <div class="dash-prole">Президент Малі · 5-річний мандат</div>
+          </div>
+          <span class="dash-pchev">›</span>
+        </div>
+        <div class="dash-player-row" onclick="goTo('burkina')">
+          <div class="dash-pavatar" style="background:linear-gradient(180deg,#EF2B2D,#009E49)">ІТ</div>
+          <div class="dash-pinfo">
+            <div class="dash-pname">Ібрагім Траоре</div>
+            <div class="dash-prole">Президент Буркіна-Фасо</div>
+          </div>
+          <span class="dash-pchev">›</span>
+        </div>
+        <div class="dash-player-row" onclick="goTo('niger')">
+          <div class="dash-pavatar" style="background:linear-gradient(180deg,#E05206,#0DB02B)">АЧ</div>
+          <div class="dash-pinfo">
+            <div class="dash-pname">Абдурахман Чіані</div>
+            <div class="dash-prole">Президент Нігеру · CNSP</div>
+          </div>
+          <span class="dash-pchev">›</span>
+        </div>
+        <div class="dash-player-row" onclick="goTo('libya')">
+          <div class="dash-pavatar" style="background:linear-gradient(135deg,#CE1126,#239E46)">ХХ</div>
+          <div class="dash-pinfo">
+            <div class="dash-pname">Халіфа Хафтар</div>
+            <div class="dash-prole">Командувач ЛНА (Лівія)</div>
+          </div>
+          <span class="dash-pchev">›</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Widget 3: Russian Presence Tracker -->
+    <div class="dash-widget-card">
+      <div class="dash-widget-header">
+        <span class="dash-widget-title">ТРЕКЕР ПРИСУТНОСТІ РФ</span>
+        <a class="dash-widget-more" onclick="goTo('timeline')">Деталі →</a>
+      </div>
+      <div class="dash-tracker-body">
+        <div class="dash-tracker-route">
+          РФ / Сирія ➔ Тобрук & Джуфра ➔ Сахель ➔ ЦАР
+        </div>
+        <div class="dash-tracker-stat">
+          <span class="dash-stat-label">Особовий склад у регіоні</span>
+          <span class="dash-stat-num">≈&nbsp;5&nbsp;000+</span>
+        </div>
+        <div class="dash-tracker-stat">
+          <span class="dash-stat-label">Структура</span>
+          <span style="font-size:0.8rem; font-weight:700; color:var(--indigo);">«Африканський корпус» МО</span>
+        </div>
+        <div class="dash-tracker-stat">
+          <span class="dash-stat-label">Колишні вагнерівці</span>
+          <span style="font-size:0.8rem; font-weight:700; color:var(--rust);">70–80% складу</span>
+        </div>
+        <svg class="dash-trend-svg" viewBox="0 0 160 40">
+          <path d="M 0,35 Q 40,32 70,25 T 120,15 T 160,6 L 160,40 L 0,40 Z" fill="rgba(168, 67, 43, 0.15)"/>
+          <path d="M 0,35 Q 40,32 70,25 T 120,15 T 160,6" fill="none" stroke="#A8432B" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Widget 4: Resource Extraction Sites -->
+    <div class="dash-widget-card">
+      <div class="dash-widget-header">
+        <span class="dash-widget-title">ВИДОБУВНІ ОБ'ЄКТИ</span>
+        <a class="dash-widget-more" onclick="goTo('resources')">Таблиця →</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:2px;">
+        <div class="dash-resource-item">
+          <div class="dash-res-name"><span style="color:#B98A2E;">🟡</span> Лулу-Гункото (Малі)</div>
+          <div class="dash-res-meta">Золото · $430M угода</div>
+        </div>
+        <div class="dash-resource-item">
+          <div class="dash-res-name"><span style="color:#B98A2E;">🟡</span> Ндассіма (ЦАР)</div>
+          <div class="dash-res-meta">Золото · до $1 млрд/р</div>
+        </div>
+        <div class="dash-resource-item">
+          <div class="dash-res-name"><span style="color:#7A7A7A;">⚪</span> Somaïr / Арліт (Нігер)</div>
+          <div class="dash-res-meta">Уран · TSUMCO</div>
+        </div>
+        <div class="dash-resource-item">
+          <div class="dash-res-name"><span style="color:#A8432B;">🟣</span> Гуламіна (Малі)</div>
+          <div class="dash-res-meta">Літій · 506 тис. т/р</div>
+        </div>
+        <div class="dash-resource-item">
+          <div class="dash-res-name"><span style="color:#2A2318;">⚫</span> Агадем ➔ Семе</div>
+          <div class="dash-res-meta">Нафта · $4.5–7 млрд</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Widget 5: Recent Updates -->
+    <div class="dash-widget-card">
+      <div class="dash-widget-header">
+        <span class="dash-widget-title">ОСТАННІ ОНОВЛЕННЯ</span>
+        <a class="dash-widget-more" onclick="goTo('changelog')">Журнал →</a>
+      </div>
+      <div class="dash-updates-list">
+        <div class="dash-up-item" onclick="goTo('mali')">
+          <div class="dash-up-top">
+            <span class="dash-up-country">Малі</span>
+            <span class="dash-up-time">квітень 2026</span>
+          </div>
+          <div class="dash-up-txt">Скоординовані атаки JNIM на об'єкти біля Кідаля, Гао та Севаре.</div>
+        </div>
+        <div class="dash-up-item" onclick="goTo('niger')">
+          <div class="dash-up-top">
+            <span class="dash-up-country">Нігер</span>
+            <span class="dash-up-time">травень 2026</span>
+          </div>
+          <div class="dash-up-txt">Концесію Arlit анульовано; створено нову держкомпанію TSUMCO.</div>
+        </div>
+        <div class="dash-up-item" onclick="goTo('burkina')">
+          <div class="dash-up-top">
+            <span class="dash-up-country">Буркіна</span>
+            <span class="dash-up-time">січень 2026</span>
+          </div>
+          <div class="dash-up-txt">Указом Траоре розпущено всі політичні партії, активи передано державі.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= IN-DEPTH NARRATIVE & COUNTRY OVERVIEW ================= -->
+<div class="anchor-nav">
+<button onclick="scrollToAnchor('anchor-about')">Що таке Сахель</button>
+<button onclick="scrollToAnchor('anchor-timeline')">Передісторія Вагнера</button>
+<button onclick="scrollToAnchor('anchor-countries')">Країни Сахелю</button>
+<button onclick="scrollToAnchor('anchor-other')">Поза Сахелем</button>
+<button onclick="scrollToAnchor('anchor-themes')">Наскрізні теми</button>
+</div>
+
+<div class="section" id="anchor-about">
 <h2 class="section-title">Що таке Сахель</h2>
 <p>Сахель — смуга напівпустелі між Сахарою та саванами Західної й Центральної Африки, від Атлантики до Червоного моря. У широкому значенні до нього відносять Мавританію, Сенегал, Малі, Буркіна-Фасо, Нігер, північ Нігерії, Чад, Судан та Еритрею.</p>
 <p>Але коли зараз говорять про «кризу Сахелю», йдеться передусім про три країни — <strong>Малі, Буркіна-Фасо й Нігер</strong>. Усі три за 2020–2023 роки пережили військові перевороти, розірвали союз із колишньою метрополією Францією і в тій чи іншій формі запросили російську військову підтримку.</p>
 <p>17 вересня 2023 року ці три країни утворили Альянс держав Сахелю — військовий союз на випадок зовнішньої агресії, а 6 липня 2024-го перетворили його на повноцінну Конфедерацію зі спільними політичними й економічними амбіціями, аж до єдиної валюти. Усі три вийшли з регіонального блоку ЕКОВАС.</p>
 </div>
-<div class="mapwrap">
-<h2 class="section-title">Карта регіону</h2>
-<div class="map-frame">
-<svg class="map-svg" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
-<!-- neighboring countries, for orientation only -->
-<text class="map-neighbor-label" x="18" y="140">Мавританія</text>
-<text class="map-neighbor-label" x="30" y="300">Сенегал / Гвінея</text>
-<text class="map-neighbor-label" x="345" y="20">Алжир</text>
-<text class="map-neighbor-label" x="600" y="20">Лівія</text>
-<text class="map-neighbor-label" x="695" y="150">Чад</text>
-<text class="map-neighbor-label" x="600" y="400">Нігерія</text>
-<text class="map-neighbor-label" x="400" y="450">Бенін / Того / Гана</text>
-<text class="map-neighbor-label" x="190" y="450">Кот-д’Івуар</text>
-<!-- conflict zones (behind countries' borders, drawn after so they read as overlays) -->
-<!-- countries -->
-<polygon class="map-country" style="fill:#D9E3CC" points="60,75 230,42 328,52 368,138 348,226 300,296 215,320 130,296 74,236 44,146" onclick="goTo('mali')"/>
-<polygon class="map-country" style="fill:#F1D9D2" points="208,296 300,292 388,298 452,326 428,394 340,430 250,416 188,368 178,328" onclick="goTo('burkina')"/>
-<polygon class="map-country" style="fill:#F2E6CC" points="386,66 556,38 646,86 676,196 646,314 558,376 470,346 408,256 372,166" onclick="goTo('niger')"/>
-<!-- zone shading -->
-<ellipse class="map-zone" cx="285" cy="98" rx="88" ry="66"/>
-<ellipse class="map-zone" cx="335" cy="300" rx="72" ry="56"/>
-<!-- country name labels -->
-<text class="map-country-label" x="150" y="180">Малі</text>
-<text class="map-country-label" x="480" y="220">Нігер</text>
-<text class="map-country-label" x="228" y="336">Буркіна-Фасо</text>
-<!-- capitals -->
-<circle class="map-capital-dot" cx="150" cy="262" r="5"/>
-<text class="map-capital-label" x="160" y="266">Бамако</text>
-<circle class="map-capital-dot" cx="320" cy="392" r="5"/>
-<text class="map-capital-label" x="330" y="396">Уагадугу</text>
-<circle class="map-capital-dot" cx="445" cy="300" r="5"/>
-<text class="map-capital-label" x="455" y="304">Ніамей</text>
-<!-- notable events -->
-<circle class="map-event-dot" cx="300" cy="72" r="4.5"/>
-<text class="map-event-label" x="309" y="70">Тінзауатен, 2024</text>
-<circle class="map-event-dot" cx="255" cy="108" r="4.5"/>
-<text class="map-event-label" x="150" y="128">Кідаль, 2023</text>
-<circle class="map-event-dot" cx="220" cy="210" r="4.5"/>
-<text class="map-event-label" x="105" y="215">Мура, 2022</text>
-<!-- former western base -->
-<circle class="map-base-marker" cx="530" cy="185" r="7"/>
-<text class="map-base-label" x="542" y="189">Агадес — база 201 (закрита, 2024)</text>
-</svg>
-<div class="maplegend">
-<div class="li"><span class="swatch" style="background:var(--indigo-deep)"></span>Столиця</div>
-<div class="li"><span class="swatch" style="background:var(--rust)"></span>Подія з хронології</div>
-<div class="li"><span class="swatch dash"></span>Колишня західна база</div>
-<div class="li"><span class="swatch zone"></span>Зона активності джихадистів (JNIM / ISGS)</div>
-</div>
-</div>
-<p class="map-caption">Схематична карта, не географічна проєкція. Клікни на країну, щоб перейти до її розділу. Підрозділи «Африканського корпусу» зараз присутні у всіх трьох столицях.</p>
-</div>
-<div class="deckwrap">
+
+<div class="deckwrap" id="anchor-timeline">
 <div class="deck-label">Передісторія: як «Вагнер» дійшов до Сахелю</div>
 <div class="deck" id="deck-overview"></div>
 </div>
-<div class="section" style="padding-top:0;">
+
+<div class="section" style="padding-top:0;" id="anchor-countries">
 <h2 class="section-title">Три країни, з яких почнемо</h2>
 </div>
 <div class="country-cards">
@@ -2764,7 +6189,22 @@ ${COUNTRIES.map(e=>`
 </div>
 `).join("")}
 </div>
-<div class="section" style="padding-top:0;">
+
+<div class="section" style="padding-top:0;" id="anchor-other">
+<h2 class="section-title">За межами Сахелю</h2>
+<p>«Вагнер» і «Африканський корпус» працюють і поза Альянсом держав Сахелю — з країн, звідки все почалося, або куди веде той самий слід.</p>
+</div>
+<div class="country-cards" style="padding-top:0;">
+${OTHER_COUNTRIES.map(e=>`
+<div class="ccard" onclick="goTo('${e.id}')">
+<div class="flagbar-h" style="background:${FLAGS[e.flagKey]}"></div>
+<h3>${e.name}</h3>
+<p>${e.capital} · ${e.population}</p>
+</div>
+`).join("")}
+</div>
+
+<div class="section" style="padding-top:0;" id="anchor-themes">
 <h2 class="section-title">Дивитися наскрізь</h2>
 <p>Теми, які проходять через усі три країни й не вміщаються в одну хроніку, — окремо, у бічній панелі.</p>
 </div>
@@ -2810,15 +6250,15 @@ ${COUNTRIES.map(e=>`
 <p>Пригожин, Уткін, Гойта, Траоре, Чіані — короткі картки з біографією й роллю в подіях.</p>
 </div>
 </div>
-<div class="footnote">Дані про перевороти, чисельність населення та хронологію подій зібрані з відкритих джерел (Вікіпедія, Reuters, РСМД, регіональні медіа) станом на вересень 2026 року й будуть уточнюватися.</div>
-`
+<div class="footnote">Дані про перевороти, чисельність населення та хронологію подій зібрані з відкритих джерел (Вікіпедія, Reuters, РСМД, регіональні медіа) станом на 2026 рік й будуть уточнюватися.</div>
+`;
 }
-
 function renderCountry(e) {
   return `
-<div class="hero">
+<div class="hero hero-country">
 <div class="flagbar" style="background:${FLAGS[e.flagKey]}"></div>
-<div class="hero-eyebrow">Альянс держав Сахелю</div>
+<div class="hero-flagbar-top" style="background:${FLAGS[e.flagKey]}"></div>
+<div class="hero-eyebrow">${e.eyebrow || "Альянс держав Сахелю"}</div>
 <h1>${e.name}</h1>
 <p class="hero-lede">${e.intro[0]}</p>
 <div class="factstrip">
@@ -2842,7 +6282,7 @@ ${e.order.map(t=>`<p>${t}</p>`).join("")}
 <h2 class="section-title">Присутність росії — хронологія</h2>
 </div>
 ${renderTimeline(e.timeline)}
-<div class="footnote">Останнє оновлення розділу — вересень 2026 року. Джерела: Reuters, BBC, Новая газета Європа, РСМД, відкриті звіти дослідницьких центрів.</div>
+<div class="footnote">${e.sourceNote || "Останнє оновлення розділу — вересень 2026 року. Джерела: Reuters, BBC, Новая газета Європа, РСМД, відкриті звіти дослідницьких центрів."}</div>
 `
 }
 const deckState = {};
@@ -2872,17 +6312,39 @@ ${i.stat?`<div class="deck-stat">${i.stat}</div>`:""}
 
 function deckMove(e, t) {
   let a;
-  e === "overview" ? a = OVERVIEW_SLIDES : e === "jihad" ? a = JIHAD_SLIDES : a = COUNTRIES.find(i => i.id === e).slides, deckState[e] = Math.max(0, Math.min(a.length - 1, deckState[e] + t)), drawDeck(e, a)
+  e === "overview" ? a = OVERVIEW_SLIDES : e === "jihad" ? a = JIHAD_SLIDES : a = (COUNTRIES.find(i => i.id === e) || OTHER_COUNTRIES.find(i => i.id === e)).slides, deckState[e] = Math.max(0, Math.min(a.length - 1, deckState[e] + t)), drawDeck(e, a)
 }
 const OVERVIEW_SLIDES = PROLOGUE_TIMELINE.map(e => ({
   title: `${e.year} — ${e.title}`,
   text: e.text
 }));
 
+const VALID_PAGE_IDS = ["overview", "compare", "jihad", "coast", "ukraine", "dossier", "infowar", "resources", "sources", "timeline", "glossary", "china", "changelog"].concat(COUNTRIES.map(c => c.id), OTHER_COUNTRIES.map(c => c.id));
+let suppressHashRender = false;
+
 function goTo(e) {
+  if (!VALID_PAGE_IDS.includes(e)) e = "overview";
+  if ((location.hash.slice(1) || "overview") === e) {
+    renderPage(e);
+    return
+  }
+  suppressHashRender = true;
+  location.hash = e;
+  renderPage(e)
+}
+
+function svgKeyNav(evt, id) {
+  if (evt.key === "Enter" || evt.key === " " || evt.key === "Spacebar") {
+    evt.preventDefault();
+    goTo(id);
+  }
+}
+
+function renderPage(e) {
+  if (!VALID_PAGE_IDS.includes(e)) e = "overview";
   renderNav(e);
   const t = document.getElementById("main");
-  if (e === "overview") t.innerHTML = `<div class="page active">${renderOverview()}</div>`, initDeck("overview", OVERVIEW_SLIDES);
+  if (e === "overview") { t.innerHTML = `<div class="page active">${renderOverview()}</div>`; initDeck("overview", OVERVIEW_SLIDES); initDashboard(); }
   else if (e === "compare") t.innerHTML = `<div class="page active">${renderComparePage()}</div>`;
   else if (e === "jihad") t.innerHTML = `<div class="page active">${renderJihadPage()}</div>`, initDeck("jihad", JIHAD_SLIDES);
   else if (e === "coast") t.innerHTML = `<div class="page active">${renderCoastPage()}</div>`;
@@ -2896,11 +6358,19 @@ function goTo(e) {
   else if (e === "china") t.innerHTML = `<div class="page active">${renderChinaPage()}</div>`;
   else if (e === "changelog") t.innerHTML = `<div class="page active">${renderChangelogPage()}</div>`;
   else {
-    const a = COUNTRIES.find(i => i.id === e);
+    const a = COUNTRIES.find(i => i.id === e) || OTHER_COUNTRIES.find(i => i.id === e);
     t.innerHTML = `<div class="page active">${renderCountry(a)}</div>`, initDeck(a.id, a.slides)
   }
   window.scrollTo(0, 0), closeSidebar()
 }
+
+window.addEventListener("hashchange", () => {
+  if (suppressHashRender) {
+    suppressHashRender = false;
+    return
+  }
+  renderPage(decodeURIComponent(location.hash.slice(1)) || "overview")
+});
 
 function openSidebar() {
   document.getElementById("sidebar").classList.add("open"), document.getElementById("sidebarBackdrop").classList.add("open"), document.body.classList.add("sidebar-locked")
@@ -2910,10 +6380,22 @@ function closeSidebar() {
   document.getElementById("sidebar").classList.remove("open"), document.getElementById("sidebarBackdrop").classList.remove("open"), document.body.classList.remove("sidebar-locked")
 }
 
+function scrollToAnchor(e) {
+  const t = document.getElementById(e);
+  if (!t) return;
+  const a = document.querySelector(".anchor-nav"),
+    o = a ? a.offsetHeight : 0,
+    i = t.getBoundingClientRect().top + window.scrollY - o - 12;
+  window.scrollTo({
+    top: i,
+    behavior: "smooth"
+  })
+}
+
 function toggleSidebar() {
   document.getElementById("sidebar").classList.contains("open") ? closeSidebar() : openSidebar()
 }
-goTo("overview");
+renderPage(decodeURIComponent(location.hash.slice(1)) || "overview");
 </script>
 </body>
 </html>
