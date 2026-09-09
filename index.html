@@ -4847,6 +4847,10 @@ const SEARCH_INDEX = [{
   ])
   .concat(GLOSSARY.map(g => ({ id: "glossary", name: g.term, flagKey: "glossary", tag: "Термін" })));
 
+function escapeHtml(str) {
+  return str.replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+}
+
 function handleNavSearch(query) {
   const clearBtn = document.getElementById("navSearchClear"),
     resultsEl = document.getElementById("navSearchResults"),
@@ -4868,7 +4872,7 @@ function handleNavSearch(query) {
 <button class="nav-item" onclick="goTo('${m.id}'); clearNavSearch();">
 ${flagChip(m.flagKey)}<span class="cname">${m.name}</span><span class="nav-search-tag">${m.tag}</span>
 </button>
-`).join("") : `<div class="nav-search-empty">Нічого не знайдено за запитом «${query}»</div>`;
+`).join("") : `<div class="nav-search-empty">Нічого не знайдено за запитом «${escapeHtml(query)}»</div>`;
 }
 
 function clearNavSearch() {
