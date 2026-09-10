@@ -2155,8 +2155,20 @@ body.sidebar-locked {
   font-weight: 700;
   color: var(--ink-soft);
   position: absolute;
-  top: -18px;
-  white-space: nowrap;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
+  display: none;
+  pointer-events: none;
+}
+
+.dash-scrub-node.active .dash-scrub-label,
+.dash-scrub-node:hover .dash-scrub-label {
+  display: block;
 }
 
 /* 5 Bottom Widgets Grid */
@@ -5553,24 +5565,40 @@ function showPinTooltip(pinId, event) {
   linkBtn.onclick = () => { goTo(pin.linkId); };
 
   const vp = document.getElementById("dashMapViewport");
+  const svg = document.getElementById("dashMapSvg");
   const rect = vp.getBoundingClientRect();
-  
+  const svgRect = svg.getBoundingClientRect();
+
   const targetX = pin.cx;
   const targetY = pin.cy;
 
   const vb = { x: 0, y: 0, w: 1020, h: 580 };
-  
-  const posX = ((targetX - vb.x) / vb.w) * rect.width;
-  const posY = ((targetY - vb.y) / vb.h) * rect.height;
 
-  let left = posX - 160;
+  // Pin's pixel position within the SVG's own rendered box (on mobile the SVG
+  // can be wider than the viewport itself, so we must scale against its real
+  // rendered size, not the viewport's visible width).
+  const pinPxX = ((targetX - vb.x) / vb.w) * svgRect.width;
+  const pinPxY = ((targetY - vb.y) / vb.h) * svgRect.height;
+
+  // Position relative to the viewport's own content box (accounts for any
+  // offset of the svg inside it).
+  const posX = (svgRect.left - rect.left) + pinPxX;
+  const posY = (svgRect.top - rect.top) + pinPxY;
+
+  const ttWidth = Math.min(330, rect.width - 24);
+  let left = posX - ttWidth / 2;
   let top = posY - 190;
-  if (left < 15) left = 15;
-  if (left + 330 > rect.width) left = rect.width - 345;
+
+  // Clamp horizontally within the currently VISIBLE window of the
+  // (possibly horizontally-scrolled) viewport, not just the full content.
+  const visibleMin = vp.scrollLeft + 12;
+  const visibleMax = vp.scrollLeft + rect.width - ttWidth - 12;
+  left = Math.max(visibleMin, Math.min(left, Math.max(visibleMin, visibleMax)));
   if (top < 15) top = posY + 20;
 
   tt.style.left = `${left}px`;
   tt.style.top = `${top}px`;
+  tt.style.width = `${ttWidth}px`;
   tt.style.display = "block";
 }
 
@@ -5646,57 +5674,57 @@ function renderOverview() {
 
   <!-- Interactive Map Card -->
   <div class="dash-map-card">
+    <!-- Top Left View Controls (fixed over visible map area, independent of horizontal scroll) -->
+    <div class="dash-map-controls">
+      <div style="display:flex; gap:4px;">
+        <button class="dash-ctrl-btn" onclick="zoomMap(0.35); event.stopPropagation();" title="Наблизити">+</button>
+        <button class="dash-ctrl-btn" onclick="zoomMap(-0.35); event.stopPropagation();" title="Віддалити">−</button>
+        <button class="dash-ctrl-btn" onclick="resetMapZoom(); event.stopPropagation();" title="Скинути масштаб" style="font-size:0.85rem;">⛶</button>
+      </div>
+    </div>
+
+    <!-- Top Right Layer Filter, Quick Toggles & Legend (fixed over visible map area) -->
+    <div class="dash-map-header-tools" onclick="event.stopPropagation()">
+      <div style="position:relative;">
+        <button class="dash-layer-select-btn" onclick="toggleLayerDropdown(event)">
+          <span>🗺️</span>
+          <span id="dashLayerLabel">Всі шари та об'єкти</span>
+          <span style="font-size:0.7rem;">▼</span>
+        </button>
+        <div class="dash-layer-dropdown" id="dashLayerDropdown">
+          <div class="dash-layer-opt active" data-layer="all" onclick="setMapLayer('all', 'Всі шари та об\'єкти')">🌐 Всі шари та об'єкти</div>
+          <div class="dash-layer-opt" data-layer="military" onclick="setMapLayer('military', 'Військові бази та контингент РФ')">🔵 Військові бази та контингент РФ</div>
+          <div class="dash-layer-opt" data-layer="conflicts" onclick="setMapLayer('conflicts', 'Гарячі точки та сутички')">🔴 Гарячі точки та конфлікти</div>
+          <div class="dash-layer-opt" data-layer="resources" onclick="setMapLayer('resources', 'Стратегічні ресурси')">🟡 Видобувні ресурси</div>
+        </div>
+      </div>
+
+      <!-- Quick Toggle Filter Chips -->
+      <div class="dash-quick-filters">
+        <button class="dash-qfilter-chip active f-base" id="qf-bases" onclick="toggleQuickFilter('bases')">🛑 Бази РФ</button>
+        <button class="dash-qfilter-chip active f-jihad" id="qf-jihad" onclick="toggleQuickFilter('jihad')">⚔️ JNIM / ISGS</button>
+        <button class="dash-qfilter-chip active f-res" id="qf-resources" onclick="toggleQuickFilter('resources')">💰 Ресурси</button>
+        <button class="dash-qfilter-chip active f-coast" id="qf-coast" onclick="toggleQuickFilter('coast')">🛳️ Затока під загрозою</button>
+        <button class="dash-qfilter-chip active f-routes" id="qf-routes" onclick="toggleQuickFilter('routes')">🛣️ Логістика</button>
+      </div>
+
+      <div class="dash-map-legend-card" style="margin-top:4px;">
+        <div class="dash-legend-item"><span class="dash-legend-dot" style="background:#A8432B;"></span> <strong>Зона 1:</strong> Альянс AES (Малі, Буркіна, Нігер)</div>
+        <div class="dash-legend-item"><span class="dash-legend-dot" style="background:#1F2A44;"></span> <strong>Зона 2:</strong> Вплив & транзит (Лівія, Чад, Судан, ЦАР)</div>
+        <div class="dash-legend-item"><span class="dash-legend-dot" style="background:#2E8B7D;"></span> <strong>Узбережжя:</strong> Бенін, Того, Кот-д’Івуар</div>
+        <div class="dash-legend-item"><span class="dash-legend-dot" style="background:#0077B6; border:1px dashed #fff;"></span> Морські & сухопутні коридори РФ</div>
+      </div>
+    </div>
+
+    <!-- Current Year Badge on Map (fixed over visible map area) -->
+    <div class="dash-map-year-badge">
+      <span class="dash-year-dot"></span>
+      <span id="dashYearBadgeNum">2026</span>
+    </div>
+
+    <div class="dash-map-scroll-hint">← Гортай карту пальцем →</div>
+
     <div class="dash-map-viewport" id="dashMapViewport" onclick="closeMapTooltip()">
-      
-      <!-- Top Left View Controls -->
-      <div class="dash-map-controls">
-        <div style="display:flex; gap:4px;">
-          <button class="dash-ctrl-btn" onclick="zoomMap(0.35); event.stopPropagation();" title="Наблизити">+</button>
-          <button class="dash-ctrl-btn" onclick="zoomMap(-0.35); event.stopPropagation();" title="Віддалити">−</button>
-          <button class="dash-ctrl-btn" onclick="resetMapZoom(); event.stopPropagation();" title="Скинути масштаб" style="font-size:0.85rem;">⛶</button>
-        </div>
-      </div>
-
-      <!-- Top Right Layer Filter, Quick Toggles & Legend -->
-      <div class="dash-map-header-tools" onclick="event.stopPropagation()">
-        <div style="position:relative;">
-          <button class="dash-layer-select-btn" onclick="toggleLayerDropdown(event)">
-            <span>🗺️</span>
-            <span id="dashLayerLabel">Всі шари та об'єкти</span>
-            <span style="font-size:0.7rem;">▼</span>
-          </button>
-          <div class="dash-layer-dropdown" id="dashLayerDropdown">
-            <div class="dash-layer-opt active" data-layer="all" onclick="setMapLayer('all', 'Всі шари та об\'єкти')">🌐 Всі шари та об'єкти</div>
-            <div class="dash-layer-opt" data-layer="military" onclick="setMapLayer('military', 'Військові бази та контингент РФ')">🔵 Військові бази та контингент РФ</div>
-            <div class="dash-layer-opt" data-layer="conflicts" onclick="setMapLayer('conflicts', 'Гарячі точки та сутички')">🔴 Гарячі точки та конфлікти</div>
-            <div class="dash-layer-opt" data-layer="resources" onclick="setMapLayer('resources', 'Стратегічні ресурси')">🟡 Видобувні ресурси</div>
-          </div>
-        </div>
-
-        <!-- Quick Toggle Filter Chips -->
-        <div class="dash-quick-filters">
-          <button class="dash-qfilter-chip active f-base" id="qf-bases" onclick="toggleQuickFilter('bases')">🛑 Бази РФ</button>
-          <button class="dash-qfilter-chip active f-jihad" id="qf-jihad" onclick="toggleQuickFilter('jihad')">⚔️ JNIM / ISGS</button>
-          <button class="dash-qfilter-chip active f-res" id="qf-resources" onclick="toggleQuickFilter('resources')">💰 Ресурси</button>
-          <button class="dash-qfilter-chip active f-coast" id="qf-coast" onclick="toggleQuickFilter('coast')">🛳️ Затока під загрозою</button>
-          <button class="dash-qfilter-chip active f-routes" id="qf-routes" onclick="toggleQuickFilter('routes')">🛣️ Логістика</button>
-        </div>
-
-        <div class="dash-map-legend-card" style="margin-top:4px;">
-          <div class="dash-legend-item"><span class="dash-legend-dot" style="background:#A8432B;"></span> <strong>Зона 1:</strong> Альянс AES (Малі, Буркіна, Нігер)</div>
-          <div class="dash-legend-item"><span class="dash-legend-dot" style="background:#1F2A44;"></span> <strong>Зона 2:</strong> Вплив & транзит (Лівія, Чад, Судан, ЦАР)</div>
-          <div class="dash-legend-item"><span class="dash-legend-dot" style="background:#2E8B7D;"></span> <strong>Узбережжя:</strong> Бенін, Того, Кот-д’Івуар</div>
-          <div class="dash-legend-item"><span class="dash-legend-dot" style="background:#0077B6; border:1px dashed #fff;"></span> Морські & сухопутні коридори РФ</div>
-        </div>
-      </div>
-
-      <!-- Current Year Badge on Map -->
-      <div class="dash-map-year-badge">
-        <span class="dash-year-dot"></span>
-        <span id="dashYearBadgeNum">2026</span>
-      </div>
-
-      <div class="dash-map-scroll-hint">← Гортай карту пальцем →</div>
 
       <!-- Interactive SVG Map Canvas -->
       <svg class="dash-map-svg" id="dashMapSvg" viewBox="0 0 1020 580" xmlns="http://www.w3.org/2000/svg">
