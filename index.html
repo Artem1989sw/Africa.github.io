@@ -1490,9 +1490,11 @@ body.sidebar-locked {
   flex-direction: column;
   gap: 6px;
   z-index: 15;
+  pointer-events: none;
 }
 
 .dash-ctrl-btn {
+  pointer-events: auto;
   width: 34px;
   height: 34px;
   background: #ffffffeb;
@@ -1528,6 +1530,13 @@ body.sidebar-locked {
   align-items: flex-end;
   gap: 10px;
   z-index: 15;
+  pointer-events: none;
+}
+
+.dash-layer-select-btn,
+.dash-layer-dropdown,
+.dash-quick-filters {
+  pointer-events: auto;
 }
 
 .dash-layer-select-btn {
@@ -1761,6 +1770,7 @@ body.sidebar-locked {
   align-items: center;
   gap: 8px;
   z-index: 10;
+  pointer-events: none;
 }
 
 .dash-year-dot {
