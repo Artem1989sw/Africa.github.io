@@ -1463,6 +1463,24 @@ body.sidebar-locked {
   cursor: grabbing;
 }
 
+.dash-map-scroll-hint {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1F2A44e6;
+  color: #f3eedd;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 20px;
+  z-index: 12;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
 /* Map Controls */
 .dash-map-controls {
   position: absolute;
@@ -2158,8 +2176,42 @@ body.sidebar-locked {
   .dash-widgets-grid {
     grid-template-columns: 1fr;
   }
+  .dash-container {
+    padding: 16px 12px 32px;
+  }
   .dash-map-viewport {
-    height: 440px;
+    height: auto;
+    aspect-ratio: 1020 / 580;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  .dash-map-svg {
+    width: 860px;
+    max-width: none;
+    flex-shrink: 0;
+  }
+  .dash-map-header-tools {
+    max-width: 58%;
+  }
+  .dash-map-legend-card {
+    display: none;
+  }
+  .dash-quick-filters {
+    max-width: 210px;
+    justify-content: flex-end;
+  }
+  .dash-qfilter-chip {
+    font-size: 0.66rem;
+    padding: 3px 8px;
+  }
+  .dash-layer-select-btn span:nth-child(2) {
+    display: none;
+  }
+  .dash-map-scroll-hint {
+    display: block;
   }
 }
 
@@ -5551,6 +5603,19 @@ function scrollScrubber(dir) {
 function initDashboard() {
   switchMapMode(dashMapMode);
   scrubYear(dashActiveYearIdx);
+  centerMobileMap();
+}
+
+function centerMobileMap() {
+  if (window.innerWidth > 860) return;
+  const vp = document.getElementById("dashMapViewport"),
+    svg = document.getElementById("dashMapSvg");
+  if (!vp || !svg) return;
+  requestAnimationFrame(() => {
+    const scale = svg.getBoundingClientRect().width / 1020,
+      targetX = 407 * scale;
+    vp.scrollLeft = Math.max(0, targetX - vp.clientWidth / 2)
+  })
 }
 
 function renderOverview() {
@@ -5630,6 +5695,8 @@ function renderOverview() {
         <span class="dash-year-dot"></span>
         <span id="dashYearBadgeNum">2026</span>
       </div>
+
+      <div class="dash-map-scroll-hint">← Гортай карту пальцем →</div>
 
       <!-- Interactive SVG Map Canvas -->
       <svg class="dash-map-svg" id="dashMapSvg" viewBox="0 0 1020 580" xmlns="http://www.w3.org/2000/svg">
