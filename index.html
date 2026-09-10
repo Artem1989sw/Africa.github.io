@@ -1449,7 +1449,7 @@ body.sidebar-locked {
   height: 560px;
   background: #F7F3E9;
   overflow: hidden;
-  touch-action: pan-y;
+  touch-action: none;
 }
 
 .dash-map-svg {
@@ -1458,6 +1458,10 @@ body.sidebar-locked {
   display: block;
   transition: transform 0.28s cubic-bezier(0.25, 1, 0.5, 1);
   cursor: grab;
+}
+
+.dash-map-svg.is-gesturing {
+  transition: none;
 }
 
 .dash-map-svg:active {
@@ -2202,39 +2206,43 @@ body.sidebar-locked {
   .dash-container {
     padding: 16px 12px 32px;
   }
+  .dash-map-card {
+    display: flex;
+    flex-direction: column;
+  }
   .dash-map-viewport {
+    order: 1;
     height: auto;
     aspect-ratio: 1020 / 580;
     max-height: none;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
   }
-  .dash-map-svg {
-    width: 860px;
-    max-width: none;
-    flex-shrink: 0;
-  }
+  /* On mobile the filter/layer panel no longer floats on top of the map
+     (it used to cover most of it) - it now sits in normal flow right below
+     the map instead. */
   .dash-map-header-tools {
-    max-width: 58%;
+    order: 2;
+    position: static;
+    max-width: none;
+    align-items: stretch;
+    margin-top: 10px;
+    padding: 0 2px;
   }
   .dash-map-legend-card {
-    display: none;
+    display: flex;
   }
   .dash-quick-filters {
-    max-width: 210px;
-    justify-content: flex-end;
+    max-width: none;
+    justify-content: flex-start;
   }
   .dash-qfilter-chip {
-    font-size: 0.66rem;
-    padding: 3px 8px;
-  }
-  .dash-layer-select-btn span:nth-child(2) {
-    display: none;
+    font-size: 0.7rem;
+    padding: 4px 9px;
   }
   .dash-map-scroll-hint {
     display: block;
+    white-space: normal;
+    max-width: 90%;
+    text-align: center;
   }
 }
 
@@ -5428,6 +5436,8 @@ const DASH_PINS = [
 
 let dashMapMode = "sahel"; // single, cleaned-up map mode
 let dashMapZoom = 1;
+let dashMapPanX = 0;
+let dashMapPanY = 0;
 let dashActiveLayer = "all";
 let dashActiveYearIdx = AFRICA_TIMELINE_YEARS.length - 1;
 
@@ -5451,6 +5461,10 @@ function switchMapMode(mode) {
   if (gContinent) gContinent.style.display = "none";
   if (gSahel) gSahel.style.display = "inline";
 
+  dashMapZoom = 1;
+  dashMapPanX = 0;
+  dashMapPanY = 0;
+  applyMapTransform();
   updatePinPositions();
   updateMapPinsVisibility();
   closeMapTooltip();
@@ -5539,12 +5553,15 @@ function updateMapPinsVisibility() {
 }
 
 function zoomMap(delta) {
-  dashMapZoom = Math.max(1, Math.min(2.5, dashMapZoom + delta));
+  dashMapZoom = Math.max(1, Math.min(3, dashMapZoom + delta));
+  clampMapPan();
   applyMapTransform();
 }
 
 function resetMapZoom() {
   dashMapZoom = 1;
+  dashMapPanX = 0;
+  dashMapPanY = 0;
   applyMapTransform();
   closeMapTooltip();
 }
@@ -5552,56 +5569,119 @@ function resetMapZoom() {
 function applyMapTransform() {
   const svg = document.getElementById("dashMapSvg");
   if (svg) {
-    svg.style.transform = `scale(${dashMapZoom})`;
+    svg.style.transform = `translate(${dashMapPanX}px, ${dashMapPanY}px) scale(${dashMapZoom})`;
     svg.style.transformOrigin = "50% 50%";
   }
 }
 
-// --- Pinch/trackpad zoom scoped to the map only -----------------------------
-// Without this, pinching or ctrl+scrolling over the map triggers the browser's
-// own page zoom (the whole page and all its text/markers get bigger) instead
-// of just zooming the map image in place. These listeners intercept those
-// gestures over the map viewport and feed them into the existing
-// dashMapZoom/applyMapTransform mechanism instead, then stop them from
-// reaching the browser.
-(function setupMapGestureZoom() {
-  let pinchStartDist = null;
-  let pinchStartZoom = 1;
+// Keeps the pan offset within the zoomed-in map so it can't be dragged
+// completely out of view - the further zoomed in, the more room there is
+// to pan around before hitting the edge.
+function clampMapPan() {
+  const vp = document.getElementById("dashMapViewport");
+  if (!vp) return;
+  const rect = vp.getBoundingClientRect();
+  const maxX = (rect.width * (dashMapZoom - 1)) / 2;
+  const maxY = (rect.height * (dashMapZoom - 1)) / 2;
+  dashMapPanX = Math.max(-maxX, Math.min(maxX, dashMapPanX));
+  dashMapPanY = Math.max(-maxY, Math.min(maxY, dashMapPanY));
+}
+
+// --- Unified pan & zoom for the map (mouse drag, touch drag, pinch, trackpad) ---
+// Handles moving around and zooming into the map itself, scoped to the map
+// viewport only, so none of these gestures ever zoom or scroll the page.
+(function setupMapPanZoom() {
+  let mode = null; // "pan" | "pinch"
+  let startPanX = 0, startPanY = 0, startX = 0, startY = 0;
+  let startPinchDist = 1, startPinchZoom = 1;
+  let dragMoved = false;
   let gestureStartZoom = 1;
 
-  function touchDist(touches) {
-    const dx = touches[0].clientX - touches[1].clientX;
-    const dy = touches[0].clientY - touches[1].clientY;
-    return Math.hypot(dx, dy);
+  function dist(t0, t1) {
+    return Math.hypot(t1.clientX - t0.clientX, t1.clientY - t0.clientY);
+  }
+  function setGesturing(on) {
+    const svg = document.getElementById("dashMapSvg");
+    if (svg) svg.classList.toggle("is-gesturing", on);
+  }
+  function beginPan(x, y) {
+    mode = "pan";
+    dragMoved = false;
+    startX = x; startY = y;
+    startPanX = dashMapPanX; startPanY = dashMapPanY;
+    setGesturing(true);
+  }
+  function movePan(x, y) {
+    const dx = x - startX, dy = y - startY;
+    if (Math.abs(dx) > 4 || Math.abs(dy) > 4) dragMoved = true;
+    dashMapPanX = startPanX + dx;
+    dashMapPanY = startPanY + dy;
+    clampMapPan();
+    applyMapTransform();
+  }
+  function beginPinch(touches) {
+    mode = "pinch";
+    startPinchDist = dist(touches[0], touches[1]);
+    startPinchZoom = dashMapZoom;
+    setGesturing(true);
+  }
+  function movePinch(touches) {
+    const ratio = dist(touches[0], touches[1]) / startPinchDist;
+    dashMapZoom = Math.max(1, Math.min(3, startPinchZoom * ratio));
+    clampMapPan();
+    applyMapTransform();
   }
 
+  // Mouse drag (desktop)
+  document.addEventListener("mousedown", e => {
+    const vp = e.target.closest && e.target.closest("#dashMapViewport");
+    if (!vp || e.button !== 0) return;
+    beginPan(e.clientX, e.clientY);
+  });
+  document.addEventListener("mousemove", e => {
+    if (mode !== "pan") return;
+    movePan(e.clientX, e.clientY);
+  });
+  document.addEventListener("mouseup", () => { mode = null; setGesturing(false); });
+
+  // Touch drag (1 finger) & pinch-zoom (2 fingers)
   document.addEventListener("touchstart", e => {
     const vp = e.target.closest && e.target.closest("#dashMapViewport");
-    if (!vp || e.touches.length !== 2) return;
-    pinchStartDist = touchDist(e.touches);
-    pinchStartZoom = dashMapZoom;
+    if (!vp) return;
+    if (e.touches.length === 2) beginPinch(e.touches);
+    else if (e.touches.length === 1) beginPan(e.touches[0].clientX, e.touches[0].clientY);
   }, { passive: true });
 
   document.addEventListener("touchmove", e => {
-    if (pinchStartDist === null) return;
+    if (!mode) return;
     const vp = e.target.closest && e.target.closest("#dashMapViewport");
-    if (!vp || e.touches.length !== 2) return;
+    if (!vp) return;
     e.preventDefault();
-    const ratio = touchDist(e.touches) / pinchStartDist;
-    dashMapZoom = Math.max(1, Math.min(2.5, pinchStartZoom * ratio));
-    applyMapTransform();
+    if (mode === "pinch" && e.touches.length === 2) movePinch(e.touches);
+    else if (mode === "pan" && e.touches.length === 1) movePan(e.touches[0].clientX, e.touches[0].clientY);
   }, { passive: false });
 
   document.addEventListener("touchend", e => {
-    if (e.touches.length < 2) pinchStartDist = null;
+    if (e.touches.length === 0) { mode = null; setGesturing(false); }
+    else if (e.touches.length === 1 && mode === "pinch") beginPan(e.touches[0].clientX, e.touches[0].clientY);
   }, { passive: true });
+
+  // Swallow the click that follows a drag so it doesn't also open a pin tooltip.
+  document.addEventListener("click", e => {
+    const vp = e.target.closest && e.target.closest("#dashMapViewport");
+    if (vp && dragMoved) {
+      e.stopPropagation();
+      e.preventDefault();
+      dragMoved = false;
+    }
+  }, true);
 
   // Trackpad pinch on desktop (Chrome/Firefox) arrives as a ctrl+wheel event.
   document.addEventListener("wheel", e => {
     const vp = e.target.closest && e.target.closest("#dashMapViewport");
     if (!vp || !e.ctrlKey) return;
     e.preventDefault();
-    zoomMap(e.deltaY < 0 ? 0.12 : -0.12);
+    zoomMap(e.deltaY < 0 ? 0.15 : -0.15);
   }, { passive: false });
 
   // Safari uses non-standard gesture events for pinch instead of touches.
@@ -5611,12 +5691,12 @@ function applyMapTransform() {
     e.preventDefault();
     gestureStartZoom = dashMapZoom;
   });
-
   document.addEventListener("gesturechange", e => {
     const vp = e.target.closest && e.target.closest("#dashMapViewport");
     if (!vp) return;
     e.preventDefault();
-    dashMapZoom = Math.max(1, Math.min(2.5, gestureStartZoom * e.scale));
+    dashMapZoom = Math.max(1, Math.min(3, gestureStartZoom * e.scale));
+    clampMapPan();
     applyMapTransform();
   });
 })();
@@ -5664,10 +5744,9 @@ function showPinTooltip(pinId, event) {
   let left = posX - ttWidth / 2;
   let top = posY - 190;
 
-  // Clamp horizontally within the currently VISIBLE window of the
-  // (possibly horizontally-scrolled) viewport, not just the full content.
-  const visibleMin = vp.scrollLeft + 12;
-  const visibleMax = vp.scrollLeft + rect.width - ttWidth - 12;
+  // Clamp horizontally within the visible viewport box.
+  const visibleMin = 12;
+  const visibleMax = rect.width - ttWidth - 12;
   left = Math.max(visibleMin, Math.min(left, Math.max(visibleMin, visibleMax)));
   if (top < 15) top = posY + 20;
 
@@ -5706,19 +5785,6 @@ function scrollScrubber(dir) {
 function initDashboard() {
   switchMapMode(dashMapMode);
   scrubYear(dashActiveYearIdx);
-  centerMobileMap();
-}
-
-function centerMobileMap() {
-  if (window.innerWidth > 860) return;
-  const vp = document.getElementById("dashMapViewport"),
-    svg = document.getElementById("dashMapSvg");
-  if (!vp || !svg) return;
-  requestAnimationFrame(() => {
-    const scale = svg.getBoundingClientRect().width / 1020,
-      targetX = 407 * scale;
-    vp.scrollLeft = Math.max(0, targetX - vp.clientWidth / 2)
-  })
 }
 
 function renderOverview() {
@@ -5797,7 +5863,7 @@ function renderOverview() {
       <span id="dashYearBadgeNum">2026</span>
     </div>
 
-    <div class="dash-map-scroll-hint">← Гортай карту пальцем →</div>
+    <div class="dash-map-scroll-hint">✋ Тягни пальцем, щоб рухати · 🤏 зведи пальці, щоб наблизити</div>
 
     <div class="dash-map-viewport" id="dashMapViewport" onclick="closeMapTooltip()">
 
