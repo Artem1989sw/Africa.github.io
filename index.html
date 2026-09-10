@@ -3462,25 +3462,25 @@ const OTHER_COUNTRIES = [{
   sourceNote: "Джерела: AFP, Reuters, Bloomberg, The Moscow Times, UNHCR, Human Rights Watch, Jeune Afrique, Wikipedia. Дані про вибори, дипломатичні розриви й потік біженців — станом на квітень 2026 року."
 }];
 
-function flagChip(e) {
-  return `<span class="flag-chip" style="background:${FLAGS[e]}"></span>`
+function flagChip(flagKey) {
+  return `<span class="flag-chip" style="background:${FLAGS[flagKey]}"></span>`
 }
 
 function findCountry(id) {
   return COUNTRIES.find(c => c.id === id) || OTHER_COUNTRIES.find(c => c.id === id)
 }
 
-function renderNav(e) {
-  const t = [{
+function renderNav(activePageId) {
+  const regionItems = [{
       id: "overview",
       name: "Огляд",
       flagKey: "overview"
-    }].concat(COUNTRIES.map(s => ({
-      id: s.id,
-      name: s.name,
-      flagKey: s.flagKey
+    }].concat(COUNTRIES.map(country => ({
+      id: country.id,
+      name: country.name,
+      flagKey: country.flagKey
     }))),
-    a = [{
+    themeItems = [{
       id: "compare",
       name: "Порівняння країн",
       flagKey: "compare"
@@ -3517,7 +3517,7 @@ function renderNav(e) {
       name: "Єдина хронологія",
       flagKey: "timeline"
     }],
-    ref = [{
+    referenceItems = [{
       id: "glossary",
       name: "Глосарій термінів",
       flagKey: "glossary"
@@ -3530,29 +3530,29 @@ function renderNav(e) {
       name: "Що нового",
       flagKey: "changelog"
     }],
-    o = OTHER_COUNTRIES.map(s => ({
-      id: s.id,
-      name: s.name,
-      flagKey: s.flagKey
+    otherCountryItems = OTHER_COUNTRIES.map(country => ({
+      id: country.id,
+      name: country.name,
+      flagKey: country.flagKey
     })),
     mainIds = ["compare", "jihad", "ukraine", "resources"],
-    aMain = a.filter(s => mainIds.includes(s.id)),
-    aMore = a.filter(s => !mainIds.includes(s.id)),
-    i = s => s.map(l => `
-<button class="nav-item ${l.id===e?"active":""}" onclick="goTo('${l.id}')">
-${flagChip(l.flagKey)}<span class="cname">${l.name}</span>
+    themeMain = themeItems.filter(item => mainIds.includes(item.id)),
+    themeMore = themeItems.filter(item => !mainIds.includes(item.id)),
+    renderList = items => items.map(item => `
+<button class="nav-item ${item.id===activePageId?"active":""}" onclick="goTo('${item.id}')">
+${flagChip(item.flagKey)}<span class="cname">${item.name}</span>
 </button>
 `).join("");
-  document.getElementById("navList").innerHTML = i(t), document.getElementById("otherNavList").innerHTML = i(o), document.getElementById("mainThemeNavList").innerHTML = i(aMain), document.getElementById("moreThemeNavList").innerHTML = i(aMore), document.getElementById("referenceNavList").innerHTML = i(ref);
-  if (aMore.some(s => s.id === e)) themeAccordionOpen = true;
+  document.getElementById("navList").innerHTML = renderList(regionItems), document.getElementById("otherNavList").innerHTML = renderList(otherCountryItems), document.getElementById("mainThemeNavList").innerHTML = renderList(themeMain), document.getElementById("moreThemeNavList").innerHTML = renderList(themeMore), document.getElementById("referenceNavList").innerHTML = renderList(referenceItems);
+  if (themeMore.some(item => item.id === activePageId)) themeAccordionOpen = true;
   applyThemeAccordionState();
-  const regionIds = t.map(s => s.id).concat(o.map(s => s.id)),
-    themeIds = a.map(s => s.id),
-    refIds = ref.map(s => s.id);
+  const regionIds = regionItems.map(item => item.id).concat(otherCountryItems.map(item => item.id)),
+    themeIds = themeItems.map(item => item.id),
+    refIds = referenceItems.map(item => item.id);
   let targetTab = "regions";
-  if (themeIds.includes(e)) targetTab = "themes";
-  else if (refIds.includes(e)) targetTab = "reference";
-  else if (regionIds.includes(e)) targetTab = "regions";
+  if (themeIds.includes(activePageId)) targetTab = "themes";
+  else if (refIds.includes(activePageId)) targetTab = "reference";
+  else if (regionIds.includes(activePageId)) targetTab = "regions";
   switchNavTab(targetTab)
 }
 
@@ -3577,21 +3577,21 @@ function switchNavTab(tab) {
   document.getElementById("navPanelReference").classList.toggle("active", tab === "reference")
 }
 
-function renderTimeline(e) {
-  return '<div class="timeline">' + e.map(t => `
+function renderTimeline(events) {
+  return '<div class="timeline">' + events.map(event => `
 <div class="tl-item">
-<div class="tl-year">${t.year}</div>
+<div class="tl-year">${event.year}</div>
 <div class="tl-dot"></div>
 <div class="tl-body">
-<h4>${t.title}</h4>
-<p>${t.text}</p>
+<h4>${event.title}</h4>
+<p>${event.text}</p>
 </div>
 </div>
 `).join("") + "</div>"
 }
 
 function renderCompareTable() {
-  const e = [{
+  const criteria = [{
     label: "Перевороти",
     key: "coups"
   }, {
@@ -3622,19 +3622,19 @@ function renderCompareTable() {
 <thead>
 <tr>
 <th></th>
-${COUNTRIES.map(t=>`<th>${flagChip(t.flagKey)}${t.name}</th>`).join("")}
+${COUNTRIES.map(country=>`<th>${flagChip(country.flagKey)}${country.name}</th>`).join("")}
 </tr>
 </thead>
 <tbody>
-${e.map(t=>`
+${criteria.map(criterion=>`
 <tr>
-<td class="compare-label">${t.label}</td>
-${COUNTRIES.map(a=>{
-  const c = a.compare[t.key],
-    id = `${a.id}-${t.key}`;
+<td class="compare-label">${criterion.label}</td>
+${COUNTRIES.map(country=>{
+  const compareCell = country.compare[criterion.key],
+    id = `${country.id}-${criterion.key}`;
   return `<td>
-<div class="cmp-short">${c.short}</div>
-<div class="cmp-full" id="cmp-full-${id}">${c.full}</div>
+<div class="cmp-short">${compareCell.short}</div>
+<div class="cmp-full" id="cmp-full-${id}">${compareCell.full}</div>
 <button class="cmp-toggle" id="cmp-btn-${id}" onclick="toggleCompareCell('${id}')">Детальніше ↓</button>
 </td>`;
 }).join("")}
@@ -3697,14 +3697,14 @@ function renderOtherCompareTable() {
 <thead>
 <tr>
 <th></th>
-${OTHER_COUNTRIES.map(t=>`<th>${flagChip(t.flagKey)}${t.name}</th>`).join("")}
+${OTHER_COUNTRIES.map(country=>`<th>${flagChip(country.flagKey)}${country.name}</th>`).join("")}
 </tr>
 </thead>
 <tbody>
-${rows.map(r=>`
+${rows.map(row=>`
 <tr>
-<td class="compare-label">${r.label}</td>
-${OTHER_COUNTRIES.map(a=>`<td>${(data[a.id]||{})[r.key] || "—"}</td>`).join("")}
+<td class="compare-label">${row.label}</td>
+${OTHER_COUNTRIES.map(country=>`<td>${(data[country.id]||{})[row.key] || "—"}</td>`).join("")}
 </tr>
 `).join("")}
 </tbody>
@@ -3728,48 +3728,48 @@ ${renderOtherCompareTable()}
 `
 }
 
-function renderPersonCard(e) {
+function renderPersonCard(person) {
   return `
 <div class="pcard">
 <div class="pcard-top">
-<div class="pcard-avatar" style="background:${e.avatarBg}">${e.initials}</div>
+<div class="pcard-avatar" style="background:${person.avatarBg}">${person.initials}</div>
 <div>
-<div class="pcard-name">${e.name}</div>
-<div class="pcard-role">${e.role}</div>
-<div class="pcard-dates">${e.dates}</div>
+<div class="pcard-name">${person.name}</div>
+<div class="pcard-role">${person.role}</div>
+<div class="pcard-dates">${person.dates}</div>
 </div>
 </div>
-<div class="pcard-tags">${e.tags.map(t=>`<span class="pcard-tag">${t}</span>`).join("")}</div>
+<div class="pcard-tags">${person.tags.map(tag=>`<span class="pcard-tag">${tag}</span>`).join("")}</div>
 <div class="pcard-bio">
-<p>${e.bio[0]}</p>
-<div class="pcard-more" id="more-${e.id}">
-${e.bio.slice(1).map(t=>`<p>${t}</p>`).join("")}
+<p>${person.bio[0]}</p>
+<div class="pcard-more" id="more-${person.id}">
+${person.bio.slice(1).map(paragraph=>`<p>${paragraph}</p>`).join("")}
 </div>
-<button class="pcard-toggle" id="toggle-${e.id}" onclick="togglePerson('${e.id}')">Читати далі ↓</button>
+<button class="pcard-toggle" id="toggle-${person.id}" onclick="togglePerson('${person.id}')">Читати далі ↓</button>
 </div>
-<div><button class="pcard-link" onclick="goTo('${e.linkId}')">${e.linkLabel}</button></div>
+<div><button class="pcard-link" onclick="goTo('${person.linkId}')">${person.linkLabel}</button></div>
 </div>
 `
 }
 
-function togglePerson(e) {
-  const t = document.getElementById("more-" + e),
-    a = document.getElementById("toggle-" + e),
-    i = t.classList.toggle("open");
-  a.textContent = i ? "Згорнути ↑" : "Читати далі ↓"
+function togglePerson(personId) {
+  const moreEl = document.getElementById("more-" + personId),
+    toggleBtn = document.getElementById("toggle-" + personId),
+    isOpen = moreEl.classList.toggle("open");
+  toggleBtn.textContent = isOpen ? "Згорнути ↑" : "Читати далі ↓"
 }
 
-function toggleCompareCell(e) {
-  const t = document.getElementById("cmp-full-" + e),
-    a = document.getElementById("cmp-btn-" + e),
-    i = t.classList.toggle("open");
-  a.textContent = i ? "Згорнути ↑" : "Детальніше ↓"
+function toggleCompareCell(cellId) {
+  const fullEl = document.getElementById("cmp-full-" + cellId),
+    toggleBtn = document.getElementById("cmp-btn-" + cellId),
+    isOpen = fullEl.classList.toggle("open");
+  toggleBtn.textContent = isOpen ? "Згорнути ↑" : "Детальніше ↓"
 }
 
 function renderDossierPage() {
-  const moscow = PEOPLE.filter(e=>["overview"].includes(e.linkId)),
-    sahel = PEOPLE.filter(e=>["mali","burkina","niger"].includes(e.linkId)),
-    others = PEOPLE.filter(e=>["car","libya","sudan","chad"].includes(e.linkId));
+  const moscow = PEOPLE.filter(person=>["overview"].includes(person.linkId)),
+    sahel = PEOPLE.filter(person=>["mali","burkina","niger"].includes(person.linkId)),
+    others = PEOPLE.filter(person=>["car","libya","sudan","chad"].includes(person.linkId));
   return `
 <div class="hero">
 <div class="flagbar" style="background:${FLAGS.dossier}"></div>
@@ -4718,51 +4718,51 @@ const SOURCES = [{
     }
   };
 
-function parseYear(e) {
-  const t = e.match(/\d{4}/);
-  return t ? parseInt(t[0], 10) : 9999
+function parseYear(dateStr) {
+  const match = dateStr.match(/\d{4}/);
+  return match ? parseInt(match[0], 10) : 9999
 }
 
 function buildMasterTimeline() {
-  const e = [];
-  return PROLOGUE_TIMELINE.forEach(t => e.push(Object.assign({}, t, {
+  const allEvents = [];
+  return PROLOGUE_TIMELINE.forEach(event => allEvents.push(Object.assign({}, event, {
     cat: "prologue"
-  }))), COUNTRIES.forEach(t => t.timeline.forEach(a => e.push(Object.assign({}, a, {
-    cat: t.id
-  })))), JIHAD_TIMELINE.forEach(t => e.push(Object.assign({}, t, {
+  }))), COUNTRIES.forEach(country => country.timeline.forEach(event => allEvents.push(Object.assign({}, event, {
+    cat: country.id
+  })))), JIHAD_TIMELINE.forEach(event => allEvents.push(Object.assign({}, event, {
     cat: "jihad"
-  }))), COAST_TIMELINE.forEach(t => e.push(Object.assign({}, t, {
+  }))), COAST_TIMELINE.forEach(event => allEvents.push(Object.assign({}, event, {
     cat: "coast"
-  }))), UKRAINE_TIMELINE.forEach(t => e.push(Object.assign({}, t, {
+  }))), UKRAINE_TIMELINE.forEach(event => allEvents.push(Object.assign({}, event, {
     cat: "ukraine"
-  }))), INFOWAR_TIMELINE.forEach(t => e.push(Object.assign({}, t, {
+  }))), INFOWAR_TIMELINE.forEach(event => allEvents.push(Object.assign({}, event, {
     cat: "infowar"
-  }))), CHINA_TIMELINE.forEach(t => e.push(Object.assign({}, t, {
+  }))), CHINA_TIMELINE.forEach(event => allEvents.push(Object.assign({}, event, {
     cat: "china"
-  }))), OTHER_COUNTRIES.forEach(t => t.timeline.forEach(a => e.push(Object.assign({}, a, {
-    cat: t.id
-  })))), e.sort((t, a) => parseYear(t.year) - parseYear(a.year)), e
+  }))), OTHER_COUNTRIES.forEach(country => country.timeline.forEach(event => allEvents.push(Object.assign({}, event, {
+    cat: country.id
+  })))), allEvents.sort((eventA, eventB) => parseYear(eventA.year) - parseYear(eventB.year)), allEvents
 }
 let timelineFilter = null;
 
-function renderMasterTimelineItems(e) {
-  return e.length === 0 ? '<div class="timeline"><p style="color:var(--ink-soft);padding:10px 0;">Нічого не показано — увімкни хоча б одну категорію вище.</p></div>' : '<div class="timeline">' + e.map(t => {
-    const a = CATEGORY_META[t.cat];
+function renderMasterTimelineItems(events) {
+  return events.length === 0 ? '<div class="timeline"><p style="color:var(--ink-soft);padding:10px 0;">Нічого не показано — увімкни хоча б одну категорію вище.</p></div>' : '<div class="timeline">' + events.map(event => {
+    const meta = CATEGORY_META[event.cat];
     return `
 <div class="tl-item">
-<div class="tl-year">${t.year}</div>
+<div class="tl-year">${event.year}</div>
 <div class="tl-dot"></div>
 <div class="tl-body">
-<div class="tl-badge" style="background:${FLAGS[a.flagKey]}">${a.label}</div>
-<h4>${t.title}</h4>
-<p>${t.text}</p>
+<div class="tl-badge" style="background:${FLAGS[meta.flagKey]}">${meta.label}</div>
+<h4>${event.title}</h4>
+<p>${event.text}</p>
 </div>
 </div>`
   }).join("") + "</div>"
 }
 
-function toggleTimelineFilter(e) {
-  timelineFilter.has(e) ? timelineFilter.delete(e) : timelineFilter.add(e), updateMasterTimelineUI()
+function toggleTimelineFilter(catKey) {
+  timelineFilter.has(catKey) ? timelineFilter.delete(catKey) : timelineFilter.add(catKey), updateMasterTimelineUI()
 }
 
 function resetTimelineFilter() {
@@ -4770,23 +4770,23 @@ function resetTimelineFilter() {
 }
 
 function updateMasterTimelineUI() {
-  const e = buildMasterTimeline();
-  document.getElementById("tf-buttons").innerHTML = Object.keys(CATEGORY_META).map(t => {
-    const a = CATEGORY_META[t],
-      i = timelineFilter.has(t);
-    return `<button class="tf-btn ${i?"":"off"}" style="${i?`background:${FLAGS[a.flagKey]};color:#fff;border-color:transparent;`:""}" onclick="toggleTimelineFilter('${t}')">${a.label}</button>`
-  }).join("") + '<button class="tf-reset" onclick="resetTimelineFilter()">Скинути фільтр</button>', document.getElementById("masterTimelineList").innerHTML = renderMasterTimelineItems(e.filter(t => timelineFilter.has(t.cat)))
+  const allEvents = buildMasterTimeline();
+  document.getElementById("tf-buttons").innerHTML = Object.keys(CATEGORY_META).map(catKey => {
+    const meta = CATEGORY_META[catKey],
+      isActive = timelineFilter.has(catKey);
+    return `<button class="tf-btn ${isActive?"":"off"}" style="${isActive?`background:${FLAGS[meta.flagKey]};color:#fff;border-color:transparent;`:""}" onclick="toggleTimelineFilter('${catKey}')">${meta.label}</button>`
+  }).join("") + '<button class="tf-reset" onclick="resetTimelineFilter()">Скинути фільтр</button>', document.getElementById("masterTimelineList").innerHTML = renderMasterTimelineItems(allEvents.filter(event => timelineFilter.has(event.cat)))
 }
 
 function renderTimelinePage() {
   timelineFilter = new Set(Object.keys(CATEGORY_META));
-  const e = buildMasterTimeline().length;
+  const eventCount = buildMasterTimeline().length;
   return `
 <div class="hero">
 <div class="flagbar" style="background:${FLAGS.timeline}"></div>
 <div class="hero-eyebrow">Наскрізна тема · всі розділи разом</div>
 <h1>Єдина хронологія</h1>
-<p class="hero-lede">Усі події з передісторії, трьох країн, джихадистської загрози й інформаційної війни — в одній стрічці, за роками. Разом: ${e} подій. Вимикай категорії нижче, щоб побачити лише те, що цікавить.</p>
+<p class="hero-lede">Усі події з передісторії, трьох країн, джихадистської загрози й інформаційної війни — в одній стрічці, за роками. Разом: ${eventCount} подій. Вимикай категорії нижче, щоб побачити лише те, що цікавить.</p>
 </div>
 <div class="timeline-filters" id="tf-buttons"></div>
 <div id="masterTimelineList"></div>
@@ -5479,31 +5479,31 @@ function toggleQuickFilter(filterKey) {
 
 function setMapLayer(layer, label) {
   dashActiveLayer = layer;
-  const lbl = document.getElementById("dashLayerLabel");
-  if (lbl) lbl.textContent = label;
+  const labelEl = document.getElementById("dashLayerLabel");
+  if (labelEl) labelEl.textContent = label;
   document.querySelectorAll(".dash-layer-opt").forEach(el => el.classList.toggle("active", el.dataset.layer === layer));
-  const d = document.getElementById("dashLayerDropdown");
-  if (d) d.classList.remove("open");
+  const dropdownEl = document.getElementById("dashLayerDropdown");
+  if (dropdownEl) dropdownEl.classList.remove("open");
   updateMapPinsVisibility();
 }
 
-function toggleLayerDropdown(e) {
-  if (e) e.stopPropagation();
-  const d = document.getElementById("dashLayerDropdown");
-  if (d) d.classList.toggle("open");
+function toggleLayerDropdown(event) {
+  if (event) event.stopPropagation();
+  const dropdownEl = document.getElementById("dashLayerDropdown");
+  if (dropdownEl) dropdownEl.classList.toggle("open");
 }
 
 document.addEventListener("click", () => {
-  const d = document.getElementById("dashLayerDropdown");
-  if (d) d.classList.remove("open");
+  const dropdownEl = document.getElementById("dashLayerDropdown");
+  if (dropdownEl) dropdownEl.classList.remove("open");
 });
 
 function updatePinPositions() {
   document.querySelectorAll(".dash-pin").forEach(el => {
     const pinId = el.id.replace("pin-", "");
-    const p = DASH_PINS.find(item => item.id === pinId);
-    if (p) {
-      el.setAttribute("transform", `translate(${p.cx}, ${p.cy})`);
+    const pin = DASH_PINS.find(item => item.id === pinId);
+    if (pin) {
+      el.setAttribute("transform", `translate(${pin.cx}, ${pin.cy})`);
     }
   });
 }
@@ -6421,11 +6421,11 @@ function renderOverview() {
 <h2 class="section-title">Три країни, з яких почнемо</h2>
 </div>
 <div class="country-cards">
-${COUNTRIES.map(e=>`
-<div class="ccard" onclick="goTo('${e.id}')">
-<div class="flagbar-h" style="background:${FLAGS[e.flagKey]}"></div>
-<h3>${e.name}</h3>
-<p>${e.capital} · ${e.population}</p>
+${COUNTRIES.map(country=>`
+<div class="ccard" onclick="goTo('${country.id}')">
+<div class="flagbar-h" style="background:${FLAGS[country.flagKey]}"></div>
+<h3>${country.name}</h3>
+<p>${country.capital} · ${country.population}</p>
 </div>
 `).join("")}
 </div>
@@ -6435,11 +6435,11 @@ ${COUNTRIES.map(e=>`
 <p>«Вагнер» і «Африканський корпус» працюють і поза Альянсом держав Сахелю — з країн, звідки все почалося, або куди веде той самий слід.</p>
 </div>
 <div class="country-cards" style="padding-top:0;">
-${OTHER_COUNTRIES.map(e=>`
-<div class="ccard" onclick="goTo('${e.id}')">
-<div class="flagbar-h" style="background:${FLAGS[e.flagKey]}"></div>
-<h3>${e.name}</h3>
-<p>${e.capital} · ${e.population}</p>
+${OTHER_COUNTRIES.map(country=>`
+<div class="ccard" onclick="goTo('${country.id}')">
+<div class="flagbar-h" style="background:${FLAGS[country.flagKey]}"></div>
+<h3>${country.name}</h3>
+<p>${country.capital} · ${country.population}</p>
 </div>
 `).join("")}
 </div>
@@ -6493,84 +6493,84 @@ ${OTHER_COUNTRIES.map(e=>`
 <div class="footnote">Дані про перевороти, чисельність населення та хронологію подій зібрані з відкритих джерел (Вікіпедія, Reuters, РСМД, регіональні медіа) станом на 2026 рік й будуть уточнюватися.</div>
 `;
 }
-function renderCountry(e) {
+function renderCountry(country) {
   return `
 <div class="hero hero-country">
-<div class="flagbar" style="background:${FLAGS[e.flagKey]}"></div>
-<div class="hero-flagbar-top" style="background:${FLAGS[e.flagKey]}"></div>
-<div class="hero-eyebrow">${e.eyebrow || "Альянс держав Сахелю"}</div>
-<h1>${e.name}</h1>
-<p class="hero-lede">${e.intro[0]}</p>
+<div class="flagbar" style="background:${FLAGS[country.flagKey]}"></div>
+<div class="hero-flagbar-top" style="background:${FLAGS[country.flagKey]}"></div>
+<div class="hero-eyebrow">${country.eyebrow || "Альянс держав Сахелю"}</div>
+<h1>${country.name}</h1>
+<p class="hero-lede">${country.intro[0]}</p>
 <div class="factstrip">
-<div class="fact"><div class="fact-label">Столиця</div><div class="fact-value">${e.capital}</div></div>
-<div class="fact"><div class="fact-label">Населення</div><div class="fact-value">${e.population}</div></div>
-<div class="fact"><div class="fact-label">Площа</div><div class="fact-value">${e.area}</div></div>
-<div class="fact"><div class="fact-label">Незалежність</div><div class="fact-value">${e.independence}</div></div>
-<div class="fact"><div class="fact-label">Мова</div><div class="fact-value">${e.language}</div></div>
+<div class="fact"><div class="fact-label">Столиця</div><div class="fact-value">${country.capital}</div></div>
+<div class="fact"><div class="fact-label">Населення</div><div class="fact-value">${country.population}</div></div>
+<div class="fact"><div class="fact-label">Площа</div><div class="fact-value">${country.area}</div></div>
+<div class="fact"><div class="fact-label">Незалежність</div><div class="fact-value">${country.independence}</div></div>
+<div class="fact"><div class="fact-label">Мова</div><div class="fact-value">${country.language}</div></div>
 </div>
 </div>
 <div class="section">
 <h2 class="section-title">Устрій і як до нього прийшли</h2>
-${e.intro.slice(1).map(t=>`<p>${t}</p>`).join("")}
-${e.order.map(t=>`<p>${t}</p>`).join("")}
+${country.intro.slice(1).map(paragraph=>`<p>${paragraph}</p>`).join("")}
+${country.order.map(paragraph=>`<p>${paragraph}</p>`).join("")}
 </div>
 <div class="deckwrap">
 <div class="deck-label">Коротко: ключові моменти</div>
-<div class="deck" id="deck-${e.id}"></div>
+<div class="deck" id="deck-${country.id}"></div>
 </div>
 <div class="section" style="padding-bottom:0;">
 <h2 class="section-title">Присутність росії — хронологія</h2>
 </div>
-${renderTimeline(e.timeline)}
-<div class="footnote">${e.sourceNote || "Останнє оновлення розділу — вересень 2026 року. Джерела: Reuters, BBC, Новая газета Європа, РСМД, відкриті звіти дослідницьких центрів."}</div>
+${renderTimeline(country.timeline)}
+<div class="footnote">${country.sourceNote || "Останнє оновлення розділу — вересень 2026 року. Джерела: Reuters, BBC, Новая газета Європа, РСМД, відкриті звіти дослідницьких центрів."}</div>
 `
 }
 const deckState = {};
 
-function initDeck(e, t) {
-  deckState[e] = 0, drawDeck(e, t)
+function initDeck(deckId, slides) {
+  deckState[deckId] = 0, drawDeck(deckId, slides)
 }
 
-function drawDeck(e, t) {
-  const a = deckState[e],
-    i = t[a],
-    s = document.getElementById("deck-" + e);
-  s && (s.innerHTML = `
+function drawDeck(deckId, slides) {
+  const currentIdx = deckState[deckId],
+    slide = slides[currentIdx],
+    deckEl = document.getElementById("deck-" + deckId);
+  deckEl && (deckEl.innerHTML = `
 <div class="deck-inner">
-<div class="deck-count">${a+1} / ${t.length}</div>
-<div class="deck-title">${i.title}</div>
-<div class="deck-text">${i.text}</div>
-${i.stat?`<div class="deck-stat">${i.stat}</div>`:""}
+<div class="deck-count">${currentIdx+1} / ${slides.length}</div>
+<div class="deck-title">${slide.title}</div>
+<div class="deck-text">${slide.text}</div>
+${slide.stat?`<div class="deck-stat">${slide.stat}</div>`:""}
 </div>
 <div class="deck-nav">
-<button class="deck-btn" onclick="deckMove('${e}', -1)" ${a===0?"disabled":""}>← Назад</button>
-<div class="deck-dots">${t.map((l,c)=>`<span class="deck-dot ${c===a?"on":""}"></span>`).join("")}</div>
-<button class="deck-btn" onclick="deckMove('${e}', 1)" ${a===t.length-1?"disabled":""}>Далі →</button>
+<button class="deck-btn" onclick="deckMove('${deckId}', -1)" ${currentIdx===0?"disabled":""}>← Назад</button>
+<div class="deck-dots">${slides.map((s,dotIdx)=>`<span class="deck-dot ${dotIdx===currentIdx?"on":""}"></span>`).join("")}</div>
+<button class="deck-btn" onclick="deckMove('${deckId}', 1)" ${currentIdx===slides.length-1?"disabled":""}>Далі →</button>
 </div>
 `)
 }
 
-function deckMove(e, t) {
-  let a;
-  e === "overview" ? a = OVERVIEW_SLIDES : e === "jihad" ? a = JIHAD_SLIDES : a = (COUNTRIES.find(i => i.id === e) || OTHER_COUNTRIES.find(i => i.id === e)).slides, deckState[e] = Math.max(0, Math.min(a.length - 1, deckState[e] + t)), drawDeck(e, a)
+function deckMove(deckId, direction) {
+  let slides;
+  deckId === "overview" ? slides = OVERVIEW_SLIDES : deckId === "jihad" ? slides = JIHAD_SLIDES : slides = (COUNTRIES.find(c => c.id === deckId) || OTHER_COUNTRIES.find(c => c.id === deckId)).slides, deckState[deckId] = Math.max(0, Math.min(slides.length - 1, deckState[deckId] + direction)), drawDeck(deckId, slides)
 }
-const OVERVIEW_SLIDES = PROLOGUE_TIMELINE.map(e => ({
-  title: `${e.year} — ${e.title}`,
-  text: e.text
+const OVERVIEW_SLIDES = PROLOGUE_TIMELINE.map(item => ({
+  title: `${item.year} — ${item.title}`,
+  text: item.text
 }));
 
 const VALID_PAGE_IDS = ["overview", "compare", "jihad", "coast", "ukraine", "dossier", "infowar", "resources", "sources", "timeline", "glossary", "china", "changelog"].concat(COUNTRIES.map(c => c.id), OTHER_COUNTRIES.map(c => c.id));
 let suppressHashRender = false;
 
-function goTo(e) {
-  if (!VALID_PAGE_IDS.includes(e)) e = "overview";
-  if ((location.hash.slice(1) || "overview") === e) {
-    renderPage(e);
+function goTo(pageId) {
+  if (!VALID_PAGE_IDS.includes(pageId)) pageId = "overview";
+  if ((location.hash.slice(1) || "overview") === pageId) {
+    renderPage(pageId);
     return
   }
   suppressHashRender = true;
-  location.hash = e;
-  renderPage(e)
+  location.hash = pageId;
+  renderPage(pageId)
 }
 
 function svgKeyNav(evt, id) {
@@ -6580,26 +6580,26 @@ function svgKeyNav(evt, id) {
   }
 }
 
-function renderPage(e) {
-  if (!VALID_PAGE_IDS.includes(e)) e = "overview";
-  renderNav(e);
-  const t = document.getElementById("main");
-  if (e === "overview") { t.innerHTML = `<div class="page active">${renderOverview()}</div>`; initDeck("overview", OVERVIEW_SLIDES); initDashboard(); }
-  else if (e === "compare") t.innerHTML = `<div class="page active">${renderComparePage()}</div>`;
-  else if (e === "jihad") t.innerHTML = `<div class="page active">${renderJihadPage()}</div>`, initDeck("jihad", JIHAD_SLIDES);
-  else if (e === "coast") t.innerHTML = `<div class="page active">${renderCoastPage()}</div>`;
-  else if (e === "ukraine") t.innerHTML = `<div class="page active">${renderUkrainePage()}</div>`;
-  else if (e === "dossier") t.innerHTML = `<div class="page active">${renderDossierPage()}</div>`;
-  else if (e === "infowar") t.innerHTML = `<div class="page active">${renderInfowarPage()}</div>`;
-  else if (e === "resources") t.innerHTML = `<div class="page active">${renderResourcesPage()}</div>`;
-  else if (e === "sources") t.innerHTML = `<div class="page active">${renderSourcesPage()}</div>`;
-  else if (e === "timeline") t.innerHTML = `<div class="page active">${renderTimelinePage()}</div>`, updateMasterTimelineUI();
-  else if (e === "glossary") t.innerHTML = `<div class="page active">${renderGlossaryPage()}</div>`;
-  else if (e === "china") t.innerHTML = `<div class="page active">${renderChinaPage()}</div>`;
-  else if (e === "changelog") t.innerHTML = `<div class="page active">${renderChangelogPage()}</div>`;
+function renderPage(pageId) {
+  if (!VALID_PAGE_IDS.includes(pageId)) pageId = "overview";
+  renderNav(pageId);
+  const main = document.getElementById("main");
+  if (pageId === "overview") { main.innerHTML = `<div class="page active">${renderOverview()}</div>`; initDeck("overview", OVERVIEW_SLIDES); initDashboard(); }
+  else if (pageId === "compare") main.innerHTML = `<div class="page active">${renderComparePage()}</div>`;
+  else if (pageId === "jihad") main.innerHTML = `<div class="page active">${renderJihadPage()}</div>`, initDeck("jihad", JIHAD_SLIDES);
+  else if (pageId === "coast") main.innerHTML = `<div class="page active">${renderCoastPage()}</div>`;
+  else if (pageId === "ukraine") main.innerHTML = `<div class="page active">${renderUkrainePage()}</div>`;
+  else if (pageId === "dossier") main.innerHTML = `<div class="page active">${renderDossierPage()}</div>`;
+  else if (pageId === "infowar") main.innerHTML = `<div class="page active">${renderInfowarPage()}</div>`;
+  else if (pageId === "resources") main.innerHTML = `<div class="page active">${renderResourcesPage()}</div>`;
+  else if (pageId === "sources") main.innerHTML = `<div class="page active">${renderSourcesPage()}</div>`;
+  else if (pageId === "timeline") main.innerHTML = `<div class="page active">${renderTimelinePage()}</div>`, updateMasterTimelineUI();
+  else if (pageId === "glossary") main.innerHTML = `<div class="page active">${renderGlossaryPage()}</div>`;
+  else if (pageId === "china") main.innerHTML = `<div class="page active">${renderChinaPage()}</div>`;
+  else if (pageId === "changelog") main.innerHTML = `<div class="page active">${renderChangelogPage()}</div>`;
   else {
-    const a = COUNTRIES.find(i => i.id === e) || OTHER_COUNTRIES.find(i => i.id === e);
-    t.innerHTML = `<div class="page active">${renderCountry(a)}</div>`, initDeck(a.id, a.slides)
+    const country = COUNTRIES.find(c => c.id === pageId) || OTHER_COUNTRIES.find(c => c.id === pageId);
+    main.innerHTML = `<div class="page active">${renderCountry(country)}</div>`, initDeck(country.id, country.slides)
   }
   window.scrollTo(0, 0), closeSidebar()
 }
@@ -6620,14 +6620,14 @@ function closeSidebar() {
   document.getElementById("sidebar").classList.remove("open"), document.getElementById("sidebarBackdrop").classList.remove("open"), document.body.classList.remove("sidebar-locked")
 }
 
-function scrollToAnchor(e) {
-  const t = document.getElementById(e);
-  if (!t) return;
-  const a = document.querySelector(".anchor-nav"),
-    o = a ? a.offsetHeight : 0,
-    i = t.getBoundingClientRect().top + window.scrollY - o - 12;
+function scrollToAnchor(anchorId) {
+  const targetEl = document.getElementById(anchorId);
+  if (!targetEl) return;
+  const anchorNav = document.querySelector(".anchor-nav"),
+    navHeight = anchorNav ? anchorNav.offsetHeight : 0,
+    scrollTarget = targetEl.getBoundingClientRect().top + window.scrollY - navHeight - 12;
   window.scrollTo({
-    top: i,
+    top: scrollTarget,
     behavior: "smooth"
   })
 }
