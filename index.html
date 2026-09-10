@@ -1449,6 +1449,7 @@ body.sidebar-locked {
   height: 560px;
   background: #F7F3E9;
   overflow: hidden;
+  touch-action: pan-y;
 }
 
 .dash-map-svg {
@@ -5555,6 +5556,70 @@ function applyMapTransform() {
     svg.style.transformOrigin = "50% 50%";
   }
 }
+
+// --- Pinch/trackpad zoom scoped to the map only -----------------------------
+// Without this, pinching or ctrl+scrolling over the map triggers the browser's
+// own page zoom (the whole page and all its text/markers get bigger) instead
+// of just zooming the map image in place. These listeners intercept those
+// gestures over the map viewport and feed them into the existing
+// dashMapZoom/applyMapTransform mechanism instead, then stop them from
+// reaching the browser.
+(function setupMapGestureZoom() {
+  let pinchStartDist = null;
+  let pinchStartZoom = 1;
+  let gestureStartZoom = 1;
+
+  function touchDist(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.hypot(dx, dy);
+  }
+
+  document.addEventListener("touchstart", e => {
+    const vp = e.target.closest && e.target.closest("#dashMapViewport");
+    if (!vp || e.touches.length !== 2) return;
+    pinchStartDist = touchDist(e.touches);
+    pinchStartZoom = dashMapZoom;
+  }, { passive: true });
+
+  document.addEventListener("touchmove", e => {
+    if (pinchStartDist === null) return;
+    const vp = e.target.closest && e.target.closest("#dashMapViewport");
+    if (!vp || e.touches.length !== 2) return;
+    e.preventDefault();
+    const ratio = touchDist(e.touches) / pinchStartDist;
+    dashMapZoom = Math.max(1, Math.min(2.5, pinchStartZoom * ratio));
+    applyMapTransform();
+  }, { passive: false });
+
+  document.addEventListener("touchend", e => {
+    if (e.touches.length < 2) pinchStartDist = null;
+  }, { passive: true });
+
+  // Trackpad pinch on desktop (Chrome/Firefox) arrives as a ctrl+wheel event.
+  document.addEventListener("wheel", e => {
+    const vp = e.target.closest && e.target.closest("#dashMapViewport");
+    if (!vp || !e.ctrlKey) return;
+    e.preventDefault();
+    zoomMap(e.deltaY < 0 ? 0.12 : -0.12);
+  }, { passive: false });
+
+  // Safari uses non-standard gesture events for pinch instead of touches.
+  document.addEventListener("gesturestart", e => {
+    const vp = e.target.closest && e.target.closest("#dashMapViewport");
+    if (!vp) return;
+    e.preventDefault();
+    gestureStartZoom = dashMapZoom;
+  });
+
+  document.addEventListener("gesturechange", e => {
+    const vp = e.target.closest && e.target.closest("#dashMapViewport");
+    if (!vp) return;
+    e.preventDefault();
+    dashMapZoom = Math.max(1, Math.min(2.5, gestureStartZoom * e.scale));
+    applyMapTransform();
+  });
+})();
 
 function showPinTooltip(pinId, event) {
   if (event) event.stopPropagation();
