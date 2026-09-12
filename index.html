@@ -134,7 +134,7 @@ a {
 
 .nav-search-clear {
   position: absolute;
-  right: 6px;
+  right: 2px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -142,8 +142,11 @@ a {
   color: #8e97ac;
   cursor: pointer;
   font-size: .8rem;
-  padding: 6px;
+  min-width: 36px;
+  min-height: 36px;
   display: none;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-search-clear:hover {
@@ -537,8 +540,62 @@ body.sidebar-locked {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
   padding: 14px 22px;
   border-top: 1px solid rgba(255, 255, 255, .12)
+}
+
+.deck-nav-center {
+  display: flex;
+  align-items: center;
+  gap: 12px
+}
+
+.deck-share-btn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, .25);
+  color: #e9e4d6;
+  font-size: .82rem;
+  line-height: 1;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background .15s ease
+}
+
+.deck-share-btn:hover {
+  background: #ffffff1a
+}
+
+.share-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translate(-50%, 12px);
+  background: var(--indigo-deep);
+  color: #f3eedd;
+  font-family: Manrope, sans-serif;
+  font-size: .88rem;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px #00000040;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+  z-index: 100;
+  max-width: 90vw;
+  text-align: center
+}
+
+.share-toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0)
 }
 
 .deck-btn {
@@ -1241,10 +1298,12 @@ body.sidebar-locked {
     background: none;
     border: none;
     color: #f3eedd;
-    padding: 2px;
-    margin: 0;
+    padding: 10px;
+    margin: -10px;
     cursor: pointer;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0
   }
 
@@ -2602,6 +2661,22 @@ body.sidebar-locked {
 <main class="main" id="main"></main>
 </div>
 <script>
+/* ============================================================
+   ЗМІСТ ФАЙЛУ (орієнтир для швидкого пошуку по Ctrl+F):
+   1. ДАНІ: прапори, іконки, досьє осіб, вступна хронологія, 3 країни AES
+   2. ДАНІ: країни поза Сахелем (ЦАР, Лівія, Судан, Чад)
+   3. РЕНДЕР: навігація та загальні хелпери (renderNav, renderTimeline...)
+   4. ДАНІ + РЕНДЕР: наскрізні тематичні сторінки (джихад, узбережжя,
+      Україна, Китай, ресурси, порівняння, досьє, інфовійна)
+   5. ДАНІ: джерела, глосарій, пошуковий індекс, чейнджлог
+   6. ДАНІ: карта регіону (піни подій, зони, роки хронології)
+   7. РЕНДЕР: головна сторінка «Огляд» (дашборд, карти)
+   8. РЕНДЕР: сторінка окремої країни
+   9. ЛОГІКА: слайд-деки (міні-презентації)
+   10. МАРШРУТИЗАЦІЯ: валідні сторінки, goTo(), renderPage(), init
+   ============================================================ */
+
+/* ---- 1. ДАНІ: прапори, іконки, досьє осіб, вступна хронологія, країни AES ---- */
 const FLAGS = {
     overview: "linear-gradient(90deg,#A8432B,#B98A2E)",
     mali: "linear-gradient(90deg,#14B53A 0 33%, #FCD116 33% 66%, #CE1126 66% 100%)",
@@ -3106,6 +3181,7 @@ const FLAGS = {
     }]
   }];
 
+/* ---- 2. ДАНІ: країни поза Сахелем (ЦАР, Лівія, Судан, Чад) ---- */
 const OTHER_COUNTRIES = [{
   id: "car",
   name: "ЦАР",
@@ -3470,6 +3546,7 @@ function findCountry(id) {
   return COUNTRIES.find(c => c.id === id) || OTHER_COUNTRIES.find(c => c.id === id)
 }
 
+/* ---- 3. РЕНДЕР: навігація та загальні хелпери ---- */
 function renderNav(activePageId) {
   const regionItems = [{
       id: "overview",
@@ -3798,6 +3875,7 @@ ${others.map(renderPersonCard).join("")}
 <div class="footnote">Дати народження окремих військових лідерів офіційно не підтверджені й наводяться за оцінками відкритих джерел (Вікіпедія, AFP, Reuters, BlackPast). Джерела: Вікіпедія, AFP, Reuters, Jeune Afrique, BBC, Al Jazeera, Congressional Research Service.</div>
 `
 }
+/* ---- 4. ДАНІ + РЕНДЕР: наскрізні тематичні сторінки ---- */
 const INFOWAR_TIMELINE = [{
     year: "2023, лютий",
     title: "«Russosphere»",
@@ -3988,7 +4066,7 @@ ${renderTimeline(JIHAD_TIMELINE)}
 </div>
 <div class="section">
 <h2 class="section-title">Чому «Африканський корпус» не зупинив просування</h2>
-<p>Формально «Африканський корпус» мав замінити французьких і американських партнерів у боротьбі з джихадистами. На практиці, за оцінками низки аналітичних центрів (Центр по боротьбі з тероризмом Вест-Пойнта, The Sentry, Джорджтаунський університет), зміна вивіски з приватного «Вагнера» на державну структуру Міноборони росії майже не змінила ні методів, ні результату: до 80% особового складу «Африканського корпусу» — ті самі бійці, що воювали під прапором «Вагнера», з тим самим підходом до контрповстанства.</p>
+<p>Формально «Африканський корпус» мав замінити французьких і американських партнерів у боротьбі з джихадистами. На практиці, за оцінками низки аналітичних центрів (Центр по боротьбі з тероризмом Вест-Пойнта, The Sentry, Джорджтаунський журнал міжнародних відносин), зміна вивіски з приватного «Вагнера» на державну структуру Міноборони росії майже не змінила ні методів, ні результату: до 80% особового складу «Африканського корпусу» — ті самі бійці, що воювали під прапором «Вагнера», з тим самим підходом до контрповстанства.</p>
 <p>Головна причина — ставка виключно на силові операції без жодної політики щодо цивільного населення. Різанина в Мурі 2022 року стала не винятком, а моделлю: правозахисні організації фіксують десятки подібних епізодів у Малі й Буркіна-Фасо за участю росіян і місцевих армій. За висновками дослідників, кожен такий епізод радше підживлює вербування джихадистів, ніж стримує його, — люди, які втратили родичів від рук «визволителів», йдуть до JNIM чи ISGS не з ідеологічних міркувань, а з помсти або браку інших варіантів.</p>
 <p>До цього додається брак досвіду в класичному контрповстанстві: «Африканський корпус» — це передусім охорона режиму, супровід конвоїв і виробництво пропаганди, а не піхота, навчена утримувати сільську територію проти партизанів. Липнева засідка 2024 року під Тінзауатеном, де загін «Вагнера» й малійської армії потрапив у пастку туарезьких повстанців і JNIM, коштувала щонайменше 46 найманців і 24 малійських військових — і оголила межі можливостей структури в пустелі. Війна в Україні та звужені ресурси Кремля після втрати сирійського плацдарму додатково обмежують спроможність нарощувати присутність у регіоні.</p>
 <p>Це не означає, що ситуація однозначно погіршилася всюди й одразу. Малійська армія за підтримки «Вагнера» відбила Кідаль у туарезьких повстанців ще 2023 року, а буркінабе влада звітує про повернення контролю приблизно над десятою частиною раніше втраченої території. Але ці локальні успіхи не змінюють загальної картини: Буркіна-Фасо — країна номер один у світі за Глобальним індексом тероризму, а в Малі з вересня 2025-го JNIM утримує паливну блокаду столиці попри присутність росіян. У кількох задокументованих випадках («Ops Con Intelligence», Critical Threats Project) присутність «Африканського корпусу» не просто не зупинила просування джихадистів, а створила додаткові точки напруги — від міжусобиць у лавах місцевих армій до падіння довіри цивільного населення до держави як такої.</p>
@@ -4392,8 +4470,10 @@ ${renderResourceTable()}
 <div class="footnote">Джерела: Reuters, AP, Bloomberg, The Sentry, World Nuclear Association, World Nuclear News, Ecofin Agency, Investing News, ISS Africa, TRT Afrika, Africa Briefing, US Treasury. Суми, частки й терміни різняться між джерелами і швидко змінюються.</div>
 `
 }
+/* ---- 5. ДАНІ: джерела, глосарій, пошуковий індекс, чейнджлог ---- */
 const SOURCE_URLS = {
   "ACLED (Armed Conflict Location & Event Data)": "https://acleddata.com",
+  "Combating Terrorism Center at West Point": "https://ctc.westpoint.edu",
   "AFP": "https://www.afp.com",
   "Africa Briefing": "https://africabriefing.org",
   "Africa Center for Strategic Studies": "https://africacenter.org",
@@ -4456,11 +4536,18 @@ const SOURCE_URLS = {
   "US Treasury": "https://home.treasury.gov",
   "Вікіпедія / Wikipedia": "https://www.wikipedia.org",
   "World Nuclear Association": "https://world-nuclear.org",
-  "World Nuclear News": "https://www.world-nuclear-news.org"
+  "World Nuclear News": "https://www.world-nuclear-news.org",
+  "FPRI (через The Week)": "https://www.fpri.org",
+  "Responsible Statecraft": "https://responsiblestatecraft.org",
+  "Defense Express": "https://defence-ua.com",
+  "Focus.ua / Interesting Engineering": "https://focus.ua"
 };
 const SOURCES = [{
     name: "ACLED (Armed Conflict Location & Event Data)",
     sections: ["Джихадистська загроза", "Вихід до Гвінейської затоки"]
+  }, {
+    name: "Combating Terrorism Center at West Point",
+    sections: ["Джихадистська загроза"]
   }, {
     name: "AFP",
     sections: ["Досьє: ключові особи", "Інформаційна війна", "Чад"]
@@ -4869,6 +4956,15 @@ const GLOSSARY = [{
   term: "Orano",
   def: "Французька державна компанія (колишня Areva), що десятиліттями видобувала уран у Нігері для французької атомної енергетики. Після перевороту 2023 року нігерська влада почала переглядати й відкликати частину її ліцензій."
 }, {
+  term: "Somaïr",
+  def: "Société des Mines de l'Aïr — оператор уранового родовища в Арліті (Нігер), заснований 1968 року; до 2025-го на 63,4% належав французькій Orano, решта — держкомпанії Sopamin. У червні 2025 року Нігер націоналізував Somaïr, а в травні 2026-го анулював саму концесію на Арліт, передавши видобуток новоствореній TSUMCO."
+}, {
+  term: "SOMILO",
+  def: "Малійська дочірня структура канадської Barrick, через яку держава володіє 20% золотого комплексу Loulo-Gounkoto (Barrick — 80%). Саме на SOMILO переоформили відновлену на 10 років ліцензію після дев'ятимісячної зупинки видобутку в лютому 2026 року."
+}, {
+  term: "TSUMCO",
+  def: "Teloua Safeguarding Uranium Mining Company — нігерська державна компанія, створена урядом у травні 2026 року на місці націоналізованої Somaïr, після анулювання концесії Orano на родовище Арліт. Назва відсилає до підземного водоносного горизонту Телуа під колишнім рудником Cominak."
+}, {
   term: "«Африканський корпус» / Africa Corps",
   def: "Структура під прямим контролем Міноборони росії, яка з 2023–2024 років поглинула африканські підрозділи «Вагнера». На відміну від попередника — державна, а не приватна сила, укомплектована здебільшого колишніми вагнерівцями."
 }, {
@@ -4939,7 +5035,7 @@ function handleNavSearch(query) {
     resultsEl = document.getElementById("navSearchResults"),
     browseEl = document.getElementById("navBrowseView");
   query = query.trim();
-  clearBtn.style.display = query ? "block" : "none";
+  clearBtn.style.display = query ? "flex" : "none";
   if (!query) { resultsEl.innerHTML = ""; browseEl.style.display = ""; return; }
   browseEl.style.display = "none";
   const q = query.toLowerCase(),
@@ -4965,6 +5061,10 @@ function clearNavSearch() {
 }
 
 const CHANGELOG = [{
+  date: "12 вересня 2026",
+  title: "Технічне прибирання, глосарій, шеринг слайдів і мапа без квадратів",
+  text: "Розмітив script секційними коментарями й додав попередження в консоль на неіснуючий pageId — суто для зручності подальшого редагування 6000+ рядків. Глосарій поповнився трьома термінами (Somaïr, SOMILO, TSUMCO), які й раніше згадувались у тексті («Гроші й ресурси», дашборд), але ніде не пояснювались. У деках з'явилась кнопка «поділитися» — копіює пряме посилання на конкретний слайд (вигляду #країна:номер), а дотикові цілі бургер-меню й кнопки очищення пошуку підросли до зручного розміру на мобільному. У бібліографії додав Центр по боротьбі з тероризмом Вест-Пойнта (був у тексті «Джихадистської загрози», не був у списку джерел), і ще чотири джерела отримали прямі посилання. Схематична карта Сахелю нарешті відмовилась від прямокутних Гани й Того — контури країн стали органічнішими в обох режимах карти, а ромбовидний значок ресурсних пінів замінено на кільце."
+}, {
   date: "9 вересня 2026",
   title: "Досьє, ресурси й порівняння наздоганяють сім країн",
   text: "Досьє: ключові особи поповнилося п'ятьма картками — Хафтар (Лівія), аль-Бурхан і Хемедті (Судан, по обидва боки фронту), Дебі (Чад), Туадера (ЦАР); тепер 10 осіб у трьох групах замість п'яти. «Гроші й ресурси» отримали рядки по золоту Ндассіми (ЦАР), нафті Лівії й золоту Абідії (Судан) — раніше таблиця охоплювала лише Малі/Буркіна-Фасо/Нігер. «Порівняння країн» тепер чіткіше пояснює, що детальна таблиця — це порівняння саме трьох хунт AES за однаковим сценарієм, і отримало другу, легшу таблицю для ЦАР/Лівії/Судану/Чаду."
@@ -5048,6 +5148,7 @@ ${SOURCES.map(e=>`
 `
 }
 
+/* ---- 6. ДАНІ: карта регіону (піни подій, зони, роки хронології) ---- */
 const AFRICA_TIMELINE_YEARS = [
   {
     year: "2018",
@@ -5787,6 +5888,7 @@ function initDashboard() {
   scrubYear(dashActiveYearIdx);
 }
 
+/* ---- 7. РЕНДЕР: головна сторінка «Огляд» (дашборд, карти) ---- */
 function renderOverview() {
   return `
 <div class="hero" style="padding-bottom:34px;">
@@ -5934,16 +6036,16 @@ function renderOverview() {
           <path class="africa-country" d="M 250,380 L 285,385 L 285,410 L 250,405 Z" title="Сенегал & Гамбія"/>
           <path class="africa-country" d="M 265,410 L 310,410 L 310,450 L 275,445 Z" title="Гвінея"/>
           <path class="africa-country" d="M 275,445 L 305,450 L 305,480 L 285,475 Z" title="Сьєрра-Леоне & Ліберія"/>
-          <path class="africa-country" d="M 375,465 L 405,465 L 405,510 L 375,510 Z" title="Гана"/>
+          <path class="africa-country" d="M 373,463 Q 392,458 405,466 Q 409,488 405,510 Q 388,515 375,510 Q 370,486 373,463 Z" title="Гана"/>
           <path class="africa-country" d="M 445,415 L 515,410 L 530,475 L 470,515 L 445,490 Z" title="Нігерія"/>
           <text class="africa-label-neutral" x="465" y="465">НІГЕРІЯ</text>
 
           <!-- COASTAL THREAT GROUP (Benin, Togo, Cote d'Ivoire) -->
-          <path class="africa-country zone-coast" d="M 310,425 L 350,425 L 350,495 L 310,490 Z" onclick="goTo('coast')" tabindex="0" role="button" aria-label="Кот-д’Івуар — Загроза JNIM" onkeydown="svgKeyNav(event,'coast')" title="Кот-д’Івуар — Загроза JNIM" />
+          <path class="africa-country zone-coast" d="M 308,427 Q 328,420 350,426 Q 353,460 350,493 Q 330,498 310,490 Q 306,458 308,427 Z" onclick="goTo('coast')" tabindex="0" role="button" aria-label="Кот-д’Івуар — Загроза JNIM" onkeydown="svgKeyNav(event,'coast')" title="Кот-д’Івуар — Загроза JNIM" />
           <text class="africa-label-neutral" x="312" y="465" style="fill:#1F4E46; font-size:9px;">Кот-д'Івуар</text>
 
-          <path class="africa-country zone-coast" d="M 405,455 L 420,455 L 420,505 L 405,505 Z" onclick="goTo('coast')" tabindex="0" role="button" aria-label="Того — Загроза JNIM" onkeydown="svgKeyNav(event,'coast')" title="Того — Загроза JNIM" />
-          <path class="africa-country zone-coast" d="M 420,440 L 445,435 L 445,505 L 420,505 Z" onclick="goTo('coast')" tabindex="0" role="button" aria-label="Бенін — Парк W & Нафтопровід" onkeydown="svgKeyNav(event,'coast')" title="Бенін — Парк W & Нафтопровід" />
+          <path class="africa-country zone-coast" d="M 403,453 Q 413,450 420,456 Q 423,480 420,504 Q 411,507 405,503 Q 402,478 403,453 Z" onclick="goTo('coast')" tabindex="0" role="button" aria-label="Того — Загроза JNIM" onkeydown="svgKeyNav(event,'coast')" title="Того — Загроза JNIM" />
+          <path class="africa-country zone-coast" d="M 419,438 Q 432,432 445,436 Q 448,470 445,504 Q 432,508 420,504 Q 417,470 419,438 Z" onclick="goTo('coast')" tabindex="0" role="button" aria-label="Бенін — Парк W & Нафтопровід" onkeydown="svgKeyNav(event,'coast')" title="Бенін — Парк W & Нафтопровід" />
           <text class="africa-label-neutral" x="424" y="475" style="fill:#1F4E46; font-size:9px;">Бенін</text>
 
           <!-- 3. CENTRAL & EAST AFRICA -->
@@ -6058,33 +6160,33 @@ function renderOverview() {
           <line class="geo-grid-line" x1="760" y1="50" x2="760" y2="520"/>
 
           <!-- Neighbors -->
-          <path class="geo-neighbor" d="M 230,60 L 490,45 L 530,95 L 495,190 L 390,170 L 345,130 L 230,120 Z" title="Алжир"/>
+          <path class="geo-neighbor" d="M 228,58 Q 350,40 490,45 Q 515,65 530,95 Q 512,145 495,190 Q 440,178 390,170 Q 365,148 345,130 Q 285,124 230,120 Q 224,90 228,58 Z" title="Алжир"/>
           <text class="geo-neighbor-label" x="340" y="95">АЛЖИР</text>
-          <path class="geo-neighbor" d="M 125,120 L 230,120 L 260,160 L 230,220 L 245,250 L 175,265 L 140,240 Z" title="Мавританія"/>
+          <path class="geo-neighbor" d="M 123,120 L 230,120 Q 248,138 260,160 Q 244,192 230,220 Q 238,236 245,250 Q 208,260 175,265 Q 148,254 140,240 Q 128,182 123,120 Z" title="Мавританія"/>
           <text class="geo-neighbor-label" x="155" y="190">МАВРИТАНІЯ</text>
           <path class="geo-neighbor" d="M 115,240 L 140,240 L 175,265 L 165,295 L 115,295 Z" title="Сенегал"/>
           <path class="geo-neighbor" d="M 120,295 L 165,295 L 205,305 L 245,320 L 220,360 L 155,360 Z" title="Гвінея"/>
-          <path class="geo-neighbor" d="M 220,360 L 245,320 L 285,320 L 295,400 L 230,400 Z" title="Кот-д’Івуар"/>
+          <path class="geo-neighbor" d="M 218,362 Q 230,335 248,320 Q 268,316 286,322 Q 296,360 294,400 Q 258,408 228,402 Q 214,384 218,362 Z" title="Кот-д’Івуар"/>
           <text class="geo-neighbor-label" x="235" y="380">Кот-д’Івуар</text>
-          <path class="geo-neighbor" d="M 295,345 L 335,345 L 335,405 L 295,405 Z" title="Гана"/>
-          <path class="geo-neighbor" d="M 335,345 L 355,345 L 355,405 L 335,405 Z" title="Того"/>
-          <path class="geo-neighbor" d="M 355,340 L 385,320 L 395,405 L 355,405 Z" title="Бенін"/>
-          <path class="geo-neighbor" d="M 395,290 L 450,285 L 535,280 L 555,345 L 500,410 L 395,405 Z" title="Нігерія"/>
+          <path class="geo-neighbor" d="M 293,344 Q 318,336 336,347 Q 341,376 336,404 Q 316,410 296,403 Q 290,374 293,344 Z" title="Гана"/>
+          <path class="geo-neighbor" d="M 335,347 Q 346,340 356,348 Q 359,376 355,404 Q 345,408 337,404 Q 332,376 335,347 Z" title="Того"/>
+          <path class="geo-neighbor" d="M 356,338 Q 376,320 388,321 Q 399,362 396,404 Q 375,409 357,405 Q 351,372 356,338 Z" title="Бенін"/>
+          <path class="geo-neighbor" d="M 393,288 Q 430,278 452,284 Q 496,278 536,282 Q 558,318 556,346 Q 542,382 502,408 Q 460,417 424,408 Q 396,398 392,362 Q 388,324 393,288 Z" title="Нігерія"/>
           <text class="geo-neighbor-label" x="435" y="350">НІГЕРІЯ</text>
-          <path class="geo-neighbor" d="M 535,345 L 575,345 L 565,445 L 520,440 L 500,410 Z" title="Камерун"/>
-          <path class="geo-neighbor" d="M 735,50 L 890,50 L 910,130 L 890,170 L 735,170 Z" title="Єгипет"/>
-          <path class="geo-neighbor" d="M 725,370 L 830,370 L 880,380 L 840,480 L 730,460 Z" title="Південний Судан"/>
+          <path class="geo-neighbor" d="M 534,344 Q 558,336 577,346 Q 573,394 566,444 Q 542,449 519,440 Q 504,424 500,410 Q 515,375 534,344 Z" title="Камерун"/>
+          <path class="geo-neighbor" d="M 733,48 Q 815,42 892,46 Q 906,80 910,128 Q 902,152 890,170 L 735,170 Q 727,108 733,48 Z" title="Єгипет"/>
+          <path class="geo-neighbor" d="M 723,368 Q 780,362 830,370 Q 862,375 880,382 Q 867,430 840,480 Q 782,475 730,460 Q 717,414 723,368 Z" title="Південний Судан"/>
           <!-- Red Sea -->
           <path fill="#E2ECEF" d="M 890,170 L 915,215 L 950,260 L 980,240 L 920,130 Z"/>
 
           <!-- Core Countries Detailed -->
-          <path class="geo-country aes-mali zone-1" d="M 230,220 L 260,160 L 345,130 L 375,170 L 390,170 L 380,245 L 340,270 L 285,285 L 245,320 L 205,305 L 200,265 L 245,250 Z" onclick="goTo('mali')" tabindex="0" role="button" aria-label="Малі — перейти до розділу" onkeydown="svgKeyNav(event,'mali')" />
-          <path class="geo-country aes-burkina zone-1" d="M 285,285 L 340,270 L 385,285 L 375,340 L 325,355 L 290,345 L 280,315 Z" onclick="goTo('burkina')" tabindex="0" role="button" aria-label="Буркіна-Фасо — перейти до розділу" onkeydown="svgKeyNav(event,'burkina')" />
-          <path class="geo-country aes-niger zone-1" d="M 375,170 L 495,190 L 590,205 L 615,260 L 555,275 L 535,280 L 450,285 L 385,285 L 380,245 Z" onclick="goTo('niger')" tabindex="0" role="button" aria-label="Нігер — перейти до розділу" onkeydown="svgKeyNav(event,'niger')" />
-          <path class="geo-country geo-libya zone-2" d="M 490,45 L 720,50 L 735,170 L 685,210 L 590,205 L 530,95 Z" onclick="goTo('libya')" tabindex="0" role="button" aria-label="Лівія — перейти до розділу" onkeydown="svgKeyNav(event,'libya')" />
-          <path class="geo-country geo-chad zone-2" d="M 590,205 L 685,210 L 715,260 L 710,380 L 610,390 L 575,345 L 615,260 Z" onclick="goTo('chad')" tabindex="0" role="button" aria-label="Чад — перейти до розділу" onkeydown="svgKeyNav(event,'chad')" />
-          <path class="geo-country geo-sudan zone-2" d="M 685,210 L 735,170 L 890,170 L 915,215 L 880,330 L 830,370 L 725,370 L 715,260 Z" onclick="goTo('sudan')" tabindex="0" role="button" aria-label="Судан — перейти до розділу" onkeydown="svgKeyNav(event,'sudan')" />
-          <path class="geo-country geo-car zone-2" d="M 575,390 L 610,390 L 710,380 L 725,370 L 730,420 L 675,470 L 605,470 L 565,445 Z" onclick="goTo('car')" tabindex="0" role="button" aria-label="ЦАР — перейти до розділу" onkeydown="svgKeyNav(event,'car')" />
+          <path class="geo-country aes-mali zone-1" d="M 230,220 Q 242,190 260,160 Q 300,142 345,130 Q 362,148 375,170 L 390,170 L 380,245 L 340,270 L 285,285 Q 264,304 245,320 Q 222,314 205,305 Q 198,284 200,265 Q 220,256 245,250 Q 234,236 230,220 Z" onclick="goTo('mali')" tabindex="0" role="button" aria-label="Малі — перейти до розділу" onkeydown="svgKeyNav(event,'mali')" />
+          <path class="geo-country aes-burkina zone-1" d="M 285,285 L 340,270 L 385,285 Q 382,314 375,340 Q 350,352 325,355 Q 305,350 290,345 Q 279,330 280,315 Q 281,298 285,285 Z" onclick="goTo('burkina')" tabindex="0" role="button" aria-label="Буркіна-Фасо — перейти до розділу" onkeydown="svgKeyNav(event,'burkina')" />
+          <path class="geo-country aes-niger zone-1" d="M 375,170 Q 435,178 495,190 Q 545,196 590,205 L 615,260 Q 585,270 555,275 Q 545,282 535,280 Q 492,284 450,285 L 385,285 L 380,245 L 375,170 Z" onclick="goTo('niger')" tabindex="0" role="button" aria-label="Нігер — перейти до розділу" onkeydown="svgKeyNav(event,'niger')" />
+          <path class="geo-country geo-libya zone-2" d="M 490,45 Q 600,38 690,46 Q 712,48 720,50 Q 728,80 703,88 Q 720,112 735,170 L 685,210 L 590,205 Q 560,150 530,95 Q 508,68 490,45 Z" onclick="goTo('libya')" tabindex="0" role="button" aria-label="Лівія — перейти до розділу" onkeydown="svgKeyNav(event,'libya')" />
+          <path class="geo-country geo-chad zone-2" d="M 590,205 L 685,210 L 715,260 L 710,380 L 610,390 Q 590,368 575,345 Q 594,302 615,260 L 590,205 Z" onclick="goTo('chad')" tabindex="0" role="button" aria-label="Чад — перейти до розділу" onkeydown="svgKeyNav(event,'chad')" />
+          <path class="geo-country geo-sudan zone-2" d="M 685,210 L 735,170 Q 810,166 890,170 Q 906,190 915,215 Q 902,275 880,330 Q 858,352 830,370 Q 776,374 725,370 L 715,260 L 685,210 Z" onclick="goTo('sudan')" tabindex="0" role="button" aria-label="Судан — перейти до розділу" onkeydown="svgKeyNav(event,'sudan')" />
+          <path class="geo-country geo-car zone-2" d="M 575,390 L 610,390 L 710,380 L 725,370 Q 729,395 730,420 Q 704,450 675,470 Q 638,474 605,470 Q 582,460 565,445 Q 568,416 575,390 Z" onclick="goTo('car')" tabindex="0" role="button" aria-label="ЦАР — перейти до розділу" onkeydown="svgKeyNav(event,'car')" />
 
           <text class="geo-country-label" x="275" y="235" fill="#fff">МАЛІ</text>
           <text class="geo-country-label" x="305" y="325" fill="#fff" style="font-size:11.5px;">БУРКІНА</text>
@@ -6158,7 +6260,7 @@ function renderOverview() {
             symbol = `<path d="M -3,-3 L 3,3 M -3,3 L 3,-3" stroke="#fff" stroke-width="1.4" pointer-events="none"/>`;
           } else if (p.type === "resource") {
             pinColor = "#B98A2E";
-            symbol = `<polygon points="0,-4 3,0 0,4 -3,0" fill="#fff" pointer-events="none"/>`;
+            symbol = `<circle cx="0" cy="0" r="2.6" fill="none" stroke="#fff" stroke-width="1.3" pointer-events="none"/>`;
           } else if (p.type === "base") {
             pinColor = "#1F2A44";
             symbol = `<circle cx="0" cy="0" r="2.2" fill="#fff" pointer-events="none"/>`;
@@ -6493,6 +6595,7 @@ ${OTHER_COUNTRIES.map(country=>`
 <div class="footnote">Дані про перевороти, чисельність населення та хронологію подій зібрані з відкритих джерел (Вікіпедія, Reuters, РСМД, регіональні медіа) станом на 2026 рік й будуть уточнюватися.</div>
 `;
 }
+/* ---- 8. РЕНДЕР: сторінка окремої країни ---- */
 function renderCountry(country) {
   return `
 <div class="hero hero-country">
@@ -6525,10 +6628,53 @@ ${renderTimeline(country.timeline)}
 <div class="footnote">${country.sourceNote || "Останнє оновлення розділу — вересень 2026 року. Джерела: Reuters, BBC, Новая газета Європа, РСМД, відкриті звіти дослідницьких центрів."}</div>
 `
 }
+/* ---- 9. ЛОГІКА: слайд-деки (міні-презентації) ---- */
 const deckState = {};
+
+function getDeckSlides(deckId) {
+  if (deckId === "overview") return OVERVIEW_SLIDES;
+  if (deckId === "jihad") return JIHAD_SLIDES;
+  const country = COUNTRIES.find(c => c.id === deckId) || OTHER_COUNTRIES.find(c => c.id === deckId);
+  return country ? country.slides : null;
+}
+
+function jumpToSlide(deckId, idx) {
+  const slides = getDeckSlides(deckId);
+  if (!slides || !slides.length) return;
+  deckState[deckId] = Math.max(0, Math.min(slides.length - 1, idx));
+  drawDeck(deckId, slides);
+}
 
 function initDeck(deckId, slides) {
   deckState[deckId] = 0, drawDeck(deckId, slides)
+}
+
+function showShareToast(message) {
+  let toast = document.getElementById("shareToast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "shareToast";
+    toast.className = "share-toast";
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(toast._hideTimer);
+  toast._hideTimer = setTimeout(() => toast.classList.remove("show"), 2200);
+}
+
+function shareDeckSlide(deckId) {
+  const idx = deckState[deckId] || 0,
+    hashPart = idx > 0 ? `${deckId}:${idx + 1}` : deckId,
+    url = location.origin + location.pathname + "#" + hashPart;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(
+      () => showShareToast("Посилання на цей слайд скопійовано"),
+      () => showShareToast(url)
+    );
+  } else {
+    showShareToast(url);
+  }
 }
 
 function drawDeck(deckId, slides) {
@@ -6544,15 +6690,19 @@ ${slide.stat?`<div class="deck-stat">${slide.stat}</div>`:""}
 </div>
 <div class="deck-nav">
 <button class="deck-btn" onclick="deckMove('${deckId}', -1)" ${currentIdx===0?"disabled":""}>← Назад</button>
+<div class="deck-nav-center">
 <div class="deck-dots">${slides.map((s,dotIdx)=>`<span class="deck-dot ${dotIdx===currentIdx?"on":""}"></span>`).join("")}</div>
+<button class="deck-share-btn" onclick="shareDeckSlide('${deckId}')" title="Копіювати посилання на цей слайд" aria-label="Копіювати посилання на цей слайд">🔗</button>
+</div>
 <button class="deck-btn" onclick="deckMove('${deckId}', 1)" ${currentIdx===slides.length-1?"disabled":""}>Далі →</button>
 </div>
 `)
 }
 
 function deckMove(deckId, direction) {
-  let slides;
-  deckId === "overview" ? slides = OVERVIEW_SLIDES : deckId === "jihad" ? slides = JIHAD_SLIDES : slides = (COUNTRIES.find(c => c.id === deckId) || OTHER_COUNTRIES.find(c => c.id === deckId)).slides, deckState[deckId] = Math.max(0, Math.min(slides.length - 1, deckState[deckId] + direction)), drawDeck(deckId, slides)
+  const slides = getDeckSlides(deckId);
+  if (!slides) return;
+  deckState[deckId] = Math.max(0, Math.min(slides.length - 1, deckState[deckId] + direction)), drawDeck(deckId, slides)
 }
 const OVERVIEW_SLIDES = PROLOGUE_TIMELINE.map(item => ({
   title: `${item.year} — ${item.title}`,
@@ -6560,10 +6710,14 @@ const OVERVIEW_SLIDES = PROLOGUE_TIMELINE.map(item => ({
 }));
 
 const VALID_PAGE_IDS = ["overview", "compare", "jihad", "coast", "ukraine", "dossier", "infowar", "resources", "sources", "timeline", "glossary", "china", "changelog"].concat(COUNTRIES.map(c => c.id), OTHER_COUNTRIES.map(c => c.id));
+/* ---- 10. МАРШРУТИЗАЦІЯ: валідні сторінки, goTo(), renderPage(), init ---- */
 let suppressHashRender = false;
 
 function goTo(pageId) {
-  if (!VALID_PAGE_IDS.includes(pageId)) pageId = "overview";
+  if (!VALID_PAGE_IDS.includes(pageId)) {
+    console.warn(`goTo(): невідомий pageId "${pageId}" — перевір посилання/onclick, показую "overview".`);
+    pageId = "overview";
+  }
   if ((location.hash.slice(1) || "overview") === pageId) {
     renderPage(pageId);
     return
@@ -6581,7 +6735,10 @@ function svgKeyNav(evt, id) {
 }
 
 function renderPage(pageId) {
-  if (!VALID_PAGE_IDS.includes(pageId)) pageId = "overview";
+  if (!VALID_PAGE_IDS.includes(pageId)) {
+    console.warn(`renderPage(): невідомий pageId "${pageId}" — перевір хеш/посилання, показую "overview".`);
+    pageId = "overview";
+  }
   renderNav(pageId);
   const main = document.getElementById("main");
   if (pageId === "overview") { main.innerHTML = `<div class="page active">${renderOverview()}</div>`; initDeck("overview", OVERVIEW_SLIDES); initDashboard(); }
@@ -6609,8 +6766,20 @@ window.addEventListener("hashchange", () => {
     suppressHashRender = false;
     return
   }
-  renderPage(decodeURIComponent(location.hash.slice(1)) || "overview")
+  handleHashNavigation(location.hash.slice(1))
 });
+
+function handleHashNavigation(rawHash) {
+  const raw = decodeURIComponent(rawHash || "") || "overview",
+    sepIdx = raw.indexOf(":"),
+    pageId = sepIdx === -1 ? raw : raw.slice(0, sepIdx),
+    slideRaw = sepIdx === -1 ? "" : raw.slice(sepIdx + 1),
+    slideNum = parseInt(slideRaw, 10);
+  renderPage(pageId);
+  if (!isNaN(slideNum) && slideNum > 0) {
+    jumpToSlide(VALID_PAGE_IDS.includes(pageId) ? pageId : "overview", slideNum - 1);
+  }
+}
 
 function openSidebar() {
   document.getElementById("sidebar").classList.add("open"), document.getElementById("sidebarBackdrop").classList.add("open"), document.body.classList.add("sidebar-locked")
@@ -6635,7 +6804,7 @@ function scrollToAnchor(anchorId) {
 function toggleSidebar() {
   document.getElementById("sidebar").classList.contains("open") ? closeSidebar() : openSidebar()
 }
-renderPage(decodeURIComponent(location.hash.slice(1)) || "overview");
+handleHashNavigation(location.hash.slice(1));
 </script>
 </body>
 </html>
